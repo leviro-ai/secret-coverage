@@ -321,9 +321,9 @@ pnpm test && pnpm build
 - Duration: ~4m active wall time.
 - Verification: observed expected RED with `pnpm test tests/action-metadata.test.ts`; after the patch, `pnpm test tests/action-metadata.test.ts tests/docs-examples.test.ts && pnpm test && pnpm build` => PASS (11 test files, 40 tests; TypeScript build passes). Release smoke checks: `node dist/cli.js scan --path examples/fixtures/broken-app --ci` exits 1 and `node dist/cli.js scan --path examples/fixtures/clean-app --ci` exits 0.
 - Schedule estimate: recent completed slices ~4m, ~2m32s, ~3m, and ~4m; rolling avg ~3m23s, so the existing 15m heartbeat remains safe and no schedule change was applied. Cron `9f2b31785aad` next run: 10:43 local.
-- Git/repo note: repo is tracking `origin/main`; workflow/docs/test changes are ready to commit and push.
-- Next: commit/push the CI deprecation cleanup, confirm the remote GitHub Actions run is green and annotation-free, then keep the project in Darius-review/approval-gated mode before publishing.
+- Git/repo note: CI deprecation cleanup was committed and pushed as `af2112b`; GitHub Actions run `26274705441` completed green with 0 annotations.
+- Next: keep the project in Darius-review/approval-gated mode and only perform small review-readiness checks until Darius approves npm/GitHub release publishing.
 
 ## Next Step
 
-Commit/push the CI deprecation cleanup, confirm the remote GitHub Actions run is green and annotation-free, then keep the project in Darius-review/approval-gated mode before any npm or GitHub release publishing.
+Keep the project in Darius-review/approval-gated mode and only perform small review-readiness checks until Darius approves any npm or GitHub release publishing.
