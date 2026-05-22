@@ -306,6 +306,15 @@ pnpm test && pnpm build
 - Git/repo note: repo is initialized and tracking `origin/main`; working tree has trust-doc and CLI-test stability edits ready to commit/push.
 - Next: commit and push this final trust/test-stability cleanup, then keep the project in Darius-review/approval-gated mode before any npm or GitHub release publishing.
 
+### Manual continuation 2026-05-22 10:18-10:21 EEST
+
+- Slice: GitHub Actions failure diagnosis and CI fixture fix after Darius enabled `gh`. Confirmed `gh` is installed/authenticated, inspected failed Actions logs, found CI did not have ignored fixture `.env.local` files, force-added only fixture-local `.env.local` files, committed, pushed, and watched the new GitHub Actions run to green.
+- Duration: ~3m active wall time.
+- Verification: local `pnpm test` => PASS (11 files, 39 tests); local `pnpm build` => PASS; remote `gh run watch 26274207110 --exit-status` => PASS. GitHub Actions now green on commit `e9bfc32`.
+- Schedule estimate: manual CI repair was short; existing cron `9f2b31785aad` remains every 15m. Next cron: 10:28 local.
+- Git/repo note: repo is clean and tracking `origin/main`; commit `e9bfc32 test: include env fixture files in CI` fixed the red Actions run. Remaining CI annotation is a non-failing Node.js 20 deprecation warning from upstream actions.
+- Next: patch the workflow/action versions or runner env to address the Node.js 20 deprecation annotation, then keep project in approval-gated review mode before publishing.
+
 ## Next Step
 
-Commit and push this final trust/test-stability cleanup, then keep the project in Darius-review/approval-gated mode before any npm or GitHub release publishing.
+Patch the workflow/action versions or runner env to address the Node.js 20 deprecation annotation, then keep the project in Darius-review/approval-gated mode before any npm or GitHub release publishing.
