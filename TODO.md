@@ -32,5 +32,7 @@
 - [x] Draft Reddit-specific discussion framing for the GitHub Actions drift demo without posting
 - [x] Draft Hacker News / Show HN readiness notes for the GitHub Actions drift demo without posting
 - [x] Draft X/Twitter thread framing for the GitHub Actions drift demo without posting
+- [x] Prepare first public-post recommendation with channel, final text, approval options, and risk notes
+- [ ] After Darius approval, publish the first Dev.to post or add one more demo first
 - [ ] Individual future integration pages for Railway, Render, Supabase, Terraform, Kubernetes, AWS Secrets Manager, Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
 - [ ] SEO pages for long-tail deployment drift queries
