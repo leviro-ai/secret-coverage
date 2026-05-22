@@ -719,7 +719,16 @@ pnpm test && pnpm build
 - Schedule estimate: last five resumed slices including this one are ~2m29s, ~2m13s, ~3m27s, ~1m32s, and ~2m49s; rolling avg ~2m30s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 02:19 local.
 - Git/repo note: pushed commit `c51562a` (`docs: add circleci drift demo`) to `main`; GitHub Actions run `26316192391` passed. `context.md` remains untracked and was not added.
 - Next: keep public posting gated until Darius approves final Dev.to wording/channel; if no approval arrives by the next heartbeat, adapt the recommendation to mention the Vercel/CircleCI demos without broadening the first post too much.
+### Heartbeat 2026-05-23 02:22-02:25 EEST
+
+- Slice: adapted the first Dev.to public-post recommendation to mention the new Vercel and CircleCI demos only as optional follow-up links, without broadening the main first post beyond the GitHub Actions + Docker Compose walkthrough.
+- Updated `docs/marketing/first-post-recommendation.md`, `docs/marketing/devto-github-actions-missing-secret-draft.md`, `docs/marketing/metrics-log.md`, and `TODO.md` so the approval options are restartable: publish two-demo-only, include optional Vercel/CircleCI links, edit wording, or hold for a real-repo walkthrough.
+- Duration: ~2m 17s active wall time including local verification, commit/push, and remote CI polling.
+- Verification: `pnpm --silent scan -- --path examples/demos/{github-actions-missing-secret,docker-compose-missing-redis-url,vercel-missing-supabase-key,circleci-missing-deploy-key} --ci` => PASS for all four expected failing demos; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check against updated marketing docs => PASS (0 matches); `npm view @leviro-ai/secret-coverage version --json` => PASS (`0.1.5`); `git push` => PASS; `gh run list`/remote run `26316726929` => PASS for commit `ee9db54`.
+- Schedule estimate: last five product slices are ~2m13s, ~3m27s, ~1m32s, ~2m49s, and ~2m17s; rolling avg ~2m28s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 02:40 Europe/Vilnius.
+- Git/repo note: pushed commit `ee9db54` (`docs: refine first post demo links`) to `main`; GitHub Actions run `26316726929` passed. `context.md` remains untracked and was not added.
+- Next: keep public posting gated until Darius approves the final Dev.to channel/wording; if no approval arrives by the next heartbeat, add a real-repo walkthrough outline or first SEO long-tail page draft that reuses the existing demos without public posting.
 
 ## Next Step
 
-Keep public posting gated until Darius approves final Dev.to wording/channel; if no approval arrives by the next heartbeat, adapt the recommendation to mention the Vercel/CircleCI demos without broadening the first post too much.
+Keep public posting gated until Darius approves the final Dev.to channel/wording; if no approval arrives by the next heartbeat, add a real-repo walkthrough outline or first SEO long-tail page draft that reuses the existing demos without public posting.
