@@ -1,0 +1,19 @@
+services:
+  web:
+    image: node:22-alpine
+    command: pnpm start
+    environment:
+      APP_ENV: ${APP_ENV}
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_URL: ${REDIS_URL}
+    depends_on:
+      - redis
+
+  worker:
+    image: node:22-alpine
+    command: pnpm worker
+    environment:
+      REDIS_URL: ${REDIS_URL}
+
+  redis:
+    image: redis:7-alpine

@@ -17,6 +17,8 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - local ignored organic-authority plan under `docs/plans/`
   - `examples/demos/github-actions-missing-secret/`
   - `docs/articles/github-actions-missing-secret.md`
+  - `examples/demos/docker-compose-missing-redis-url/`
+  - `docs/articles/docker-compose-missing-redis-url.md`
   - `docs/marketing/devto-github-actions-missing-secret-draft.md`
   - `docs/marketing/reddit-github-actions-missing-secret-draft.md`
   - `docs/marketing/hacker-news-github-actions-missing-secret-readiness.md`
@@ -27,4 +29,4 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”
 - Next experiment:
-  - Wait for Darius approval: publish the recommended Dev.to post, edit the final text, or add one more concrete demo before public posting.
+  - Wait for Darius approval: publish the recommended Dev.to post, edit the final text, or adapt the first public post to include the new Docker Compose drift demo.
