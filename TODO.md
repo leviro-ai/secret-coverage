@@ -31,6 +31,6 @@
 - [x] Commit/push demo + article + Dev.to draft once reviewed for link readiness
 - [x] Draft Reddit-specific discussion framing for the GitHub Actions drift demo without posting
 - [x] Draft Hacker News / Show HN readiness notes for the GitHub Actions drift demo without posting
-- [ ] Draft X/Twitter thread framing for the GitHub Actions drift demo without posting
+- [x] Draft X/Twitter thread framing for the GitHub Actions drift demo without posting
 - [ ] Individual future integration pages for Railway, Render, Supabase, Terraform, Kubernetes, AWS Secrets Manager, Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
 - [ ] SEO pages for long-tail deployment drift queries

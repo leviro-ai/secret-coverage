@@ -638,6 +638,17 @@ pnpm test && pnpm build
 - Git/repo note: pushed commit `c8ea4f7` to `main`; `context.md` remains untracked and was not added. Progress-log update itself is local until the next restart-state commit.
 - Next: draft X/Twitter thread framing for the GitHub Actions drift demo without posting; include a short hook, YAML/env mismatch snippet, one screenshot-ready CLI output excerpt, a no-hype link strategy, and a pre-post checklist.
 
+### Heartbeat 2026-05-23 00:23-00:24 EEST
+
+- Slice: drafted X/Twitter thread framing for the GitHub Actions missing-secret deployment drift demo without posting publicly.
+- Added `docs/marketing/x-twitter-github-actions-missing-secret-thread.md` with a 6-post thread, shorter 3-post variant, YAML/env mismatch snippet, screenshot-ready CLI output excerpt, restrained link strategy, pre-post checklist, and reply notes.
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the X/Twitter draft state and the next review/recommendation slice are restartable.
+- Duration: ~1m 16s active wall time.
+- Verification: `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS (expected exit code 1 with `STRIPE_SECRET_KEY` / `missing-from-template`); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check against the new X/Twitter draft => PASS (0 matches).
+- Schedule estimate: last five resumed slices are ~3m29s, ~2m17s, ~2m25s, ~2m16s, and ~1m16s; rolling avg ~2m21s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 00:39 local.
+- Git/repo note: working tree has the X/Twitter draft plus restart-state updates; `context.md` remains untracked and was not added. Commit/push and remote CI check are planned after staging this slice.
+- Next: review the full Dev.to/Reddit/HN/X public-posting packet, then prepare one Darius-approved first-post recommendation with channel, final text, and risk notes before publishing anything.
+
 ## Next Step
 
-Draft X/Twitter thread framing for the GitHub Actions drift demo without posting; include a short hook, YAML/env mismatch snippet, one screenshot-ready CLI output excerpt, a no-hype link strategy, and a pre-post checklist. Do not publish Dev.to/Reddit/HN/X posts until Darius reviews public framing.
+Review the full Dev.to/Reddit/HN/X public-posting packet, then prepare one Darius-approved first-post recommendation with channel, final text, and risk notes before publishing anything. Do not publish Dev.to/Reddit/HN/X posts until Darius reviews public framing.
