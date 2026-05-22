@@ -682,12 +682,12 @@ pnpm test && pnpm build
 - Slice: adapted the first Dev.to public-post recommendation to include both concrete demos before asking for a final publish decision.
 - Updated `docs/marketing/first-post-recommendation.md` and `docs/marketing/devto-github-actions-missing-secret-draft.md` from a single GitHub Actions example into a two-demo post covering GitHub Actions `STRIPE_SECRET_KEY` drift and Docker Compose `REDIS_URL` drift.
 - Updated `TODO.md` and `docs/marketing/metrics-log.md` so the approval gate is restartable: public posting remains blocked until Darius approves the final Dev.to wording/channel.
-- Duration: ~2m 19s active wall time.
-- Verification: `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS (expected exit code 1); `pnpm --silent scan -- --path examples/demos/docker-compose-missing-redis-url --ci` => PASS (expected exit code 1); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check against the updated Dev.to/recommendation docs => PASS (0 matches).
-- Schedule estimate: last five resumed slices are ~2m16s, ~3m40s, ~2m29s, ~2m13s, and ~2m19s; rolling avg ~2m35s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 01:39 local.
-- Git/repo note: local content/restart-state changes are ready to commit and push; `context.md` remains untracked and should not be added.
-- Next: commit/push the adapted two-demo Dev.to recommendation, verify GitHub Actions, then wait for Darius approval before publishing through CloakBrowser.
+- Duration: ~3m 27s active wall time including commit/push and remote CI watch.
+- Verification: `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS (expected exit code 1); `pnpm --silent scan -- --path examples/demos/docker-compose-missing-redis-url --ci` => PASS (expected exit code 1); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check against the updated Dev.to/recommendation docs => PASS (0 matches); `git push` => PASS; `gh run watch 26314920007 --exit-status` => PASS.
+- Schedule estimate: last five resumed slices are ~2m16s, ~3m40s, ~2m29s, ~2m13s, and ~3m27s; rolling avg ~2m49s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 01:39 local.
+- Git/repo note: pushed commit `3cfbf23` (`docs: adapt devto recommendation for two demos`) to `main`; GitHub Actions run `26314920007` passed. `context.md` remains untracked and was not added. This progress-log correction will be committed as restart state.
+- Next: keep public posting gated until Darius approves the final two-demo Dev.to wording/channel; if no approval arrives by the next heartbeat, add the next useful non-public asset such as a Vercel or CircleCI deployment-drift demo.
 
 ## Next Step
 
-Commit/push the adapted two-demo Dev.to recommendation and verify GitHub Actions, then keep public posting gated until Darius approves the final Dev.to wording/channel.
+Keep public posting gated until Darius approves the final two-demo Dev.to wording/channel; if no approval arrives by the next heartbeat, add the next useful non-public asset such as a Vercel or CircleCI deployment-drift demo.
