@@ -19,6 +19,8 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/articles/github-actions-missing-secret.md`
   - `examples/demos/docker-compose-missing-redis-url/`
   - `docs/articles/docker-compose-missing-redis-url.md`
+  - `examples/demos/vercel-missing-supabase-key/`
+  - `docs/articles/vercel-missing-supabase-key.md`
   - `docs/marketing/devto-github-actions-missing-secret-draft.md`
   - `docs/marketing/reddit-github-actions-missing-secret-draft.md`
   - `docs/marketing/hacker-news-github-actions-missing-secret-readiness.md`
@@ -29,4 +31,4 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”
 - Next experiment:
-  - Wait for Darius approval: publish the recommended two-demo Dev.to post, edit the final text, or add another demo before any public posting.
+  - Wait for Darius approval: publish the recommended two-demo Dev.to post, edit the final text, or adapt the recommendation again now that a Vercel demo is also available.

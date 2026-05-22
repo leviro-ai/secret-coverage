@@ -35,6 +35,7 @@
 - [x] Prepare first public-post recommendation with channel, final text, approval options, and risk notes
 - [x] Add one more concrete demo before public posting: Docker Compose missing Redis URL
 - [x] Adapt the first Dev.to public-post recommendation to include both GitHub Actions and Docker Compose demos
+- [x] Add one more non-public demo while approval is pending: Vercel missing Supabase service key
 - [ ] After Darius approval, publish the first Dev.to post through CloakBrowser and record the real URL/metrics
 - [ ] Individual future integration pages for Railway, Render, Supabase, Terraform, Kubernetes, AWS Secrets Manager, Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
 - [ ] SEO pages for long-tail deployment drift queries

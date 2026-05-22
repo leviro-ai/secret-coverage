@@ -688,6 +688,22 @@ pnpm test && pnpm build
 - Git/repo note: pushed commit `3cfbf23` (`docs: adapt devto recommendation for two demos`) to `main`; GitHub Actions run `26314920007` passed. `context.md` remains untracked and was not added. This progress-log correction will be committed as restart state.
 - Next: keep public posting gated until Darius approves the final two-demo Dev.to wording/channel; if no approval arrives by the next heartbeat, add the next useful non-public asset such as a Vercel or CircleCI deployment-drift demo.
 
+### Heartbeat 2026-05-23 01:42-01:44 EEST
+
+- Slice: added one more useful non-public demo asset while public posting remains gated on Darius approval: Vercel missing Supabase service key deployment drift.
+- Added:
+  - `examples/demos/vercel-missing-supabase-key/.env.example`
+  - `examples/demos/vercel-missing-supabase-key/vercel.json`
+  - `examples/demos/vercel-missing-supabase-key/README.md`
+  - `examples/demos/vercel-missing-supabase-key/secret-coverage-output.md`
+  - `docs/articles/vercel-missing-supabase-key.md`
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the third demo/article asset and approval-gated next step are restartable.
+- Duration: ~1m 32s active wall time.
+- Verification: `pnpm --silent scan -- --path examples/demos/vercel-missing-supabase-key --ci` => PASS (expected exit code 1 with `SUPABASE_SERVICE_ROLE_KEY` / `missing-from-template`); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check against the new Vercel article => PASS (0 matches).
+- Schedule estimate: last five resumed slices including this one are ~3m40s, ~2m29s, ~2m13s, ~3m27s, and ~1m32s; rolling avg ~2m40s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 01:59 local.
+- Git/repo note: Vercel demo/article work is local pending commit/push in this heartbeat; `context.md` remains untracked and was not added.
+- Next: commit/push the Vercel demo/article asset and verify GitHub Actions; public posting remains gated until Darius approves final Dev.to wording/channel.
+
 ## Next Step
 
-Keep public posting gated until Darius approves the final two-demo Dev.to wording/channel; if no approval arrives by the next heartbeat, add the next useful non-public asset such as a Vercel or CircleCI deployment-drift demo.
+Commit/push the Vercel demo/article asset and verify GitHub Actions; public posting remains gated until Darius approves final Dev.to wording/channel.
