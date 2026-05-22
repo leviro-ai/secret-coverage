@@ -379,13 +379,13 @@ pnpm test && pnpm build
 - Git/repo note: source false-positive hardening was committed and pushed as `eddbe3c`; no npm package or GitHub release was published.
 - Next: return to Darius-review/approval-gated mode before publishing; next useful slice is only a lightweight release-readiness/approval-gate check unless Darius approves release or asks for specific hardening.
 
-### Heartbeat 2026-05-22 12:17-12:19 EEST
+### Heartbeat 2026-05-22 12:17-12:20 EEST
 
-- Slice: lightweight approval-gate/release-readiness check after the recent explicit env-template scoping fix. Confirmed the repo is clean and tracking `origin/main`, latest remote GitHub Actions run for `339bc20` is green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
-- Duration: ~1m 30s active wall time.
-- Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit, npm package dry-run). Remote GitHub Actions run `26279243400` for `339bc20` => PASS.
-- Schedule estimate: recent completed slices include ~8m, ~2m16s, and this ~1m30s check; rolling avg remains in the short-slice band, so existing cron `9f2b31785aad` remains every 15m and no schedule change was applied. Next cron: 12:32 local.
-- Git/repo note: repo was clean before this progress-log update; progress-log-only update is ready to commit/push.
+- Slice: lightweight approval-gate/release-readiness check after the recent explicit env-template scoping fix. Confirmed the repo is clean and tracking `origin/main`, latest remote GitHub Actions runs are green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Duration: ~2m 40s active wall time including remote CI watch.
+- Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit, npm package dry-run). Remote GitHub Actions run `26279432452` for progress commit `a6818c7` => PASS.
+- Schedule estimate: recent completed slices include ~8m, ~2m16s, and this ~2m40s check; rolling avg remains in the short-slice band, so existing cron `9f2b31785aad` remains every 15m and no schedule change was applied. Next cron: 12:32 local.
+- Git/repo note: repo was clean before this progress-log update; progress-log-only update committed/pushed as `a6818c7`, then CI result was recorded in a follow-up docs-only update.
 - Next: stay in Darius-review/approval-gated mode before publishing; next useful slice is only a lightweight release-readiness/approval-gate check unless Darius approves release or asks for specific hardening.
 
 ## Next Step
