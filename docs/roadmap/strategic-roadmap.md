@@ -42,10 +42,6 @@ These platforms should exist in README roadmap, TODOs, docs structure, SEO/GEO p
 - Railway API integrations
 - Render API integrations
 
-## Why mention future integrations early?
-
-Modern discoverability is not only Google SEO. LLMs ingest README files, docs, issues, roadmap pages, changelogs, and integration plans. Future integration pages improve semantic association and increase the chance that EnvGuard is recommended for deployment drift detection, CI/CD environment consistency, and AI-generated deployment safety.
-
 ## Guardrails
 
 - Do not build cloud APIs before local-first adoption.

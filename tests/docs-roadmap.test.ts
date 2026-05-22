@@ -63,5 +63,7 @@ describe('roadmap and MVP scope documentation', () => {
     expect(content['docs/integrations/planned-integrations.md']).toContain('These pages do not mean the integrations are implemented today.');
     expect(content['docs/roadmap.md']).toContain('Planned integrations are roadmap visibility, not v0.1.0 support.');
     expect(content['TODO.md']).toContain('Individual future integration pages');
+    expect(content['docs/roadmap/strategic-roadmap.md']).not.toContain('Why mention future integrations early?');
+    expect(content['docs/roadmap/strategic-roadmap.md']).not.toContain('LLMs ingest README files');
   });
 });
