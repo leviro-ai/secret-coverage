@@ -9,6 +9,8 @@ Publish the first public post on **Dev.to**, now framed around two concrete drif
 1. GitHub Actions references `STRIPE_SECRET_KEY`, but the env template does not document it.
 2. Docker Compose references `REDIS_URL`, but the env template does not document it.
 
+Keep those two examples as the body of the first post. Vercel and CircleCI demos are now available, but they should be mentioned only as optional follow-up links near the end so the article does not turn into a broad product tour.
+
 Why Dev.to first:
 
 - It supports a concrete technical walkthrough with YAML, dotenv, CLI output, and links without forcing the post into a thin launch format.
@@ -26,6 +28,8 @@ Ask Darius to approve one of these options before posting:
 1. **Approve Dev.to post as written below** — publish through the already-open CloakBrowser Dev.to session.
 2. **Approve after edits** — Darius can adjust title/tone/link density.
 3. **Do not post yet** — add another demo first, likely Vercel, CircleCI, Supabase, or a real-repo walkthrough.
+
+Current recommendation after adding Vercel and CircleCI demos: **do not expand the main article beyond the GitHub Actions + Docker Compose walkthrough**. If Darius wants to show breadth, add a short “More fixture examples” note with the Vercel and CircleCI links instead of adding two more sections.
 
 ## Recommended title
 
@@ -184,10 +188,17 @@ Links:
 - GitHub Actions demo: https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/github-actions-missing-secret
 - Docker Compose demo: https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/docker-compose-missing-redis-url
 
+Optional follow-up examples if Darius wants one extra breadth note:
+
+- Vercel demo: https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/vercel-missing-supabase-key
+- CircleCI demo: https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/circleci-missing-deploy-key
+
+Suggested one-sentence placement before the links: `There are a few more small fixture examples in the repo, including Vercel config drift and CircleCI deploy-key drift, but I would keep this first post focused on the two cases above.`
+
 ## Risk notes
 
 - **Main risk:** sounding like a launch announcement instead of a useful failure-pattern note. Keep the title and opening problem-first.
-- **Link risk:** four links at the end are acceptable on Dev.to, but if Darius wants softer framing, publish with only the GitHub repo and the two demo links.
+- **Link risk:** four core links at the end are acceptable on Dev.to. Adding the Vercel/CircleCI links is okay only as an optional follow-up note; do not turn the post into a list of every supported surface.
 - **Technical challenge risk:** readers may compare this to env schema validation. Calm answer: schema validation is useful inside app/runtime; this catches CI/CD and deployment-config references drifting from the repo contract before app startup.
 - **Trust risk:** do not claim users, adoption, stars, testimonials, or broad platform coverage. Say it is early and fixture-driven.
 - **Scope risk:** avoid implying full Docker/Kubernetes/platform coverage. This post demonstrates specific static config drift patterns only.
@@ -198,6 +209,7 @@ If Darius approves publishing:
 
 - [ ] Re-run `pnpm scan -- --path examples/demos/github-actions-missing-secret --ci` and confirm output still matches.
 - [ ] Re-run `pnpm scan -- --path examples/demos/docker-compose-missing-redis-url --ci` and confirm output still matches.
+- [ ] If the optional breadth note is included, re-run the Vercel and CircleCI demo scans too.
 - [ ] Confirm npm latest and GitHub links still resolve.
 - [ ] Publish through the already-open CloakBrowser Dev.to session.
 - [ ] Record the Dev.to URL and only real observed metrics in `docs/marketing/metrics-log.md`.

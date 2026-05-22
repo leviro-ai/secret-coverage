@@ -38,6 +38,8 @@ Use these after the demo/article assets are committed and visible on GitHub:
 - GitHub Actions article source: `https://github.com/leviro-ai/secret-coverage/blob/main/docs/articles/github-actions-missing-secret.md`
 - Docker Compose demo fixture: `https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/docker-compose-missing-redis-url`
 - Docker Compose article source: `https://github.com/leviro-ai/secret-coverage/blob/main/docs/articles/docker-compose-missing-redis-url.md`
+- Optional Vercel demo fixture, if adding one breadth note only: `https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/vercel-missing-supabase-key`
+- Optional CircleCI demo fixture, if adding one breadth note only: `https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/circleci-missing-deploy-key`
 
 Link-readiness review 2026-05-23: npm latest is `0.1.5`, the repository has the pushed demo/article assets, and the GitHub URLs above should resolve on `main`.
 
@@ -181,11 +183,19 @@ Links:
 - GitHub Actions demo: https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/github-actions-missing-secret
 - Docker Compose demo: https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/docker-compose-missing-redis-url
 
+Optional breadth note, only if Darius wants it:
+
+There are a few more small fixture examples in the repo, including Vercel config drift and CircleCI deploy-key drift, but I would keep this first post focused on the two cases above.
+
+- Vercel demo: https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/vercel-missing-supabase-key
+- CircleCI demo: https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/circleci-missing-deploy-key
+
 ## Pre-publish checklist
 
 - [ ] Confirm current working tree changes are committed/pushed so GitHub demo links resolve.
 - [ ] Re-run `pnpm scan -- --path examples/demos/github-actions-missing-secret --ci` and confirm output still matches the quoted report.
 - [ ] Re-run `pnpm scan -- --path examples/demos/docker-compose-missing-redis-url --ci` and confirm output still matches the quoted report.
+- [ ] If using the optional Vercel/CircleCI breadth note, verify those two GitHub links and demo scans too.
 - [ ] Verify npm latest is still `@leviro-ai/secret-coverage@0.1.5` or update wording if a new version exists.
 - [ ] Keep tone educational; do not claim users, traction, testimonials, or comparisons that do not exist.
 - [ ] Publish as a helpful technical note, not as launch spam.
