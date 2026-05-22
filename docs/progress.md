@@ -347,9 +347,9 @@ pnpm test && pnpm build
 
 - Slice: final pre-release packaged-CLI smoke test without publishing. Built the project, created a local `envguard-0.1.0.tgz` tarball under `/tmp/envguard-preflight`, installed it into a temporary npm app, verified `envguard scan --help`, and smoke-tested the installed binary against clean and broken fixtures.
 - Duration: ~1m 45s active wall time.
-- Verification: `pnpm build && pnpm pack --pack-destination /tmp/envguard-preflight && npm install /tmp/envguard-preflight/envguard-0.1.0.tgz && ./node_modules/.bin/envguard scan --help && ./node_modules/.bin/envguard scan --path examples/fixtures/clean-app --ci && ./node_modules/.bin/envguard scan --path examples/fixtures/broken-app --ci` => PASS (clean fixture exits 0; broken fixture exits 1 as expected).
+- Verification: `pnpm build && pnpm pack --pack-destination /tmp/envguard-preflight && npm install /tmp/envguard-preflight/envguard-0.1.0.tgz && ./node_modules/.bin/envguard scan --help && ./node_modules/.bin/envguard scan --path examples/fixtures/clean-app --ci && ./node_modules/.bin/envguard scan --path examples/fixtures/broken-app --ci` => PASS (clean fixture exits 0; broken fixture exits 1 as expected). Remote CI `gh run watch 26276435933 --exit-status` => PASS.
 - Schedule estimate: recent completed slices remain roughly 3-5m with this check under 2m, so the 15m heartbeat remains safe and no schedule change was applied. Cron `9f2b31785aad` next run: 11:25 local.
-- Git/repo note: repo was clean before this progress-log update and remains tracking `origin/main`; no release was published and no external artifact was created.
+- Git/repo note: progress-log update committed and pushed as `fcd0e06`; no release was published and no external artifact was created.
 - Next: stay in Darius-review/approval-gated mode before publishing; next useful slice is a short review-readiness check of recently committed CLI argument-separator behavior and docs wording, or pause substantive changes until Darius approves release.
 
 ## Next Step
