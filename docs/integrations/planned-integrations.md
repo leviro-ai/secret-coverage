@@ -9,7 +9,7 @@ These pages do not mean the integrations are implemented today.
 - GitHub Actions
 - GitLab CI/CD
 - CircleCI
-- Dockerfile / Docker Compose
+- Dockerfile and Docker Compose
 - `.env.example` and local `.env*` metadata checks
 - Vercel detection heuristics
 

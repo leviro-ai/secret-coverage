@@ -258,9 +258,18 @@ pnpm test && pnpm build
 - Duration: ~1m 38s active wall time.
 - Verification: `pnpm test tests/release-checklist.test.ts && pnpm test && pnpm build` => PASS (targeted 1 test; full 10 test files, 35 tests; TypeScript build passes).
 - Schedule estimate: recent completed slices ~2m23s, ~1m30s, ~5m, ~1m42s, and ~1m38s; rolling avg ~2m27s, formula recommends the 15m minimum. Existing cron `9f2b31785aad` is already every 15m, so no schedule change applied. Next cron: 08:45 local.
-- Git/repo note: `/Users/matilda/www/envguard` is still not initialized as a git repository (`git status` returned `fatal: not a git repository`).
+- Git/repo note: `/Users/matilda/www/envguard` is now initialized and tracking `origin/main`; working tree had release-doc changes in progress.
 - Next: add a lightweight docs/roadmap consistency check so planned integrations stay clearly labeled as planned and do not imply MVP support, then continue final README/GitHub Action wording polish.
+
+### Heartbeat 2026-05-22 08:45-08:49 EEST
+
+- Slice: docs/roadmap consistency hardening; added `tests/docs-roadmap.test.ts` to lock MVP scanner scope across README, roadmap, integration docs, and TODO, and tightened docs so planned integrations remain clearly labeled as planned rather than v0.1.0 support.
+- Duration: ~4m 25s active wall time.
+- Verification: `pnpm test tests/docs-roadmap.test.ts && pnpm test && pnpm build` => PASS (targeted 2 tests; full 11 test files, 37 tests; TypeScript build passes).
+- Schedule estimate: recent completed slices ~1m30s, ~5m, ~1m42s, ~1m38s, and ~4m25s; rolling avg ~2m51s, formula recommends the 15m minimum. Existing cron `9f2b31785aad` is already every 15m, so no schedule change applied. Next cron: 09:02 local.
+- Git/repo note: repo is initialized and tracking `origin/main`; working tree now includes docs consistency edits and `tests/docs-roadmap.test.ts`.
+- Next: final GitHub Action wording/summary polish and release-readiness cleanup without publishing or broadening MVP scope.
 
 ## Next Step
 
-Add docs/roadmap consistency coverage and final GitHub Action wording polish while keeping MVP implementation narrow and preserving existing scanners.
+Final GitHub Action wording/summary polish and release-readiness cleanup while keeping MVP implementation narrow and planned integrations clearly labeled.

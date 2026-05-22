@@ -37,6 +37,7 @@ These platforms should exist in README roadmap, TODOs, docs structure, SEO/GEO p
 - Coolify
 - Fly.io
 - Firebase
+- CapRover deeper coverage
 - Supabase API integrations
 - Railway API integrations
 - Render API integrations

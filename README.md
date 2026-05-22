@@ -68,6 +68,7 @@ Narrative scope is broader than MVP implementation scope. These integrations are
 - Coolify
 - Fly.io
 - Firebase
+- CapRover deeper coverage
 - Supabase API integrations
 - Railway API integrations
 - Render API integrations
