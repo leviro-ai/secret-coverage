@@ -34,7 +34,8 @@ describe('documentation command examples', () => {
       expect(Object.keys(action.inputs)).toContain(input);
     }
 
-    expect(docs).toContain('uses: leviro-ai/secret-coverage@v0.1.0');
+    expect(docs).toContain('uses: leviro-ai/secret-coverage@main');
+    expect(docs).not.toContain('uses: leviro-ai/secret-coverage@v0.1.0');
     expect(docs).toContain('format: markdown');
     expect(docs).toContain("strict: 'false'");
     expect(docs).toContain("strict: 'true'");

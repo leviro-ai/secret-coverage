@@ -205,7 +205,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: leviro-ai/secret-coverage@v0.1.0
+      - uses: leviro-ai/secret-coverage@main
         with:
           strict: 'false'
           format: markdown
@@ -214,7 +214,7 @@ jobs:
 For stricter pull request checks:
 
 ```yaml
-- uses: leviro-ai/secret-coverage@v0.1.0
+- uses: leviro-ai/secret-coverage@main
   with:
     strict: 'true'
 ```
