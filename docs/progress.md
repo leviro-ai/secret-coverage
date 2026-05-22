@@ -701,9 +701,9 @@ pnpm test && pnpm build
 - Duration: ~1m 32s active wall time.
 - Verification: `pnpm --silent scan -- --path examples/demos/vercel-missing-supabase-key --ci` => PASS (expected exit code 1 with `SUPABASE_SERVICE_ROLE_KEY` / `missing-from-template`); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check against the new Vercel article => PASS (0 matches).
 - Schedule estimate: last five resumed slices including this one are ~3m40s, ~2m29s, ~2m13s, ~3m27s, and ~1m32s; rolling avg ~2m40s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 01:59 local.
-- Git/repo note: Vercel demo/article work is local pending commit/push in this heartbeat; `context.md` remains untracked and was not added.
-- Next: commit/push the Vercel demo/article asset and verify GitHub Actions; public posting remains gated until Darius approves final Dev.to wording/channel.
+- Git/repo note: pushed commit `62b9be1` (`docs: add vercel drift demo`) to `main`; GitHub Actions run `26315554883` passed. `context.md` remains untracked and was not added.
+- Next: keep public posting gated until Darius approves final Dev.to wording/channel; if no approval arrives by the next heartbeat, adapt the recommendation to optionally include the new Vercel demo or add another integration-specific asset such as CircleCI deployment drift.
 
 ## Next Step
 
-Commit/push the Vercel demo/article asset and verify GitHub Actions; public posting remains gated until Darius approves final Dev.to wording/channel.
+Keep public posting gated until Darius approves final Dev.to wording/channel; if no approval arrives by the next heartbeat, adapt the recommendation to optionally include the new Vercel demo or add another integration-specific asset such as CircleCI deployment drift.
