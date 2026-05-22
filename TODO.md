@@ -12,8 +12,8 @@
 - [x] CircleCI scanner
 - [x] Dockerfile and Docker Compose scanner
 - [x] Vercel detection heuristics
-- [ ] GitHub Action CI summary polishing
-- [ ] Release repository setup
+- [x] GitHub Action CI summary polishing
+- [x] Release repository setup
 
 ## Trust/security
 

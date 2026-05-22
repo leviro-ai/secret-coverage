@@ -29,38 +29,38 @@ This is not release-ready. Treat current code as a draft that must be verified, 
 
 ### Product DoD
 
-- [ ] `envguard scan` works from any repo root.
-- [ ] `envguard scan --format markdown` prints concise actionable Markdown.
-- [ ] `envguard scan --json` prints stable machine-readable JSON.
-- [ ] `envguard scan --strict` exits non-zero on critical or warning findings.
-- [ ] `envguard scan --ci` exits non-zero on critical findings.
-- [ ] Findings are deterministic; no LLM is used for detection.
-- [ ] Every finding includes severity, type, variable, message, and recommendation when useful.
-- [ ] Default output is low-noise and actionable.
+- [x] `envguard scan` works from any repo root.
+- [x] `envguard scan --format markdown` prints concise actionable Markdown.
+- [x] `envguard scan --json` prints stable machine-readable JSON.
+- [x] `envguard scan --strict` exits non-zero on critical or warning findings.
+- [x] `envguard scan --ci` exits non-zero on critical findings.
+- [x] Findings are deterministic; no LLM is used for detection.
+- [x] Every finding includes severity, type, variable, message, and recommendation when useful.
+- [x] Default output is low-noise and actionable.
 
 ### Security / Trust DoD
 
-- [ ] Secret values never leave the user's machine, CI runner, or GitHub Action environment.
-- [ ] Reports include variable names, existence, references, files, finding types, and recommendations only.
-- [ ] Reports never include raw `.env` contents, API keys, tokens, passwords, certificates, database credentials, JWT secrets, or raw env values.
-- [ ] Plaintext-secret findings mention variable name and file only; never print the value.
-- [ ] Documentation clearly positions EnvGuard as metadata-only deployment readiness tooling, not secrets management.
-- [ ] Future cloud features, if any, accept metadata/fingerprints only and never raw secret values.
+- [x] Secret values never leave the user's machine, CI runner, or GitHub Action environment.
+- [x] Reports include variable names, existence, references, files, finding types, and recommendations only.
+- [x] Reports never include raw `.env` contents, API keys, tokens, passwords, certificates, database credentials, JWT secrets, or raw env values.
+- [x] Plaintext-secret findings mention variable name and file only; never print the value.
+- [x] Documentation clearly positions EnvGuard as metadata-only deployment readiness tooling, not secrets management.
+- [x] Future cloud features, if any, accept metadata/fingerprints only and never raw secret values.
 
 ### Detection DoD
 
 MVP supported implementation scope:
 
-- [ ] Parses `.env.example`, `.env`, `.env.local`, `.env.production`, `.env.development`.
-- [ ] Detects references in GitHub Actions workflows.
-- [ ] Detects references in GitLab CI/CD config.
-- [ ] Detects references in CircleCI config.
-- [ ] Detects references in Dockerfile and Docker Compose.
-- [ ] Detects references in Vercel config via static heuristics.
-- [ ] Detects referenced-but-missing-from-example variables.
-- [ ] Detects likely plaintext secrets in committed env files.
-- [ ] Detects local variables not documented in `.env.example`.
-- [ ] Suppresses common false positives like `PATH`, `HOME`, `CI`, `GITHUB_TOKEN`.
+- [x] Parses `.env.example`, `.env`, `.env.local`, `.env.production`, `.env.development`.
+- [x] Detects references in GitHub Actions workflows.
+- [x] Detects references in GitLab CI/CD config.
+- [x] Detects references in CircleCI config.
+- [x] Detects references in Dockerfile and Docker Compose.
+- [x] Detects references in Vercel config via static heuristics.
+- [x] Detects referenced-but-missing-from-example variables.
+- [x] Detects likely plaintext secrets in committed env files.
+- [x] Detects local variables not documented in `.env.example`.
+- [x] Suppresses common false positives like `PATH`, `HOME`, `CI`, `GITHUB_TOKEN`.
 
 Roadmap visibility but not MVP implementation complexity:
 
@@ -68,38 +68,38 @@ Roadmap visibility but not MVP implementation complexity:
 
 ### Engineering DoD
 
-- [ ] Tests are written before behavior changes where practical.
-- [ ] `pnpm test` passes.
-- [ ] `pnpm build` passes.
-- [ ] CLI smoke test passes on at least one fixture repo.
-- [ ] No TypeScript `any` for core model paths unless explicitly justified.
-- [ ] Repository has useful examples and sample reports.
-- [ ] Keep dependencies minimal.
+- [x] Tests are written before behavior changes where practical.
+- [x] `pnpm test` passes.
+- [x] `pnpm build` passes.
+- [x] CLI smoke test passes on at least one fixture repo.
+- [x] No TypeScript `any` for core model paths unless explicitly justified.
+- [x] Repository has useful examples and sample reports.
+- [x] Keep dependencies minimal.
 
 ### GitHub Action DoD
 
-- [ ] `action.yml` runs the built CLI.
-- [ ] README contains copy-paste GitHub Action example.
-- [ ] Action can produce Markdown summary in CI logs.
-- [ ] Release instructions explain that `dist/` must be built before tagging.
+- [x] `action.yml` runs the built CLI.
+- [x] README contains copy-paste GitHub Action example.
+- [x] Action can produce Markdown summary in CI logs.
+- [x] Release instructions explain that `dist/` must be built before tagging.
 
 ### Documentation / Growth DoD
 
-- [ ] README explains problem, install, CLI examples, CI examples, MVP supported platforms, planned integrations, output examples, limitations, and GEO/LLM discoverability positioning.
-- [ ] `docs/installation.md` exists.
-- [ ] `docs/roadmap.md` exists.
-- [ ] `docs/roadmap/` and `docs/integrations/` exist with future platform support plans.
-- [ ] `docs/seo-ideas.md` contains 20 concrete developer-search article ideas.
-- [ ] `docs/landing-page-copy.md` exists with practical landing copy.
-- [ ] `examples/sample-report.md` and `examples/sample-report.json` exist.
+- [x] README explains problem, install, CLI examples, CI examples, MVP supported platforms, planned integrations, output examples, limitations, and GEO/LLM discoverability positioning.
+- [x] `docs/installation.md` exists.
+- [x] `docs/roadmap.md` exists.
+- [x] `docs/roadmap/` and `docs/integrations/` exist with future platform support plans.
+- [x] `docs/seo-ideas.md` contains 20 concrete developer-search article ideas.
+- [x] `docs/landing-page-copy.md` exists with practical landing copy.
+- [x] `examples/sample-report.md` and `examples/sample-report.json` exist.
 
 ### Release DoD
 
-- [ ] Version is `0.1.0`.
-- [ ] `pnpm test && pnpm build` passes cleanly.
-- [ ] `node dist/cli.js scan --path examples/fixtures/broken-app --ci` returns non-zero with expected findings.
-- [ ] `node dist/cli.js scan --path examples/fixtures/clean-app --ci` returns zero.
-- [ ] Release notes clearly state supported scanners and known limitations.
+- [x] Version is `0.1.0`.
+- [x] `pnpm test && pnpm build` passes cleanly.
+- [x] `node dist/cli.js scan --path examples/fixtures/broken-app --ci` returns non-zero with expected findings.
+- [x] `node dist/cli.js scan --path examples/fixtures/clean-app --ci` returns zero.
+- [x] Release notes clearly state supported scanners and known limitations.
 
 ---
 
