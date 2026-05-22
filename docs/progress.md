@@ -282,10 +282,10 @@ pnpm test && pnpm build
 ### Heartbeat 2026-05-22 09:33-09:36 EEST
 
 - Slice: final release-notes readiness cleanup; added release-checklist coverage that keeps `CHANGELOG.md` aligned with v0.1.0 supported scanners and metadata-only/no-raw-secret trust posture, then updated the changelog to include GitLab CI/CD, current GitHub Action summary behavior, sample reports, and publishing approval gates.
-- Duration: ~2m 0s active wall time.
+- Duration: ~2m 25s active wall time.
 - Verification: `pnpm test tests/release-checklist.test.ts && pnpm test && pnpm build` => PASS (targeted 2 tests; full 11 test files, 38 tests; TypeScript build passes). Release smoke: `node dist/cli.js scan --path examples/fixtures/broken-app --ci` exits 1 and `node dist/cli.js scan --path examples/fixtures/clean-app --ci` exits 0.
-- Schedule estimate: recent completed slices ~1m42s, ~1m38s, ~4m25s, ~3m30s, and ~2m; rolling avg ~2m47s, formula recommends the 15m minimum. Existing cron `9f2b31785aad` is already every 15m, so no schedule change applied. Next cron: 09:48 local.
-- Git/repo note: repo is initialized and tracking `origin/main`; release-notes cleanup is being committed/pushed after this log entry.
+- Schedule estimate: recent completed slices ~1m42s, ~1m38s, ~4m25s, ~3m30s, and ~2m25s; rolling avg ~2m52s, formula recommends the 15m minimum. Existing cron `9f2b31785aad` is already every 15m, so no schedule change applied. Next cron: 09:48 local.
+- Git/repo note: repo is initialized and tracking `origin/main`; commit `6d1cf39` was pushed to `origin/main`.
 - Next: inspect final DoD/backlog gaps and either mark ready-for-Darius-review or patch the smallest remaining stale doc/test mismatch without publishing.
 
 ## Next Step
