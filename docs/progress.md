@@ -620,10 +620,10 @@ pnpm test && pnpm build
 - Slice: drafted Reddit-specific discussion framing for the GitHub Actions missing-secret deployment drift demo without posting publicly.
 - Added `docs/marketing/reddit-github-actions-missing-secret-draft.md` with subreddit-fit notes, discussion-first title/body options, optional link guidance, no-spam checklist, and channel-specific response notes.
 - Updated `TODO.md` and `docs/marketing/metrics-log.md` so the Reddit draft state and next Hacker News readiness slice are restartable.
-- Duration: ~1m 19s active wall time.
-- Verification: `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS (expected exit code 1 with `STRIPE_SECRET_KEY` / `missing-from-template`); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check across README/article/Dev.to/Reddit draft => PASS (0 matches).
-- Schedule estimate: last five resumed slices are ~1m24s, ~1m32s, ~3m29s, ~2m17s, and ~1m19s; rolling avg ~2m0s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 00:00 local.
-- Git/repo note: local working tree has the new Reddit draft plus restart-state updates in `TODO.md`, `docs/marketing/metrics-log.md`, and `docs/progress.md`; `context.md` remains untracked and was not added. Local verification only unless this slice is committed/pushed after the log update.
+- Duration: ~2m 25s active wall time including commit/push and remote CI watch.
+- Verification: `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS (expected exit code 1 with `STRIPE_SECRET_KEY` / `missing-from-template`); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check across README/article/Dev.to/Reddit draft => PASS (0 matches); `git push` => PASS; `gh run watch 26311167611 --exit-status` => PASS.
+- Schedule estimate: last five resumed slices are ~1m24s, ~1m32s, ~3m29s, ~2m17s, and ~2m25s; rolling avg ~2m18s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 00:00 local.
+- Git/repo note: pushed commit `50f2c77` (`docs: add reddit drift discussion draft`) to `main`; GitHub Actions run `26311167611` passed. `context.md` remains untracked and was not added.
 - Next: draft Hacker News / Show HN readiness notes for the GitHub Actions drift demo without posting; include why not to submit a thin link yet, what artifact would make it HN-worthy, and a restrained title/body option.
 
 ## Next Step
