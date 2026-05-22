@@ -388,6 +388,15 @@ pnpm test && pnpm build
 - Git/repo note: repo was clean before this progress-log update; progress-log-only update committed/pushed as `a6818c7`, then CI result was recorded in a follow-up docs-only update.
 - Next: stay in Darius-review/approval-gated mode before publishing; next useful slice is only a lightweight release-readiness/approval-gate check unless Darius approves release or asks for specific hardening.
 
+### Heartbeat 2026-05-22 12:37-12:38 EEST
+
+- Slice: lightweight release-readiness/approval-gate check after the latest CircleCI inline-env-literal hardening commit. Confirmed no overlapping EnvGuard build/test process was active, repo is clean and tracking `origin/main`, latest remote GitHub Actions run is green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Duration: ~1m active wall time.
+- Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit, npm package dry-run). Latest remote GitHub Actions run `26280196031` => PASS.
+- Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 12:51 local.
+- Git/repo note: repo was clean before this progress-log update; latest pushed product commit is `06aeba7 fix: ignore inline CircleCI env literals`.
+- Next: stay in Darius-review/approval-gated mode before publishing; next useful slice is only a lightweight release-readiness/approval-gate check unless Darius approves release or asks for specific hardening.
+
 ## Next Step
 
 Stay in Darius-review/approval-gated mode before any npm or GitHub release publishing; next useful slice is only a lightweight release-readiness/approval-gate check unless Darius approves release or asks for specific hardening.
