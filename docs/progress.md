@@ -352,6 +352,15 @@ pnpm test && pnpm build
 - Git/repo note: progress-log update committed and pushed as `fcd0e06`; no release was published and no external artifact was created.
 - Next: stay in Darius-review/approval-gated mode before publishing; next useful slice is a short review-readiness check of recently committed CLI argument-separator behavior and docs wording, or pause substantive changes until Darius approves release.
 
+### Heartbeat 2026-05-22 11:29-11:31 EEST
+
+- Slice: review-readiness check of the recently committed CLI argument-separator behavior and docs wording. No product code changes were needed; `pnpm scan -- --path ... --ci` remains covered and docs still align with the exposed CLI/action options.
+- Duration: ~1m 22s active wall time.
+- Verification: `pnpm test tests/cli.test.ts tests/docs-examples.test.ts && pnpm quality` => PASS (targeted 2 files / 8 tests; full quality gate: typecheck, 12 test files / 44 tests, build, moderate audit, npm package dry-run). Latest remote GitHub Actions runs are green.
+- Schedule estimate: recent completed slices ~5m, ~4m1s, ~1m45s, and ~1m22s; rolling avg ~3m2s, so the existing 15m heartbeat remains safe and no schedule change was applied. Cron `9f2b31785aad` next run: 11:44 local.
+- Git/repo note: repo was clean before this progress-log update and remains in Darius-review/approval-gated mode; no release was published and no external artifact was created.
+- Next: pause substantive changes unless Darius approves release publishing or asks for another specific hardening pass; otherwise continue with a lightweight approval-gate/release-readiness check only.
+
 ## Next Step
 
-Stay in Darius-review/approval-gated mode before any npm or GitHub release publishing; next useful slice is a short review-readiness check of recently committed CLI argument-separator behavior and docs wording, or pause substantive changes until Darius approves release.
+Stay in Darius-review/approval-gated mode before any npm or GitHub release publishing. Next useful slice is a lightweight approval-gate/release-readiness check only, unless Darius approves publishing or requests a specific hardening pass.
