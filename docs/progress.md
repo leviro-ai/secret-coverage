@@ -737,7 +737,7 @@ pnpm test && pnpm build
 - Duration: 1m 23s active wall time.
 - Verification: `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check across README/docs/articles/docs/marketing/examples/demos => PASS (0 matches); `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` and `pnpm --silent scan -- --path examples/demos/docker-compose-missing-redis-url --ci` => PASS as expected failing demo scans (exit code 1 findings captured without raw secret values).
 - Schedule estimate: last five product slices are ~3m27s, ~1m32s, ~2m49s, ~2m17s, and ~1m23s; rolling avg ~2m18s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 02:58 Europe/Vilnius.
-- Git/repo note: local verification only so far in this slice; committing/pushing this SEO asset next, `context.md` remains untracked and will not be added.
+- Git/repo note: pushed commit `7eeca8b` (`docs: add ci env validation checklist`) to `main`; GitHub Actions run `26317269719` passed. `context.md` remains untracked and was not added.
 - Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, draft a real-repo walkthrough outline that maps the existing fixtures to a practical PR review story without posting publicly.
 
 ## Next Step
