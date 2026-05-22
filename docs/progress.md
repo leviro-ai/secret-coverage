@@ -603,6 +603,18 @@ pnpm test && pnpm build
 - Git/repo note: working tree remains dirty with README/.gitignore/progress/TODO/marketing/demo/article/test updates and staged deletion of the ignored old plan file; no commit/push in this slice, therefore remote CI was not checked. `context.md` remains untracked and was not added to the public content bundle.
 - Next: commit/push the reviewed README + demo + article + Dev.to draft + quality-gate/test updates as a content/link-readiness bundle, then verify GitHub Actions with `gh`; do not publish Dev.to/Reddit/HN/X posts until Darius reviews public framing.
 
+### Heartbeat 2026-05-22 23:25-23:28 EEST
+
+- Slice: committed and pushed the reviewed README + GitHub Actions drift demo + article + Dev.to draft + quality-gate updates as the content/link-readiness bundle.
+- Pushed commit `0553a3b` (`docs: add github actions drift demo`) to `main`, making the canonical GitHub demo/article links resolve.
+- Verified GitHub Actions run `26310339902` completed successfully for commit `0553a3b`.
+- Updated `TODO.md` so the content-bundle push is marked done and the next channel-specific draft is restartable.
+- Duration: ~2m 17s active wall time.
+- Verification: `pnpm quality` => PASS (12 files / 56 tests, build, audit, package dry-run); `git push` => PASS; `gh run watch 26310339902 --exit-status` => PASS.
+- Schedule estimate: last four resumed slices are ~1m24s, ~1m32s, ~3m29s, and ~2m17s; rolling avg ~2m11s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 23:43 local.
+- Git/repo note: `main` is pushed at `0553a3b`; local working tree only has restart-state updates in `TODO.md`/`docs/progress.md` plus untracked local `context.md`.
+- Next: draft Reddit-specific discussion framing for the GitHub Actions drift demo without posting; include subreddit-fit notes, no-spam checklist, and links to the now-pushed demo/article.
+
 ## Next Step
 
-Commit/push the reviewed README + demo + article + Dev.to draft + quality-gate/test updates as a content/link-readiness bundle, then verify GitHub Actions with `gh`. Do not publish Dev.to/Reddit/HN/X posts until Darius reviews public framing.
+Draft Reddit-specific discussion framing for the GitHub Actions drift demo without posting; include subreddit-fit notes, no-spam checklist, and links to the now-pushed demo/article. Do not publish Dev.to/Reddit/HN/X posts until Darius reviews public framing.

@@ -28,6 +28,7 @@
 - [x] `docs/integrations/` directory
 - [x] First concrete GitHub Actions missing-secret demo/article draft
 - [x] First Dev.to channel-specific draft framing for the GitHub Actions missing-secret demo
-- [ ] Commit/push demo + article + Dev.to draft once reviewed for link readiness
+- [x] Commit/push demo + article + Dev.to draft once reviewed for link readiness
+- [ ] Draft Reddit-specific discussion framing for the GitHub Actions drift demo without posting
 - [ ] Individual future integration pages for Railway, Render, Supabase, Terraform, Kubernetes, AWS Secrets Manager, Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
 - [ ] SEO pages for long-tail deployment drift queries
