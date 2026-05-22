@@ -42,6 +42,23 @@ describe('envguard CLI', () => {
     expect(result.stdout).toContain('missing from .env.example');
   });
 
+  it('honors options passed through pnpm scan -- without scanning the EnvGuard source tree', async () => {
+    let result: { code?: number; stdout?: string; stderr?: string };
+    try {
+      const output = await execFileAsync('pnpm', ['scan', '--', '--path', 'examples/fixtures/broken-app', '--ci'], { cwd: process.cwd() });
+      result = { code: 0, stdout: output.stdout, stderr: output.stderr };
+    } catch (error) {
+      const err = error as { code?: number; stdout?: string; stderr?: string };
+      result = { code: err.code ?? 1, stdout: err.stdout ?? '', stderr: err.stderr ?? '' };
+    }
+
+    expect(result.code).toBe(1);
+    expect(result.stdout).toContain('NEXT_PUBLIC_API_URL');
+    expect(result.stdout).not.toContain('**js**');
+    expect(result.stdout).not.toContain('**context**');
+    expect(result.stdout).not.toContain('src/scanners');
+  });
+
   it('exits zero in CI mode for a clean fixture', async () => {
     const result = await runCli(['scan', '--path', 'examples/fixtures/clean-app', '--ci']);
 

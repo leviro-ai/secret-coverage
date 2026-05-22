@@ -24,4 +24,4 @@ program.command('scan')
     if (options.ci || options.strict) process.exitCode = shouldFail ? 1 : 0;
   });
 
-program.parseAsync();
+program.parseAsync(process.argv.filter((arg, index) => index < 2 || arg !== '--'));
