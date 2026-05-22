@@ -182,6 +182,8 @@ Full sample reports:
 
 ## GitHub Action
 
+The composite action runs the built CLI with `--ci`. Markdown output is printed in the job logs and also appended to the GitHub Actions step summary for quick PR review. `strict: 'false'` fails only on critical findings; `strict: 'true'` also fails on warnings.
+
 ```yaml
 name: EnvGuard
 

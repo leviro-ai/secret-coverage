@@ -19,7 +19,34 @@ runs:
   steps:
     - name: Run EnvGuard scan
       shell: bash
-      run: node "$GITHUB_ACTION_PATH/dist/cli.js" scan --path "${{ inputs.path }}" --format "${{ inputs.format }}" --ci ${{ inputs.strict == 'true' && '--strict' || '' }}
+      env:
+        ENVGUARD_FORMAT: ${{ inputs.format }}
+        ENVGUARD_PATH: ${{ inputs.path }}
+        ENVGUARD_STRICT: ${{ inputs.strict }}
+      run: |
+        set -euo pipefail
+
+        args=(scan --path "$ENVGUARD_PATH" --format "$ENVGUARD_FORMAT" --ci)
+        if [ "$ENVGUARD_STRICT" = "true" ]; then
+          args+=(--strict)
+        fi
+
+        set +e
+        output="$(node "$GITHUB_ACTION_PATH/dist/cli.js" "${args[@]}" 2>&1)"
+        status=$?
+        set -e
+
+        printf '%s\n' "$output"
+
+        if [ "$ENVGUARD_FORMAT" = "markdown" ] && [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then
+          {
+            echo "## EnvGuard report"
+            echo
+            printf '%s\n' "$output"
+          } >> "$GITHUB_STEP_SUMMARY"
+        fi
+
+        exit "$status"
 branding:
   icon: shield
   color: green

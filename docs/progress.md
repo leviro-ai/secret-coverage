@@ -270,6 +270,15 @@ pnpm test && pnpm build
 - Git/repo note: repo is initialized and tracking `origin/main`; working tree now includes docs consistency edits and `tests/docs-roadmap.test.ts`.
 - Next: final GitHub Action wording/summary polish and release-readiness cleanup without publishing or broadening MVP scope.
 
+### Heartbeat 2026-05-22 09:13-09:16 EEST
+
+- Slice: GitHub Action wording/summary polish. Hardened `action.yml` so the composite action builds CLI args safely from inputs, preserves the CLI exit code while still printing output, and writes Markdown reports to `$GITHUB_STEP_SUMMARY`. Updated README and installation docs to document CI log + step-summary behavior, and tightened `tests/action-metadata.test.ts` around the action contract.
+- Duration: ~3m 30s active wall time.
+- Verification: `pnpm test tests/action-metadata.test.ts tests/docs-examples.test.ts && pnpm test && pnpm build` => PASS (targeted 2 files/3 tests; full 11 test files, 37 tests; TypeScript build passes).
+- Schedule estimate: recent completed slices ~5m, ~1m42s, ~1m38s, ~4m25s, and ~3m30s; rolling avg ~3m15s, formula recommends the 15m minimum. Existing cron `9f2b31785aad` is already every 15m, so no schedule change applied. Next cron: 09:29 local.
+- Git/repo note: repo is initialized and tracking `origin/main`; working tree contains coherent GitHub Action/docs polish ready to commit.
+- Next: run final release-readiness smoke checks, update the release checklist if any stale wording remains, then commit/push the accumulated coherent progress without publishing.
+
 ## Next Step
 
-Final GitHub Action wording/summary polish and release-readiness cleanup while keeping MVP implementation narrow and planned integrations clearly labeled.
+Run final release-readiness smoke checks, update any stale release checklist wording, then commit/push coherent progress without publishing.

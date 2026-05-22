@@ -30,6 +30,8 @@ envguard scan --strict
 
 ## GitHub Actions
 
+The action prints the EnvGuard report in CI logs. When `format: markdown` is used, it also writes the same report to the GitHub Actions step summary.
+
 ```yaml
 name: EnvGuard
 on: [pull_request]
