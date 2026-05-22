@@ -365,11 +365,11 @@ pnpm test && pnpm build
 
 - Slice: completed a TDD env-template compatibility hardening pass after new RED tests appeared in the worktree. EnvGuard now treats `.env.dist` as a default env template alongside `.env.example`, supports `scanProject(root, { envTemplate })`, exposes `envguard scan --env-template <file>` / `--env-example <file>`, and emits deterministic notices when no searched env files exist. Sample reports and docs were refreshed to match the generalized `missing-from-template` finding type without printing secret values.
 - Duration: ~8m active wall time.
-- Verification: `pnpm test tests/scanner.test.ts tests/cli.test.ts tests/engine.test.ts tests/docs-examples.test.ts tests/sample-reports.test.ts && pnpm quality` => PASS (targeted 5 files / 19 tests; full quality gate: typecheck, 12 test files / 49 tests, build, moderate audit, npm package dry-run).
+- Verification: `pnpm test tests/scanner.test.ts tests/cli.test.ts tests/engine.test.ts tests/docs-examples.test.ts tests/sample-reports.test.ts && pnpm quality` => PASS (targeted 5 files / 19 tests; full quality gate: typecheck, 12 test files / 49 tests, build, moderate audit, npm package dry-run). Remote CI `gh run watch 26277686162 --exit-status` => PASS.
 - Schedule estimate: recent completed slices ~4m1s, ~1m45s, ~1m22s, and ~8m; rolling avg ~3m47s, so the existing 15m heartbeat remains safe and no schedule change was applied. Cron `9f2b31785aad` next run: 11:44 local.
-- Git/repo note: env-template hardening changes are ready to commit/push; no npm package or GitHub release was published.
-- Next: commit/push the env-template compatibility hardening and watch CI, then return to Darius-review/approval-gated mode before publishing.
+- Git/repo note: env-template hardening changes were committed and pushed as `c3b43e8`; no npm package or GitHub release was published.
+- Next: return to Darius-review/approval-gated mode before publishing; next useful slice is only a lightweight release-readiness/approval-gate check unless Darius approves release or asks for specific hardening.
 
 ## Next Step
 
-Commit/push the env-template compatibility hardening and watch CI, then return to Darius-review/approval-gated mode before any npm or GitHub release publishing.
+Return to Darius-review/approval-gated mode before any npm or GitHub release publishing; next useful slice is only a lightweight release-readiness/approval-gate check unless Darius approves release or asks for specific hardening.
