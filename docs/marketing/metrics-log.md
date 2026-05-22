@@ -19,9 +19,10 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/articles/github-actions-missing-secret.md`
   - `docs/marketing/devto-github-actions-missing-secret-draft.md`
   - `docs/marketing/reddit-github-actions-missing-secret-draft.md`
-- Reddit/HN/Dev.to notes: Dev.to and Reddit draft framing exists; do not post until Darius reviews public-post framing and channel rules.
+  - `docs/marketing/hacker-news-github-actions-missing-secret-readiness.md`
+- Reddit/HN/Dev.to notes: Dev.to and Reddit draft framing exists; HN readiness notes recommend not submitting a thin link yet unless Darius explicitly wants an early low-stakes validation attempt. Do not post until Darius reviews public-post framing and channel rules.
 - Strongest user language observed:
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”
 - Next experiment:
-  - Draft Hacker News / Show HN readiness notes for the GitHub Actions drift demo, then keep public posting gated for Darius review.
+  - Draft X/Twitter thread framing for the GitHub Actions drift demo without posting, then keep public posting gated for Darius review.
