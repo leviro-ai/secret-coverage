@@ -1,7 +1,7 @@
-# Environment Secret Coverage Checker
+# Secret Coverage — Deployment Drift Detection for Environment Variables
 
 ![CI](https://github.com/leviro-ai/secret-coverage/actions/workflows/test.yml/badge.svg)
-![npm package](https://img.shields.io/badge/npm-pre--release-orange)
+![npm](https://img.shields.io/npm/v/%40leviro-ai%2Fsecret-coverage)
 ![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
 ![Local first](https://img.shields.io/badge/local--first-no_cloud_required-brightgreen)
@@ -150,14 +150,14 @@ See [`docs/trust-security-architecture.md`](docs/trust-security-architecture.md)
 
 ```bash
 pnpm add -D @leviro-ai/secret-coverage
-# or, once published:
 npm install -D @leviro-ai/secret-coverage
 ```
 
-Run without installing during development:
+Run without installing:
 
 ```bash
 pnpm dlx @leviro-ai/secret-coverage scan
+npx @leviro-ai/secret-coverage scan
 ```
 
 ## CLI usage

@@ -505,6 +505,104 @@ pnpm test && pnpm build
 - Git/repo note: repo was clean before this progress-log update; progress-log-only update is ready to commit/push with `[skip ci]`.
 - Next: stay in Darius-review/approval-gated mode before publishing; next useful slice is only a lightweight release-readiness/approval-gate check unless Darius approves release or asks for specific hardening.
 
+### Manual continuation 2026-05-22 21:44-21:50 EEST
+
+- Slice: created the organic marketing + authority-building execution plan for the already-published `@leviro-ai/secret-coverage@0.1.5` package, using the project context and current README/package state.
+- Added:
+  - `docs/plans/2026-05-22-secret-coverage-organic-authority-plan.md` — full strategy, SEO keyword map, content plan, README audit, community strategy, demo strategy, metrics strategy, marketplace checklist, and reusable templates.
+  - `docs/marketing/metrics-log.md` — weekly minimal metrics log template.
+- Executed first README cleanup from the plan:
+  - changed README title to `Secret Coverage — Deployment Drift Detection for Environment Variables`;
+  - replaced stale pre-release badge with npm version badge;
+  - removed stale “once published” install wording and added `npx` one-shot command.
+- Duration: ~6m active wall time.
+- Verification: `npm view @leviro-ai/secret-coverage version description repository.url dist-tags --json` => PASS (`latest` is `0.1.5`); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); README search for `once published|pre--release|pre-release package` => PASS (0 matches); marketing-plan structural checks confirmed required content counts for 30 articles, 20 Dev.to ideas, 20 Reddit angles, 10 HN concepts, and 10 comparison pages.
+- Schedule note: existing Secret Coverage heartbeat cron `9f2b31785aad` is paused, so no next automatic cron is currently scheduled.
+- Git/repo note: working tree now contains uncommitted marketing docs plus README/progress-log updates; no npm/GitHub release was created.
+- Next: create the first concrete demo asset (`examples/demos/github-actions-missing-secret`) and terminal/GitHub Action screenshot, then draft `docs/articles/github-actions-missing-secret.md`.
+
+### Manual continuation 2026-05-22 21:52 EEST
+
+- Slice: applied Darius's repo-hygiene correction for planning files.
+- Moved organic authority plan from `docs/marketing/organic-authority-plan.md` to ignored local planning path `docs/plans/2026-05-22-secret-coverage-organic-authority-plan.md`.
+- Added `docs/plans/` to `.gitignore`.
+- Ran `git rm --cached -r docs/plans` so the previously tracked plan file is removed from the Git index while remaining locally available under the now-ignored `docs/plans/` directory.
+- Verification: `git status --short --ignored docs/plans docs/marketing .gitignore README.md docs/progress.md` shows the plans directory ignored and `.gitignore` modified.
+- Next: keep strategic plans local/ignored; commit only product docs, README, metrics logs, and executable demo/content assets unless Darius says otherwise.
+
+### Manual continuation 2026-05-22 21:57 EEST
+
+- Slice: answered Darius's heartbeat/process question and inventoried marketing-channel account availability.
+- Read `autonomous-product-build-heartbeat` again and confirmed the skill expects the next slice in durable state. Because Darius asked to ignore `docs/plans/`, the restartable next-slice source should now be `docs/progress.md` + `TODO.md`, while local plan files remain available but untracked.
+- Used CloakBrowser persistent profile `/Users/matilda/.cloakbrowser-profiles/habitmechanics` to check login state for Dev.to, Reddit, Hacker News, and X/Twitter.
+- Checked CLI credentials for GitHub, npm, and X automation.
+- Added `docs/marketing/account-inventory.md` with a non-secret account inventory and next actions.
+- Verification: `gh auth status` => logged in as `dariuskasperavicius`; `npm whoami` => `dariuskasperavicius`; `xurl` => not installed; CloakBrowser checks showed Dev.to/Reddit/HN not logged in and X not in logged-in timeline state.
+- Next: get Darius approval/identity choices for public Dev.to/Reddit/HN/X accounts before creating them, while continuing GitHub/npm-backed repo content immediately.
+
+### Manual continuation 2026-05-22 22:14 EEST
+
+- Slice: verified Darius's new Dev.to/Reddit/HN/X logins through the already-open CloakBrowser/Chromium session.
+- Initial persistent-profile check still showed old unauthenticated state, so inspected running Chromium processes and found CloakBrowser running with remote debugging port `9222` and user data dir `/Users/matilda/Library/Application Support/Chromium`.
+- Connected via Playwright CDP to the running CloakBrowser session without closing it.
+- Verified:
+  - Dev.to dashboard is available and shows `Create Post`.
+  - Reddit profile settings are available and show post UI.
+  - Hacker News is logged in and topbar shows `logout`.
+  - X/Twitter home timeline is available and shows post composer.
+- Updated `docs/marketing/account-inventory.md` to mark all four public channels as available via running CloakBrowser.
+- Verification: `/Users/matilda/bin/cloakbrowser-python /tmp/check_marketing_accounts_cdp.py` => PASS for Dev.to, Reddit, HN, and X login availability.
+- Next: create concrete demo/article assets before posting publicly; do not publish community posts until each post has a useful technical artifact and channel-specific framing.
+
+### Manual continuation 2026-05-22 22:15 EEST
+
+- Slice: resumed the Secret Coverage autonomous heartbeat for product-build + organic authority work.
+- Updated existing cron job `9f2b31785aad` instead of creating a new recursive job.
+- Cron now runs every 15 minutes, delivers to this Slack thread, uses workdir `/Users/matilda/www/incubator/secret-coverage`, and has toolsets `terminal`, `file`, `cronjob`, and `browser`.
+- Attached skills: `adaptive-cron-heartbeat`, `autonomous-product-build-heartbeat`, `web-account-onboarding`, `envguard-builder`.
+- Prompt was refreshed with current account inventory, ignored `docs/plans/` rule, current next slice, and public-posting guardrails.
+- Verification: `cronjob(action='resume', job_id='9f2b31785aad')` => PASS; next run scheduled for 22:30 Europe/Vilnius.
+- Next: first resumed cron slice should create `examples/demos/github-actions-missing-secret`, generate screenshot-ready CLI output, and draft `docs/articles/github-actions-missing-secret.md` before any public posts.
+
+### Heartbeat 2026-05-22 22:31-22:33 EEST
+
+- Slice: created the first concrete organic-authority demo/article asset for GitHub Actions missing-secret deployment drift.
+- Added:
+  - `examples/demos/github-actions-missing-secret/.env.example`
+  - `examples/demos/github-actions-missing-secret/.github/workflows/deploy.yml`
+  - `examples/demos/github-actions-missing-secret/README.md`
+  - `examples/demos/github-actions-missing-secret/secret-coverage-output.md`
+  - `docs/articles/github-actions-missing-secret.md`
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the demo/article asset is restartable and counted as shipped content, while public posting remains intentionally paused until channel-specific framing is drafted.
+- Duration: ~1m 24s active wall time.
+- Verification: `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS (expected exit code 1 with one critical `STRIPE_SECRET_KEY` drift finding); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); article positioning search for forbidden exact phrases stayed clean (`another secret scanner`, `security scanner`, `dotenv helper` not present).
+- Schedule estimate: recent resumed cron slice was ~1m24s; rolling short-slice band still recommends the 15m minimum. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 22:45 local.
+- Git/repo note: working tree remains intentionally dirty with README/.gitignore/progress/marketing/demo/article changes and staged deletion of the ignored old plan file; no commit/push and therefore no remote CI check in this slice.
+- Next: create channel-specific Dev.to draft framing from the new GitHub Actions demo, including title/options, canonical repo links, and a no-spam publication checklist; do not publish publicly until reviewed in the next slice.
+
+### Heartbeat 2026-05-22 22:49-22:50 EEST
+
+- Slice: created channel-specific Dev.to draft framing from the GitHub Actions missing-secret demo/article asset without publishing publicly.
+- Added `docs/marketing/devto-github-actions-missing-secret-draft.md` with title options, recommended tags, full draft body, canonical repo/npm/demo links to use after commit/push, and a pre-publish/no-spam checklist.
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the Dev.to draft state is restartable and public posting remains gated on link readiness + Darius review.
+- Duration: ~1m 32s active wall time.
+- Verification: `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS (expected exit code 1 with `STRIPE_SECRET_KEY` / `missing-from-template`); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase search across README/docs/demo assets => PASS (0 matches).
+- Schedule estimate: last two resumed cron slices are ~1m24s and ~1m32s; rolling short-slice band still recommends the 15m minimum. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 23:05 local.
+- Git/repo note: working tree remains dirty with README/.gitignore/progress/TODO/marketing/demo/article changes and staged deletion of the ignored old plan file; no commit/push and therefore local verification only.
+- Next: review and tighten the Dev.to draft against actual GitHub/npm links, then decide whether to commit/push the content bundle or keep public posting gated for Darius approval.
+
+### Heartbeat 2026-05-22 23:06-23:10 EEST
+
+- Slice: reviewed and tightened the Dev.to GitHub Actions missing-secret draft for link readiness without publishing publicly.
+- Added an explicit link-readiness note to `docs/marketing/devto-github-actions-missing-secret-draft.md` after verifying npm latest remains `0.1.5` and the canonical GitHub repo URL is `git+https://github.com/leviro-ai/secret-coverage.git`.
+- Corrected `docs/marketing/metrics-log.md` so it no longer points to the ignored/local plan as a tracked shipped asset, and so the next experiment is the content-bundle commit/push plus continued public-posting gate.
+- Fixed the README badge quality gate that still expected the old pre-release npm badge; this was caught by `pnpm quality` and updated in `tests/quality-gates.test.ts` to match the live npm version badge now shown in README.
+- Duration: ~3m 29s active wall time.
+- Verification: `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS (expected exit code 1 with `STRIPE_SECRET_KEY` / `missing-from-template`); `npm view @leviro-ai/secret-coverage version repository.url dist-tags --json` => PASS (`latest` is `0.1.5`); `pnpm test tests/docs-examples.test.ts` => PASS; initial `pnpm quality` => FAIL on stale README badge assertion, then `pnpm test tests/quality-gates.test.ts` => PASS and final `pnpm quality` => PASS (12 files / 56 tests, build, audit, package dry-run).
+- Schedule estimate: last three resumed slices are ~1m24s, ~1m32s, and ~3m29s; rolling avg ~2m8s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 23:21 local.
+- Git/repo note: working tree remains dirty with README/.gitignore/progress/TODO/marketing/demo/article/test updates and staged deletion of the ignored old plan file; no commit/push in this slice, therefore remote CI was not checked. `context.md` remains untracked and was not added to the public content bundle.
+- Next: commit/push the reviewed README + demo + article + Dev.to draft + quality-gate/test updates as a content/link-readiness bundle, then verify GitHub Actions with `gh`; do not publish Dev.to/Reddit/HN/X posts until Darius reviews public framing.
+
 ## Next Step
 
-Stay in Darius-review/approval-gated mode before any npm or GitHub release publishing; next useful slice is only a lightweight release-readiness/approval-gate check unless Darius approves release or asks for specific hardening.
+Commit/push the reviewed README + demo + article + Dev.to draft + quality-gate/test updates as a content/link-readiness bundle, then verify GitHub Actions with `gh`. Do not publish Dev.to/Reddit/HN/X posts until Darius reviews public framing.

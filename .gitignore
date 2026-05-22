@@ -1,6 +1,7 @@
 node_modules
 dist
 coverage
+docs/plans/
 .env
 .env.local
 .DS_Store
