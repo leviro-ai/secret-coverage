@@ -23,6 +23,12 @@ describe('extractEnvReferences', () => {
     expect(refs).toEqual(['DATABASE_URL', 'REDIS_URL']);
   });
 
+  it('does not treat JavaScript template interpolation identifiers as env references', () => {
+    const refs = extractEnvReferences('const msg = `${context}:${eventName}:${checkoutSessionPlaceholder}:${process.env.STRIPE_SECRET_KEY}`;');
+
+    expect(refs).toEqual(['STRIPE_SECRET_KEY']);
+  });
+
   it('extracts GitHub Actions secrets and env expression references', () => {
     const refs = extractEnvReferences('url: ${{ secrets.NEXT_PUBLIC_API_URL }}\ntoken: ${{ env.DEPLOY_TOKEN }}');
 

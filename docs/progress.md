@@ -370,6 +370,15 @@ pnpm test && pnpm build
 - Git/repo note: env-template hardening changes were committed and pushed as `c3b43e8`; no npm package or GitHub release was published.
 - Next: return to Darius-review/approval-gated mode before publishing; next useful slice is only a lightweight release-readiness/approval-gate check unless Darius approves release or asks for specific hardening.
 
+### Heartbeat 2026-05-22 11:58-12:00 EEST
+
+- Slice: Next.js/source false-positive hardening. Completed and verified the in-progress parser/scanner change so normal JavaScript template interpolation identifiers such as `${context}` / `${eventName}` are not treated as env references, while `process.env.STRIPE_SECRET_KEY` remains detected. Next.js scanning now disables shell/CI expression patterns for source files to reduce noisy findings without changing CI/YAML scanner behavior.
+- Duration: ~1m 20s active wall time.
+- Verification: `pnpm test tests/parser.test.ts tests/scanners.test.ts && pnpm quality` => PASS (targeted 2 files / 17 tests; full quality gate: typecheck, 12 test files / 51 tests, build, moderate audit, npm package dry-run).
+- Schedule estimate: recent completed slices ~4m1s, ~1m45s, ~1m22s, ~8m, and ~1m20s; rolling avg ~3m18s, so the existing 15m heartbeat remains safe and no schedule change was applied. Cron `9f2b31785aad` next run: 12:13 local.
+- Git/repo note: false-positive hardening changes are ready to commit/push; no npm package or GitHub release was published.
+- Next: commit and push the source false-positive hardening, then return to Darius-review/approval-gated mode before publishing.
+
 ## Next Step
 
-Return to Darius-review/approval-gated mode before any npm or GitHub release publishing; next useful slice is only a lightweight release-readiness/approval-gate check unless Darius approves release or asks for specific hardening.
+Commit and push the source false-positive hardening, then return to Darius-review/approval-gated mode before any npm or GitHub release publishing.

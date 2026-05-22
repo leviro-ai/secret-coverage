@@ -23,16 +23,31 @@ const IGNORED_ENV_REFERENCES = new Set([
   'NODE_ENV',
 ]);
 
-export function extractEnvReferences(content: string): string[] {
+type ExtractEnvReferenceOptions = {
+  shell?: boolean;
+  ciExpressions?: boolean;
+};
+
+export function extractEnvReferences(content: string, options: ExtractEnvReferenceOptions = {}): string[] {
   const refs = new Set<string>();
+  const includeShell = options.shell ?? true;
+  const includeCiExpressions = options.ciExpressions ?? true;
   const patterns = [
     /process\.env(?:\.|\?\.)([A-Za-z_][A-Za-z0-9_]*)/g,
     /process\.env\[['"]([A-Za-z_][A-Za-z0-9_]*)['"]\]/g,
-    /\$\{([A-Za-z_][A-Za-z0-9_]*)\}/g,
-    /\$([A-Za-z_][A-Za-z0-9_]*)/g,
-    /secrets\.([A-Za-z_][A-Za-z0-9_]*)/g,
-    /env\.([A-Za-z_][A-Za-z0-9_]*)/g,
   ];
+  if (includeShell) {
+    patterns.push(
+      /\$\{([A-Z_][A-Z0-9_]*)\}/g,
+      /\$([A-Z_][A-Z0-9_]*)/g,
+    );
+  }
+  if (includeCiExpressions) {
+    patterns.push(
+      /secrets\.([A-Za-z_][A-Za-z0-9_]*)/g,
+      /env\.([A-Za-z_][A-Za-z0-9_]*)/g,
+    );
+  }
   for (const pattern of patterns) {
     for (const match of content.matchAll(pattern)) {
       const name = match[1];

@@ -82,6 +82,12 @@ describe('platform scanners', () => {
     ]);
   });
 
+  it('does not scan normal Next.js source identifiers as env references', async () => {
+    await expect(variables(scanNextJs, {
+      'src/payments/catalog.ts': 'const path = `${context}:${eventName}:${checkoutSessionPlaceholder}`; const value = options.env.context;',
+    })).resolves.toEqual([]);
+  });
+
   it('scans Supabase config references', async () => {
     await expect(variables(scanSupabase, {
       'supabase/config.toml': 'api_url = "${SUPABASE_URL}"\n',
