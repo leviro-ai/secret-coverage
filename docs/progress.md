@@ -315,6 +315,15 @@ pnpm test && pnpm build
 - Git/repo note: repo is clean and tracking `origin/main`; commit `e9bfc32 test: include env fixture files in CI` fixed the red Actions run. Remaining CI annotation is a non-failing Node.js 20 deprecation warning from upstream actions.
 - Next: patch the workflow/action versions or runner env to address the Node.js 20 deprecation annotation, then keep project in approval-gated review mode before publishing.
 
+### Heartbeat 2026-05-22 10:29-10:33 EEST
+
+- Slice: GitHub Actions deprecation-annotation cleanup. Added workflow metadata coverage that rejects the old Node.js-20-hosted action major versions, then bumped CI to `actions/checkout@v6`, `pnpm/action-setup@v6`, and `actions/setup-node@v6`; README and installation snippets now use `actions/checkout@v6` as well.
+- Duration: ~4m active wall time.
+- Verification: observed expected RED with `pnpm test tests/action-metadata.test.ts`; after the patch, `pnpm test tests/action-metadata.test.ts tests/docs-examples.test.ts && pnpm test && pnpm build` => PASS (11 test files, 40 tests; TypeScript build passes). Release smoke checks: `node dist/cli.js scan --path examples/fixtures/broken-app --ci` exits 1 and `node dist/cli.js scan --path examples/fixtures/clean-app --ci` exits 0.
+- Schedule estimate: recent completed slices ~4m, ~2m32s, ~3m, and ~4m; rolling avg ~3m23s, so the existing 15m heartbeat remains safe and no schedule change was applied. Cron `9f2b31785aad` next run: 10:43 local.
+- Git/repo note: repo is tracking `origin/main`; workflow/docs/test changes are ready to commit and push.
+- Next: commit/push the CI deprecation cleanup, confirm the remote GitHub Actions run is green and annotation-free, then keep the project in Darius-review/approval-gated mode before publishing.
+
 ## Next Step
 
-Patch the workflow/action versions or runner env to address the Node.js 20 deprecation annotation, then keep the project in Darius-review/approval-gated mode before any npm or GitHub release publishing.
+Commit/push the CI deprecation cleanup, confirm the remote GitHub Actions run is green and annotation-free, then keep the project in Darius-review/approval-gated mode before any npm or GitHub release publishing.
