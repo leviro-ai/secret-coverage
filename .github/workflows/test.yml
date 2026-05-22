@@ -1,0 +1,30 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm build
+      - name: EnvGuard broken fixture should fail CI
+        run: |
+          if node dist/cli.js scan --path examples/fixtures/broken-app --ci; then
+            echo "Broken fixture unexpectedly passed"
+            exit 1
+          fi
+      - name: EnvGuard clean fixture should pass CI
+        run: node dist/cli.js scan --path examples/fixtures/clean-app --ci

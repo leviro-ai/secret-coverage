@@ -1,0 +1,25 @@
+name: EnvGuard
+description: Detect missing environment variables before deployment fails.
+author: EnvGuard
+inputs:
+  path:
+    description: Repository path to scan
+    required: false
+    default: .
+  strict:
+    description: Fail on warnings as well as critical findings
+    required: false
+    default: 'false'
+  format:
+    description: 'Output format: markdown or json'
+    required: false
+    default: markdown
+runs:
+  using: composite
+  steps:
+    - name: Run EnvGuard scan
+      shell: bash
+      run: node "$GITHUB_ACTION_PATH/dist/cli.js" scan --path "${{ inputs.path }}" --format "${{ inputs.format }}" --ci ${{ inputs.strict == 'true' && '--strict' || '' }}
+branding:
+  icon: shield
+  color: green
