@@ -334,6 +334,15 @@ pnpm test && pnpm build
 - Git/repo note: quality-gate changes were committed/pushed as `b5a660c`; GitHub Actions run `26275314848` completed green.
 - Next: continue Darius-review mode; next useful slice is optional moderate-dependency-audit triage or final pre-release usage testing.
 
+### Heartbeat 2026-05-22 10:50-10:53 EEST
+
+- Slice: moderate dependency-audit triage. Upgraded Vitest to `4.1.7`, added explicit `vite@8.0.14` so the test runner uses patched Vite/esbuild transitive dependencies, and tightened `security:audit` from high-only to moderate+ now that the audit is clean.
+- Duration: ~2m 39s active wall time.
+- Verification: `pnpm quality && pnpm audit --audit-level moderate` => PASS (12 test files, 43 tests; TypeScript build passes; package dry-run passes; audit reports no known vulnerabilities).
+- Schedule estimate: recent completed slices ~2m32s, ~3m, ~4m, ~5m, and ~2m39s; rolling avg ~3m26s, formula remains at the 15m safe minimum. Existing cron `9f2b31785aad` is already every 15m, so no schedule change applied. Next cron: 11:04 local.
+- Git/repo note: dependency-audit cleanup is ready to commit/push.
+- Next: commit and push the dependency-audit cleanup, then check the GitHub Actions run; after that stay in Darius-review/approval-gated mode before publishing.
+
 ## Next Step
 
-Continue Darius-review mode; next useful slice is optional moderate-dependency-audit triage or final pre-release usage testing before any npm or GitHub release publishing.
+Commit and push the dependency-audit cleanup, then check the GitHub Actions run; after that stay in Darius-review/approval-gated mode before any npm or GitHub release publishing.

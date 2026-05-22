@@ -11,7 +11,7 @@ describe('quality and security gates', () => {
 
     expect(scripts.typecheck).toBe('tsc -p tsconfig.json --noEmit');
     expect(scripts.lint).toBe('pnpm typecheck');
-    expect(scripts['security:audit']).toBe('pnpm audit --audit-level high');
+    expect(scripts['security:audit']).toBe('pnpm audit --audit-level moderate');
     expect(scripts['package:check']).toBe('npm pack --dry-run');
     expect(scripts.quality).toBe('pnpm lint && pnpm test && pnpm build && pnpm security:audit && pnpm package:check');
   });
