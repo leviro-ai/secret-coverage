@@ -626,6 +626,18 @@ pnpm test && pnpm build
 - Git/repo note: pushed commit `50f2c77` (`docs: add reddit drift discussion draft`) to `main`; GitHub Actions run `26311167611` passed. `context.md` remains untracked and was not added.
 - Next: draft Hacker News / Show HN readiness notes for the GitHub Actions drift demo without posting; include why not to submit a thin link yet, what artifact would make it HN-worthy, and a restrained title/body option.
 
+### Heartbeat 2026-05-23 00:03-00:06 EEST
+
+- Slice: drafted Hacker News / Show HN readiness notes for the GitHub Actions missing-secret deployment drift demo without posting publicly.
+- Added `docs/marketing/hacker-news-github-actions-missing-secret-readiness.md` with current artifact fit, why a thin HN link is not recommended yet, what would make the demo HN-worthy, restrained title/body options, pre-submit checklist, and likely HN Q&A.
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the HN readiness state and next X/Twitter draft slice are restartable.
+- Pushed commit `c8ea4f7` (`docs: add hacker news readiness notes`) to `main` and verified GitHub Actions run `26311937220` completed successfully.
+- Duration: ~2m 16s active wall time.
+- Verification: `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS (expected exit code 1 with `STRIPE_SECRET_KEY` / `missing-from-template`); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check across README/docs content => PASS for new public-facing docs (only historical progress-log mention); `git push` => PASS; `gh run watch 26311937220 --exit-status` => PASS.
+- Schedule estimate: last five resumed slices are ~1m32s, ~3m29s, ~2m17s, ~2m25s, and ~2m16s; rolling avg ~2m24s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 00:15 local.
+- Git/repo note: pushed commit `c8ea4f7` to `main`; `context.md` remains untracked and was not added. Progress-log update itself is local until the next restart-state commit.
+- Next: draft X/Twitter thread framing for the GitHub Actions drift demo without posting; include a short hook, YAML/env mismatch snippet, one screenshot-ready CLI output excerpt, a no-hype link strategy, and a pre-post checklist.
+
 ## Next Step
 
-Draft Hacker News / Show HN readiness notes for the GitHub Actions drift demo without posting; include why not to submit a thin link yet, what artifact would make it HN-worthy, and a restrained title/body option. Do not publish Dev.to/Reddit/HN/X posts until Darius reviews public framing.
+Draft X/Twitter thread framing for the GitHub Actions drift demo without posting; include a short hook, YAML/env mismatch snippet, one screenshot-ready CLI output excerpt, a no-hype link strategy, and a pre-post checklist. Do not publish Dev.to/Reddit/HN/X posts until Darius reviews public framing.
