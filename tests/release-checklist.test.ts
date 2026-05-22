@@ -1,3 +1,4 @@
+import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
@@ -9,7 +10,7 @@ const releaseCommands = [
 ];
 
 describe('release checklist', () => {
-  it('keeps v0.1.4 release checks explicit and approval-gated', () => {
+  it('keeps v0.1.5 release checks explicit and approval-gated', () => {
     const release = readFileSync('RELEASE.md', 'utf8');
     const pkg = JSON.parse(readFileSync('package.json', 'utf8')) as {
       version: string;
@@ -17,7 +18,7 @@ describe('release checklist', () => {
       bin: Record<string, string>;
     };
 
-    expect(pkg.version).toBe('0.1.4');
+    expect(pkg.version).toBe('0.1.5');
     expect(pkg.bin['secret-coverage']).toBe('dist/cli.js');
     expect(pkg.bin.seccov).toBe('dist/cli.js');
     expect(pkg.files).toContain('dist');
@@ -34,6 +35,7 @@ describe('release checklist', () => {
   });
 
   it('keeps the built CLI executable for direct npm bin and GitHub Action use', () => {
+    execFileSync('pnpm', ['build'], { cwd: process.cwd(), stdio: 'pipe' });
     expect(existsSync('dist/cli.js')).toBe(true);
     expect(readFileSync('dist/cli.js', 'utf8').split('\n')[0]).toBe('#!/usr/bin/env node');
   });
