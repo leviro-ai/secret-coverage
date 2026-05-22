@@ -50,10 +50,14 @@ describe('platform scanners', () => {
     })).resolves.toEqual(['DATABASE_URL:.circleci/config.yml:circleci']);
   });
 
-  it('scans CircleCI environment keys in yaml configs', async () => {
+  it('scans CircleCI environment keys only when values require external configuration', async () => {
     await expect(variables(scanCircleCI, {
-      '.circleci/config.yaml': 'version: 2.1\njobs:\n  deploy:\n    environment:\n      NEXT_PUBLIC_API_URL: ""\n      NODE_ENV: production\n    steps:\n      - run: pnpm deploy\n',
-    })).resolves.toEqual(['NEXT_PUBLIC_API_URL:.circleci/config.yaml:circleci']);
+      '.circleci/config.yaml': 'version: 2.1\njobs:\n  deploy:\n    environment:\n      NEXT_PUBLIC_API_URL: ""\n      SUPABASE_ACCESS_TOKEN: $SUPABASE_ACCESS_TOKEN\n      SUPABASE_DB_PASSWORD: ${SUPABASE_DB_PASSWORD}\n      SUPABASE_CLI_VERSION: 2.98.2\n      SUPABASE_BETA_CLI_VERSION: beta\n      NODE_ENV: production\n    steps:\n      - run: npx --yes "supabase@${SUPABASE_CLI_VERSION}" && npx --yes "supabase@${SUPABASE_BETA_CLI_VERSION}"\n',
+    })).resolves.toEqual([
+      'NEXT_PUBLIC_API_URL:.circleci/config.yaml:circleci',
+      'SUPABASE_ACCESS_TOKEN:.circleci/config.yaml:circleci',
+      'SUPABASE_DB_PASSWORD:.circleci/config.yaml:circleci',
+    ]);
   });
 
   it('scans Dockerfile and Compose references', async () => {

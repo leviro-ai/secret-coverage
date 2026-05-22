@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2 — Unreleased
+
+### Fixed
+
+- CircleCI scanner now ignores non-secret inline `environment` literals such as tool versions by default, while still reporting unresolved external env references.
+
 ## 0.1.0 — Unreleased
 
 ### Added

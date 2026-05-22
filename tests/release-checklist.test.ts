@@ -9,7 +9,7 @@ const releaseCommands = [
 ];
 
 describe('release checklist', () => {
-  it('keeps v0.1.1 release checks explicit and approval-gated', () => {
+  it('keeps v0.1.2 release checks explicit and approval-gated', () => {
     const release = readFileSync('RELEASE.md', 'utf8');
     const pkg = JSON.parse(readFileSync('package.json', 'utf8')) as {
       version: string;
@@ -17,7 +17,7 @@ describe('release checklist', () => {
       bin: Record<string, string>;
     };
 
-    expect(pkg.version).toBe('0.1.1');
+    expect(pkg.version).toBe('0.1.2');
     expect(pkg.bin.envguard).toBe('dist/cli.js');
     expect(pkg.files).toContain('dist');
     expect(pkg.files).toContain('action.yml');
