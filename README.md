@@ -246,4 +246,4 @@ pnpm tsx src/cli.ts scan --path examples/fixtures/broken-app --ci
 
 ## License
 
-Apache-2.0
+Apache-2.0 © 2026 Leviro AI

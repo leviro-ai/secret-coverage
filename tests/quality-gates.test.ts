@@ -30,9 +30,15 @@ describe('quality and security gates', () => {
     expect(pkg.bin.seccov).toBe('dist/cli.js');
 
     const license = readFileSync('LICENSE', 'utf8');
-    expect(license).toContain('Apache License');
-    expect(license).toContain('Version 2.0');
-    expect(license).toContain('Copyright 2026 Leviro AI');
+    expect(license.startsWith('Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/')).toBe(true);
+    expect(license).toContain('TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION');
+
+    const readme = readFileSync('README.md', 'utf8');
+    expect(readme).toContain('## License\n\nApache-2.0 © 2026 Leviro AI');
+
+    const contributing = readFileSync('CONTRIBUTING.md', 'utf8');
+    expect(contributing).toContain('## License of contributions');
+    expect(contributing).toContain('By contributing to this project, you agree that your contributions are licensed under the Apache License 2.0.');
   });
 
   it('runs quality gates in GitHub Actions before fixture smoke checks', () => {
