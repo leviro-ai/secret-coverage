@@ -18,8 +18,11 @@ jobs:
           node-version: 20
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
       - run: pnpm test
       - run: pnpm build
+      - run: pnpm security:audit
+      - run: pnpm package:check
       - name: EnvGuard broken fixture should fail CI
         run: |
           if node dist/cli.js scan --path examples/fixtures/broken-app --ci; then

@@ -324,6 +324,16 @@ pnpm test && pnpm build
 - Git/repo note: CI deprecation cleanup was committed and pushed as `af2112b`; GitHub Actions run `26274705441` completed green with 0 annotations.
 - Next: keep the project in Darius-review/approval-gated mode and only perform small review-readiness checks until Darius approves npm/GitHub release publishing.
 
+### Manual continuation 2026-05-22 10:41-10:46 EEST
+
+- Slice: package/security/code-quality gates and README trust badges. Added `tests/quality-gates.test.ts` with RED first to lock package scripts, CI gate ordering, and README badges. Added `typecheck`, `lint`, `security:audit`, `package:check`, and `quality` scripts; CI now runs lint, tests, build, high-severity dependency audit, and npm package dry-run before fixture smoke checks. README now shows CI, pre-release package, MIT, TypeScript, and local-first badges.
+- Duration: ~5m active wall time.
+- Verification: `pnpm vitest run tests/quality-gates.test.ts` => RED, then PASS; `pnpm quality` => PASS (typecheck, 12 test files / 43 tests, build, high-severity audit, package dry-run). `pnpm audit --audit-level high` reports 2 moderate vulnerabilities but exits green because the CI gate blocks high+ severity.
+- Review: independent reviewer reported no blocking security concerns or logic errors; accepted suggestion to strengthen CI ordering assertions for all quality gates.
+- Schedule estimate: short manual hardening slice; existing cron `9f2b31785aad` remains every 15m.
+- Git/repo note: quality-gate changes are staged and ready to commit/push.
+- Next: commit/push quality gates, watch GitHub Actions, then continue Darius-review mode.
+
 ## Next Step
 
-Keep the project in Darius-review/approval-gated mode and only perform small review-readiness checks until Darius approves any npm or GitHub release publishing.
+Commit/push quality gates, watch GitHub Actions, then continue Darius-review mode before any npm or GitHub release publishing.

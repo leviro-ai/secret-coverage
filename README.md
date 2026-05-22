@@ -1,5 +1,11 @@
 # EnvGuard
 
+![CI](https://github.com/dariuskasperavicius/secret-coverage-checker/actions/workflows/test.yml/badge.svg)
+![npm package](https://img.shields.io/badge/npm-pre--release-orange)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
+![Local first](https://img.shields.io/badge/local--first-no_cloud_required-brightgreen)
+
 > Detect missing environment variables before your deployment fails.
 
 EnvGuard is a local-first, metadata-only deployment readiness layer for modern CI/CD. It helps teams catch environment variable mismatch, missing GitHub Actions secrets, GitLab CI environment validation issues, Docker Compose env mismatch, Vercel environment drift, and broken deployment prevention problems before they reach production.
