@@ -729,6 +729,17 @@ pnpm test && pnpm build
 - Git/repo note: pushed commit `ee9db54` (`docs: refine first post demo links`) to `main`; GitHub Actions run `26316726929` passed. `context.md` remains untracked and was not added.
 - Next: keep public posting gated until Darius approves the final Dev.to channel/wording; if no approval arrives by the next heartbeat, add a real-repo walkthrough outline or first SEO long-tail page draft that reuses the existing demos without public posting.
 
+### Heartbeat 2026-05-23 02:41-02:43 EEST
+
+- Slice: drafted the first long-tail SEO checklist page reusing the existing deployment-drift demos without publishing publicly.
+- Added `docs/articles/ci-cd-env-validation-checklist.md` covering env templates as contracts, CI/CD deployment surfaces, GitHub Actions and Docker Compose drift examples, a GitHub Actions CI check, PR review checklist, and metadata-only trust boundaries.
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the SEO asset and next non-public slice are restartable while Dev.to publishing remains gated on Darius approval.
+- Duration: 1m 23s active wall time.
+- Verification: `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check across README/docs/articles/docs/marketing/examples/demos => PASS (0 matches); `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` and `pnpm --silent scan -- --path examples/demos/docker-compose-missing-redis-url --ci` => PASS as expected failing demo scans (exit code 1 findings captured without raw secret values).
+- Schedule estimate: last five product slices are ~3m27s, ~1m32s, ~2m49s, ~2m17s, and ~1m23s; rolling avg ~2m18s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 02:58 Europe/Vilnius.
+- Git/repo note: local verification only so far in this slice; committing/pushing this SEO asset next, `context.md` remains untracked and will not be added.
+- Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, draft a real-repo walkthrough outline that maps the existing fixtures to a practical PR review story without posting publicly.
+
 ## Next Step
 
-Keep public posting gated until Darius approves the final Dev.to channel/wording; if no approval arrives by the next heartbeat, add a real-repo walkthrough outline or first SEO long-tail page draft that reuses the existing demos without public posting.
+Keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, draft a real-repo walkthrough outline that maps the existing fixtures to a practical PR review story without posting publicly.

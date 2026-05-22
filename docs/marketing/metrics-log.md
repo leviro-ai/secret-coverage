@@ -23,6 +23,7 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/articles/vercel-missing-supabase-key.md`
   - `examples/demos/circleci-missing-deploy-key/`
   - `docs/articles/circleci-missing-deploy-key.md`
+  - `docs/articles/ci-cd-env-validation-checklist.md`
   - `docs/marketing/devto-github-actions-missing-secret-draft.md`
   - `docs/marketing/reddit-github-actions-missing-secret-draft.md`
   - `docs/marketing/hacker-news-github-actions-missing-secret-readiness.md`
@@ -33,4 +34,4 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”
 - Next experiment:
-  - Wait for Darius approval: publish the recommended two-demo Dev.to post as-is, include the optional Vercel/CircleCI follow-up links, edit the final text, or hold public posting for a real-repo walkthrough.
+  - Keep public posting gated until Darius approves the recommended Dev.to channel/wording. While waiting, draft another long-tail page or a real-repo walkthrough outline that reuses the existing demos without posting publicly.
