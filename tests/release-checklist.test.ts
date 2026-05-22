@@ -31,4 +31,16 @@ describe('release checklist', () => {
     expect(release).toContain('dist/cli.js must be built before tagging');
     expect(release).toContain('Darius approves publishing target and repository name');
   });
+
+  it('keeps changelog aligned with v0.1.0 supported scanners and trust posture', () => {
+    const changelog = readFileSync('CHANGELOG.md', 'utf8');
+
+    expect(changelog).toContain('GitHub Actions');
+    expect(changelog).toContain('GitLab CI/CD');
+    expect(changelog).toContain('CircleCI');
+    expect(changelog).toContain('Docker');
+    expect(changelog).toContain('Vercel');
+    expect(changelog).toContain('metadata-only');
+    expect(changelog).toContain('no raw secret values');
+  });
 });
