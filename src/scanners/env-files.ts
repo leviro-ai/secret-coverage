@@ -4,11 +4,13 @@ import type { Scanner } from '../types.js';
 
 const LOCAL_ENV_FILES = ['.env', '.env.local', '.env.production', '.env.development'];
 
-export const scanEnvFiles: Scanner = async ({ root, envTemplateFiles }) => {
+export const scanEnvFiles: Scanner = async ({ root, envTemplateFiles, explicitEnvTemplate }) => {
   const declared = [];
   const findings = [];
   const templateFiles = new Set(envTemplateFiles);
-  const envFiles = [...envTemplateFiles, ...LOCAL_ENV_FILES.filter(file => !templateFiles.has(file))];
+  const envFiles = explicitEnvTemplate
+    ? envTemplateFiles
+    : [...envTemplateFiles, ...LOCAL_ENV_FILES.filter(file => !templateFiles.has(file))];
 
   const foundEnvFiles: string[] = [];
 

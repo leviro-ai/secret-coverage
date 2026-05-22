@@ -95,6 +95,23 @@ describe('envguard CLI', () => {
     expect(JSON.parse(result.stdout).summary.critical).toBe(0);
   });
 
+  it('does not scan .env.local when an explicit env template is provided', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'envguard-cli-explicit-template-only-'));
+    writeFileSync(join(dir, '.env.dist'), 'DATABASE_URL=\n');
+    writeFileSync(join(dir, '.env.local'), 'STRIPE_CHECKOUT_PRICE_ID=sk_live_this_should_not_be_reported\nLOCAL_ONLY=value\n');
+    writeFileSync(join(dir, 'Dockerfile'), 'ENV DATABASE_URL=${DATABASE_URL}\n');
+
+    const result = await runCli(['scan', '--path', dir, '--env-template', '.env.dist', '--json']);
+    const parsed = JSON.parse(result.stdout);
+
+    expect(result.code).toBe(0);
+    expect(parsed.declared).toEqual([{ variable: 'DATABASE_URL', file: '.env.dist', source: '.env.dist' }]);
+    expect(result.stdout).not.toContain('STRIPE_CHECKOUT_PRICE_ID');
+    expect(result.stdout).not.toContain('.env.local');
+    expect(result.stdout).not.toContain('LOCAL_ONLY');
+    expect(parsed.summary.info).toBe(0);
+  });
+
   it('prints a notice when no searched env files exist', async () => {
     const dir = mkdtempSync(join(tmpdir(), 'envguard-cli-no-env-'));
     writeFileSync(join(dir, 'Dockerfile'), 'ENV DATABASE_URL=${DATABASE_URL}\n');

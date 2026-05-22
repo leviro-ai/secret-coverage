@@ -41,7 +41,7 @@ function uniqueBy(items: VariableSource[]): VariableSource[] {
   });
 }
 
-function deriveFindings(declared: VariableSource[], referenced: VariableSource[], envTemplateFiles: string[]): Finding[] {
+function deriveFindings(declared: VariableSource[], referenced: VariableSource[], envTemplateFiles: string[], includeLocalEnvChecks: boolean): Finding[] {
   const templateFiles = new Set(envTemplateFiles);
   const template = new Set(declared.filter(d => templateFiles.has(d.file)).map(d => d.variable));
   const local = new Set(declared.filter(d => !templateFiles.has(d.file)).map(d => d.variable));
@@ -62,27 +62,29 @@ function deriveFindings(declared: VariableSource[], referenced: VariableSource[]
     }
   }
 
-  for (const variable of local) {
-    if (!refs.has(variable) && !template.has(variable)) {
-      findings.push({
-        severity: 'warning',
-        type: 'unused-local-variable',
-        variable,
-        message: `${variable} exists in a local env file but is not referenced by supported project configs.`,
-        recommendation: `Remove ${variable} if obsolete, or add it to your env template if it is required at runtime.`,
-      });
+  if (includeLocalEnvChecks) {
+    for (const variable of local) {
+      if (!refs.has(variable) && !template.has(variable)) {
+        findings.push({
+          severity: 'warning',
+          type: 'unused-local-variable',
+          variable,
+          message: `${variable} exists in a local env file but is not referenced by supported project configs.`,
+          recommendation: `Remove ${variable} if obsolete, or add it to your env template if it is required at runtime.`,
+        });
+      }
     }
-  }
 
-  for (const variable of template) {
-    if (!local.has(variable) && refs.has(variable)) {
-      findings.push({
-        severity: 'info',
-        type: 'declared-not-local',
-        variable,
-        message: `${variable} is documented in an env template but not present in local env files.`,
-        recommendation: `Set ${variable} locally before running builds that require it.`,
-      });
+    for (const variable of template) {
+      if (!local.has(variable) && refs.has(variable)) {
+        findings.push({
+          severity: 'info',
+          type: 'declared-not-local',
+          variable,
+          message: `${variable} is documented in an env template but not present in local env files.`,
+          recommendation: `Set ${variable} locally before running builds that require it.`,
+        });
+      }
     }
   }
 
@@ -104,10 +106,11 @@ function summarize(findings: Finding[]) {
 
 export async function scanProject(root = process.cwd(), options: ScanOptions = {}): Promise<ScanResult> {
   const envTemplateFiles = options.envTemplate ? [options.envTemplate] : DEFAULT_ENV_TEMPLATE_FILES;
-  const results = await Promise.all(scanners.map(scanner => scanner({ root, envTemplateFiles })));
+  const explicitEnvTemplate = Boolean(options.envTemplate);
+  const results = await Promise.all(scanners.map(scanner => scanner({ root, envTemplateFiles, explicitEnvTemplate })));
   const declared = uniqueBy(results.flatMap(result => result.declared)).sort(compareVariableSources);
   const referenced = uniqueBy(results.flatMap(result => result.referenced)).sort(compareVariableSources);
-  const findings = [...results.flatMap(result => result.findings), ...deriveFindings(declared, referenced, envTemplateFiles)];
+  const findings = [...results.flatMap(result => result.findings), ...deriveFindings(declared, referenced, envTemplateFiles, !explicitEnvTemplate)];
   const notices = [...new Set(results.flatMap(result => result.notices ?? []))];
   const deduped = findings
     .filter((finding, index, all) => index === all.findIndex(other => `${other.severity}:${other.type}:${other.variable}:${other.file ?? ''}` === `${finding.severity}:${finding.type}:${finding.variable}:${finding.file ?? ''}`))

@@ -19,6 +19,7 @@ export type VariableSource = {
 export type ScannerContext = {
   root: string;
   envTemplateFiles: string[];
+  explicitEnvTemplate: boolean;
 };
 
 export type ScanOptions = {

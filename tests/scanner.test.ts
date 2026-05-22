@@ -66,6 +66,34 @@ describe('scanProject', () => {
     }));
   });
 
+  it('only reads the explicitly configured env template and does not scan .env.local', async () => {
+    const root = fixture({
+      '.env.dist': 'NEXT_PUBLIC_API_URL=\n',
+      '.env.local': 'STRIPE_CHECKOUT_PRICE_ID=sk_live_this_should_not_be_reported\nLOCAL_ONLY=value\n',
+      '.github/workflows/deploy.yml': 'name: deploy\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    env:\n      NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}\n',
+    });
+
+    const result = await scanProject(root, { envTemplate: '.env.dist' });
+
+    expect(result.declared).toEqual([
+      expect.objectContaining({ variable: 'NEXT_PUBLIC_API_URL', file: '.env.dist', source: '.env.dist' }),
+    ]);
+    expect(result.findings).not.toContainEqual(expect.objectContaining({
+      type: 'plaintext-secret',
+      variable: 'STRIPE_CHECKOUT_PRICE_ID',
+      file: '.env.local',
+    }));
+    expect(result.findings).not.toContainEqual(expect.objectContaining({
+      type: 'unused-local-variable',
+      variable: 'LOCAL_ONLY',
+    }));
+    expect(result.findings).not.toContainEqual(expect.objectContaining({
+      type: 'declared-not-local',
+      variable: 'NEXT_PUBLIC_API_URL',
+    }));
+    expect(result.summary.info).toBe(0);
+  });
+
   it('returns a notice when no searched env files exist', async () => {
     const root = fixture({
       '.github/workflows/deploy.yml': 'name: deploy\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    env:\n      NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}\n',
