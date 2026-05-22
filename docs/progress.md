@@ -649,6 +649,18 @@ pnpm test && pnpm build
 - Git/repo note: pushed commit `76a45ad` (`docs: add x thread draft`) to `main`; GitHub Actions run `26312712007` passed. `context.md` remains untracked and was not added. This progress-log update itself is local until the next restart-state commit.
 - Next: review the full Dev.to/Reddit/HN/X public-posting packet, then prepare one Darius-approved first-post recommendation with channel, final text, and risk notes before publishing anything.
 
+### Heartbeat 2026-05-23 00:42-00:44 EEST
+
+- Slice: reviewed the full Dev.to/Reddit/HN/X public-posting packet and prepared one Darius-approved first-post recommendation without publishing publicly.
+- Added `docs/marketing/first-post-recommendation.md` recommending Dev.to as the first public channel, with rationale, final post text, tags, approval options, risk notes, and a post-publish checklist.
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the approval gate and next decision are restartable.
+- Pushed commit `6e95bbf` (`docs: recommend first public post`) to `main` and verified GitHub Actions run `26313453619` completed successfully.
+- Duration: ~2m 29s active wall time including local verification, commit/push, and remote CI watch.
+- Verification: `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS (expected exit code 1 with `STRIPE_SECRET_KEY` / `missing-from-template`); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check against the new recommendation => PASS (0 matches); `git push` => PASS; `gh run watch 26313453619 --exit-status` => PASS.
+- Schedule estimate: last five resumed slices are ~2m17s, ~2m25s, ~2m16s, ~3m40s, and ~2m29s; rolling avg ~2m37s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 00:57 local.
+- Git/repo note: pushed commit `6e95bbf` to `main`; GitHub Actions run `26313453619` passed. `context.md` remains untracked and was not added. This progress-log update itself is local until the next restart-state commit.
+- Next: wait for Darius approval on the first-post recommendation; if approved, publish the Dev.to post through the already-open CloakBrowser session and record the URL/real metrics, otherwise add one more concrete demo asset before public posting.
+
 ## Next Step
 
-Review the full Dev.to/Reddit/HN/X public-posting packet, then prepare one Darius-approved first-post recommendation with channel, final text, and risk notes before publishing anything. Do not publish Dev.to/Reddit/HN/X posts until Darius reviews public framing.
+Wait for Darius approval on the first-post recommendation; if approved, publish the Dev.to post through the already-open CloakBrowser session and record the URL/real metrics, otherwise add one more concrete demo asset before public posting. Do not publish Dev.to/Reddit/HN/X posts until Darius reviews public framing.
