@@ -169,6 +169,7 @@ envguard scan --json
 envguard scan --ci
 envguard scan --strict
 envguard scan --path ./apps/web
+envguard scan --env-template config/env.template
 ```
 
 Options:
@@ -176,6 +177,7 @@ Options:
 | Option | Purpose |
 | --- | --- |
 | `--path <path>` | Scan a specific project directory. Defaults to current directory. |
+| `--env-template <file>` | Use a specific env template file instead of auto-detecting `.env.example` / `.env.dist`. |
 | `--format markdown` | Human-readable report. Default. |
 | `--json` | Machine-readable JSON output. |
 | `--ci` | Exit non-zero when critical findings exist. |

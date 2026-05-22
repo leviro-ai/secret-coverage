@@ -25,8 +25,8 @@ describe('scanProject engine stability', () => {
     const result = await scanProject(root);
 
     expect(result.findings.map(finding => `${finding.severity}:${finding.variable}:${finding.type}:${finding.file ?? ''}`)).toEqual([
-      'critical:A_SECRET:missing-from-example:.github/workflows/deploy.yml',
-      'critical:B_SECRET:missing-from-example:.github/workflows/deploy.yml',
+      'critical:A_SECRET:missing-from-template:.github/workflows/deploy.yml',
+      'critical:B_SECRET:missing-from-template:.github/workflows/deploy.yml',
       'critical:Z_SECRET:plaintext-secret:.env.local',
       'warning:Z_UNUSED:unused-local-variable:',
     ]);

@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { parse } from 'yaml';
 import { describe, expect, it } from 'vitest';
 
-const documentedCliOptions = ['--path', '--format', '--json', '--ci', '--strict'];
+const documentedCliOptions = ['--path', '--env-template', '--format', '--json', '--ci', '--strict'];
 const documentedActionInputs = ['path', 'format', 'strict'];
 
 describe('documentation command examples', () => {

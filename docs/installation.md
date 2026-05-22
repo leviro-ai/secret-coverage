@@ -28,6 +28,12 @@ Use `--strict` when warnings should also fail the build:
 envguard scan --strict
 ```
 
+If your repo uses a non-standard env template filename, point EnvGuard at it explicitly:
+
+```bash
+envguard scan --env-template config/env.template
+```
+
 ## GitHub Actions
 
 The action prints the EnvGuard report in CI logs. When `format: markdown` is used, it also writes the same report to the GitHub Actions step summary.

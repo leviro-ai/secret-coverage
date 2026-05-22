@@ -1,4 +1,4 @@
-import type { Finding, ScanResult, Scanner, VariableSource } from './types.js';
+import type { Finding, ScanOptions, ScanResult, Scanner, VariableSource } from './types.js';
 import { scanEnvFiles } from './scanners/env-files.js';
 import { scanGitHubActions } from './scanners/github-actions.js';
 import { scanGitLabCI } from './scanners/gitlab-ci.js';
@@ -10,6 +10,7 @@ import { scanSupabase } from './scanners/supabase.js';
 import { scanCapRover } from './scanners/caprover.js';
 
 const scanners: Scanner[] = [scanEnvFiles, scanGitHubActions, scanGitLabCI, scanCircleCI, scanDocker, scanVercel, scanNextJs, scanSupabase, scanCapRover];
+const DEFAULT_ENV_TEMPLATE_FILES = ['.env.example', '.env.dist'];
 
 const severityRank: Record<Finding['severity'], number> = {
   critical: 0,
@@ -40,44 +41,46 @@ function uniqueBy(items: VariableSource[]): VariableSource[] {
   });
 }
 
-function deriveFindings(declared: VariableSource[], referenced: VariableSource[]): Finding[] {
-  const example = new Set(declared.filter(d => d.file === '.env.example').map(d => d.variable));
-  const local = new Set(declared.filter(d => d.file !== '.env.example').map(d => d.variable));
+function deriveFindings(declared: VariableSource[], referenced: VariableSource[], envTemplateFiles: string[]): Finding[] {
+  const templateFiles = new Set(envTemplateFiles);
+  const template = new Set(declared.filter(d => templateFiles.has(d.file)).map(d => d.variable));
+  const local = new Set(declared.filter(d => !templateFiles.has(d.file)).map(d => d.variable));
   const refs = new Set(referenced.map(r => r.variable));
   const findings: Finding[] = [];
+  const templateLabel = envTemplateFiles.length === 1 ? envTemplateFiles[0] : 'an env template';
 
   for (const ref of referenced) {
-    if (!example.has(ref.variable)) {
+    if (!template.has(ref.variable)) {
       findings.push({
         severity: 'critical',
-        type: 'missing-from-example',
+        type: 'missing-from-template',
         variable: ref.variable,
         file: ref.file,
-        message: `${ref.variable} is used in ${ref.file} but missing from .env.example.`,
-        recommendation: `Add ${ref.variable}= to .env.example and configure the value in your deployment environment.`,
+        message: `${ref.variable} is used in ${ref.file} but missing from ${templateLabel}.`,
+        recommendation: `Add ${ref.variable}= to ${templateLabel} and configure the value in your deployment environment.`,
       });
     }
   }
 
   for (const variable of local) {
-    if (!refs.has(variable) && !example.has(variable)) {
+    if (!refs.has(variable) && !template.has(variable)) {
       findings.push({
         severity: 'warning',
         type: 'unused-local-variable',
         variable,
         message: `${variable} exists in a local env file but is not referenced by supported project configs.`,
-        recommendation: `Remove ${variable} if obsolete, or add it to .env.example if it is required at runtime.`,
+        recommendation: `Remove ${variable} if obsolete, or add it to your env template if it is required at runtime.`,
       });
     }
   }
 
-  for (const variable of example) {
+  for (const variable of template) {
     if (!local.has(variable) && refs.has(variable)) {
       findings.push({
         severity: 'info',
         type: 'declared-not-local',
         variable,
-        message: `${variable} is documented in .env.example but not present in local env files.`,
+        message: `${variable} is documented in an env template but not present in local env files.`,
         recommendation: `Set ${variable} locally before running builds that require it.`,
       });
     }
@@ -99,13 +102,16 @@ function summarize(findings: Finding[]) {
   return { critical, warning, info, readinessScore: Math.max(0, 100 - critical * 25 - warning * 8 - info * 2) };
 }
 
-export async function scanProject(root = process.cwd()): Promise<ScanResult> {
-  const results = await Promise.all(scanners.map(scanner => scanner({ root })));
+export async function scanProject(root = process.cwd(), options: ScanOptions = {}): Promise<ScanResult> {
+  const envTemplateFiles = options.envTemplate ? [options.envTemplate] : DEFAULT_ENV_TEMPLATE_FILES;
+  const results = await Promise.all(scanners.map(scanner => scanner({ root, envTemplateFiles })));
   const declared = uniqueBy(results.flatMap(result => result.declared)).sort(compareVariableSources);
   const referenced = uniqueBy(results.flatMap(result => result.referenced)).sort(compareVariableSources);
-  const findings = [...results.flatMap(result => result.findings), ...deriveFindings(declared, referenced)];
+  const findings = [...results.flatMap(result => result.findings), ...deriveFindings(declared, referenced, envTemplateFiles)];
+  const notices = [...new Set(results.flatMap(result => result.notices ?? []))];
   const deduped = findings
     .filter((finding, index, all) => index === all.findIndex(other => `${other.severity}:${other.type}:${other.variable}:${other.file ?? ''}` === `${finding.severity}:${finding.type}:${finding.variable}:${finding.file ?? ''}`))
     .sort(compareFindings);
-  return { findings: deduped, summary: summarize(deduped), declared, referenced };
+  return { findings: deduped, summary: summarize(deduped), declared, referenced, notices };
+
 }

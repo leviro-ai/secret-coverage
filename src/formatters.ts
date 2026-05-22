@@ -23,6 +23,7 @@ function stableResult(result: ScanResult): ScanResult {
     findings: sortedFindings(result.findings),
     declared: result.declared.map(({ variable, file, source }) => ({ variable, file, source })),
     referenced: result.referenced.map(({ variable, file, source }) => ({ variable, file, source })),
+    notices: [...(result.notices ?? [])].sort(),
   };
 }
 
@@ -40,6 +41,13 @@ export function formatMarkdown(result: ScanResult): string {
     `Critical: ${stable.summary.critical} · Warning: ${stable.summary.warning} · Info: ${stable.summary.info}`,
     '',
   ];
+
+  if (stable.notices.length) {
+    lines.push('## Notices');
+    lines.push('');
+    for (const notice of stable.notices) lines.push(`- ${notice}`);
+    lines.push('');
+  }
 
   if (stable.findings.length === 0) {
     lines.push('✅ No deployment-blocking environment variable issues detected.');

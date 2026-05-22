@@ -18,12 +18,18 @@ export type VariableSource = {
 
 export type ScannerContext = {
   root: string;
+  envTemplateFiles: string[];
+};
+
+export type ScanOptions = {
+  envTemplate?: string;
 };
 
 export type ScannerResult = {
   declared: VariableSource[];
   referenced: VariableSource[];
   findings: Finding[];
+  notices?: string[];
 };
 
 export type ScanSummary = {
@@ -38,6 +44,7 @@ export type ScanResult = {
   summary: ScanSummary;
   declared: VariableSource[];
   referenced: VariableSource[];
+  notices: string[];
 };
 
 export type Scanner = (context: ScannerContext) => Promise<ScannerResult>;

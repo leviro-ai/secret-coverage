@@ -2,11 +2,11 @@
   "findings": [
     {
       "severity": "critical",
-      "type": "missing-from-example",
+      "type": "missing-from-template",
       "variable": "NEXT_PUBLIC_API_URL",
       "file": ".github/workflows/deploy.yml",
-      "message": "NEXT_PUBLIC_API_URL is used in .github/workflows/deploy.yml but missing from .env.example.",
-      "recommendation": "Add NEXT_PUBLIC_API_URL= to .env.example and configure the value in your deployment environment."
+      "message": "NEXT_PUBLIC_API_URL is used in .github/workflows/deploy.yml but missing from an env template.",
+      "recommendation": "Add NEXT_PUBLIC_API_URL= to an env template and configure the value in your deployment environment."
     },
     {
       "severity": "critical",
@@ -14,14 +14,14 @@
       "variable": "SUPABASE_SERVICE_ROLE_KEY",
       "file": ".env.local",
       "message": "SUPABASE_SERVICE_ROLE_KEY appears to contain a real secret in .env.local.",
-      "recommendation": "Remove SUPABASE_SERVICE_ROLE_KEY from committed files, rotate the value if it was pushed, and keep only an empty placeholder in .env.example."
+      "recommendation": "Remove SUPABASE_SERVICE_ROLE_KEY from committed files, rotate the value if it was pushed, and keep only an empty placeholder in your env template."
     },
     {
       "severity": "warning",
       "type": "unused-local-variable",
       "variable": "SUPABASE_SERVICE_ROLE_KEY",
       "message": "SUPABASE_SERVICE_ROLE_KEY exists in a local env file but is not referenced by supported project configs.",
-      "recommendation": "Remove SUPABASE_SERVICE_ROLE_KEY if obsolete, or add it to .env.example if it is required at runtime."
+      "recommendation": "Remove SUPABASE_SERVICE_ROLE_KEY if obsolete, or add it to your env template if it is required at runtime."
     }
   ],
   "summary": {
@@ -53,5 +53,6 @@
       "file": ".github/workflows/deploy.yml",
       "source": "github-actions"
     }
-  ]
+  ],
+  "notices": []
 }

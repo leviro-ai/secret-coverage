@@ -39,7 +39,7 @@ describe('envguard CLI', () => {
 
     expect(result.code).toBe(1);
     expect(result.stdout).toContain('NEXT_PUBLIC_API_URL');
-    expect(result.stdout).toContain('missing from .env.example');
+    expect(result.stdout).toContain('missing from an env template');
   });
 
   it('honors options passed through pnpm scan -- without scanning the EnvGuard source tree', async () => {
@@ -75,13 +75,34 @@ describe('envguard CLI', () => {
     const finding = parsed.findings.find((item: { variable: string }) => item.variable === 'NEXT_PUBLIC_API_URL');
     expect(finding).toMatchObject({
       severity: 'critical',
-      type: 'missing-from-example',
+      type: 'missing-from-template',
       variable: 'NEXT_PUBLIC_API_URL',
       file: '.github/workflows/deploy.yml',
     });
     expect(finding.message).toContain('NEXT_PUBLIC_API_URL');
     expect(finding.recommendation).toContain('Add NEXT_PUBLIC_API_URL=');
     expect(Object.keys(finding)).toEqual(['severity', 'type', 'variable', 'file', 'message', 'recommendation']);
+  });
+
+  it('supports an explicit env template file', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'envguard-cli-template-'));
+    writeFileSync(join(dir, 'env.dist'), 'DATABASE_URL=\n');
+    writeFileSync(join(dir, 'Dockerfile'), 'ENV DATABASE_URL=${DATABASE_URL}\n');
+
+    const result = await runCli(['scan', '--path', dir, '--env-template', 'env.dist', '--json']);
+
+    expect(result.code).toBe(0);
+    expect(JSON.parse(result.stdout).summary.critical).toBe(0);
+  });
+
+  it('prints a notice when no searched env files exist', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'envguard-cli-no-env-'));
+    writeFileSync(join(dir, 'Dockerfile'), 'ENV DATABASE_URL=${DATABASE_URL}\n');
+
+    const result = await runCli(['scan', '--path', dir, '--format', 'markdown']);
+
+    expect(result.stdout).toContain('## Notices');
+    expect(result.stdout).toContain('No env files found. EnvGuard looked for: .env.example, .env.dist');
   });
 
   it('keeps CI warning-only scans green but fails strict mode', async () => {

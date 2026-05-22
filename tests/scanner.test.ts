@@ -15,7 +15,7 @@ function fixture(files: Record<string, string>) {
 }
 
 describe('scanProject', () => {
-  it('reports variables referenced in GitHub Actions but missing from .env.example', async () => {
+  it('reports variables referenced in GitHub Actions but missing from the env template', async () => {
     const root = fixture({
       '.env.example': 'DATABASE_URL=\n',
       '.github/workflows/deploy.yml': 'name: deploy\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    env:\n      NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}\n',
@@ -25,9 +25,55 @@ describe('scanProject', () => {
 
     expect(result.findings).toContainEqual(expect.objectContaining({
       severity: 'critical',
-      type: 'missing-from-example',
+      type: 'missing-from-template',
       variable: 'NEXT_PUBLIC_API_URL',
     }));
+  });
+
+  it('treats .env.dist as a default env template', async () => {
+    const root = fixture({
+      '.env.dist': 'NEXT_PUBLIC_API_URL=\n',
+      '.github/workflows/deploy.yml': 'name: deploy\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    env:\n      NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}\n',
+    });
+
+    const result = await scanProject(root);
+
+    expect(result.summary.critical).toBe(0);
+    expect(result.declared).toContainEqual(expect.objectContaining({
+      variable: 'NEXT_PUBLIC_API_URL',
+      file: '.env.dist',
+      source: '.env.dist',
+    }));
+    expect(result.findings).not.toContainEqual(expect.objectContaining({
+      type: 'missing-from-template',
+      variable: 'NEXT_PUBLIC_API_URL',
+    }));
+  });
+
+  it('uses an explicitly configured env template file', async () => {
+    const root = fixture({
+      'config/env.template': 'NEXT_PUBLIC_API_URL=\n',
+      '.github/workflows/deploy.yml': 'name: deploy\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    env:\n      NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}\n',
+    });
+
+    const result = await scanProject(root, { envTemplate: 'config/env.template' });
+
+    expect(result.summary.critical).toBe(0);
+    expect(result.declared).toContainEqual(expect.objectContaining({
+      variable: 'NEXT_PUBLIC_API_URL',
+      file: 'config/env.template',
+      source: 'config/env.template',
+    }));
+  });
+
+  it('returns a notice when no searched env files exist', async () => {
+    const root = fixture({
+      '.github/workflows/deploy.yml': 'name: deploy\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    env:\n      NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}\n',
+    });
+
+    const result = await scanProject(root);
+
+    expect(result.notices).toContain('No env files found. EnvGuard looked for: .env.example, .env.dist, .env, .env.local, .env.production, .env.development. Use --env-template <file> if your repo uses a different template filename.');
   });
 
   it('reports unused local variables as warnings', async () => {
