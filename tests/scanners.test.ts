@@ -50,6 +50,12 @@ describe('platform scanners', () => {
     })).resolves.toEqual(['DATABASE_URL:.circleci/config.yml:circleci']);
   });
 
+  it('scans CircleCI environment keys in yaml configs', async () => {
+    await expect(variables(scanCircleCI, {
+      '.circleci/config.yaml': 'version: 2.1\njobs:\n  deploy:\n    environment:\n      NEXT_PUBLIC_API_URL: ""\n      NODE_ENV: production\n    steps:\n      - run: pnpm deploy\n',
+    })).resolves.toEqual(['NEXT_PUBLIC_API_URL:.circleci/config.yaml:circleci']);
+  });
+
   it('scans Dockerfile and Compose references', async () => {
     await expect(variables(scanDocker, {
       Dockerfile: 'ENV DATABASE_URL=${DATABASE_URL}\n',
