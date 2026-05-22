@@ -10,14 +10,14 @@ const cli = join(process.cwd(), 'src/cli.ts');
 const tsx = join(process.cwd(), 'node_modules/.bin/tsx');
 
 function warningOnlyFixture() {
-  const dir = mkdtempSync(join(tmpdir(), 'envguard-cli-warning-'));
+  const dir = mkdtempSync(join(tmpdir(), 'secret-coverage-cli-warning-'));
   writeFileSync(join(dir, '.env.local'), 'LOCAL_ONLY=value\n');
   writeFileSync(join(dir, '.env.example'), '');
   return dir;
 }
 
 function secretFixture() {
-  const dir = mkdtempSync(join(tmpdir(), 'envguard-cli-secret-'));
+  const dir = mkdtempSync(join(tmpdir(), 'secret-coverage-cli-secret-'));
   writeFileSync(join(dir, '.env.example'), 'STRIPE_SECRET_KEY=\n');
   writeFileSync(join(dir, '.env.local'), 'STRIPE_SECRET_KEY=sk_live_should_never_print\n');
   return dir;
@@ -33,7 +33,15 @@ async function runCli(args: string[]) {
   }
 }
 
-describe('envguard CLI', () => {
+describe('Secret Coverage CLI', () => {
+  it('prints the renamed CLI help', async () => {
+    const result = await runCli(['--help']);
+
+    expect(result.code).toBe(0);
+    expect(result.stdout).toContain('Usage: secret-coverage');
+    expect(result.stdout).toContain('Environment Secret Coverage Checker');
+  });
+
   it('exits non-zero in CI mode for a broken fixture', async () => {
     const result = await runCli(['scan', '--path', 'examples/fixtures/broken-app', '--ci']);
 
@@ -42,7 +50,7 @@ describe('envguard CLI', () => {
     expect(result.stdout).toContain('missing from an env template');
   });
 
-  it('honors options passed through pnpm scan -- without scanning the EnvGuard source tree', async () => {
+  it('honors options passed through pnpm scan -- without scanning the Secret Coverage source tree', async () => {
     let result: { code?: number; stdout?: string; stderr?: string };
     try {
       const output = await execFileAsync('pnpm', ['scan', '--', '--path', 'examples/fixtures/broken-app', '--ci'], { cwd: process.cwd() });
@@ -85,7 +93,7 @@ describe('envguard CLI', () => {
   });
 
   it('supports an explicit env template file', async () => {
-    const dir = mkdtempSync(join(tmpdir(), 'envguard-cli-template-'));
+    const dir = mkdtempSync(join(tmpdir(), 'secret-coverage-cli-template-'));
     writeFileSync(join(dir, 'env.dist'), 'DATABASE_URL=\n');
     writeFileSync(join(dir, 'Dockerfile'), 'ENV DATABASE_URL=${DATABASE_URL}\n');
 
@@ -96,7 +104,7 @@ describe('envguard CLI', () => {
   });
 
   it('does not scan .env.local when an explicit env template is provided', async () => {
-    const dir = mkdtempSync(join(tmpdir(), 'envguard-cli-explicit-template-only-'));
+    const dir = mkdtempSync(join(tmpdir(), 'secret-coverage-cli-explicit-template-only-'));
     writeFileSync(join(dir, '.env.dist'), 'DATABASE_URL=\n');
     writeFileSync(join(dir, '.env.local'), 'STRIPE_CHECKOUT_PRICE_ID=sk_live_this_should_not_be_reported\nLOCAL_ONLY=value\n');
     writeFileSync(join(dir, 'Dockerfile'), 'ENV DATABASE_URL=${DATABASE_URL}\n');
@@ -113,13 +121,13 @@ describe('envguard CLI', () => {
   });
 
   it('prints a notice when no searched env files exist', async () => {
-    const dir = mkdtempSync(join(tmpdir(), 'envguard-cli-no-env-'));
+    const dir = mkdtempSync(join(tmpdir(), 'secret-coverage-cli-no-env-'));
     writeFileSync(join(dir, 'Dockerfile'), 'ENV DATABASE_URL=${DATABASE_URL}\n');
 
     const result = await runCli(['scan', '--path', dir, '--format', 'markdown']);
 
     expect(result.stdout).toContain('## Notices');
-    expect(result.stdout).toContain('No env files found. EnvGuard looked for: .env.example, .env.dist');
+    expect(result.stdout).toContain('No env files found. Secret Coverage looked for: .env.example, .env.dist');
   });
 
   it('keeps CI warning-only scans green but fails strict mode', async () => {

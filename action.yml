@@ -1,6 +1,6 @@
-name: EnvGuard
-description: Detect missing environment variables before deployment fails.
-author: EnvGuard
+name: Secret Coverage
+description: 'Environment Secret Coverage Checker: detect missing environment variables before deployment fails.'
+author: Leviro AI
 inputs:
   path:
     description: Repository path to scan
@@ -17,17 +17,17 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Run EnvGuard scan
+    - name: Run Secret Coverage scan
       shell: bash
       env:
-        ENVGUARD_FORMAT: ${{ inputs.format }}
-        ENVGUARD_PATH: ${{ inputs.path }}
-        ENVGUARD_STRICT: ${{ inputs.strict }}
+        SECRET_COVERAGE_FORMAT: ${{ inputs.format }}
+        SECRET_COVERAGE_PATH: ${{ inputs.path }}
+        SECRET_COVERAGE_STRICT: ${{ inputs.strict }}
       run: |
         set -euo pipefail
 
-        args=(scan --path "$ENVGUARD_PATH" --format "$ENVGUARD_FORMAT" --ci)
-        if [ "$ENVGUARD_STRICT" = "true" ]; then
+        args=(scan --path "$SECRET_COVERAGE_PATH" --format "$SECRET_COVERAGE_FORMAT" --ci)
+        if [ "$SECRET_COVERAGE_STRICT" = "true" ]; then
           args+=(--strict)
         fi
 
@@ -38,9 +38,9 @@ runs:
 
         printf '%s\n' "$output"
 
-        if [ "$ENVGUARD_FORMAT" = "markdown" ] && [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then
+        if [ "$SECRET_COVERAGE_FORMAT" = "markdown" ] && [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then
           {
-            echo "## EnvGuard report"
+            echo "## Secret Coverage report"
             echo
             printf '%s\n' "$output"
           } >> "$GITHUB_STEP_SUMMARY"

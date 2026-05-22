@@ -4,17 +4,17 @@
 
 **Detect missing environment variables before your deployment fails.**
 
-EnvGuard scans your repo, CI config, and deployment files to find missing or risky environment variables before they break builds, deploys, or production runtime.
+Secret Coverage scans your repo, CI config, and deployment files to find missing or risky environment variables before they break builds, deploys, or production runtime.
 
 ```bash
-envguard scan --ci
+secret-coverage scan --ci
 ```
 
 ## Value props
 
 ### Metadata-only by design
 
-EnvGuard checks variable names, references, existence, and drift metadata. Secret values never leave your machine, CI runner, or GitHub Action environment.
+Secret Coverage checks variable names, references, existence, and drift metadata. Secret values never leave your machine, CI runner, or GitHub Action environment.
 
 ### Catch deployment blockers early
 
@@ -51,10 +51,10 @@ These are mentioned for market clarity, SEO/GEO/LLM discoverability, and future 
 ## CTA
 
 ```bash
-pnpm add -D envguard
-envguard scan
+pnpm add -D @leviro-ai/secret-coverage
+secret-coverage scan
 ```
 
 ## Positioning
 
-EnvGuard is not a secrets manager, vault, or enterprise governance platform. It is a fast deployment-readiness check for environment variables.
+Secret Coverage is not a secrets manager, vault, or enterprise governance platform. It is a fast deployment-readiness check for environment variables.

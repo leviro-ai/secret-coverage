@@ -23,11 +23,11 @@ jobs:
       - run: pnpm build
       - run: pnpm security:audit
       - run: pnpm package:check
-      - name: EnvGuard broken fixture should fail CI
+      - name: Secret Coverage broken fixture should fail CI
         run: |
           if node dist/cli.js scan --path examples/fixtures/broken-app --ci; then
             echo "Broken fixture unexpectedly passed"
             exit 1
           fi
-      - name: EnvGuard clean fixture should pass CI
+      - name: Secret Coverage clean fixture should pass CI
         run: node dist/cli.js scan --path examples/fixtures/clean-app --ci

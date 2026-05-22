@@ -5,7 +5,7 @@ import { join } from 'node:path';
 import { scanProject } from '../src/index.js';
 
 function fixture(files: Record<string, string>) {
-  const dir = mkdtempSync(join(tmpdir(), 'envguard-engine-'));
+  const dir = mkdtempSync(join(tmpdir(), 'secret-coverage-engine-'));
   for (const [relative, content] of Object.entries(files)) {
     const full = join(dir, relative);
     mkdirSync(join(full, '..'), { recursive: true });

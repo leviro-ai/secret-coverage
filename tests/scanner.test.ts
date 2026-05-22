@@ -5,7 +5,7 @@ import { join } from 'node:path';
 import { scanProject } from '../src/index.js';
 
 function fixture(files: Record<string, string>) {
-  const dir = mkdtempSync(join(tmpdir(), 'envguard-'));
+  const dir = mkdtempSync(join(tmpdir(), 'secret-coverage-'));
   for (const [relative, content] of Object.entries(files)) {
     const full = join(dir, relative);
     mkdirSync(join(full, '..'), { recursive: true });
@@ -101,7 +101,7 @@ describe('scanProject', () => {
 
     const result = await scanProject(root);
 
-    expect(result.notices).toContain('No env files found. EnvGuard looked for: .env.example, .env.dist, .env, .env.local, .env.production, .env.development. Use --env-template <file> if your repo uses a different template filename.');
+    expect(result.notices).toContain('No env files found. Secret Coverage looked for: .env.example, .env.dist, .env, .env.local, .env.production, .env.development. Use --env-template <file> if your repo uses a different template filename.');
   });
 
   it('reports unused local variables as warnings', async () => {

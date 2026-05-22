@@ -13,7 +13,7 @@ import { scanCapRover } from '../src/scanners/caprover.js';
 import type { Scanner } from '../src/types.js';
 
 function fixture(files: Record<string, string>) {
-  const root = mkdtempSync(join(tmpdir(), 'envguard-scanner-'));
+  const root = mkdtempSync(join(tmpdir(), 'secret-coverage-scanner-'));
   for (const [relative, content] of Object.entries(files)) {
     const full = join(root, relative);
     mkdirSync(dirname(full), { recursive: true });

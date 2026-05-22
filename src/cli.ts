@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
+import { createRequire } from 'node:module';
 import { scanProject } from './engine.js';
 import { formatJson, formatMarkdown } from './formatters.js';
 
+const require = createRequire(import.meta.url);
+const pkg = require('../package.json') as { version: string };
+
 const program = new Command();
 program
-  .name('envguard')
-  .description('Detect missing environment variables before your deployment fails.')
-  .version('0.1.0');
+  .name('secret-coverage')
+  .description('Environment Secret Coverage Checker: detect missing environment variables before deployment fails.')
+  .version(pkg.version);
 
 program.command('scan')
   .description('Scan repository environment variable declarations and deployment references')

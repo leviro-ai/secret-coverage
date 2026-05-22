@@ -1,8 +1,8 @@
 # Trust, Security, Architecture, and Positioning
 
-Developer trust is a foundational product requirement for EnvGuard.
+Developer trust is a foundational product requirement for Secret Coverage.
 
-EnvGuard operates near sensitive systems:
+Secret Coverage operates near sensitive systems:
 
 - CI/CD pipelines
 - deployment systems
@@ -13,11 +13,11 @@ EnvGuard operates near sensitive systems:
 - API keys
 - production systems
 
-If developers suspect EnvGuard can read, upload, or exfiltrate secrets, adoption will fail. EnvGuard must therefore be designed and communicated as a **local-first, zero-trust, metadata-only deployment readiness tool**.
+If developers suspect Secret Coverage can read, upload, or exfiltrate secrets, adoption will fail. Secret Coverage must therefore be designed and communicated as a **local-first, zero-trust, metadata-only deployment readiness tool**.
 
 ## Product thesis
 
-EnvGuard is **not**:
+Secret Coverage is **not**:
 
 - a secret manager;
 - a vault;
@@ -25,7 +25,7 @@ EnvGuard is **not**:
 - a secret synchronization system;
 - an enterprise IAM or compliance platform.
 
-EnvGuard **is**:
+Secret Coverage **is**:
 
 - deployment readiness monitoring;
 - configuration observability;
@@ -34,7 +34,7 @@ EnvGuard **is**:
 - deployment risk analysis;
 - AI-generated deployment safety tooling, where AI helps explain/report but does not perform deterministic detection.
 
-EnvGuard should help teams answer:
+Secret Coverage should help teams answer:
 
 - Why did deploy fail?
 - Which env vars are missing?
@@ -50,11 +50,11 @@ EnvGuard should help teams answer:
 
 This is non-negotiable.
 
-EnvGuard may analyze and report metadata only.
+Secret Coverage may analyze and report metadata only.
 
 ## Allowed data
 
-EnvGuard may analyze and output:
+Secret Coverage may analyze and output:
 
 ```json
 {
@@ -83,7 +83,7 @@ Allowed categories:
 
 ## Forbidden data
 
-EnvGuard must never upload, transmit, store remotely, or include in generated reports:
+Secret Coverage must never upload, transmit, store remotely, or include in generated reports:
 
 - actual secret values;
 - decrypted secrets;
@@ -132,7 +132,7 @@ Use language like:
 - "metadata-only environment validation";
 - "local-first deployment readiness checks";
 - "secret values never leave your runner";
-- "EnvGuard checks coverage and drift, not secret contents";
+- "Secret Coverage checks coverage and drift, not secret contents";
 - "not a vault, not a secrets manager".
 
 Avoid language like:

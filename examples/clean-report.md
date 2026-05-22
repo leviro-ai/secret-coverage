@@ -1,4 +1,4 @@
-# EnvGuard Report
+# Secret Coverage Report
 
 Readiness score: **100/100**
 

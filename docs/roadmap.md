@@ -1,4 +1,4 @@
-# EnvGuard Roadmap
+# Secret Coverage Roadmap
 
 ## v0.1.0 — Local-first MVP
 

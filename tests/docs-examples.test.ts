@@ -20,9 +20,10 @@ describe('documentation command examples', () => {
       expect(readme).toContain(option);
     }
 
-    expect(installation).toContain('envguard scan --ci');
-    expect(installation).toContain('envguard scan --strict');
-    expect(installation).toContain('envguard scan --json');
+    expect(installation).toContain('secret-coverage scan --ci');
+    expect(installation).toContain('secret-coverage scan --strict');
+    expect(installation).toContain('secret-coverage scan --json');
+    expect(installation).toContain('seccov scan --ci');
   });
 
   it('keeps GitHub Action examples aligned with action.yml inputs', () => {
@@ -33,7 +34,7 @@ describe('documentation command examples', () => {
       expect(Object.keys(action.inputs)).toContain(input);
     }
 
-    expect(docs).toContain('uses: your-org/envguard@v0.1.0');
+    expect(docs).toContain('uses: leviro-ai/secret-coverage@v0.1.0');
     expect(docs).toContain('format: markdown');
     expect(docs).toContain("strict: 'false'");
     expect(docs).toContain("strict: 'true'");

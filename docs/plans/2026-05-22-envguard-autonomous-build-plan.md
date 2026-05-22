@@ -1,20 +1,20 @@
-# EnvGuard Autonomous Build Plan
+# Secret Coverage Autonomous Build Plan
 
 > **For Hermes:** execute this as a long-running product build, not as a one-shot. Use TDD for scanner behavior, keep scope narrow, and ship small verified increments.
 
-**Goal:** Build EnvGuard into a trustworthy local-first CLI/GitHub Action that detects missing or risky environment variables before deployment fails.
+**Goal:** Build Secret Coverage into a trustworthy local-first CLI/GitHub Action that detects missing or risky environment variables before deployment fails.
 
-**Architecture:** TypeScript Node CLI with deterministic scanners per platform. Scanner modules emit normalized declarations/references/findings; engine derives cross-file findings; formatters produce Markdown/JSON. No cloud dependency in MVP. EnvGuard is local-first and metadata-only: secret values must never leave the developer machine, CI runner, or GitHub Action environment.
+**Architecture:** TypeScript Node CLI with deterministic scanners per platform. Scanner modules emit normalized declarations/references/findings; engine derives cross-file findings; formatters produce Markdown/JSON. No cloud dependency in MVP. Secret Coverage is local-first and metadata-only: secret values must never leave the developer machine, CI runner, or GitHub Action environment.
 
 **Tech Stack:** TypeScript, Node.js >=20, pnpm, Vitest, commander, fast-glob, yaml, GitHub Actions.
 
-**Security Positioning:** EnvGuard is not a secret manager, vault, credential store, or secret synchronization system. It is deployment readiness monitoring, configuration observability, env drift detection, CI/CD consistency validation, and deployment risk analysis.
+**Security Positioning:** Secret Coverage is not a secret manager, vault, credential store, or secret synchronization system. It is deployment readiness monitoring, configuration observability, env drift detection, CI/CD consistency validation, and deployment risk analysis.
 
 ---
 
 ## Current State Snapshot
 
-Already created under `/Users/matilda/www/envguard`:
+Already created under `/Users/matilda/www/secret-coverage`:
 
 - `package.json`, `tsconfig.json`, `vitest.config.ts`, `.gitignore`, `action.yml`
 - TDD test file: `tests/scanner.test.ts`
@@ -29,11 +29,11 @@ This is not release-ready. Treat current code as a draft that must be verified, 
 
 ### Product DoD
 
-- [x] `envguard scan` works from any repo root.
-- [x] `envguard scan --format markdown` prints concise actionable Markdown.
-- [x] `envguard scan --json` prints stable machine-readable JSON.
-- [x] `envguard scan --strict` exits non-zero on critical or warning findings.
-- [x] `envguard scan --ci` exits non-zero on critical findings.
+- [x] `secret-coverage scan` works from any repo root.
+- [x] `secret-coverage scan --format markdown` prints concise actionable Markdown.
+- [x] `secret-coverage scan --json` prints stable machine-readable JSON.
+- [x] `secret-coverage scan --strict` exits non-zero on critical or warning findings.
+- [x] `secret-coverage scan --ci` exits non-zero on critical findings.
 - [x] Findings are deterministic; no LLM is used for detection.
 - [x] Every finding includes severity, type, variable, message, and recommendation when useful.
 - [x] Default output is low-noise and actionable.
@@ -44,7 +44,7 @@ This is not release-ready. Treat current code as a draft that must be verified, 
 - [x] Reports include variable names, existence, references, files, finding types, and recommendations only.
 - [x] Reports never include raw `.env` contents, API keys, tokens, passwords, certificates, database credentials, JWT secrets, or raw env values.
 - [x] Plaintext-secret findings mention variable name and file only; never print the value.
-- [x] Documentation clearly positions EnvGuard as metadata-only deployment readiness tooling, not secrets management.
+- [x] Documentation clearly positions Secret Coverage as metadata-only deployment readiness tooling, not secrets management.
 - [x] Future cloud features, if any, accept metadata/fingerprints only and never raw secret values.
 
 ### Detection DoD

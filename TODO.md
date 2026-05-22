@@ -1,4 +1,4 @@
-# EnvGuard TODO
+# Secret Coverage TODO
 
 ## MVP implementation
 

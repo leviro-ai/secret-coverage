@@ -1,11 +1,11 @@
-# EnvGuard Progress Log
+# Secret Coverage Progress Log
 
 ## 2026-05-22
 
 ### Planning / cadence
 
 - Darius corrected direction: this should not be a one-shot project.
-- Created autonomous build plan and Definition of Done at `docs/plans/2026-05-22-envguard-autonomous-build-plan.md`.
+- Created autonomous build plan and Definition of Done at `docs/plans/2026-05-22-secret-coverage-autonomous-build-plan.md`.
 - Configured autonomous heartbeat cron job `9f2b31785aad`.
 - Updated heartbeat cadence from every 6 hours to every 1 hour.
 
@@ -25,7 +25,7 @@ pnpm build
 
 Notes:
 
-- `/Users/matilda/www/envguard` is not initialized as a git repository yet (`git status` reported: `fatal: not a git repository`).
+- `/Users/matilda/www/secret-coverage` is not initialized as a git repository yet (`git status` reported: `fatal: not a git repository`).
 - Current implementation is buildable and testable, but still draft-quality.
 
 ### Task 2 — Fixture-based CLI smoke tests
@@ -149,7 +149,7 @@ pnpm test && pnpm build
 - Duration: ~1m 35s active wall time.
 - Verification: `pnpm test tests/formatters.test.ts && pnpm test && pnpm build` => PASS (5 test files, 22 tests; TypeScript build passes).
 - Schedule estimate: recent completed slices ~1m28s and ~1m35s; rolling avg ~1m32s, formula recommends the 15m minimum. Existing cadence was previously noted as 30m; no schedule change applied in this heartbeat to avoid thrashing.
-- Git/repo note: `/Users/matilda/www/envguard` is still not initialized as a git repository (`git status` returned `NO_GIT`).
+- Git/repo note: `/Users/matilda/www/secret-coverage` is still not initialized as a git repository (`git status` returned `NO_GIT`).
 - Next: continue Task 5 by hardening finding scoring/model tests at the engine level, including deterministic dedupe/sort behavior and readiness-score boundaries.
 
 ### Heartbeat 2026-05-22 05:58-06:00 EEST
@@ -158,7 +158,7 @@ pnpm test && pnpm build
 - Duration: ~2m 38s active wall time.
 - Verification: `pnpm test tests/engine.test.ts && pnpm test && pnpm build` => PASS (6 test files, 24 tests; TypeScript build passes).
 - Schedule estimate: recent completed slices ~1m28s, ~1m35s, and ~2m38s; rolling avg ~1m54s, formula recommends the 15m minimum. Existing cadence was left unchanged to avoid schedule churn without explicit cron tooling in this slice.
-- Git/repo note: `/Users/matilda/www/envguard` is still not initialized as a git repository (`git status` returned `NO_GIT`).
+- Git/repo note: `/Users/matilda/www/secret-coverage` is still not initialized as a git repository (`git status` returned `NO_GIT`).
 - Next: finish Task 5 with explicit formatter/CLI expectations for finding schema fields and strict/CI exit behavior, then move to documentation package if stable.
 
 ### Heartbeat 2026-05-22 06:31-06:33 EEST
@@ -167,7 +167,7 @@ pnpm test && pnpm build
 - Duration: ~1m 40s active wall time.
 - Verification: `pnpm test tests/cli.test.ts` => PASS (4 tests); `pnpm test && pnpm build` => PASS (6 test files, 25 tests; TypeScript build passes).
 - Schedule estimate: recent completed slices ~1m35s, ~2m38s, and ~1m40s; rolling avg ~1m58s, formula recommends the 15m minimum. Existing cadence remains every 30m to avoid schedule churn; next cron run shown by Hermes as `2026-05-22T07:01:44.765116+03:00`.
-- Git/repo note: `/Users/matilda/www/envguard` is still not initialized as a git repository (`git status` returned `fatal: not a git repository`).
+- Git/repo note: `/Users/matilda/www/secret-coverage` is still not initialized as a git repository (`git status` returned `fatal: not a git repository`).
 - Next: begin Task 6 documentation package by drafting README/installation docs and generating sample reports from the verified fixtures.
 
 ### Manual continuation 2026-05-22 06:43-06:47 EEST
@@ -207,7 +207,7 @@ pnpm test && pnpm build
 - Duration: ~3m 15s active wall time.
 - Verification: `pnpm test tests/formatters.test.ts tests/cli.test.ts && pnpm test && pnpm build` => PASS (targeted 2 files/9 tests; full 6 test files/28 tests; TypeScript build passes).
 - Schedule estimate: recent completed slices are ~2m38s, ~1m40s, ~4m, ~5m, and ~3m15s; rolling avg ~3m19s, formula recommends the 15m minimum. Existing cadence remains every 30m to avoid schedule churn; Hermes shows next cron at 07:34 local.
-- Git/repo note: `/Users/matilda/www/envguard` is still not initialized as a git repository (`git status` returned `NO_GIT`).
+- Git/repo note: `/Users/matilda/www/secret-coverage` is still not initialized as a git repository (`git status` returned `NO_GIT`).
 - Next: continue Task 6/7 by reviewing docs for command consistency and adding GitHub Action workflow/test metadata.
 
 ### Heartbeat 2026-05-22 07:37-07:39 EEST
@@ -216,23 +216,23 @@ pnpm test && pnpm build
 - Duration: ~2m 23s active wall time.
 - Verification: `pnpm test tests/action-metadata.test.ts` => PASS; `pnpm test && pnpm build` => PASS (7 test files, 29 tests; TypeScript build passes).
 - Schedule estimate: recent completed slices ~1m40s, ~4m, ~5m, ~3m15s, and ~2m23s; rolling avg ~3m16s, formula recommends the 15m minimum. Existing cron `9f2b31785aad` was updated from every 30m to every 15m because repeated verified slices are under 5m and this is a material low-latency improvement above the safety minimum. Next cron: 07:54 local.
-- Git/repo note: `/Users/matilda/www/envguard` is still not initialized as a git repository (`git status` returned `fatal: not a git repository`).
+- Git/repo note: `/Users/matilda/www/secret-coverage` is still not initialized as a git repository (`git status` returned `fatal: not a git repository`).
 - Next: finish release readiness cleanup by validating README/installation/release command examples against built CLI and tightening any stale GitHub Action wording.
 
 ### Heartbeat 2026-05-22 07:55-07:57 EEST
 
-- Slice: release-readiness docs command validation; added `tests/docs-examples.test.ts` to lock README/installation CLI options against `envguard scan --help` and keep GitHub Action snippets aligned with `action.yml` inputs.
+- Slice: release-readiness docs command validation; added `tests/docs-examples.test.ts` to lock README/installation CLI options against `secret-coverage scan --help` and keep GitHub Action snippets aligned with `action.yml` inputs.
 - Duration: ~1m 30s active wall time.
 - Verification: `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `pnpm test && pnpm build` => PASS (8 test files, 31 tests; TypeScript build passes); release smoke `node dist/cli.js scan --path examples/fixtures/broken-app --ci` exits 1 and clean fixture exits 0.
 - Schedule estimate: recent completed slices ~4m, ~5m, ~3m15s, ~2m23s, and ~1m30s; rolling avg ~3m14s, formula recommends the 15m minimum. Existing cron `9f2b31785aad` is already every 15m, so no schedule change applied. Next cron: 08:10 local.
-- Git/repo note: `/Users/matilda/www/envguard` is still not initialized as a git repository (`git status` returned `fatal: not a git repository`).
+- Git/repo note: `/Users/matilda/www/secret-coverage` is still not initialized as a git repository (`git status` returned `fatal: not a git repository`).
 - Next: add generated dist/artifact release checks or sample-report freshness tests, then move through final release checklist cleanup without publishing.
 
 ### Manual continuation 2026-05-22 08:04-08:09 EEST
 
 - Slice: applied Darius's MVP-vs-roadmap correction while preserving existing implementations. CircleCI remains in MVP; no current scanner implementations were deleted.
 - Added GitLab CI/CD scanner and scanner-level test coverage.
-- Updated README to look like modern DevOps / AI-era deployment reliability tooling, with required sections: Problem, What EnvGuard Does, MVP supported platforms, Planned Integrations, Example Drift Reports, Why This Exists.
+- Updated README to look like modern DevOps / AI-era deployment reliability tooling, with required sections: Problem, What Secret Coverage Does, MVP supported platforms, Planned Integrations, Example Drift Reports, Why This Exists.
 - Created roadmap/GEO structure:
   - `docs/roadmap/strategic-roadmap.md`
   - `docs/integrations/planned-integrations.md`
@@ -240,7 +240,7 @@ pnpm test && pnpm build
 - Updated landing copy and autonomous build plan to separate narrow MVP implementation from broader roadmap visibility and LLM/GEO discoverability.
 - Duration: ~5m active wall time.
 - Verification: `pnpm test && pnpm build` => PASS (8 test files, 32 tests; TypeScript build passes).
-- Schedule note: EnvGuard heartbeat has adapted to every 15m. Next cron from Hermes is 08:12 local.
+- Schedule note: Secret Coverage heartbeat has adapted to every 15m. Next cron from Hermes is 08:12 local.
 - Next: continue docs/roadmap cleanup and then add GitHub Action workflow/test metadata polish without broadening MVP implementation.
 
 ### Heartbeat 2026-05-22 08:12-08:14 EEST
@@ -249,16 +249,16 @@ pnpm test && pnpm build
 - Duration: ~1m 42s active wall time.
 - Verification: `pnpm test tests/sample-reports.test.ts && pnpm test && pnpm build` => PASS (targeted 2 tests; full 9 test files, 34 tests; TypeScript build passes).
 - Schedule estimate: recent completed slices ~3m15s, ~2m23s, ~1m30s, ~5m, and ~1m42s; rolling avg ~2m46s, formula recommends the 15m minimum. Existing cron `9f2b31785aad` is already every 15m, so no schedule change applied. Next cron: 08:27 local.
-- Git/repo note: `/Users/matilda/www/envguard` is still not initialized as a git repository (`git status` returned `fatal: not a git repository`).
+- Git/repo note: `/Users/matilda/www/secret-coverage` is still not initialized as a git repository (`git status` returned `fatal: not a git repository`).
 - Next: continue release-readiness cleanup with docs/roadmap consistency and GitHub Action wording polish, without broadening MVP scope or publishing anything.
 
 ### Heartbeat 2026-05-22 08:30-08:32 EEST
 
-- Slice: release publishing-gate hardening; added `tests/release-checklist.test.ts` to lock v0.1.0 release checks, package metadata, built-CLI artifact expectations, and explicit approval gates. Updated `RELEASE.md` to state that EnvGuard must not be published to npm or released on GitHub without Darius approval, and that `dist/cli.js` must be built before tagging because the GitHub Action executes it.
+- Slice: release publishing-gate hardening; added `tests/release-checklist.test.ts` to lock v0.1.0 release checks, package metadata, built-CLI artifact expectations, and explicit approval gates. Updated `RELEASE.md` to state that Secret Coverage must not be published to npm or released on GitHub without Darius approval, and that `dist/cli.js` must be built before tagging because the GitHub Action executes it.
 - Duration: ~1m 38s active wall time.
 - Verification: `pnpm test tests/release-checklist.test.ts && pnpm test && pnpm build` => PASS (targeted 1 test; full 10 test files, 35 tests; TypeScript build passes).
 - Schedule estimate: recent completed slices ~2m23s, ~1m30s, ~5m, ~1m42s, and ~1m38s; rolling avg ~2m27s, formula recommends the 15m minimum. Existing cron `9f2b31785aad` is already every 15m, so no schedule change applied. Next cron: 08:45 local.
-- Git/repo note: `/Users/matilda/www/envguard` is now initialized and tracking `origin/main`; working tree had release-doc changes in progress.
+- Git/repo note: `/Users/matilda/www/secret-coverage` is now initialized and tracking `origin/main`; working tree had release-doc changes in progress.
 - Next: add a lightweight docs/roadmap consistency check so planned integrations stay clearly labeled as planned and do not imply MVP support, then continue final README/GitHub Action wording polish.
 
 ### Heartbeat 2026-05-22 08:45-08:49 EEST
@@ -292,7 +292,7 @@ pnpm test && pnpm build
 
 - Slice: final MVP readiness audit. Marked the autonomous build plan DoD as complete based on verified implementation/docs/release checks, and updated `TODO.md` to reflect completed GitHub Action summary polish plus repository setup.
 - Duration: ~4m active wall time.
-- Verification: `pnpm test && pnpm build` plus release smoke checks (`broken-app --ci` exits 1, `clean-app --ci` exits 0) => PASS (11 test files, 38 tests; TypeScript build passes). `rg "^- \\[ \\]" docs/plans/2026-05-22-envguard-autonomous-build-plan.md` => PASS (no unchecked DoD items remain).
+- Verification: `pnpm test && pnpm build` plus release smoke checks (`broken-app --ci` exits 1, `clean-app --ci` exits 0) => PASS (11 test files, 38 tests; TypeScript build passes). `rg "^- \\[ \\]" docs/plans/2026-05-22-secret-coverage-autonomous-build-plan.md` => PASS (no unchecked DoD items remain).
 - Schedule estimate: recent completed slices ~1m38s, ~4m25s, ~3m30s, ~2m25s, and ~4m; rolling avg ~3m12s. Formula stays within the 15-20m low-latency band; existing cron `9f2b31785aad` remains every 15m, so no schedule change applied. Next cron: 10:06 local.
 - Git/repo note: repo is initialized and tracking `origin/main`; readiness audit docs are ready to commit/push.
 - Next: commit and push the readiness audit, then prepare a short Darius review note and await approval before any npm/GitHub release publishing.
@@ -326,7 +326,7 @@ pnpm test && pnpm build
 
 ### Manual continuation 2026-05-22 10:41-10:46 EEST
 
-- Slice: package/security/code-quality gates and README trust badges. Added `tests/quality-gates.test.ts` with RED first to lock package scripts, CI gate ordering, and README badges. Added `typecheck`, `lint`, `security:audit`, `package:check`, and `quality` scripts; CI now runs lint, tests, build, high-severity dependency audit, and npm package dry-run before fixture smoke checks. README now shows CI, pre-release package, MIT, TypeScript, and local-first badges.
+- Slice: package/security/code-quality gates and README trust badges. Added `tests/quality-gates.test.ts` with RED first to lock package scripts, CI gate ordering, and README badges. Added `typecheck`, `lint`, `security:audit`, `package:check`, and `quality` scripts; CI now runs lint, tests, build, high-severity dependency audit, and npm package dry-run before fixture smoke checks. README now shows CI, pre-release package, license, TypeScript, and local-first badges.
 - Duration: ~5m active wall time.
 - Verification: `pnpm vitest run tests/quality-gates.test.ts` => RED, then PASS; `pnpm quality` => PASS (typecheck, 12 test files / 43 tests, build, high-severity audit, package dry-run). `pnpm audit --audit-level high` reports 2 moderate vulnerabilities but exits green because the CI gate blocks high+ severity. Remote `gh run watch 26275314848 --exit-status` => PASS.
 - Review: independent reviewer reported no blocking security concerns or logic errors; accepted suggestion to strengthen CI ordering assertions for all quality gates.
@@ -345,9 +345,9 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 11:11-11:12 EEST
 
-- Slice: final pre-release packaged-CLI smoke test without publishing. Built the project, created a local `envguard-0.1.0.tgz` tarball under `/tmp/envguard-preflight`, installed it into a temporary npm app, verified `envguard scan --help`, and smoke-tested the installed binary against clean and broken fixtures.
+- Slice: final pre-release packaged-CLI smoke test without publishing. Built the project, created a local `secret-coverage-0.1.0.tgz` tarball under `/tmp/secret-coverage-preflight`, installed it into a temporary npm app, verified `secret-coverage scan --help`, and smoke-tested the installed binary against clean and broken fixtures.
 - Duration: ~1m 45s active wall time.
-- Verification: `pnpm build && pnpm pack --pack-destination /tmp/envguard-preflight && npm install /tmp/envguard-preflight/envguard-0.1.0.tgz && ./node_modules/.bin/envguard scan --help && ./node_modules/.bin/envguard scan --path examples/fixtures/clean-app --ci && ./node_modules/.bin/envguard scan --path examples/fixtures/broken-app --ci` => PASS (clean fixture exits 0; broken fixture exits 1 as expected). Remote CI `gh run watch 26276435933 --exit-status` => PASS.
+- Verification: `pnpm build && pnpm pack --pack-destination /tmp/secret-coverage-preflight && npm install /tmp/secret-coverage-preflight/secret-coverage-0.1.0.tgz && ./node_modules/.bin/secret-coverage scan --help && ./node_modules/.bin/secret-coverage scan --path examples/fixtures/clean-app --ci && ./node_modules/.bin/secret-coverage scan --path examples/fixtures/broken-app --ci` => PASS (clean fixture exits 0; broken fixture exits 1 as expected). Remote CI `gh run watch 26276435933 --exit-status` => PASS.
 - Schedule estimate: recent completed slices remain roughly 3-5m with this check under 2m, so the 15m heartbeat remains safe and no schedule change was applied. Cron `9f2b31785aad` next run: 11:25 local.
 - Git/repo note: progress-log update committed and pushed as `fcd0e06`; no release was published and no external artifact was created.
 - Next: stay in Darius-review/approval-gated mode before publishing; next useful slice is a short review-readiness check of recently committed CLI argument-separator behavior and docs wording, or pause substantive changes until Darius approves release.
@@ -363,7 +363,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 11:32-11:40 EEST
 
-- Slice: completed a TDD env-template compatibility hardening pass after new RED tests appeared in the worktree. EnvGuard now treats `.env.dist` as a default env template alongside `.env.example`, supports `scanProject(root, { envTemplate })`, exposes `envguard scan --env-template <file>` / `--env-example <file>`, and emits deterministic notices when no searched env files exist. Sample reports and docs were refreshed to match the generalized `missing-from-template` finding type without printing secret values.
+- Slice: completed a TDD env-template compatibility hardening pass after new RED tests appeared in the worktree. Secret Coverage now treats `.env.dist` as a default env template alongside `.env.example`, supports `scanProject(root, { envTemplate })`, exposes `secret-coverage scan --env-template <file>` / `--env-example <file>`, and emits deterministic notices when no searched env files exist. Sample reports and docs were refreshed to match the generalized `missing-from-template` finding type without printing secret values.
 - Duration: ~8m active wall time.
 - Verification: `pnpm test tests/scanner.test.ts tests/cli.test.ts tests/engine.test.ts tests/docs-examples.test.ts tests/sample-reports.test.ts && pnpm quality` => PASS (targeted 5 files / 19 tests; full quality gate: typecheck, 12 test files / 49 tests, build, moderate audit, npm package dry-run). Remote CI `gh run watch 26277686162 --exit-status` => PASS.
 - Schedule estimate: recent completed slices ~4m1s, ~1m45s, ~1m22s, and ~8m; rolling avg ~3m47s, so the existing 15m heartbeat remains safe and no schedule change was applied. Cron `9f2b31785aad` next run: 11:44 local.
@@ -390,7 +390,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 12:37-12:38 EEST
 
-- Slice: lightweight release-readiness/approval-gate check after the latest CircleCI inline-env-literal hardening commit. Confirmed no overlapping EnvGuard build/test process was active, repo is clean and tracking `origin/main`, latest remote GitHub Actions run is green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Slice: lightweight release-readiness/approval-gate check after the latest CircleCI inline-env-literal hardening commit. Confirmed no overlapping Secret Coverage build/test process was active, repo is clean and tracking `origin/main`, latest remote GitHub Actions run is green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
 - Duration: ~1m active wall time.
 - Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit, npm package dry-run). Latest remote GitHub Actions run `26280196031` => PASS.
 - Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 12:51 local.
@@ -399,7 +399,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 12:54-12:55 EEST
 
-- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping EnvGuard test/build process was active, repo was clean and tracking `origin/main`, latest GitHub Actions runs are green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping Secret Coverage test/build process was active, repo was clean and tracking `origin/main`, latest GitHub Actions runs are green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
 - Duration: ~49s active wall time.
 - Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit, npm package dry-run). Latest pre-slice remote GitHub Actions run `26280311060` => PASS; post-push run `26281131968` for commit `144a5c9` => PASS.
 - Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 13:09 local.
@@ -408,7 +408,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 13:13-13:14 EEST
 
-- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping EnvGuard build/test process was active, repo was clean and tracking `origin/main`, latest GitHub Actions runs were green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping Secret Coverage build/test process was active, repo was clean and tracking `origin/main`, latest GitHub Actions runs were green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
 - Duration: ~45s active wall time.
 - Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit with no known vulnerabilities, npm package dry-run). Latest remote GitHub Actions run `26281131968` => PASS.
 - Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 13:28 local.
@@ -417,7 +417,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 13:30-13:31 EEST
 
-- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping EnvGuard build/test process was active, repo is clean and tracking `origin/main`, latest GitHub Actions runs are green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping Secret Coverage build/test process was active, repo is clean and tracking `origin/main`, latest GitHub Actions runs are green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
 - Duration: ~47s active wall time.
 - Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit with no known vulnerabilities, npm package dry-run). Latest remote GitHub Actions run `26281131968` => PASS.
 - Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 13:45 local.
@@ -426,7 +426,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 13:47-13:48 EEST
 
-- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping EnvGuard build/test process was active, repo is clean and tracking `origin/main`, latest GitHub Actions run remains green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping Secret Coverage build/test process was active, repo is clean and tracking `origin/main`, latest GitHub Actions run remains green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
 - Duration: ~56s active wall time.
 - Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit with no known vulnerabilities, npm package dry-run).
 - Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 14:01 local.
@@ -435,7 +435,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 14:03-14:05 EEST
 
-- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping EnvGuard build/test process was active, repo is clean and tracking `origin/main`, latest GitHub Actions run remains green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping Secret Coverage build/test process was active, repo is clean and tracking `origin/main`, latest GitHub Actions run remains green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
 - Duration: ~1m 17s active wall time.
 - Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit with no known vulnerabilities, npm package dry-run).
 - Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 14:18 local.
@@ -444,7 +444,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 14:21-14:23 EEST
 
-- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping EnvGuard build/test process was active, repo was clean and tracking `origin/main`, latest GitHub Actions runs remain green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping Secret Coverage build/test process was active, repo was clean and tracking `origin/main`, latest GitHub Actions runs remain green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
 - Duration: ~1m 30s active wall time.
 - Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit with no known vulnerabilities, npm package dry-run). Latest remote GitHub Actions run `26281131968` => PASS.
 - Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 14:35 local.
@@ -453,7 +453,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 14:40-14:41 EEST
 
-- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping EnvGuard build/test process was active, repo was clean and tracking `origin/main`, latest GitHub Actions runs remain green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping Secret Coverage build/test process was active, repo was clean and tracking `origin/main`, latest GitHub Actions runs remain green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
 - Duration: ~1m 11s active wall time.
 - Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit with no known vulnerabilities, npm package dry-run). Latest remote GitHub Actions run `26281131968` => PASS.
 - Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 14:55 local.
@@ -462,7 +462,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 14:57-14:58 EEST
 
-- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping EnvGuard build/test process was active, repo is clean and tracking `origin/main`, latest GitHub Actions runs remain green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping Secret Coverage build/test process was active, repo is clean and tracking `origin/main`, latest GitHub Actions runs remain green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
 - Duration: ~49s active wall time.
 - Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit with no known vulnerabilities, npm package dry-run). Latest remote GitHub Actions run `26281131968` => PASS.
 - Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 15:12 local.
@@ -471,7 +471,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 15:14-15:15 EEST
 
-- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping EnvGuard build/test process was active, repo was clean and tracking `origin/main`, latest GitHub Actions run remains green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping Secret Coverage build/test process was active, repo was clean and tracking `origin/main`, latest GitHub Actions run remains green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
 - Duration: ~1m active wall time.
 - Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit with no known vulnerabilities, npm package dry-run). Latest remote GitHub Actions run `26281131968` => PASS.
 - Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 15:29 local.
@@ -480,7 +480,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 15:31-15:32 EEST
 
-- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping EnvGuard build/test process was active, repo is clean and tracking `origin/main`, latest GitHub Actions runs remain green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping Secret Coverage build/test process was active, repo is clean and tracking `origin/main`, latest GitHub Actions runs remain green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
 - Duration: ~49s active wall time.
 - Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit with no known vulnerabilities, npm package dry-run). Latest remote GitHub Actions run `26281131968` => PASS.
 - Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 15:46 local.
@@ -489,7 +489,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 15:47-15:48 EEST
 
-- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping EnvGuard build/test process was active, repo is clean and tracking `origin/main`, latest GitHub Actions runs remain green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping Secret Coverage build/test process was active, repo is clean and tracking `origin/main`, latest GitHub Actions runs remain green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
 - Duration: ~46s active wall time.
 - Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit with no known vulnerabilities, npm package dry-run). Latest remote GitHub Actions run `26281131968` => PASS.
 - Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 16:02 local.
@@ -498,7 +498,7 @@ pnpm test && pnpm build
 
 ### Heartbeat 2026-05-22 16:04-16:05 EEST
 
-- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping EnvGuard build/test process was active, repo was clean and tracking `origin/main`, latest GitHub Actions runs remain green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
+- Slice: lightweight Darius-review/approval-gate check. Confirmed no overlapping Secret Coverage build/test process was active, repo was clean and tracking `origin/main`, latest GitHub Actions runs remain green, and the full local quality gate still passes. No product code change was needed and no npm/GitHub release was published.
 - Duration: ~43s active wall time.
 - Verification: `pnpm quality` => PASS (typecheck, 12 test files / 53 tests, build, moderate audit with no known vulnerabilities, npm package dry-run). Latest remote GitHub Actions run `26281131968` => PASS.
 - Schedule estimate: recent completed slices remain in the short-slice band; existing cron `9f2b31785aad` is already at the safe 15m minimum, so no schedule change was applied. Next cron: 16:19 local.

@@ -1,6 +1,6 @@
 # Strategic Roadmap
 
-EnvGuard separates MVP implementation scope from roadmap visibility.
+Secret Coverage separates MVP implementation scope from roadmap visibility.
 
 ## Product rule
 

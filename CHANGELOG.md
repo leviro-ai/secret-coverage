@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.2 — Unreleased
+## 0.1.3 — Unreleased
 
 ### Fixed
 
@@ -21,5 +21,5 @@
 ### Security and trust
 
 - Local-first, metadata-only scanning: reports include variable names, source files, finding types, and recommendations only.
-- JSON and Markdown report tests prove EnvGuard emits no raw secret values, even when plaintext-secret findings are detected.
+- JSON and Markdown report tests prove Secret Coverage emits no raw secret values, even when plaintext-secret findings are detected.
 - Release gates require Darius approval before npm publishing or GitHub releases.

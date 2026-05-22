@@ -14,12 +14,12 @@
 
 ## Publishing gate
 
-EnvGuard is not approved for external publishing yet.
+Secret Coverage is not approved for external publishing yet.
 
 - Do not publish to npm without explicit Darius approval.
 - Do not create a GitHub release without explicit Darius approval.
 - dist/cli.js must be built before tagging because the GitHub Action executes the built CLI.
-- Confirm package/repository names before replacing `your-org/envguard@v0.1.0` examples.
+- Confirm package/repository names before replacing `leviro-ai/secret-coverage@v0.1.0` examples.
 
 ## Known limitations to disclose
 

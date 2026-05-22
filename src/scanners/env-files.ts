@@ -33,7 +33,7 @@ export const scanEnvFiles: Scanner = async ({ root, envTemplateFiles, explicitEn
     }
   }
   const notices = foundEnvFiles.length === 0
-    ? [`No env files found. EnvGuard looked for: ${envFiles.join(', ')}. Use --env-template <file> if your repo uses a different template filename.`]
+    ? [`No env files found. Secret Coverage looked for: ${envFiles.join(', ')}. Use --env-template <file> if your repo uses a different template filename.`]
     : [];
 
   return { declared, referenced: [], findings, notices };

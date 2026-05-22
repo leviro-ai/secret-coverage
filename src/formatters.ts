@@ -34,7 +34,7 @@ export function formatJson(result: ScanResult): string {
 export function formatMarkdown(result: ScanResult): string {
   const stable = stableResult(result);
   const lines = [
-    '# EnvGuard Report',
+    '# Secret Coverage Report',
     '',
     `Readiness score: **${stable.summary.readinessScore}/100**`,
     '',

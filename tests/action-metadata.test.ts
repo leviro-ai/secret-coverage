@@ -16,18 +16,21 @@ describe('GitHub Action metadata', () => {
     expect(action.inputs.strict.default).toBe('false');
     expect(action.inputs.format.default).toBe('markdown');
 
+    expect(action.name).toBe('Secret Coverage');
+    expect(action.author).toBe('Leviro AI');
+
     const [step] = action.runs.steps;
-    expect(step.name).toBe('Run EnvGuard scan');
+    expect(step.name).toBe('Run Secret Coverage scan');
     expect(step.shell).toBe('bash');
     expect(step.env).toEqual({
-      ENVGUARD_FORMAT: '${{ inputs.format }}',
-      ENVGUARD_PATH: '${{ inputs.path }}',
-      ENVGUARD_STRICT: '${{ inputs.strict }}',
+      SECRET_COVERAGE_FORMAT: '${{ inputs.format }}',
+      SECRET_COVERAGE_PATH: '${{ inputs.path }}',
+      SECRET_COVERAGE_STRICT: '${{ inputs.strict }}',
     });
-    expect(step.run).toContain('args=(scan --path "$ENVGUARD_PATH" --format "$ENVGUARD_FORMAT" --ci)');
+    expect(step.run).toContain('args=(scan --path "$SECRET_COVERAGE_PATH" --format "$SECRET_COVERAGE_FORMAT" --ci)');
     expect(step.run).toContain('args+=(--strict)');
     expect(step.run).toContain('node "$GITHUB_ACTION_PATH/dist/cli.js" "${args[@]}"');
-    expect(step.run).toContain('## EnvGuard report');
+    expect(step.run).toContain('## Secret Coverage report');
     expect(step.run).toContain('>> "$GITHUB_STEP_SUMMARY"');
     expect(step.run).toContain('exit "$status"');
   });

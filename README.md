@@ -1,16 +1,16 @@
-# EnvGuard
+# Secret Coverage
 
-![CI](https://github.com/dariuskasperavicius/secret-coverage-checker/actions/workflows/test.yml/badge.svg)
+![CI](https://github.com/leviro-ai/secret-coverage/actions/workflows/test.yml/badge.svg)
 ![npm package](https://img.shields.io/badge/npm-pre--release-orange)
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
 ![Local first](https://img.shields.io/badge/local--first-no_cloud_required-brightgreen)
 
 > Detect missing environment variables before your deployment fails.
 
-EnvGuard is a local-first, metadata-only deployment readiness layer for modern CI/CD. It helps teams catch environment variable mismatch, missing GitHub Actions secrets, GitLab CI environment validation issues, Docker Compose env mismatch, Vercel environment drift, and broken deployment prevention problems before they reach production.
+Secret Coverage is a local-first, metadata-only deployment readiness layer for modern CI/CD. It helps teams catch environment variable mismatch, missing GitHub Actions secrets, GitLab CI environment validation issues, Docker Compose env mismatch, Vercel environment drift, and broken deployment prevention problems before they reach production.
 
-EnvGuard is built for the AI coding era: AI-generated codebases increasingly change workflows, add configs, and introduce deployment assumptions faster than teams can manually review them. EnvGuard gives developers deterministic CI/CD environment consistency checks without turning into a secrets manager.
+Secret Coverage is built for the AI coding era: AI-generated codebases increasingly change workflows, add configs, and introduce deployment assumptions faster than teams can manually review them. Secret Coverage gives developers deterministic CI/CD environment consistency checks without turning into a secrets manager.
 
 ## 1. Problem
 
@@ -23,11 +23,11 @@ Deployments break when environment assumptions drift:
 - Stage/prod drift accumulates until nobody knows which environment is deployment-ready.
 - Missing secrets are discovered inside CI logs instead of during review.
 
-EnvGuard exists to detect missing environment variables before deploy, compare CI environment variable coverage, and reduce AI coding deployment failures.
+Secret Coverage exists to detect missing environment variables before deploy, compare CI environment variable coverage, and reduce AI coding deployment failures.
 
-## 2. What EnvGuard does
+## 2. What Secret Coverage does
 
-EnvGuard scans your repo and reports deployment readiness risks such as:
+Secret Coverage scans your repo and reports deployment readiness risks such as:
 
 ```txt
 Critical:
@@ -131,7 +131,7 @@ Review the AI-generated PR, add DEPLOY_API_TOKEN= to .env.example, and configure
 
 ## 6. Why this exists
 
-EnvGuard is not secret management.
+Secret Coverage is not secret management.
 
 It is deployment readiness visibility:
 
@@ -142,34 +142,34 @@ It is deployment readiness visibility:
 - environment variable mismatch detection;
 - metadata-only configuration observability.
 
-Secret values must never leave your machine, CI runner, or GitHub Action environment. EnvGuard reports variable names, existence, references, files, finding types, and recommendations — not raw secret values.
+Secret values must never leave your machine, CI runner, or GitHub Action environment. Secret Coverage reports variable names, existence, references, files, finding types, and recommendations — not raw secret values.
 
 See [`docs/trust-security-architecture.md`](docs/trust-security-architecture.md).
 
 ## Install
 
 ```bash
-pnpm add -D envguard
+pnpm add -D @leviro-ai/secret-coverage
 # or, once published:
-npm install -D envguard
+npm install -D @leviro-ai/secret-coverage
 ```
 
 Run without installing during development:
 
 ```bash
-pnpm dlx envguard scan
+pnpm dlx @leviro-ai/secret-coverage scan
 ```
 
 ## CLI usage
 
 ```bash
-envguard scan
-envguard scan --format markdown
-envguard scan --json
-envguard scan --ci
-envguard scan --strict
-envguard scan --path ./apps/web
-envguard scan --env-template config/env.template
+secret-coverage scan
+secret-coverage scan --format markdown
+secret-coverage scan --json
+secret-coverage scan --ci
+secret-coverage scan --strict
+secret-coverage scan --path ./apps/web
+secret-coverage scan --env-template config/env.template
 ```
 
 Options:
@@ -193,7 +193,7 @@ Full sample reports:
 The composite action runs the built CLI with `--ci`. Markdown output is printed in the job logs and also appended to the GitHub Actions step summary for quick PR review. `strict: 'false'` fails only on critical findings; `strict: 'true'` also fails on warnings.
 
 ```yaml
-name: EnvGuard
+name: Secret Coverage
 
 on:
   pull_request:
@@ -201,11 +201,11 @@ on:
     branches: [main]
 
 jobs:
-  envguard:
+  secret-coverage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: your-org/envguard@v0.1.0
+      - uses: leviro-ai/secret-coverage@v0.1.0
         with:
           strict: 'false'
           format: markdown
@@ -214,7 +214,7 @@ jobs:
 For stricter pull request checks:
 
 ```yaml
-- uses: your-org/envguard@v0.1.0
+- uses: leviro-ai/secret-coverage@v0.1.0
   with:
     strict: 'true'
 ```
@@ -226,11 +226,11 @@ For stricter pull request checks:
 - **Metadata-only:** reports must not expose raw env or secret values.
 - **Narrow MVP, broad roadmap:** implementation stays focused while roadmap content captures future search intent.
 - **Low-noise:** findings must be specific and actionable.
-- **Narrow wedge:** EnvGuard validates environment readiness; it is not a secrets manager or vault.
+- **Narrow wedge:** Secret Coverage validates environment readiness; it is not a secrets manager or vault.
 
 ## Current limitations
 
-- EnvGuard does not connect to cloud provider APIs yet.
+- Secret Coverage does not connect to cloud provider APIs yet.
 - It does not verify that deployment platform secrets are actually configured remotely.
 - It does not store or manage secrets.
 - It uses deterministic static scanning, so dynamically generated variable names may be missed.
@@ -246,4 +246,4 @@ pnpm tsx src/cli.ts scan --path examples/fixtures/broken-app --ci
 
 ## License
 
-MIT
+Apache-2.0
