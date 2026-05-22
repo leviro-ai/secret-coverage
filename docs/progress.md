@@ -297,6 +297,15 @@ pnpm test && pnpm build
 - Git/repo note: repo is initialized and tracking `origin/main`; readiness audit docs are ready to commit/push.
 - Next: commit and push the readiness audit, then prepare a short Darius review note and await approval before any npm/GitHub release publishing.
 
+### Heartbeat 2026-05-22 10:10-10:13 EEST
+
+- Slice: release-readiness trust checklist and CLI test stability cleanup. Confirmed the readiness audit is already committed/pushed, marked `docs/trust-security-architecture.md` implementation checklist complete based on existing no-raw-secret coverage, and removed `pnpm tsx` startup overhead from CLI tests by invoking the local `tsx` binary directly.
+- Duration: ~2m 32s active wall time.
+- Verification: initial `pnpm test && pnpm build` exposed a flaky 5s timeout in `tests/cli.test.ts`; after test-harness cleanup, `pnpm test tests/cli.test.ts`, `pnpm test`, `pnpm build`, and release smoke checks (`broken-app --ci` exits 1, `clean-app --ci` exits 0) => PASS (11 test files, 39 tests; TypeScript build passes).
+- Schedule estimate: recent completed slices ~4m25s, ~3m30s, ~2m25s, ~4m, and ~2m32s; rolling avg ~3m22s. Formula lands in the 15-20m low-latency band; existing cron `9f2b31785aad` remains every 15m, so no schedule change applied.
+- Git/repo note: repo is initialized and tracking `origin/main`; working tree has trust-doc and CLI-test stability edits ready to commit/push.
+- Next: commit and push this final trust/test-stability cleanup, then keep the project in Darius-review/approval-gated mode before any npm or GitHub release publishing.
+
 ## Next Step
 
-Commit and push the readiness audit, then prepare a short Darius review note and await approval before any npm/GitHub release publishing.
+Commit and push this final trust/test-stability cleanup, then keep the project in Darius-review/approval-gated mode before any npm or GitHub release publishing.

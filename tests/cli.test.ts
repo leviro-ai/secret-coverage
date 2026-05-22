@@ -7,6 +7,7 @@ import { tmpdir } from 'node:os';
 
 const execFileAsync = promisify(execFile);
 const cli = join(process.cwd(), 'src/cli.ts');
+const tsx = join(process.cwd(), 'node_modules/.bin/tsx');
 
 function warningOnlyFixture() {
   const dir = mkdtempSync(join(tmpdir(), 'envguard-cli-warning-'));
@@ -24,7 +25,7 @@ function secretFixture() {
 
 async function runCli(args: string[]) {
   try {
-    const result = await execFileAsync('pnpm', ['tsx', cli, ...args], { cwd: process.cwd() });
+    const result = await execFileAsync(tsx, [cli, ...args], { cwd: process.cwd() });
     return { code: 0, stdout: result.stdout, stderr: result.stderr };
   } catch (error) {
     const err = error as { code?: number; stdout?: string; stderr?: string };

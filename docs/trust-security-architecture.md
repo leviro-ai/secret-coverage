@@ -145,9 +145,9 @@ Avoid language like:
 
 ## Implementation checklist
 
-- [ ] No report prints raw env values.
-- [ ] Plaintext-secret findings include variable name and file only.
-- [ ] JSON output excludes raw values from findings.
-- [ ] Any future cloud API accepts metadata only.
-- [ ] README and docs clearly state local-first and metadata-only behavior.
-- [ ] Tests cover that secret values are not printed in reports.
+- [x] No report prints raw env values.
+- [x] Plaintext-secret findings include variable name and file only.
+- [x] JSON output excludes raw values from findings.
+- [x] Future cloud APIs, if built, must accept metadata only; no cloud API exists in the v0.1.0 MVP.
+- [x] README and docs clearly state local-first and metadata-only behavior.
+- [x] Tests cover that secret values are not printed in reports.
