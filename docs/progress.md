@@ -677,6 +677,17 @@ pnpm test && pnpm build
 - Git/repo note: pushed commit `7dc252a` (`docs: add docker compose drift demo`) to `main`; GitHub Actions run `26314199903` passed. `context.md` remains untracked and was not added. The heartbeat/progress-log follow-up is tracked in git as a separate restart-state commit.
 - Next: keep public posting gated on Darius approval, or adapt the first Dev.to post to include both GitHub Actions and Docker Compose examples before asking for a final publish decision.
 
+### Heartbeat 2026-05-23 01:22-01:25 EEST
+
+- Slice: adapted the first Dev.to public-post recommendation to include both concrete demos before asking for a final publish decision.
+- Updated `docs/marketing/first-post-recommendation.md` and `docs/marketing/devto-github-actions-missing-secret-draft.md` from a single GitHub Actions example into a two-demo post covering GitHub Actions `STRIPE_SECRET_KEY` drift and Docker Compose `REDIS_URL` drift.
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the approval gate is restartable: public posting remains blocked until Darius approves the final Dev.to wording/channel.
+- Duration: ~2m 19s active wall time.
+- Verification: `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS (expected exit code 1); `pnpm --silent scan -- --path examples/demos/docker-compose-missing-redis-url --ci` => PASS (expected exit code 1); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check against the updated Dev.to/recommendation docs => PASS (0 matches).
+- Schedule estimate: last five resumed slices are ~2m16s, ~3m40s, ~2m29s, ~2m13s, and ~2m19s; rolling avg ~2m35s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 01:39 local.
+- Git/repo note: local content/restart-state changes are ready to commit and push; `context.md` remains untracked and should not be added.
+- Next: commit/push the adapted two-demo Dev.to recommendation, verify GitHub Actions, then wait for Darius approval before publishing through CloakBrowser.
+
 ## Next Step
 
-Keep public posting gated on Darius approval, or adapt the first Dev.to post to include both GitHub Actions and Docker Compose examples before asking for a final publish decision.
+Commit/push the adapted two-demo Dev.to recommendation and verify GitHub Actions, then keep public posting gated until Darius approves the final Dev.to wording/channel.

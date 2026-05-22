@@ -1,32 +1,32 @@
-# Dev.to draft — Catch a missing GitHub Actions secret before deploy
+# Dev.to draft — Two tiny deployment drift bugs
 
 Status: reviewed for link readiness, but still draft only. Do not publish until Darius reviews channel framing.
 
 ## Goal
 
-Turn the repo-hosted GitHub Actions missing-secret demo into a useful Dev.to post for developers who have seen CI/CD fail because a workflow referenced an env var or secret that was not documented in `.env.example` / `.env.dist`.
+Turn the repo-hosted demo assets into a useful Dev.to post for developers who have seen deployments fail because CI/CD or runtime config referenced an env var that was not documented in `.env.example` / `.env.dist`.
 
 Positioning: deployment drift detection / CI/CD environment validation / deployment readiness. Avoid generic security-tool framing and avoid broad claims.
 
 ## Title options
 
-1. `Catch missing GitHub Actions secrets before deploy`
-2. `A tiny CI/CD drift bug: GitHub Actions secret added, env template forgotten`
-3. `How to detect missing environment variables before GitHub Actions deploys`
+1. `Two tiny deployment drift bugs: env vars added, templates forgotten`
+2. `Catch missing environment variables before your deploy job does`
+3. `How env templates drift from CI/CD and Docker config`
 4. `Stop finding missing env vars only after your deploy job fails`
 
-Recommended first title: **Catch missing GitHub Actions secrets before deploy**
+Recommended first title: **Two tiny deployment drift bugs: env vars added, templates forgotten**
 
 ## Tags
 
 Recommended Dev.to tags:
 
-- `githubactions`
 - `devops`
-- `node`
+- `githubactions`
+- `docker`
 - `opensource`
 
-Optional swap if the post leans more AI-agent focused: replace `node` with `ai`.
+Optional swap if the post leans more AI-agent focused: replace `docker` with `ai`.
 
 ## Canonical links / assets
 
@@ -34,20 +34,26 @@ Use these after the demo/article assets are committed and visible on GitHub:
 
 - npm: `https://www.npmjs.com/package/@leviro-ai/secret-coverage`
 - GitHub repo: `https://github.com/leviro-ai/secret-coverage`
-- Demo fixture: `https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/github-actions-missing-secret`
-- Repo article source: `https://github.com/leviro-ai/secret-coverage/blob/main/docs/articles/github-actions-missing-secret.md`
+- GitHub Actions demo fixture: `https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/github-actions-missing-secret`
+- GitHub Actions article source: `https://github.com/leviro-ai/secret-coverage/blob/main/docs/articles/github-actions-missing-secret.md`
+- Docker Compose demo fixture: `https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/docker-compose-missing-redis-url`
+- Docker Compose article source: `https://github.com/leviro-ai/secret-coverage/blob/main/docs/articles/docker-compose-missing-redis-url.md`
 
-Link-readiness review 2026-05-22: npm latest is `0.1.5`, repository URL is `git+https://github.com/leviro-ai/secret-coverage.git`, and the GitHub URLs above are expected to resolve after the demo/article/content bundle is pushed to `main`.
+Link-readiness review 2026-05-23: npm latest is `0.1.5`, the repository has the pushed demo/article assets, and the GitHub URLs above should resolve on `main`.
 
 ## Draft body
 
 A small deployment failure pattern I keep seeing:
 
-1. A GitHub Actions workflow starts using a new secret.
+1. A config file starts using a new environment variable or secret.
 2. The repo's `.env.example` or `.env.dist` is not updated.
-3. The mismatch is discovered later, usually during a deploy job or production config check.
+3. The mismatch is discovered later, usually during a deploy job, local preview, worker boot, or production config check.
 
-The code change can look harmless:
+The bug is rarely dramatic in code review. It can be as small as one extra variable in CI/CD or Docker config.
+
+### Example 1: GitHub Actions secret drift
+
+A workflow starts using a new secret:
 
 ```yaml
 env:
@@ -55,26 +61,16 @@ env:
   STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
 ```
 
-But if the env template only documents this:
+But the env template only documents this:
 
 ```dotenv
 NEXT_PUBLIC_APP_URL=https://example.com
 DATABASE_URL=
 ```
 
-then `STRIPE_SECRET_KEY` has become an undocumented deployment requirement.
+Now `STRIPE_SECRET_KEY` has become an undocumented deployment requirement.
 
-That is deployment drift: CI/CD expects something the repository contract does not describe.
-
-I made a small open-source demo fixture for this case:
-
-```txt
-examples/demos/github-actions-missing-secret/
-├── .env.example
-└── .github/workflows/deploy.yml
-```
-
-Run it with Secret Coverage:
+Run the demo fixture with Secret Coverage:
 
 ```bash
 pnpm dlx @leviro-ai/secret-coverage scan --path examples/demos/github-actions-missing-secret --ci
@@ -102,23 +98,79 @@ Critical: 1 · Warning: 0 · Info: 1
   - Fix: Add STRIPE_SECRET_KEY= to an env template and configure the value in your deployment environment.
 ```
 
+### Example 2: Docker Compose runtime drift
+
+The same thing can happen outside CI. A Compose file starts expecting Redis:
+
+```yaml
+services:
+  web:
+    environment:
+      APP_ENV: ${APP_ENV}
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_URL: ${REDIS_URL}
+
+  worker:
+    environment:
+      REDIS_URL: ${REDIS_URL}
+```
+
+But `.env.example` only documents:
+
+```dotenv
+APP_ENV=production
+DATABASE_URL=
+```
+
+Now both the web service and worker depend on `REDIS_URL`, but the repository contract does not say so.
+
+Run the demo fixture:
+
+```bash
+pnpm dlx @leviro-ai/secret-coverage scan --path examples/demos/docker-compose-missing-redis-url --ci
+```
+
+Expected output:
+
+```md
+# Secret Coverage Report
+
+Readiness score: **71/100**
+
+Critical: 1 · Warning: 0 · Info: 2
+
+## Critical
+
+- **REDIS_URL** — REDIS_URL is used in docker-compose.yml but missing from an env template.
+  - Context: `docker-compose.yml` · `missing-from-template`
+  - Fix: Add REDIS_URL= to an env template and configure the value in your deployment environment.
+```
+
+That is deployment drift: deployment/runtime config expects something the repository's declared env contract does not describe.
+
 The point is not to read or expose secret values. The check only compares metadata:
 
 - variables documented by env templates;
-- variables referenced by workflow/config files;
+- variables referenced by CI/CD, Docker, and config files;
 - mismatches that should be fixed before deployment.
 
 A minimal fix is to update the env template:
 
 ```dotenv
+# GitHub Actions example
 NEXT_PUBLIC_APP_URL=https://example.com
 DATABASE_URL=
 STRIPE_SECRET_KEY=
+
+# Docker Compose example
+APP_ENV=production
+DATABASE_URL=
+REDIS_URL=
 ```
 
-Then configure the real `STRIPE_SECRET_KEY` value in GitHub Actions secrets.
+Then configure the real values in GitHub Actions secrets, Docker/Compose runtime environment, or the deployment platform.
 
-This is especially useful when AI-assisted PRs update application code and CI config quickly, because env contracts are easy to forget during review.
+This is especially useful when AI-assisted PRs update application code and config quickly, because env contracts are easy to forget during review.
 
 Secret Coverage is local-first and deterministic. It is not a vault and it does not need a cloud account for this check.
 
@@ -126,12 +178,14 @@ Links:
 
 - npm: https://www.npmjs.com/package/@leviro-ai/secret-coverage
 - GitHub: https://github.com/leviro-ai/secret-coverage
-- Demo fixture: https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/github-actions-missing-secret
+- GitHub Actions demo: https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/github-actions-missing-secret
+- Docker Compose demo: https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/docker-compose-missing-redis-url
 
 ## Pre-publish checklist
 
 - [ ] Confirm current working tree changes are committed/pushed so GitHub demo links resolve.
 - [ ] Re-run `pnpm scan -- --path examples/demos/github-actions-missing-secret --ci` and confirm output still matches the quoted report.
+- [ ] Re-run `pnpm scan -- --path examples/demos/docker-compose-missing-redis-url --ci` and confirm output still matches the quoted report.
 - [ ] Verify npm latest is still `@leviro-ai/secret-coverage@0.1.5` or update wording if a new version exists.
 - [ ] Keep tone educational; do not claim users, traction, testimonials, or comparisons that do not exist.
 - [ ] Publish as a helpful technical note, not as launch spam.
@@ -140,5 +194,5 @@ Links:
 ## Reuse notes for other channels
 
 - Reddit: rewrite as a discussion prompt around deployment drift and only link if subreddit rules allow it.
-- Hacker News: wait for a stronger public artifact or Show HN angle; avoid submitting a thin promo link.
-- X/Twitter: use a short thread with the YAML/env mismatch and one screenshot-ready report snippet.
+- Hacker News: still wait for a stronger public artifact or Show HN angle; avoid submitting a thin promo link.
+- X/Twitter: use a short thread with one YAML/env mismatch and one screenshot-ready report snippet, then link to the full Dev.to post after it exists.
