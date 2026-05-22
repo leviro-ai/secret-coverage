@@ -1,4 +1,4 @@
-# Secret Coverage
+# Environment Secret Coverage Checker
 
 ![CI](https://github.com/leviro-ai/secret-coverage/actions/workflows/test.yml/badge.svg)
 ![npm package](https://img.shields.io/badge/npm-pre--release-orange)
