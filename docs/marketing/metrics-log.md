@@ -21,6 +21,8 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/articles/docker-compose-missing-redis-url.md`
   - `examples/demos/vercel-missing-supabase-key/`
   - `docs/articles/vercel-missing-supabase-key.md`
+  - `examples/demos/circleci-missing-deploy-key/`
+  - `docs/articles/circleci-missing-deploy-key.md`
   - `docs/marketing/devto-github-actions-missing-secret-draft.md`
   - `docs/marketing/reddit-github-actions-missing-secret-draft.md`
   - `docs/marketing/hacker-news-github-actions-missing-secret-readiness.md`
@@ -31,4 +33,4 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”
 - Next experiment:
-  - Wait for Darius approval: publish the recommended two-demo Dev.to post, edit the final text, or adapt the recommendation again now that a Vercel demo is also available.
+  - Wait for Darius approval: publish the recommended two-demo Dev.to post, edit the final text, or adapt the recommendation again now that Vercel and CircleCI demos are also available.

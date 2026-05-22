@@ -704,6 +704,22 @@ pnpm test && pnpm build
 - Git/repo note: pushed commit `62b9be1` (`docs: add vercel drift demo`) to `main`; GitHub Actions run `26315554883` passed. `context.md` remains untracked and was not added.
 - Next: keep public posting gated until Darius approves final Dev.to wording/channel; if no approval arrives by the next heartbeat, adapt the recommendation to optionally include the new Vercel demo or add another integration-specific asset such as CircleCI deployment drift.
 
+### Heartbeat 2026-05-23 02:01-02:04 EEST
+
+- Slice: added another useful non-public demo asset while public posting remains gated on Darius approval: CircleCI missing deploy key deployment drift.
+- Added:
+  - `examples/demos/circleci-missing-deploy-key/.env.example`
+  - `examples/demos/circleci-missing-deploy-key/.circleci/config.yml`
+  - `examples/demos/circleci-missing-deploy-key/README.md`
+  - `examples/demos/circleci-missing-deploy-key/secret-coverage-output.md`
+  - `docs/articles/circleci-missing-deploy-key.md`
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the fourth demo/article asset and approval-gated next step are restartable.
+- Duration: ~2m 49s active wall time.
+- Verification: `pnpm --silent scan -- --path examples/demos/circleci-missing-deploy-key --ci` => PASS (expected exit code 1 with `DEPLOY_KEY` / `missing-from-template`); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check against the new CircleCI assets => PASS (0 matches); `pnpm quality` => PASS (12 files / 56 tests, build, audit, package dry-run).
+- Schedule estimate: last five resumed slices including this one are ~2m29s, ~2m13s, ~3m27s, ~1m32s, and ~2m49s; rolling avg ~2m30s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 02:19 local.
+- Git/repo note: local content is verified; commit/push and remote CI check are next in this heartbeat after writing restart state. `context.md` remains untracked and was not added.
+- Next: commit/push the CircleCI demo/article/restart-state bundle and verify GitHub Actions with `gh`; after that, keep public posting gated until Darius approves final Dev.to wording/channel, or adapt the recommendation to mention the Vercel/CircleCI demos without broadening the first post too much.
+
 ## Next Step
 
-Keep public posting gated until Darius approves final Dev.to wording/channel; if no approval arrives by the next heartbeat, adapt the recommendation to optionally include the new Vercel demo or add another integration-specific asset such as CircleCI deployment drift.
+Commit/push the CircleCI demo/article/restart-state bundle and verify GitHub Actions with `gh`; after that, keep public posting gated until Darius approves final Dev.to wording/channel, or adapt the recommendation to mention the Vercel/CircleCI demos without broadening the first post too much.
