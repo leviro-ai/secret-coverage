@@ -672,11 +672,11 @@ pnpm test && pnpm build
   - `docs/articles/docker-compose-missing-redis-url.md`
 - Updated `TODO.md` and `docs/marketing/metrics-log.md` so the second demo/article asset and approval-gated next step are restartable.
 - Duration: ~2m 13s active wall time.
-- Verification: `pnpm --silent scan -- --path examples/demos/docker-compose-missing-redis-url --ci` => PASS (expected exit code 1 with `REDIS_URL` / `missing-from-template`); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check across README/docs/demo assets => PASS (0 matches); `pnpm quality` => PASS (12 files / 56 tests, build, audit, package dry-run).
+- Verification: `pnpm --silent scan -- --path examples/demos/docker-compose-missing-redis-url --ci` => PASS (expected exit code 1 with `REDIS_URL` / `missing-from-template`); `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check across README/docs/demo assets => PASS (0 matches); `pnpm quality` => PASS (12 files / 56 tests, build, audit, package dry-run); `git push` => PASS; `gh run watch 26314199903 --exit-status` => PASS.
 - Schedule estimate: last five resumed slices are ~2m25s, ~2m16s, ~3m40s, ~2m29s, and ~2m13s; rolling avg ~2m37s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 01:16 local.
-- Git/repo note: Docker Compose demo/article updates are ready to commit/push; `context.md` remains untracked and should not be added.
-- Next: commit/push the Docker Compose drift demo/article bundle and verify GitHub Actions with `gh`; then keep public posting gated on Darius approval, or adapt the first Dev.to post to include both GitHub Actions and Docker Compose examples.
+- Git/repo note: pushed commit `7dc252a` (`docs: add docker compose drift demo`) to `main`; GitHub Actions run `26314199903` passed. `context.md` remains untracked and was not added. The heartbeat/progress-log follow-up is tracked in git as a separate restart-state commit.
+- Next: keep public posting gated on Darius approval, or adapt the first Dev.to post to include both GitHub Actions and Docker Compose examples before asking for a final publish decision.
 
 ## Next Step
 
-Commit/push the Docker Compose drift demo/article bundle and verify GitHub Actions with `gh`; then keep public posting gated on Darius approval, or adapt the first Dev.to post to include both GitHub Actions and Docker Compose examples.
+Keep public posting gated on Darius approval, or adapt the first Dev.to post to include both GitHub Actions and Docker Compose examples before asking for a final publish decision.
