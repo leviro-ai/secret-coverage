@@ -6,6 +6,7 @@ This directory collects concrete, non-hype examples for deployment drift detecti
 
 - [CI/CD environment variable validation checklist](ci-cd-env-validation-checklist.md) — a practical checklist for reviewing env templates, deployment config, and CI checks before merge.
 - [AI-agent PR environment review walkthrough](ai-agent-pr-env-review-walkthrough.md) — how to review AI-generated PRs for deployment-breaking environment drift.
+- [Preview environment variable checklist](preview-environment-variable-checklist.md) — how to review preview deploy, worker, migration, and webhook env drift before merge.
 - [Env template vs secret manager](env-template-vs-secret-manager.md) — where deployment drift hides when real values are stored correctly but the repo contract is incomplete.
 
 ## Concrete demo walkthroughs
@@ -26,6 +27,7 @@ These pages pair with runnable fixtures under `examples/demos/` and screenshot-r
 These are long-tail support assets for developers who already know the symptom and need a safe debugging path.
 
 - [Deployment failed because an environment variable was missing](deployment-failed-missing-env-variable.md)
+- [Preview environment variable checklist](preview-environment-variable-checklist.md)
 - [Env template vs secret manager](env-template-vs-secret-manager.md)
 - [GitHub Actions missing-secrets troubleshooting](github-actions-missing-secrets-troubleshooting.md)
 - [Dockerfile environment variable troubleshooting](dockerfile-env-variable-troubleshooting.md)

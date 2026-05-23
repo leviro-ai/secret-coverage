@@ -221,6 +221,7 @@ Concrete demos and walkthroughs:
 - [`docs/articles/firebase-env-variable-troubleshooting.md`](docs/articles/firebase-env-variable-troubleshooting.md) — troubleshooting checklist for Firebase env drift without requiring Firebase or Google Cloud API access.
 - [`docs/articles/caprover-env-variable-troubleshooting.md`](docs/articles/caprover-env-variable-troubleshooting.md) — troubleshooting checklist for CapRover env drift without requiring CapRover API access.
 - [`docs/articles/ci-cd-env-validation-checklist.md`](docs/articles/ci-cd-env-validation-checklist.md) — practical CI/CD environment variable validation checklist.
+- [`docs/articles/preview-environment-variable-checklist.md`](docs/articles/preview-environment-variable-checklist.md) — reviewing preview deploys, workers, migrations, and webhooks for env drift.
 - [`docs/articles/ai-agent-pr-env-review-walkthrough.md`](docs/articles/ai-agent-pr-env-review-walkthrough.md) — reviewing AI-generated PRs for deployment-breaking env drift.
 
 ## GitHub Action
