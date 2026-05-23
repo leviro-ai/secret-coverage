@@ -53,6 +53,7 @@
 - [ ] Individual future integration pages for Railway, Render, Supabase, Terraform, Kubernetes, AWS Secrets Manager, Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
 - [ ] More SEO pages for long-tail deployment drift queries
 - [x] Draft the first Medium-native article: AI agents are making deployment drift easier to create
+- [x] Prepare approval-gated Medium publish packet for the AI/deployment-drift article
 - [ ] Publish the Medium-native AI/deployment-drift article only after Darius approves the exact text
 - [x] Add lightweight README navigation links to the checklist and AI-agent PR walkthrough while public posting remains approval-gated
 - [x] Prepare a copy/paste Dev.to publish packet while public posting remains approval-gated
