@@ -1055,6 +1055,6 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Duration: ~4m 8s active wall time before commit/push/CI polling.
 - Verification: Medium CloakBrowser/CDP public article check => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS as expected failing demo scan (exit 1 with `STRIPE_SECRET_KEY` / `missing-from-template`); `pnpm --silent scan -- --path examples/demos/docker-compose-missing-redis-url --ci` => PASS as expected failing demo scan (exit 1 with `REDIS_URL` / `missing-from-template`); `npm view @leviro-ai/secret-coverage version --json` => `"0.1.5"`.
 - Schedule estimate: recent completed product/marketing slices remain roughly ~2-4m; rolling avg ~3m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 10:25 Europe/Vilnius.
-- Git/repo note: tracked restart-state docs updated locally and ready to commit/push; `context.md` remains untracked and was not added.
+- Git/repo note: pushed commit `c159619` (`docs: record medium article publish`) to `main`; GitHub Actions run `26326600899` passed. `context.md` remains untracked and was not added.
 - Next: monitor real Dev.to/Medium replies and metrics; if engagement is quiet, continue the next long-tail support page, likely Azure Key Vault env variable troubleshooting, without cross-posting the Medium article verbatim.
 
