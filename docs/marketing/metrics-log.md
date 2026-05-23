@@ -32,6 +32,7 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/articles/railway-env-variable-troubleshooting.md`
   - `docs/articles/render-env-variable-troubleshooting.md`
   - `docs/articles/supabase-env-variable-troubleshooting.md`
+  - `docs/articles/terraform-env-variable-troubleshooting.md`
   - `examples/demos/gitlab-ci-missing-deploy-token/`
   - `docs/articles/gitlab-ci-missing-deploy-token.md`
   - `docs/articles/README.md`
@@ -57,8 +58,9 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
 - Dev.to / support asset follow-up 2026-05-23 07:48 Europe/Vilnius: public article browser inspection showed 2 reactions, 0 saves, and 2 comments total (Theo's comment plus Darius Hermes's reply); no new public reply needed. Added `docs/articles/railway-env-variable-troubleshooting.md` as a long-tail support page for Railway env drift without claiming Railway API/dashboard integration.
 - Support asset follow-up 2026-05-23 08:08 Europe/Vilnius: added `docs/articles/render-env-variable-troubleshooting.md` as a long-tail support page for Render service env drift without claiming Render API/dashboard integration.
 - Support asset follow-up 2026-05-23 08:28 Europe/Vilnius: added `docs/articles/supabase-env-variable-troubleshooting.md` as a long-tail support page for Supabase env drift without claiming Supabase API/dashboard integration.
+- Support asset follow-up 2026-05-23 08:47 Europe/Vilnius: Dev.to browser inspection still showed 2 reactions, 0 saves, and 2 comments total; no new public reply needed. Added `docs/articles/terraform-env-variable-troubleshooting.md` as a long-tail support page for Terraform env drift without claiming Terraform Cloud or cloud-provider API integration.
 - Strongest user language observed:
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”
 - Next experiment:
-  - Continue monitoring real Dev.to replies/metrics and answer genuine comments where useful. If Darius approves Medium, publish from the approval packet and record the public URL/metrics. If Darius approves a new X/Twitter distribution step instead, use the post-Dev.to cooldown variant rather than reposting the Dev.to copy. If no approval arrives, keep building long-tail support pages one platform at a time, likely Terraform or Kubernetes next.
+  - Continue monitoring real Dev.to replies/metrics and answer genuine comments where useful. If Darius approves Medium, publish from the approval packet and record the public URL/metrics. If Darius approves a new X/Twitter distribution step instead, use the post-Dev.to cooldown variant rather than reposting the Dev.to copy. If no approval arrives, keep building long-tail support pages one platform at a time, likely Kubernetes next.
