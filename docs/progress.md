@@ -1097,3 +1097,15 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Verification: `git check-ignore -v CONTEXT.md context.md` => PASS; `git status --short` no longer shows either context file.
 - Next: commit/push `.gitignore` + restart-state references, then let the next heartbeat continue with Jenkins environment variable troubleshooting after its version guard.
 
+### Heartbeat 2026-05-23 11:07-11:10 EEST
+
+- Slice: drafted the next long-tail support page: Jenkins environment variable troubleshooting.
+- Package version guard: local `package.json` version `0.1.5`; published npm `@leviro-ai/secret-coverage` version `0.1.5`; versions match, so no release/context refresh was needed before the slice.
+- Added `docs/articles/jenkins-env-variable-troubleshooting.md`, focused on Jenkins Pipeline / credential-binding / deploy-script env-contract drift as metadata-only deployment readiness, without claiming Jenkins API/dashboard integration or reading credentials/secret values.
+- Linked the Jenkins page from `README.md` and `docs/articles/README.md`; updated `TODO.md` and `docs/marketing/metrics-log.md` so the asset and next state are restartable.
+- Duration: ~2m 24s active wall time including local verification, commit/push, and remote CI watch.
+- Verification: `python3` Jenkins support page restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `npm view @leviro-ai/secret-coverage version --json` => `"0.1.5"`; `gh run watch 26327746176 --exit-status` => PASS.
+- Schedule estimate: recent completed product/marketing slices remain roughly ~2-4m; rolling avg ~3m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 11:25 Europe/Vilnius.
+- Git/repo note: pushed commit `385386f` (`docs: add jenkins troubleshooting page`) to `main`; GitHub Actions run `26327746176` passed. `CONTEXT.md` remains ignored and was not added.
+- Next: monitor real Dev.to/Medium replies and metrics; if engagement is quiet, continue the next long-tail support page, likely Coolify, Fly.io, Firebase, or CapRover environment variable troubleshooting, without cross-posting the Medium article verbatim.
+
