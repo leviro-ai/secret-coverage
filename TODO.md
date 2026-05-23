@@ -52,4 +52,5 @@
 - [x] Prepare a copy/paste Dev.to publish packet while public posting remains approval-gated
 - [x] Add one more non-public demo/support asset while approval is pending: GitLab CI missing deploy token
 - [x] Package existing demos and support pages into a docs/articles index while public posting remains approval-gated
+- [x] Add one more demo/support asset after first Dev.to post: Next.js missing Stripe secret
 - [ ] Adapt the walkthrough into the approved Dev.to post after Darius chooses the public-post option

@@ -18,6 +18,7 @@ These pages pair with runnable fixtures under `examples/demos/` and screenshot-r
 | Vercel | [Catch a missing Supabase service key in Vercel config before deploy](vercel-missing-supabase-key.md) | [`examples/demos/vercel-missing-supabase-key/`](../../examples/demos/vercel-missing-supabase-key/) | `SUPABASE_SERVICE_ROLE_KEY` referenced by `vercel.json` but missing from `.env.example` |
 | CircleCI | [Catch a missing deploy key in CircleCI before a release job fails](circleci-missing-deploy-key.md) | [`examples/demos/circleci-missing-deploy-key/`](../../examples/demos/circleci-missing-deploy-key/) | `DEPLOY_KEY` referenced by deploy job but missing from `.env.example` |
 | GitLab CI | [GitLab CI deploy fails because a token was never documented](gitlab-ci-missing-deploy-token.md) | [`examples/demos/gitlab-ci-missing-deploy-token/`](../../examples/demos/gitlab-ci-missing-deploy-token/) | `DEPLOY_TOKEN` referenced by deploy job but missing from `.env.example` |
+| Next.js | [Next.js checkout deploy fails because a server secret was never documented](nextjs-missing-stripe-secret.md) | [`examples/demos/nextjs-missing-stripe-secret/`](../../examples/demos/nextjs-missing-stripe-secret/) | `STRIPE_SECRET_KEY` referenced by an API route but missing from `.env.example` |
 
 ## Troubleshooting pages
 
@@ -27,6 +28,7 @@ These are long-tail support assets for developers who already know the symptom a
 - [Docker Compose environment variable troubleshooting](docker-compose-env-variable-troubleshooting.md)
 - [Vercel environment variable troubleshooting](vercel-env-variable-troubleshooting.md)
 - [CircleCI environment variable troubleshooting](circleci-env-variable-troubleshooting.md)
+- [Next.js missing Stripe secret walkthrough](nextjs-missing-stripe-secret.md)
 
 ## Public-post status
 

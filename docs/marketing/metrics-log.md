@@ -32,6 +32,8 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `examples/demos/gitlab-ci-missing-deploy-token/`
   - `docs/articles/gitlab-ci-missing-deploy-token.md`
   - `docs/articles/README.md`
+  - `examples/demos/nextjs-missing-stripe-secret/`
+  - `docs/articles/nextjs-missing-stripe-secret.md`
   - `docs/marketing/devto-github-actions-missing-secret-draft.md`
   - `docs/marketing/reddit-github-actions-missing-secret-draft.md`
   - `docs/marketing/hacker-news-github-actions-missing-secret-readiness.md`

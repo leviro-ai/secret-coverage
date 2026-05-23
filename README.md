@@ -194,9 +194,11 @@ Concrete demos and walkthroughs:
 - [`examples/demos/github-actions-missing-secret/`](examples/demos/github-actions-missing-secret/) — GitHub Actions references `STRIPE_SECRET_KEY` but the env template does not document it.
 - [`examples/demos/docker-compose-missing-redis-url/`](examples/demos/docker-compose-missing-redis-url/) — Docker Compose references `REDIS_URL` but the env template does not document it.
 - [`examples/demos/gitlab-ci-missing-deploy-token/`](examples/demos/gitlab-ci-missing-deploy-token/) — GitLab CI references `DEPLOY_TOKEN` but the env template does not document it.
+- [`examples/demos/nextjs-missing-stripe-secret/`](examples/demos/nextjs-missing-stripe-secret/) — Next.js API route references `STRIPE_SECRET_KEY` but the env template does not document it.
 - [`docs/articles/github-actions-missing-secrets-troubleshooting.md`](docs/articles/github-actions-missing-secrets-troubleshooting.md) — troubleshooting checklist for GitHub Actions missing-secret deployment failures.
 - [`docs/articles/docker-compose-env-variable-troubleshooting.md`](docs/articles/docker-compose-env-variable-troubleshooting.md) — troubleshooting checklist for Docker Compose environment variable drift.
 - [`docs/articles/gitlab-ci-missing-deploy-token.md`](docs/articles/gitlab-ci-missing-deploy-token.md) — troubleshooting walkthrough for GitLab CI deploy-token drift.
+- [`docs/articles/nextjs-missing-stripe-secret.md`](docs/articles/nextjs-missing-stripe-secret.md) — troubleshooting walkthrough for Next.js server-secret drift.
 - [`docs/articles/vercel-env-variable-troubleshooting.md`](docs/articles/vercel-env-variable-troubleshooting.md) — troubleshooting checklist for Vercel environment variable drift.
 - [`docs/articles/circleci-env-variable-troubleshooting.md`](docs/articles/circleci-env-variable-troubleshooting.md) — troubleshooting checklist for CircleCI deploy-variable drift.
 - [`docs/articles/ci-cd-env-validation-checklist.md`](docs/articles/ci-cd-env-validation-checklist.md) — practical CI/CD environment variable validation checklist.

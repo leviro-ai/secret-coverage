@@ -864,6 +864,17 @@ pnpm test && pnpm build
 - Git/repo note: working tree has tracked docs/TODO/metrics updates plus pre-existing untracked `context.md`; commit/push not yet done in this manual slice.
 - Next: monitor real Dev.to metrics/comments, avoid same-day cross-posting, then adapt the Reddit discussion or X/Twitter thread after a cooldown.
 
+### Heartbeat 2026-05-23 05:49-05:52 EEST
+
+- Slice: added another concrete demo/support asset after the first Dev.to publish: Next.js missing server secret drift.
+- Added `examples/demos/nextjs-missing-stripe-secret/` with `.env.example`, `next.config.js`, a minimal API route, fixture README, and screenshot-ready `secret-coverage-output.md` showing `STRIPE_SECRET_KEY` / `missing-from-template` without raw secret values.
+- Added `docs/articles/nextjs-missing-stripe-secret.md`; linked it from `docs/articles/README.md` and `README.md`; updated `TODO.md` and `docs/marketing/metrics-log.md` so the asset is restartable.
+- Duration: ~2m 37s active wall time before commit/push/CI polling.
+- Verification: `python3` Next.js docs/link/positioning check => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `pnpm --silent scan -- --path examples/demos/nextjs-missing-stripe-secret --ci` => PASS as expected failing demo scan (exit code 1 with `STRIPE_SECRET_KEY` / `missing-from-template`).
+- Schedule estimate: last five completed product slices are ~2m21s, ~1m40s, ~2m50s, ~2m5s, and ~2m37s; rolling avg ~2m19s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 06:07 Europe/Vilnius.
+- Git/repo note: local verification passed; commit/push and GitHub Actions check happen after this entry. `context.md` remains untracked and was not added.
+- Next: monitor the published Dev.to post for real comments/metrics and, after a cooldown, adapt either the Reddit discussion draft or X/Twitter thread without cross-posting identical wording on the same day.
+
 ## Next Step
 
 Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posting. Next distribution slice should adapt either the Reddit discussion draft or X/Twitter thread after a cooldown, using the Dev.to URL only if it adds value rather than making the post look like link spam.
