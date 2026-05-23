@@ -33,6 +33,7 @@
 - [x] Draft Hacker News / Show HN readiness notes for the GitHub Actions drift demo without posting
 - [x] Draft X/Twitter thread framing for the GitHub Actions drift demo without posting
 - [x] Add a post-Dev.to cooldown X/Twitter follow-up variant without posting
+- [x] Create/log in to Medium free account and add Medium distribution strategy as a secondary channel
 - [x] Prepare first public-post recommendation with channel, final text, approval options, and risk notes
 - [x] Add one more concrete demo before public posting: Docker Compose missing Redis URL
 - [x] Adapt the first Dev.to public-post recommendation to include both GitHub Actions and Docker Compose demos
@@ -51,6 +52,7 @@
 - [x] Draft CircleCI environment variable troubleshooting page without posting publicly
 - [ ] Individual future integration pages for Railway, Render, Supabase, Terraform, Kubernetes, AWS Secrets Manager, Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
 - [ ] More SEO pages for long-tail deployment drift queries
+- [ ] Draft the first Medium-native article: AI agents are making deployment drift easier to create
 - [x] Add lightweight README navigation links to the checklist and AI-agent PR walkthrough while public posting remains approval-gated
 - [x] Prepare a copy/paste Dev.to publish packet while public posting remains approval-gated
 - [x] Add one more non-public demo/support asset while approval is pending: GitLab CI missing deploy token

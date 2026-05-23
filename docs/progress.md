@@ -922,3 +922,13 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Schedule estimate: last five completed product/marketing slices are ~2m5s, ~2m37s, ~1m45s, ~1m, and ~2m; rolling avg ~1m53s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 07:05 Europe/Vilnius.
 - Git/repo note: pushed commit `1699fef` (`docs: draft x cooldown follow-up`) to `main`; GitHub Actions run `26322721897` passed. `context.md` remains untracked and was not added. This CI/progress correction itself is local until the next restart-state commit.
 - Next: continue monitoring genuine Dev.to/public replies; if no engagement needs a reply and Darius approves a new public X/Twitter distribution step, use the cooldown variant and record the public URL/metrics. Otherwise draft another long-tail support page or integration-specific page without posting.
+
+### Manual continuation 2026-05-23 06:43 EEST
+
+- Slice: evaluated Darius's suggestion to use Medium and turned it into an actionable secondary-channel plan.
+- Created/logged in to a free Medium account via CloakBrowser using `dardar.hermes@gmail.com`; no paid Medium membership selected. Profile URL observed in Medium navigation: `https://medium.com/@dardar.hermes`.
+- Added `docs/marketing/medium-distribution-strategy.md` with the recommendation to use Medium for Medium-native founder/engineering narratives, not as a duplicate Dev.to repost channel.
+- Updated `TODO.md`, `docs/marketing/account-inventory.md`, and `docs/marketing/metrics-log.md` so the Medium account state, strategy, and next draft are restartable.
+- Verification: CloakBrowser Medium login/onboarding => PASS; Medium home showed logged-in navigation with Write/Profile/Stories/Stats; profile link observed as `https://medium.com/@dardar.hermes`.
+- Git/repo note: tracked docs updated locally; `context.md` remains untracked and was not added.
+- Next: draft the first Medium-native article, likely `AI agents are making deployment drift easier to create`, then publish only after Darius explicitly approves the Medium text.
