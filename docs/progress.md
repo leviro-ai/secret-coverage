@@ -1081,3 +1081,13 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Git/repo note: pushed commit `42950d0` (`docs: add hashicorp vault troubleshooting page`) to `main`; GitHub Actions run `26327092001` passed. `context.md` remains untracked and was not added. This progress entry itself will be committed as restart-state.
 - Next: monitor real Dev.to/Medium replies and metrics; if engagement is quiet, continue the next long-tail support page, likely Jenkins environment variable troubleshooting, without cross-posting the Medium article verbatim.
 
+### Manual continuation 2026-05-23 10:35 EEST
+
+- Slice: applied Darius's instruction to always check whether the package version was updated, then refresh context/plans before continuing work.
+- Package version guard result: local `package.json` version is `0.1.5`; `npm view @leviro-ai/secret-coverage version --json` returned `"0.1.5"`, so no package-version update was detected in this continuation.
+- Updated `context.md`, the organic authority plan, TODO, and metrics log with the recurring version-sync rule: each heartbeat must compare local vs npm version first; if changed, inspect code/release/docs deltas and update context/plans/publish packets before the next slice.
+- Updated cron job `9f2b31785aad` prompt so future autonomous Secret Coverage heartbeats include the package version guard in the mandatory first step and report local vs npm version in verification.
+- Verification: `node -p "require('./package.json').version"` => `0.1.5`; `npm view @leviro-ai/secret-coverage version --json` => `"0.1.5"`; `cronjob update 9f2b31785aad` => PASS, next run 10:51 Europe/Vilnius.
+- Git/repo note: tracked restart-state files updated locally; `context.md` remains an untracked working context file unless Darius wants it committed.
+- Next: commit/push tracked restart-state docs, then let the next heartbeat continue with Jenkins environment variable troubleshooting after its version guard.
+
