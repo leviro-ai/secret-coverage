@@ -1085,9 +1085,15 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 
 - Slice: applied Darius's instruction to always check whether the package version was updated, then refresh context/plans before continuing work.
 - Package version guard result: local `package.json` version is `0.1.5`; `npm view @leviro-ai/secret-coverage version --json` returned `"0.1.5"`, so no package-version update was detected in this continuation.
-- Updated `context.md`, the organic authority plan, TODO, and metrics log with the recurring version-sync rule: each heartbeat must compare local vs npm version first; if changed, inspect code/release/docs deltas and update context/plans/publish packets before the next slice.
+- Updated local `CONTEXT.md`, the organic authority plan, TODO, and metrics log with the recurring version-sync rule: each heartbeat must compare local vs npm version first; if changed, inspect code/release/docs deltas and update context/plans/publish packets before the next slice.
 - Updated cron job `9f2b31785aad` prompt so future autonomous Secret Coverage heartbeats include the package version guard in the mandatory first step and report local vs npm version in verification.
 - Verification: `node -p "require('./package.json').version"` => `0.1.5`; `npm view @leviro-ai/secret-coverage version --json` => `"0.1.5"`; `cronjob update 9f2b31785aad` => PASS, next run 10:51 Europe/Vilnius.
-- Git/repo note: tracked restart-state files updated locally; `context.md` remains an untracked working context file unless Darius wants it committed.
-- Next: commit/push tracked restart-state docs, then let the next heartbeat continue with Jenkins environment variable troubleshooting after its version guard.
+- Git/repo note: tracked restart-state files updated locally; local context is now `CONTEXT.md` and is ignored by git.
+
+### Manual continuation 2026-05-23 10:52 EEST
+
+- Slice: renamed the local working context file from `context.md` to `CONTEXT.md` and added both `CONTEXT.md` and legacy `context.md` to `.gitignore` so local context stays out of git.
+- Updated restart-state references in TODO/metrics/progress and updated cron job `9f2b31785aad` so future heartbeats read `/Users/matilda/www/incubator/secret-coverage/CONTEXT.md`.
+- Verification: `git check-ignore -v CONTEXT.md context.md` => PASS; `git status --short` no longer shows either context file.
+- Next: commit/push `.gitignore` + restart-state references, then let the next heartbeat continue with Jenkins environment variable troubleshooting after its version guard.
 

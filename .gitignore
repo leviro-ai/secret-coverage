@@ -2,6 +2,8 @@ node_modules
 dist
 coverage
 docs/plans/
+CONTEXT.md
+context.md
 .env
 .env.local
 .DS_Store
