@@ -28,6 +28,7 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/articles/github-actions-missing-secrets-troubleshooting.md`
   - `docs/articles/docker-compose-env-variable-troubleshooting.md`
   - `docs/articles/vercel-env-variable-troubleshooting.md`
+  - `docs/articles/circleci-env-variable-troubleshooting.md`
   - `docs/marketing/devto-github-actions-missing-secret-draft.md`
   - `docs/marketing/reddit-github-actions-missing-secret-draft.md`
   - `docs/marketing/hacker-news-github-actions-missing-secret-readiness.md`
@@ -38,4 +39,4 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”
 - Next experiment:
-  - Keep public posting gated until Darius approves the recommended Dev.to channel/wording. While waiting, draft another integration-specific support page without posting publicly, such as CircleCI troubleshooting, or prepare README-compatible snippets for the approved Dev.to article.
+  - Keep public posting gated until Darius approves the recommended Dev.to channel/wording. While waiting, prepare README-compatible snippets for the approved Dev.to article or draft the next long-tail support page without posting publicly.
