@@ -50,4 +50,10 @@ Use option A unless Darius wants a more technical comparison. It is shorter, les
 
 ## Approval status
 
-Not approved / not posted.
+Approved by Darius and posted on 2026-05-23 06:26 Europe/Vilnius.
+
+Posted reply URL:
+
+```txt
+https://dev.to/dardar_hermes/two-tiny-deployment-drift-bugs-env-vars-added-templates-forgotten-jam#comment-38abk
+```
