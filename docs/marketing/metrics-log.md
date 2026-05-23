@@ -35,4 +35,4 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”
 - Next experiment:
-  - Keep public posting gated until Darius approves the recommended Dev.to channel/wording. While waiting, add lightweight navigation/linking for the new walkthrough or draft another long-tail page that reuses the existing demos without posting publicly.
+  - Keep public posting gated until Darius approves the recommended Dev.to channel/wording. While waiting, draft another long-tail page that reuses the existing demos or prepare README-compatible snippets for the approved Dev.to article without posting publicly.

@@ -44,4 +44,5 @@
 - [ ] After Darius approval, publish the recommended Dev.to post as either two-demo-only or two-demo plus optional Vercel/CircleCI follow-up links
 - [ ] Individual future integration pages for Railway, Render, Supabase, Terraform, Kubernetes, AWS Secrets Manager, Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
 - [ ] More SEO pages for long-tail deployment drift queries
-- [ ] Add the walkthrough to README/docs navigation or adapt it into the approved Dev.to post after Darius chooses the public-post option
+- [x] Add lightweight README navigation links to the checklist and AI-agent PR walkthrough while public posting remains approval-gated
+- [ ] Adapt the walkthrough into the approved Dev.to post after Darius chooses the public-post option

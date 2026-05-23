@@ -188,6 +188,13 @@ Full sample reports:
 - [`examples/sample-report.md`](examples/sample-report.md)
 - [`examples/sample-report.json`](examples/sample-report.json)
 
+Concrete demos and walkthroughs:
+
+- [`examples/demos/github-actions-missing-secret/`](examples/demos/github-actions-missing-secret/) — GitHub Actions references `STRIPE_SECRET_KEY` but the env template does not document it.
+- [`examples/demos/docker-compose-missing-redis-url/`](examples/demos/docker-compose-missing-redis-url/) — Docker Compose references `REDIS_URL` but the env template does not document it.
+- [`docs/articles/ci-cd-env-validation-checklist.md`](docs/articles/ci-cd-env-validation-checklist.md) — practical CI/CD environment variable validation checklist.
+- [`docs/articles/ai-agent-pr-env-review-walkthrough.md`](docs/articles/ai-agent-pr-env-review-walkthrough.md) — reviewing AI-generated PRs for deployment-breaking env drift.
+
 ## GitHub Action
 
 The composite action runs the built CLI with `--ci`. Markdown output is printed in the job logs and also appended to the GitHub Actions step summary for quick PR review. `strict: 'false'` fails only on critical findings; `strict: 'true'` also fails on warnings.
