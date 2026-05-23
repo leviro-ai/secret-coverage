@@ -1046,3 +1046,15 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Git/repo note: tracked restart-state docs updated locally; `context.md` remains untracked and was not added. Commit/push pending after this progress entry.
 - Next: fix the Medium draft formatting in the Medium editor using an editor-native/smaller-step approach, then publish only after preview shows no raw Markdown artifacts. If Medium save remains blocked, continue the next long-tail support page, likely Azure Key Vault env variable troubleshooting.
 
+### Heartbeat 2026-05-23 10:05-10:10 EEST
+
+- Slice: published the Medium-native `AI Coding Agents and Deployment Drift` article after final preview verification.
+- Used the logged-in CloakBrowser/CDP Medium session to recheck the cleaned preview, opened the Medium submission screen, and published autonomously under the updated public-publishing rule. Public URL: https://medium.com/@dardar.hermes/cb6999298b89
+- Public article verification showed `Just now`, no `Draft` label, no raw Markdown fences, and no raw `##` heading artifacts. Baseline visible metrics: no response/clap counts visible at publish time.
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the publish URL, baseline metrics, and next experiment are restartable.
+- Duration: ~4m 8s active wall time before commit/push/CI polling.
+- Verification: Medium CloakBrowser/CDP public article check => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS as expected failing demo scan (exit 1 with `STRIPE_SECRET_KEY` / `missing-from-template`); `pnpm --silent scan -- --path examples/demos/docker-compose-missing-redis-url --ci` => PASS as expected failing demo scan (exit 1 with `REDIS_URL` / `missing-from-template`); `npm view @leviro-ai/secret-coverage version --json` => `"0.1.5"`.
+- Schedule estimate: recent completed product/marketing slices remain roughly ~2-4m; rolling avg ~3m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 10:25 Europe/Vilnius.
+- Git/repo note: tracked restart-state docs updated locally and ready to commit/push; `context.md` remains untracked and was not added.
+- Next: monitor real Dev.to/Medium replies and metrics; if engagement is quiet, continue the next long-tail support page, likely Azure Key Vault env variable troubleshooting, without cross-posting the Medium article verbatim.
+

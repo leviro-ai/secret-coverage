@@ -61,7 +61,7 @@
 - [x] Draft the first Medium-native article: AI agents are making deployment drift easier to create
 - [x] Prepare Medium publish packet for the AI/deployment-drift article
 - [x] Rewrite Medium draft title to shorter SEO-friendly version after preview review
-- [ ] Publish the Medium-native AI/deployment-drift article after final preview verification
+- [x] Publish the Medium-native AI/deployment-drift article after final preview verification
 - [x] Add lightweight README navigation links to the checklist and AI-agent PR walkthrough
 - [x] Prepare a copy/paste Dev.to publish packet
 - [x] Add one more non-public demo/support asset while approval is pending: GitLab CI missing deploy token
