@@ -55,6 +55,16 @@ describe('platform scanners', () => {
     ]);
   });
 
+  it('scans GitLab CI variables only when they require external configuration', async () => {
+    await expect(variables(scanGitLabCI, {
+      '.gitlab-ci.yaml': 'variables:\n  DEPLOY_TOKEN: $DEPLOY_TOKEN\n  DATABASE_URL: ${DATABASE_URL}\n  NEXT_PUBLIC_API_URL: ""\n  NODE_VERSION: "22"\n  NODE_ENV: production\ndeploy:\n  script:\n    - pnpm deploy --token $DEPLOY_TOKEN --node $NODE_VERSION --env $NODE_ENV\n',
+    })).resolves.toEqual([
+      'DATABASE_URL:.gitlab-ci.yaml:gitlab-ci',
+      'DEPLOY_TOKEN:.gitlab-ci.yaml:gitlab-ci',
+      'NEXT_PUBLIC_API_URL:.gitlab-ci.yaml:gitlab-ci',
+    ]);
+  });
+
   it('scans CircleCI config references', async () => {
     await expect(variables(scanCircleCI, {
       '.circleci/config.yml': 'jobs:\n  deploy:\n    steps:\n      - run: echo $DATABASE_URL\n',

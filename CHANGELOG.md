@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.35 — Unreleased
+
+### Fixed
+
+- GitLab CI scanning now treats safe inline `variables:` literals as already defined while still reporting empty or externally referenced variables.
+
 ## 0.1.34 — Unreleased
 
 ### Fixed
