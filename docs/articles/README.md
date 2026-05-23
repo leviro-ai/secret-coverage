@@ -38,6 +38,7 @@ These are long-tail support assets for developers who already know the symptom a
 - [Azure Key Vault environment variable troubleshooting](azure-key-vault-env-variable-troubleshooting.md)
 - [HashiCorp Vault environment variable troubleshooting](hashicorp-vault-env-variable-troubleshooting.md)
 - [Jenkins environment variable troubleshooting](jenkins-env-variable-troubleshooting.md)
+- [Coolify environment variable troubleshooting](coolify-env-variable-troubleshooting.md)
 
 ## Public-post status
 
