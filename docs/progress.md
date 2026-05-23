@@ -900,3 +900,14 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Verification: Dev.to comments API showed parent comment `38ab9` with child reply `38abk` by `dardar_hermes`; CloakBrowser page inspection showed the posted reply text; no Reddit/HN/X public comments existed to answer in this slice.
 - Git/repo note: tracked restart-state docs updated locally; `context.md` remains untracked and was not added.
 - Next: continue monitoring real platform replies/mentions; answer genuine comments in the platform's native style and include the full public URL in Slack/metrics each time.
+
+### Heartbeat 2026-05-23 06:29-06:30 EEST
+
+- Slice: monitored the first published Dev.to article/reply for real follow-up engagement and avoided unnecessary cross-posting.
+- Observed via browser: article action counters showed 0 reactions, 0 saves, and 2 comments total. The visible comment thread contains Theo Ephraim's `varlock.dev` comment plus Darius Hermes's posted clarification reply; no new public reply was needed.
+- Updated `docs/marketing/metrics-log.md` with the follow-up metric snapshot so public engagement state remains restartable.
+- Duration: ~1m active wall time.
+- Verification: browser Dev.to page inspection => PASS (article URL loaded; counters and comment thread visible); direct Dev.to API/HTTP fetch => FAIL with expected bot `403 Forbidden`, so browser inspection remains the trusted check for Dev.to metrics.
+- Schedule estimate: last five completed product/marketing slices are ~2m50s, ~2m5s, ~2m37s, ~1m45s, and ~1m; rolling avg ~2m3s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 06:45 Europe/Vilnius.
+- Git/repo note: tracked restart-state docs updated locally; `context.md` remains untracked and was not added. Local verification only; no code change and no push in this small monitoring slice.
+- Next: continue monitoring genuine public replies/mentions; if engagement stays quiet, draft the next channel-specific distribution asset after cooldown, likely a non-identical Reddit discussion or X/Twitter thread that references the Dev.to post only if it adds value rather than looking like link spam.
