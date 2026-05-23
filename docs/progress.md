@@ -1058,3 +1058,15 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Git/repo note: pushed commit `c159619` (`docs: record medium article publish`) to `main`; GitHub Actions run `26326600899` passed. `context.md` remains untracked and was not added.
 - Next: monitor real Dev.to/Medium replies and metrics; if engagement is quiet, continue the next long-tail support page, likely Azure Key Vault env variable troubleshooting, without cross-posting the Medium article verbatim.
 
+### Heartbeat 2026-05-23 10:27-10:31 EEST
+
+- Slice: drafted the next long-tail support page after the Medium publish: Azure Key Vault environment variable troubleshooting.
+- Added `docs/articles/azure-key-vault-env-variable-troubleshooting.md`, focused on Azure Key Vault/App Service/Functions/Container Apps/Azure Pipelines env-contract drift as metadata-only deployment readiness, without claiming Azure API/dashboard integration or reading secret values.
+- Linked the Azure page from `README.md` and `docs/articles/README.md`; updated the docs/articles public-post status to reflect the current autonomous-publication rule and both live public URLs; updated `TODO.md` and `docs/marketing/metrics-log.md` so the asset and next state are restartable.
+- Medium monitor note: direct Browserbase/public Medium check hit Cloudflare bot verification, so no new public metrics were recorded in this slice; previous CloakBrowser/CDP publish verification remains the trusted article check.
+- Duration: ~4m active wall time including local verification, commit/push, and remote CI watch.
+- Verification: `python3` Azure support page restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `gh run list` / GitHub Actions run `26326976221` for `d94254b` => PASS.
+- Schedule estimate: recent completed product/marketing slices remain roughly ~2-4m; rolling avg ~3m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 10:46 Europe/Vilnius.
+- Git/repo note: pushed commit `d94254b` (`docs: add azure key vault troubleshooting page`) to `main`; GitHub Actions run `26326976221` passed. `context.md` remains untracked and was not added. This progress-log entry itself is local until the restart-state commit.
+- Next: monitor real Dev.to/Medium replies and metrics; if engagement is quiet, continue the next long-tail support page, likely Hashicorp Vault env variable troubleshooting, without cross-posting the Medium article verbatim.
+
