@@ -20,6 +20,7 @@ import { scanTerraform } from '../src/scanners/terraform.js';
 import { scanKubernetes } from '../src/scanners/kubernetes.js';
 import { scanAwsSecrets } from '../src/scanners/aws-secrets.js';
 import { scanAzureKeyVault } from '../src/scanners/azure-key-vault.js';
+import { scanHashicorpVault } from '../src/scanners/hashicorp-vault.js';
 import type { Scanner } from '../src/types.js';
 
 function fixture(files: Record<string, string>) {
@@ -229,6 +230,17 @@ describe('platform scanners', () => {
     })).resolves.toEqual([
       'DATABASE_URL:azure/app-service.json:azure-key-vault',
       'DEPLOY_TOKEN:azure/container-app.yaml:azure-key-vault',
+    ]);
+  });
+
+  it('scans HashiCorp Vault metadata references without treating ordinary JSON as Vault config', async () => {
+    await expect(variables(scanHashicorpVault, {
+      'vault/agent.hcl': 'template {\n  destination = "/run/secrets/app.env"\n  contents = <<EOT\nDATABASE_URL={{ with secret "secret/data/prod/db" }}{{ .Data.data.url }}{{ end }}\nEOT\n}\n',
+      'nomad/job.hcl': 'job "api" {\n  group "web" {\n    task "api" {\n      template {\n        data = <<EOH\nDEPLOY_TOKEN={{ with secret "kv/data/prod/deploy" }}{{ .Data.data.token }}{{ end }}\nEOH\n        env = true\n      }\n    }\n  }\n}\n',
+      'plain.json': '{ "template": "SHOULD_NOT_SCAN={{ with secret \\"secret/data/nope\\" }}{{ .Data.data.value }}{{ end }}" }',
+    })).resolves.toEqual([
+      'DATABASE_URL:vault/agent.hcl:hashicorp-vault',
+      'DEPLOY_TOKEN:nomad/job.hcl:hashicorp-vault',
     ]);
   });
 });
