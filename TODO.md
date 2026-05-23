@@ -50,7 +50,7 @@
 - [x] Draft Docker Compose environment variable troubleshooting page without posting publicly
 - [x] Draft Vercel environment variable troubleshooting page without posting publicly
 - [x] Draft CircleCI environment variable troubleshooting page without posting publicly
-- [ ] Individual future integration pages for Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
+- [ ] Individual future integration pages for Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
 - [x] Draft Supabase environment variable troubleshooting page without claiming Supabase API/dashboard integration
 - [x] Draft Railway environment variable troubleshooting page without claiming Railway API/dashboard integration
 - [x] Draft Render environment variable troubleshooting page without claiming Render API/dashboard integration
@@ -67,4 +67,5 @@
 - [x] Add one more non-public demo/support asset while approval is pending: GitLab CI missing deploy token
 - [x] Package existing demos and support pages into a docs/articles index
 - [x] Add one more demo/support asset after first Dev.to post: Next.js missing Stripe secret
+- [x] Draft Azure Key Vault environment variable troubleshooting page without claiming Azure API/dashboard integration
 - [ ] Adapt the AI-agent walkthrough into a platform-native public post when it is the next best distribution slice

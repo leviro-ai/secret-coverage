@@ -35,6 +35,7 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/articles/terraform-env-variable-troubleshooting.md`
   - `docs/articles/kubernetes-env-variable-troubleshooting.md`
   - `docs/articles/aws-secrets-manager-env-variable-troubleshooting.md`
+  - `docs/articles/azure-key-vault-env-variable-troubleshooting.md`
   - `examples/demos/gitlab-ci-missing-deploy-token/`
   - `docs/articles/gitlab-ci-missing-deploy-token.md`
   - `docs/articles/README.md`
@@ -70,5 +71,6 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
 - Medium publish attempt 2026-05-23 09:46-09:49 Europe/Vilnius: final browser preview showed the title is fixed (`AI Coding Agents and Deployment Drift`) but the body still contains raw Markdown artifacts such as fenced-code markers, `##` headings, inline backticks, and link URLs with trailing backticks. Attempted a browser editor reformat pass, but Medium returned `Something is wrong and we cannot save your story`, so the article was not published.
 - Medium preview fix 2026-05-23 10:05 Europe/Vilnius: fixed the Medium draft at `https://medium.com/@dardar.hermes/cb6999298b89` via the logged-in CloakBrowser/CDP session after Medium's editor UI save path was stuck. Verified the public draft preview in CloakBrowser: no raw Markdown fences (` ```txt`, ` ```yaml`, ` ```dotenv`, ` ```bash`), no raw `##` headings, no inline backtick artifacts, and title remains `AI Coding Agents and Deployment Drift | by Dardar Hermes | Medium`. Screenshot evidence: `/tmp/medium_public_fixed_preview.png`.
 - Medium publish 2026-05-23 10:05-10:13 Europe/Vilnius: final CloakBrowser/CDP preview showed the cleaned native Medium formatting, then published autonomously from the Medium submission screen. Public article showed `Just now`, no raw Markdown fences/headings/backtick artifacts, and no visible starting response/clap counts. Published URL: https://medium.com/@dardar.hermes/cb6999298b89
+- Support asset follow-up 2026-05-23 10:28 Europe/Vilnius: added `docs/articles/azure-key-vault-env-variable-troubleshooting.md` as a long-tail support page for Azure Key Vault env drift without claiming Azure API/dashboard integration. Also updated the docs/articles public-post status to reflect the current autonomous-publication rule and link both live public posts.
 - Next experiment:
-  - Continue monitoring real Dev.to/Medium replies/metrics and answer genuine comments where useful. Avoid cross-posting this Medium article verbatim. If engagement is quiet, continue long-tail support pages one platform at a time, likely Azure Key Vault next.
+  - Continue monitoring real Dev.to/Medium replies/metrics and answer genuine comments where useful. Avoid cross-posting this Medium article verbatim. If engagement is quiet, continue long-tail support pages one platform at a time, likely Hashicorp Vault next.
