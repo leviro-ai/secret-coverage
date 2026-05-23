@@ -19,6 +19,7 @@ import { scanCapRover } from '../src/scanners/caprover.js';
 import { scanTerraform } from '../src/scanners/terraform.js';
 import { scanKubernetes } from '../src/scanners/kubernetes.js';
 import { scanAwsSecrets } from '../src/scanners/aws-secrets.js';
+import { scanAzureKeyVault } from '../src/scanners/azure-key-vault.js';
 import type { Scanner } from '../src/types.js';
 
 function fixture(files: Record<string, string>) {
@@ -217,6 +218,17 @@ describe('platform scanners', () => {
     })).resolves.toEqual([
       'DATABASE_URL:ecs-task-definition.json:aws-secrets-manager',
       'DEPLOY_TOKEN:template.yaml:aws-secrets-manager',
+    ]);
+  });
+
+  it('scans Azure Key Vault metadata references without treating ordinary JSON as Azure config', async () => {
+    await expect(variables(scanAzureKeyVault, {
+      'azure/app-service.json': '{ "type": "Microsoft.Web/sites/config", "properties": { "appSettings": [{ "name": "DATABASE_URL", "value": "@Microsoft.KeyVault(SecretUri=https://prod-vault.vault.azure.net/secrets/database-url/)" }, { "name": "NODE_ENV", "value": "production" }] } }',
+      'azure/container-app.yaml': 'type: Microsoft.App/containerApps\nproperties:\n  configuration:\n    secrets:\n      - name: deploy-token\n        keyVaultUrl: https://prod-vault.vault.azure.net/secrets/deploy-token\n    template:\n      containers:\n        - name: api\n          env:\n            - name: DEPLOY_TOKEN\n              secretRef: deploy-token\n',
+      'plain.json': '{ "appSettings": [{ "name": "SHOULD_NOT_SCAN", "value": "@Microsoft.KeyVault(SecretUri=https://example.vault.azure.net/secrets/nope/)" }] }',
+    })).resolves.toEqual([
+      'DATABASE_URL:azure/app-service.json:azure-key-vault',
+      'DEPLOY_TOKEN:azure/container-app.yaml:azure-key-vault',
     ]);
   });
 });
