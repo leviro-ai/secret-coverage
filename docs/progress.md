@@ -803,7 +803,7 @@ pnpm test && pnpm build
 - Duration: ~2m 21s active wall time including local verification, commit/push, and remote CI watch.
 - Verification: `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); docs positioning/link Python check => PASS; `pnpm --silent scan -- --path examples/demos/circleci-missing-deploy-key --ci` => PASS as expected failing demo scan (exit code 1 with `DEPLOY_KEY` / `missing-from-template`); `git push` => PASS; `gh run watch 26319964861 --exit-status` => PASS.
 - Schedule estimate: last five product slices including this one are ~1m53s, ~2m11s, ~2m27s, ~2m51s, and ~2m21s; rolling avg ~2m21s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 04:51 Europe/Vilnius.
-- Git/repo note: pushed commit `47c5a9d` (`docs: add circleci troubleshooting page`) to `main`; GitHub Actions run `26319964861` passed. `context.md` remains untracked and was not added. This progress-log update itself is local until the next restart-state commit.
+- Git/repo note: pushed commit `47c5a9d` (`docs: add circleci troubleshooting page`) and restart-state commit `c2cc33f` (`docs: record circleci troubleshooting heartbeat`) to `main`; GitHub Actions runs `26319964861` and `26319988446` passed. `context.md` remains untracked and was not added.
 - Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, prepare README-compatible snippets for the approved Dev.to article or draft the next long-tail support page without posting publicly.
 
 ## Next Step
