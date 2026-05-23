@@ -8,13 +8,14 @@ import { scanRailway } from './scanners/railway.js';
 import { scanRender } from './scanners/render.js';
 import { scanFly } from './scanners/fly.js';
 import { scanFirebase } from './scanners/firebase.js';
+import { scanCoolify } from './scanners/coolify.js';
 import { scanDocker } from './scanners/docker.js';
 import { scanVercel } from './scanners/vercel.js';
 import { scanNextJs } from './scanners/nextjs.js';
 import { scanSupabase } from './scanners/supabase.js';
 import { scanCapRover } from './scanners/caprover.js';
 
-const scanners: Scanner[] = [scanEnvFiles, scanGitHubActions, scanGitLabCI, scanCircleCI, scanJenkins, scanRailway, scanRender, scanFly, scanFirebase, scanDocker, scanVercel, scanNextJs, scanSupabase, scanCapRover];
+const scanners: Scanner[] = [scanEnvFiles, scanGitHubActions, scanGitLabCI, scanCircleCI, scanJenkins, scanRailway, scanRender, scanFly, scanFirebase, scanCoolify, scanDocker, scanVercel, scanNextJs, scanSupabase, scanCapRover];
 const DEFAULT_ENV_TEMPLATE_FILES = ['.env.example', '.env.dist'];
 
 const severityRank: Record<Finding['severity'], number> = {

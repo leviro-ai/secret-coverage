@@ -10,6 +10,7 @@ import { scanRailway } from '../src/scanners/railway.js';
 import { scanRender } from '../src/scanners/render.js';
 import { scanFly } from '../src/scanners/fly.js';
 import { scanFirebase } from '../src/scanners/firebase.js';
+import { scanCoolify } from '../src/scanners/coolify.js';
 import { scanDocker } from '../src/scanners/docker.js';
 import { scanVercel } from '../src/scanners/vercel.js';
 import { scanNextJs } from '../src/scanners/nextjs.js';
@@ -117,6 +118,17 @@ describe('platform scanners', () => {
       'FIREBASE_API_URL:firebase.json:firebase',
       'FIREBASE_HOSTING_SITE:.firebaserc:firebase',
       'FIREBASE_TOKEN:functions/package.json:firebase',
+    ]);
+  });
+
+  it('scans Coolify compose-oriented config env references', async () => {
+    await expect(variables(scanCoolify, {
+      'docker-compose.coolify.yml': 'services:\n  web:\n    image: app:latest\n    environment:\n      DATABASE_URL: ${DATABASE_URL}\n      NODE_ENV: production\n    command: pnpm start --token $DEPLOY_TOKEN\n',
+      'coolify.json': '{ "buildCommand": "pnpm build --api-url ${NEXT_PUBLIC_API_URL}", "staticValue": "production" }',
+    })).resolves.toEqual([
+      'DATABASE_URL:docker-compose.coolify.yml:coolify',
+      'DEPLOY_TOKEN:docker-compose.coolify.yml:coolify',
+      'NEXT_PUBLIC_API_URL:coolify.json:coolify',
     ]);
   });
 
