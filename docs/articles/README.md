@@ -36,6 +36,7 @@ These are long-tail support assets for developers who already know the symptom a
 - [Render environment variable troubleshooting](render-env-variable-troubleshooting.md)
 - [Netlify environment variable troubleshooting](netlify-env-variable-troubleshooting.md)
 - [Heroku environment variable troubleshooting](heroku-env-variable-troubleshooting.md)
+- [DigitalOcean App Platform environment variable troubleshooting](digitalocean-app-platform-env-variable-troubleshooting.md)
 - [Supabase environment variable troubleshooting](supabase-env-variable-troubleshooting.md)
 - [Terraform environment variable troubleshooting](terraform-env-variable-troubleshooting.md)
 - [Kubernetes environment variable troubleshooting](kubernetes-env-variable-troubleshooting.md)
