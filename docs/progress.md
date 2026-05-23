@@ -814,7 +814,7 @@ pnpm test && pnpm build
 - Duration: ~1m 40s active wall time.
 - Verification: `python3` publish-packet positioning/copy-paste check => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` and `pnpm --silent scan -- --path examples/demos/docker-compose-missing-redis-url --ci` => PASS as expected failing demo scans (exit code 1 with `STRIPE_SECRET_KEY` / `REDIS_URL` findings).
 - Schedule estimate: last five product slices including this one are ~2m11s, ~2m27s, ~2m51s, ~2m21s, and ~1m40s; rolling avg ~2m18s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 05:10 Europe/Vilnius.
-- Git/repo note: local docs changes prepared for commit/push; `context.md` remains untracked and was not added.
+- Git/repo note: pushed commit `479b756` (`docs: prepare devto publish packet`) to `main`; GitHub Actions run `26320390194` passed. `context.md` remains untracked and was not added.
 - Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, add the next concrete non-public demo/support asset, preferably GitLab CI missing deploy-token drift because GitLab CI is already in MVP scope.
 
 ## Next Step
