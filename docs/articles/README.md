@@ -28,6 +28,7 @@ These are long-tail support assets for developers who already know the symptom a
 - [Deployment failed because an environment variable was missing](deployment-failed-missing-env-variable.md)
 - [Env template vs secret manager](env-template-vs-secret-manager.md)
 - [GitHub Actions missing-secrets troubleshooting](github-actions-missing-secrets-troubleshooting.md)
+- [Dockerfile environment variable troubleshooting](dockerfile-env-variable-troubleshooting.md)
 - [Docker Compose environment variable troubleshooting](docker-compose-env-variable-troubleshooting.md)
 - [Vercel environment variable troubleshooting](vercel-env-variable-troubleshooting.md)
 - [CircleCI environment variable troubleshooting](circleci-env-variable-troubleshooting.md)

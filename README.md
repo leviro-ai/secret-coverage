@@ -198,6 +198,7 @@ Concrete demos and walkthroughs:
 - [`examples/demos/gitlab-ci-missing-deploy-token/`](examples/demos/gitlab-ci-missing-deploy-token/) — GitLab CI references `DEPLOY_TOKEN` but the env template does not document it.
 - [`examples/demos/nextjs-missing-stripe-secret/`](examples/demos/nextjs-missing-stripe-secret/) — Next.js API route references `STRIPE_SECRET_KEY` but the env template does not document it.
 - [`docs/articles/github-actions-missing-secrets-troubleshooting.md`](docs/articles/github-actions-missing-secrets-troubleshooting.md) — troubleshooting checklist for GitHub Actions missing-secret deployment failures.
+- [`docs/articles/dockerfile-env-variable-troubleshooting.md`](docs/articles/dockerfile-env-variable-troubleshooting.md) — troubleshooting checklist for Dockerfile build arg and runtime env drift.
 - [`docs/articles/docker-compose-env-variable-troubleshooting.md`](docs/articles/docker-compose-env-variable-troubleshooting.md) — troubleshooting checklist for Docker Compose environment variable drift.
 - [`docs/articles/gitlab-ci-missing-deploy-token.md`](docs/articles/gitlab-ci-missing-deploy-token.md) — troubleshooting walkthrough for GitLab CI deploy-token drift.
 - [`docs/articles/nextjs-missing-stripe-secret.md`](docs/articles/nextjs-missing-stripe-secret.md) — troubleshooting walkthrough for Next.js server-secret drift.
