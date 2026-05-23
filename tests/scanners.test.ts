@@ -9,6 +9,7 @@ import { scanJenkins } from '../src/scanners/jenkins.js';
 import { scanRailway } from '../src/scanners/railway.js';
 import { scanRender } from '../src/scanners/render.js';
 import { scanFly } from '../src/scanners/fly.js';
+import { scanFirebase } from '../src/scanners/firebase.js';
 import { scanDocker } from '../src/scanners/docker.js';
 import { scanVercel } from '../src/scanners/vercel.js';
 import { scanNextJs } from '../src/scanners/nextjs.js';
@@ -104,6 +105,18 @@ describe('platform scanners', () => {
       'BUILD_TARGET:fly.toml:fly',
       'DATABASE_URL:fly.toml:fly',
       'DEPLOY_TOKEN:fly.toml:fly',
+    ]);
+  });
+
+  it('scans Firebase config and script env references', async () => {
+    await expect(variables(scanFirebase, {
+      'firebase.json': '{ "hosting": { "rewrites": [{ "source": "**", "function": "api" }] }, "emulators": { "functions": { "env": { "FIREBASE_API_URL": "${FIREBASE_API_URL}", "NODE_ENV": "development" } } } }',
+      '.firebaserc': '{ "projects": { "default": "secret-coverage" }, "targets": { "secret-coverage": { "hosting": { "web": ["$FIREBASE_HOSTING_SITE"] } } } }',
+      'functions/package.json': '{ "scripts": { "deploy": "firebase deploy --token $FIREBASE_TOKEN" } }',
+    })).resolves.toEqual([
+      'FIREBASE_API_URL:firebase.json:firebase',
+      'FIREBASE_HOSTING_SITE:.firebaserc:firebase',
+      'FIREBASE_TOKEN:functions/package.json:firebase',
     ]);
   });
 
