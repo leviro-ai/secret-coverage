@@ -23,6 +23,7 @@ describe('release checklist', () => {
     expect(pkg.bin.seccov).toBe('dist/cli.js');
     expect(pkg.files).toContain('dist');
     expect(pkg.files).toContain('action.yml');
+    expect(pkg.files).toContain('CHANGELOG.md');
 
     for (const command of releaseCommands) {
       expect(release).toContain(command);
