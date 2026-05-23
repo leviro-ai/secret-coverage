@@ -1070,3 +1070,14 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Git/repo note: pushed commit `d94254b` (`docs: add azure key vault troubleshooting page`) and restart-state commit `45a448f` (`docs: record azure heartbeat`) to `main`; GitHub Actions runs `26326976221` and `26326999574` passed. `context.md` remains untracked and was not added.
 - Next: monitor real Dev.to/Medium replies and metrics; if engagement is quiet, continue the next long-tail support page, likely Hashicorp Vault env variable troubleshooting, without cross-posting the Medium article verbatim.
 
+### Heartbeat 2026-05-23 10:34-10:36 EEST
+
+- Slice: drafted the next long-tail support page: HashiCorp Vault environment variable troubleshooting.
+- Added `docs/articles/hashicorp-vault-env-variable-troubleshooting.md`, focused on Vault/Vault Agent/Kubernetes injector/Nomad/CI env-contract drift as metadata-only deployment readiness, without claiming Vault API/dashboard integration or reading secret values.
+- Linked the HashiCorp Vault page from `README.md` and `docs/articles/README.md`; updated `TODO.md` and `docs/marketing/metrics-log.md` so the asset and next state are restartable.
+- Duration: ~2m 30s active wall time including local verification, commit/push, and remote CI watch.
+- Verification: `python3` HashiCorp Vault support page restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `gh run watch 26327092001 --exit-status` => PASS.
+- Schedule estimate: recent completed product/marketing slices remain roughly ~2-4m; rolling avg ~3m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 10:51 Europe/Vilnius.
+- Git/repo note: pushed commit `42950d0` (`docs: add hashicorp vault troubleshooting page`) to `main`; GitHub Actions run `26327092001` passed. `context.md` remains untracked and was not added. This progress entry itself will be committed as restart-state.
+- Next: monitor real Dev.to/Medium replies and metrics; if engagement is quiet, continue the next long-tail support page, likely Jenkins environment variable troubleshooting, without cross-posting the Medium article verbatim.
+
