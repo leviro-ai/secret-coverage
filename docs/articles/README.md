@@ -40,6 +40,7 @@ These are long-tail support assets for developers who already know the symptom a
 - [Jenkins environment variable troubleshooting](jenkins-env-variable-troubleshooting.md)
 - [Coolify environment variable troubleshooting](coolify-env-variable-troubleshooting.md)
 - [Fly.io environment variable troubleshooting](flyio-env-variable-troubleshooting.md)
+- [Firebase environment variable troubleshooting](firebase-env-variable-troubleshooting.md)
 
 ## Public-post status
 

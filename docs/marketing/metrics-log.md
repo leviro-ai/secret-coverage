@@ -40,6 +40,7 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/articles/jenkins-env-variable-troubleshooting.md`
   - `docs/articles/coolify-env-variable-troubleshooting.md`
   - `docs/articles/flyio-env-variable-troubleshooting.md`
+  - `docs/articles/firebase-env-variable-troubleshooting.md`
   - `examples/demos/gitlab-ci-missing-deploy-token/`
   - `docs/articles/gitlab-ci-missing-deploy-token.md`
   - `docs/articles/README.md`
@@ -81,5 +82,6 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
 - Support asset follow-up 2026-05-23 11:10 Europe/Vilnius: added `docs/articles/jenkins-env-variable-troubleshooting.md` as a long-tail support page for Jenkins Pipeline env drift without claiming Jenkins API/dashboard integration.
 - Support asset follow-up 2026-05-23 11:29 Europe/Vilnius: added `docs/articles/coolify-env-variable-troubleshooting.md` as a long-tail support page for Coolify env drift without claiming Coolify API/dashboard integration.
 - Support asset follow-up 2026-05-23 11:48 Europe/Vilnius: added `docs/articles/flyio-env-variable-troubleshooting.md` as a long-tail support page for Fly.io env drift without claiming Fly API/dashboard integration.
+- Support asset follow-up 2026-05-23 12:07 Europe/Vilnius: added `docs/articles/firebase-env-variable-troubleshooting.md` as a long-tail support page for Firebase env drift without claiming Firebase or Google Cloud API integration.
 - Next experiment:
-  - Continue monitoring real Dev.to/Medium replies/metrics and answer genuine comments where useful. Avoid cross-posting this Medium article verbatim. If engagement is quiet, continue long-tail support pages one platform at a time, likely Firebase or CapRover next.
+  - Continue monitoring real Dev.to/Medium replies/metrics and answer genuine comments where useful. Avoid cross-posting this Medium article verbatim. If engagement is quiet, continue long-tail support pages one platform at a time, likely CapRover next.
