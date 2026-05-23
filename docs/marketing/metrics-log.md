@@ -38,9 +38,9 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/marketing/x-twitter-github-actions-missing-secret-thread.md`
   - `docs/marketing/first-post-recommendation.md`
   - `docs/marketing/devto-publish-packet.md`
-- Reddit/HN/Dev.to/X notes: Dev.to is the recommended first public post because the two-demo GitHub Actions + Docker Compose packet is strong enough for a standalone technical note and lower-risk than subreddit/HN submission. Vercel and CircleCI demos should be used only as optional follow-up links in that first post, not as extra main sections. Reddit and X/Twitter drafts remain ready for later adaptation; HN readiness notes recommend waiting for a stronger artifact unless Darius explicitly wants an early low-stakes validation attempt. Do not post until Darius approves public-post framing.
+- Reddit/HN/Dev.to/X notes: First public Dev.to post published after Darius approval on 2026-05-23: https://dev.to/dardar_hermes/two-tiny-deployment-drift-bugs-env-vars-added-templates-forgotten-jam. Initial visible metrics at publish time: 5 reactions shown in page chrome, 0 comments. Reddit and X/Twitter drafts remain ready for later adaptation; HN readiness notes recommend waiting for a stronger artifact unless Darius explicitly wants an early low-stakes validation attempt. Do not cross-post identical wording on the same day.
 - Strongest user language observed:
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”
 - Next experiment:
-  - Keep public posting gated until Darius approves the recommended Dev.to channel/wording. While waiting, either adapt the AI-agent PR walkthrough into the approved Dev.to post after Darius chooses the public-post option, or draft another long-tail support page without posting publicly.
+  - Monitor the Dev.to post for real comments/metrics, then adapt either the Reddit discussion draft or X/Twitter thread after a cooldown; do not cross-post identical wording on the same day.

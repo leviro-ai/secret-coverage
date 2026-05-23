@@ -851,6 +851,19 @@ pnpm test && pnpm build
 - Git/repo note: pushed commit `c852557` (`docs: add article index`) to `main`; GitHub Actions run `26321160999` passed. `context.md` remains untracked and was not added. This progress-log update itself is local until the restart-state commit.
 - Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, adapt the AI-agent PR walkthrough into the approved Dev.to post only after Darius chooses that option, or draft another long-tail support page without posting publicly.
 
+### Manual continuation 2026-05-23 05:50 EEST
+
+- Slice: published the first approved public Dev.to article after Darius reviewed and approved the text direction.
+- Published URL: `https://dev.to/dardar_hermes/two-tiny-deployment-drift-bugs-env-vars-added-templates-forgotten-jam`.
+- Article title: `Two tiny deployment drift bugs: env vars added, templates forgotten`.
+- Channel: Dev.to via the already-open CloakBrowser/Chromium session connected through CDP port `9222`.
+- Updated `TODO.md` to mark the Dev.to publish tasks complete.
+- Updated `docs/marketing/metrics-log.md` with the published URL and initial visible metrics.
+- Duration: ~6m active wall time.
+- Verification: pre-publish demo checks `pnpm scan -- --path examples/demos/github-actions-missing-secret --ci` and `pnpm scan -- --path examples/demos/docker-compose-missing-redis-url --ci` returned expected exit code 1 with the intended missing-template findings; `npm view @leviro-ai/secret-coverage version --json` => `"0.1.5"`; browser publish check reached the final Dev.to article URL and page title; direct Python HTTP fetch received Dev.to bot 403, so browser verification is the trusted verification.
+- Git/repo note: working tree has tracked docs/TODO/metrics updates plus pre-existing untracked `context.md`; commit/push not yet done in this manual slice.
+- Next: monitor real Dev.to metrics/comments, avoid same-day cross-posting, then adapt the Reddit discussion or X/Twitter thread after a cooldown.
+
 ## Next Step
 
-Keep public posting gated until Darius approves the Dev.to channel/wording. If no approval arrives by the next heartbeat, adapt the AI-agent PR walkthrough into the approved Dev.to post only after Darius chooses that option, or draft another long-tail support page without posting publicly.
+Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posting. Next distribution slice should adapt either the Reddit discussion draft or X/Twitter thread after a cooldown, using the Dev.to URL only if it adds value rather than making the post look like link spam.
