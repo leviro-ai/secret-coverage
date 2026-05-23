@@ -34,6 +34,7 @@ These are long-tail support assets for developers who already know the symptom a
 - [Supabase environment variable troubleshooting](supabase-env-variable-troubleshooting.md)
 - [Terraform environment variable troubleshooting](terraform-env-variable-troubleshooting.md)
 - [Kubernetes environment variable troubleshooting](kubernetes-env-variable-troubleshooting.md)
+- [AWS Secrets Manager environment variable troubleshooting](aws-secrets-manager-env-variable-troubleshooting.md)
 
 ## Public-post status
 
