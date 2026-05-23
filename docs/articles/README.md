@@ -1,6 +1,6 @@
 # Secret Coverage articles and demo index
 
-This directory collects concrete, non-hype examples for deployment drift detection and CI/CD environment validation. Each page is designed to be useful before public posting: a reviewer can run the fixture, inspect screenshot-ready output, and reuse the framing for docs, Dev.to, Reddit, Hacker News, or X/Twitter without inventing traction.
+This directory collects concrete, non-hype examples for deployment drift detection and CI/CD environment validation. Each page is designed to be useful on its own: run the fixture, inspect screenshot-ready output, and adapt the checklist to your own deployment workflow.
 
 ## Start here
 
@@ -52,8 +52,8 @@ These are long-tail support assets for developers who already know the symptom a
 - [Firebase environment variable troubleshooting](firebase-env-variable-troubleshooting.md)
 - [CapRover environment variable troubleshooting](caprover-env-variable-troubleshooting.md)
 
-## Public-post status
+## External writeups
 
-Public posting is autonomous by default when the account is available, the content is concrete/non-spammy, verification passes, and the post is channel-specific. Live posts so far: [Two tiny deployment drift bugs: env vars added, templates forgotten](https://dev.to/dardar_hermes/two-tiny-deployment-drift-bugs-env-vars-added-templates-forgotten-jam) and [AI Coding Agents and Deployment Drift](https://medium.com/@dardar.hermes/cb6999298b89). Future public posts should be adapted per channel, not duplicate reposts.
+These user-facing docs are the source of truth. Related external articles may adapt the same examples for specific platforms, but the runnable fixtures and maintenance notes live here.
 
-Do not fake engagement, comments, stars, testimonials, users, or reviews. Use these assets as concrete technical material, not traction claims.
+Do not fake engagement, comments, stars, testimonials, users, or reviews. Treat these assets as concrete technical material, not traction claims.
