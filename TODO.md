@@ -50,4 +50,5 @@
 - [ ] More SEO pages for long-tail deployment drift queries
 - [x] Add lightweight README navigation links to the checklist and AI-agent PR walkthrough while public posting remains approval-gated
 - [x] Prepare a copy/paste Dev.to publish packet while public posting remains approval-gated
+- [x] Add one more non-public demo/support asset while approval is pending: GitLab CI missing deploy token
 - [ ] Adapt the walkthrough into the approved Dev.to post after Darius chooses the public-post option

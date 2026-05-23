@@ -1,0 +1,10 @@
+stages:
+  - deploy
+
+deploy_production:
+  stage: deploy
+  image: alpine:3.20
+  script:
+    - test -n "$DEPLOY_TOKEN"
+    - echo "Deploying $NEXT_PUBLIC_APP_URL"
+    - ./scripts/deploy.sh --token "$DEPLOY_TOKEN"

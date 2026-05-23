@@ -817,6 +817,17 @@ pnpm test && pnpm build
 - Git/repo note: pushed commit `479b756` (`docs: prepare devto publish packet`) to `main`; GitHub Actions run `26320390194` passed. `context.md` remains untracked and was not added.
 - Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, add the next concrete non-public demo/support asset, preferably GitLab CI missing deploy-token drift because GitLab CI is already in MVP scope.
 
+### Heartbeat 2026-05-23 05:12-05:15 EEST
+
+- Slice: added another concrete non-public demo/support asset while public posting remains gated on Darius approval: GitLab CI missing deploy-token drift.
+- Added `examples/demos/gitlab-ci-missing-deploy-token/` with `.env.example`, `.gitlab-ci.yml`, fixture README, and screenshot-ready `secret-coverage-output.md` showing `DEPLOY_TOKEN` / `missing-from-template` without raw secret values.
+- Added `docs/articles/gitlab-ci-missing-deploy-token.md` and linked it from `README.md`; updated `TODO.md` and `docs/marketing/metrics-log.md` so the asset and next experiment are restartable.
+- Duration: ~2m 50s active wall time before commit/push/CI polling.
+- Verification: `python3` docs positioning/link check => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `pnpm --silent scan -- --path examples/demos/gitlab-ci-missing-deploy-token --ci` => PASS as expected failing demo scan (exit code 1 with `DEPLOY_TOKEN` / `missing-from-template` and no `CI_COMMIT_BRANCH` noise).
+- Schedule estimate: last five completed product slices are ~2m27s, ~2m51s, ~2m21s, ~1m40s, and ~2m50s; rolling avg ~2m26s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 05:30 Europe/Vilnius.
+- Git/repo note: local verification passed; commit/push and GitHub Actions check happen after this entry. `context.md` remains untracked and was not added.
+- Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, package the existing demo/support pages into a tighter docs navigation/index asset or draft the next long-tail support page without posting publicly.
+
 ## Next Step
 
-Keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, add the next concrete non-public demo/support asset, preferably GitLab CI missing deploy-token drift because GitLab CI is already in MVP scope.
+Keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, package the existing demo/support pages into a tighter docs navigation/index asset or draft the next long-tail support page without posting publicly.
