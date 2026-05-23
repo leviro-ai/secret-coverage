@@ -49,4 +49,5 @@
 - [ ] Individual future integration pages for Railway, Render, Supabase, Terraform, Kubernetes, AWS Secrets Manager, Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
 - [ ] More SEO pages for long-tail deployment drift queries
 - [x] Add lightweight README navigation links to the checklist and AI-agent PR walkthrough while public posting remains approval-gated
+- [x] Prepare a copy/paste Dev.to publish packet while public posting remains approval-gated
 - [ ] Adapt the walkthrough into the approved Dev.to post after Darius chooses the public-post option

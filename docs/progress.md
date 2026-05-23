@@ -806,6 +806,17 @@ pnpm test && pnpm build
 - Git/repo note: pushed commit `47c5a9d` (`docs: add circleci troubleshooting page`) and restart-state commit `c2cc33f` (`docs: record circleci troubleshooting heartbeat`) to `main`; GitHub Actions runs `26319964861` and `26319988446` passed. `context.md` remains untracked and was not added.
 - Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, prepare README-compatible snippets for the approved Dev.to article or draft the next long-tail support page without posting publicly.
 
+### Heartbeat 2026-05-23 04:53-04:55 EEST
+
+- Slice: prepared a copy/paste Dev.to publish packet while public posting remains gated on Darius approval.
+- Added `docs/marketing/devto-publish-packet.md` with paste-ready title, tags, main two-demo body, optional Vercel/CircleCI breadth note, and pre-publish verification commands.
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the publish packet is restartable and clearly non-public until approval.
+- Duration: ~1m 40s active wall time.
+- Verification: `python3` publish-packet positioning/copy-paste check => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` and `pnpm --silent scan -- --path examples/demos/docker-compose-missing-redis-url --ci` => PASS as expected failing demo scans (exit code 1 with `STRIPE_SECRET_KEY` / `REDIS_URL` findings).
+- Schedule estimate: last five product slices including this one are ~2m11s, ~2m27s, ~2m51s, ~2m21s, and ~1m40s; rolling avg ~2m18s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 05:10 Europe/Vilnius.
+- Git/repo note: local docs changes prepared for commit/push; `context.md` remains untracked and was not added.
+- Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, add the next concrete non-public demo/support asset, preferably GitLab CI missing deploy-token drift because GitLab CI is already in MVP scope.
+
 ## Next Step
 
-Keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, prepare README-compatible snippets for the approved Dev.to article or draft the next long-tail support page without posting publicly.
+Keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, add the next concrete non-public demo/support asset, preferably GitLab CI missing deploy-token drift because GitLab CI is already in MVP scope.
