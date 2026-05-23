@@ -36,6 +36,8 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/articles/kubernetes-env-variable-troubleshooting.md`
   - `docs/articles/aws-secrets-manager-env-variable-troubleshooting.md`
   - `docs/articles/azure-key-vault-env-variable-troubleshooting.md`
+  - `docs/articles/hashicorp-vault-env-variable-troubleshooting.md`
+  - `docs/articles/jenkins-env-variable-troubleshooting.md`
   - `examples/demos/gitlab-ci-missing-deploy-token/`
   - `docs/articles/gitlab-ci-missing-deploy-token.md`
   - `docs/articles/README.md`
@@ -74,5 +76,6 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
 - Support asset follow-up 2026-05-23 10:28 Europe/Vilnius: added `docs/articles/azure-key-vault-env-variable-troubleshooting.md` as a long-tail support page for Azure Key Vault env drift without claiming Azure API/dashboard integration. Also updated the docs/articles public-post status to reflect the current autonomous-publication rule and link both live public posts.
 - Support asset follow-up 2026-05-23 10:34 Europe/Vilnius: added `docs/articles/hashicorp-vault-env-variable-troubleshooting.md` as a long-tail support page for HashiCorp Vault env drift without claiming Vault API/dashboard integration.
 - Package version guard 2026-05-23 10:35 Europe/Vilnius: checked local repo version and published npm version. Local `package.json` is `0.1.5`; `npm view @leviro-ai/secret-coverage version --json` returned `"0.1.5"`, so no package-version update was detected. Added recurring version-sync instructions to local `CONTEXT.md`, the organic authority plan, TODO, and the autonomous heartbeat prompt so future slices inspect npm changes before continuing.
+- Support asset follow-up 2026-05-23 11:10 Europe/Vilnius: added `docs/articles/jenkins-env-variable-troubleshooting.md` as a long-tail support page for Jenkins Pipeline env drift without claiming Jenkins API/dashboard integration.
 - Next experiment:
-  - Continue monitoring real Dev.to/Medium replies/metrics and answer genuine comments where useful. Avoid cross-posting this Medium article verbatim. If engagement is quiet, continue long-tail support pages one platform at a time, likely Jenkins next.
+  - Continue monitoring real Dev.to/Medium replies/metrics and answer genuine comments where useful. Avoid cross-posting this Medium article verbatim. If engagement is quiet, continue long-tail support pages one platform at a time, likely Coolify, Fly.io, Firebase, or CapRover next.

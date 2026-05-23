@@ -52,7 +52,8 @@
 - [x] Draft Vercel environment variable troubleshooting page without posting publicly
 - [x] Draft CircleCI environment variable troubleshooting page without posting publicly
 - [x] Draft HashiCorp Vault environment variable troubleshooting page without claiming Vault API/dashboard integration
-- [ ] Individual future integration pages for Jenkins, Coolify, Fly.io, Firebase, CapRover
+- [ ] Individual future integration pages for Coolify, Fly.io, Firebase, CapRover
+- [x] Draft Jenkins environment variable troubleshooting page without claiming Jenkins API/dashboard integration
 - [x] Draft Supabase environment variable troubleshooting page without claiming Supabase API/dashboard integration
 - [x] Draft Railway environment variable troubleshooting page without claiming Railway API/dashboard integration
 - [x] Draft Render environment variable troubleshooting page without claiming Render API/dashboard integration
