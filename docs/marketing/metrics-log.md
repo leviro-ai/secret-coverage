@@ -41,8 +41,9 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/marketing/first-post-recommendation.md`
   - `docs/marketing/devto-publish-packet.md`
 - Reddit/HN/Dev.to/X notes: First public Dev.to post published after Darius approval on 2026-05-23: https://dev.to/dardar_hermes/two-tiny-deployment-drift-bugs-env-vars-added-templates-forgotten-jam. Initial visible metrics at publish time: 5 reactions shown in page chrome, 0 comments. Reddit and X/Twitter drafts remain ready for later adaptation; HN readiness notes recommend waiting for a stronger artifact unless Darius explicitly wants an early low-stakes validation attempt. Do not cross-post identical wording on the same day.
+- Dev.to follow-up 2026-05-23 06:10 Europe/Vilnius: public article page showed 0 reactions, 0 saves, and 1 visible comment. The comment mentioned `varlock.dev` as an alternative schema/runtime-loading approach. Drafted a non-posted reply packet at `docs/marketing/devto-comment-response-packet.md`; do not publish the reply without Darius approval.
 - Strongest user language observed:
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”
 - Next experiment:
-  - Monitor the Dev.to post for real comments/metrics, then adapt either the Reddit discussion draft or X/Twitter thread after a cooldown; do not cross-post identical wording on the same day.
+  - Wait for Darius approval before replying publicly to the Dev.to comment; continue monitoring metrics/comments and avoid same-day cross-posting. After cooldown, adapt either the Reddit discussion draft or X/Twitter thread with channel-specific wording rather than identical reposting.

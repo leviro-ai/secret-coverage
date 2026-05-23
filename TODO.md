@@ -42,6 +42,8 @@
 - [x] After Darius approval, publish the first Dev.to post through CloakBrowser and record the real URL/metrics
 - [x] Adapt first-post recommendation to optionally reference the Vercel and CircleCI demos without making the post too broad
 - [x] After Darius approval, publish the recommended Dev.to post as either two-demo-only or two-demo plus optional Vercel/CircleCI follow-up links
+- [x] Monitor first Dev.to post metrics/comment and draft a non-posted reply packet for the first visible comment
+- [ ] After Darius approval, reply to the Dev.to comment with a concise, non-defensive positioning clarification
 - [x] Draft GitHub Actions missing-secrets troubleshooting page without posting publicly
 - [x] Draft Docker Compose environment variable troubleshooting page without posting publicly
 - [x] Draft Vercel environment variable troubleshooting page without posting publicly
