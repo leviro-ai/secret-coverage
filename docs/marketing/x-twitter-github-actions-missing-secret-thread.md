@@ -17,7 +17,71 @@ Positioning: deployment drift detection / CI/CD environment validation / deploym
 - Avoid a long launch thread; 5-6 posts is enough.
 - Do not cross-post the same wording to Dev.to, Reddit, Hacker News, and X on the same day.
 
-## Recommended thread
+## Draft options
+
+### Post-Dev.to cooldown variant
+
+Status: draft only. Do not post until Darius explicitly approves a new X/Twitter post. This version is intentionally not a copy/paste of the Dev.to article; it uses X as a short field note with one concrete mismatch and one low-pressure question.
+
+Use this after the first Dev.to article has had a cooldown window and only if there is no more useful genuine engagement to answer first.
+
+### 1/5 — field note
+
+Small deployment drift bug I keep seeing:
+
+CI/CD starts depending on a new env var, but the repo template never gets updated.
+
+The PR looks fine until deploy time.
+
+### 2/5 — concrete mismatch
+
+Example:
+
+```yaml
+env:
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+```
+
+but `.env.example` only says:
+
+```dotenv
+DATABASE_URL=
+```
+
+### 3/5 — why it slips through
+
+Code review sees a workflow edit.
+
+The hosting platform has some secrets configured.
+
+Local dev may still work.
+
+What is missing is the repo-visible environment contract saying “this deploy now requires `STRIPE_SECRET_KEY`.”
+
+### 4/5 — local-first check
+
+I added a small local-first check for this class of drift.
+
+It compares env templates against CI/CD + deployment config references and reports variable-name mismatches.
+
+No secret values needed.
+
+### 5/5 — link + question
+
+Tiny runnable fixture:
+
+https://github.com/leviro-ai/secret-coverage/tree/main/examples/demos/github-actions-missing-secret
+
+How are you keeping env templates, CI secrets, and deploy config aligned without turning CI into noisy policy soup?
+
+Optional reply if linking the longer Dev.to write-up is useful in a thread reply, not the main post:
+
+> Longer write-up with the GitHub Actions + Docker Compose examples: https://dev.to/dardar_hermes/two-tiny-deployment-drift-bugs-env-vars-added-templates-forgotten-jam
+
+Do not include both links in the initial thread unless Darius asks; one concrete GitHub fixture is cleaner on X.
+
+## Original GitHub Actions thread option
 
 ### 1/6 — hook
 

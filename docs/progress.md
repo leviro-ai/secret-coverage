@@ -911,3 +911,14 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Schedule estimate: last five completed product/marketing slices are ~2m50s, ~2m5s, ~2m37s, ~1m45s, and ~1m; rolling avg ~2m3s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 06:45 Europe/Vilnius.
 - Git/repo note: pushed commit `a67fe94` (`docs: record devto follow-up heartbeat`) to `main`; GitHub Actions run `26322339566` passed. `context.md` remains untracked and was not added. This CI/progress correction itself is local until the next restart-state commit.
 - Next: continue monitoring genuine public replies/mentions; if engagement stays quiet, draft the next channel-specific distribution asset after cooldown, likely a non-identical Reddit discussion or X/Twitter thread that references the Dev.to post only if it adds value rather than looking like link spam.
+
+### Heartbeat 2026-05-23 06:48-06:50 EEST
+
+- Slice: drafted the next channel-specific distribution asset after Dev.to cooldown without posting publicly: a post-Dev.to X/Twitter follow-up variant.
+- Added an approval-gated, non-identical X/Twitter thread option to `docs/marketing/x-twitter-github-actions-missing-secret-thread.md`; it leads with the deployment-drift failure mode, uses a single GitHub fixture link, and keeps the Dev.to URL only as an optional reply if useful.
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the draft, approval gate, and next experiment are restartable.
+- Duration: ~2m active wall time before commit/push/CI polling.
+- Verification: `python3` X/Twitter cooldown draft restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests).
+- Schedule estimate: last five completed product/marketing slices are ~2m5s, ~2m37s, ~1m45s, ~1m, and ~2m; rolling avg ~1m53s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 07:05 Europe/Vilnius.
+- Git/repo note: local verification passed; commit/push and GitHub Actions check happen after this entry. `context.md` remains untracked and was not added.
+- Next: continue monitoring genuine Dev.to/public replies; if no engagement needs a reply and Darius approves a new public X/Twitter distribution step, use the cooldown variant and record the public URL/metrics. Otherwise draft another long-tail support page or integration-specific page without posting.

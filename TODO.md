@@ -32,6 +32,7 @@
 - [x] Draft Reddit-specific discussion framing for the GitHub Actions drift demo without posting
 - [x] Draft Hacker News / Show HN readiness notes for the GitHub Actions drift demo without posting
 - [x] Draft X/Twitter thread framing for the GitHub Actions drift demo without posting
+- [x] Add a post-Dev.to cooldown X/Twitter follow-up variant without posting
 - [x] Prepare first public-post recommendation with channel, final text, approval options, and risk notes
 - [x] Add one more concrete demo before public posting: Docker Compose missing Redis URL
 - [x] Adapt the first Dev.to public-post recommendation to include both GitHub Actions and Docker Compose demos
