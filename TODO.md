@@ -52,7 +52,8 @@
 - [x] Draft CircleCI environment variable troubleshooting page without posting publicly
 - [ ] Individual future integration pages for Railway, Render, Supabase, Terraform, Kubernetes, AWS Secrets Manager, Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
 - [ ] More SEO pages for long-tail deployment drift queries
-- [ ] Draft the first Medium-native article: AI agents are making deployment drift easier to create
+- [x] Draft the first Medium-native article: AI agents are making deployment drift easier to create
+- [ ] Publish the Medium-native AI/deployment-drift article only after Darius approves the exact text
 - [x] Add lightweight README navigation links to the checklist and AI-agent PR walkthrough while public posting remains approval-gated
 - [x] Prepare a copy/paste Dev.to publish packet while public posting remains approval-gated
 - [x] Add one more non-public demo/support asset while approval is pending: GitLab CI missing deploy token

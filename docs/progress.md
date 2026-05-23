@@ -932,3 +932,14 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Verification: CloakBrowser Medium login/onboarding => PASS; Medium home showed logged-in navigation with Write/Profile/Stories/Stats; profile link observed as `https://medium.com/@dardar.hermes`.
 - Git/repo note: tracked docs updated locally; `context.md` remains untracked and was not added.
 - Next: draft the first Medium-native article, likely `AI agents are making deployment drift easier to create`, then publish only after Darius explicitly approves the Medium text.
+
+### Heartbeat 2026-05-23 07:07-07:10 EEST
+
+- Slice: drafted the first Medium-native article while keeping publication approval-gated.
+- Added `docs/marketing/medium-ai-agents-deployment-drift-draft.md` with the draft `AI agents are making deployment drift easier to create`; it uses Medium-native narrative framing, includes concrete GitHub Actions/Docker Compose drift examples, links to GitHub/npm, clarifies Secret Coverage is metadata-only deployment drift detection rather than a secrets manager/runtime loader, and explicitly requires Darius approval before posting.
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the Medium draft, approval gate, and next distribution decision are restartable.
+- Duration: ~2m active wall time before commit/push/CI polling.
+- Verification: `python3` Medium draft approval/positioning/restart-state check => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests).
+- Schedule estimate: recent completed product/marketing slices remain roughly ~1-3m each; rolling avg ~2m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 07:25 Europe/Vilnius.
+- Git/repo note: local verification passed; commit/push and GitHub Actions check happen after this entry. `context.md` remains untracked and was not added.
+- Next: wait for Darius approval before publishing the Medium article; continue monitoring real Dev.to/public replies and, if no engagement needs a reply, either prepare a Medium approval packet or use the approval-gated X/Twitter cooldown variant if Darius approves that channel step.
