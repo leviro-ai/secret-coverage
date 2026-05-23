@@ -35,11 +35,15 @@ describe('release checklist', () => {
     expect(release).toContain('Darius approves publishing target and repository name');
   });
 
-  it('keeps the built CLI executable for direct npm bin and GitHub Action use', () => {
-    execFileSync('pnpm', ['build'], { cwd: process.cwd(), stdio: 'pipe' });
-    expect(existsSync('dist/cli.js')).toBe(true);
-    expect(readFileSync('dist/cli.js', 'utf8').split('\n')[0]).toBe('#!/usr/bin/env node');
-  });
+  it(
+    'keeps the built CLI executable for direct npm bin and GitHub Action use',
+    () => {
+      execFileSync('pnpm', ['build'], { cwd: process.cwd(), stdio: 'pipe' });
+      expect(existsSync('dist/cli.js')).toBe(true);
+      expect(readFileSync('dist/cli.js', 'utf8').split('\n')[0]).toBe('#!/usr/bin/env node');
+    },
+    15000,
+  );
 
   it('keeps changelog aligned with v0.1.0 supported scanners and trust posture', () => {
     const changelog = readFileSync('CHANGELOG.md', 'utf8');

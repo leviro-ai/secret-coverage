@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.32 — Unreleased
+
+### Fixed
+
+- Release checklist shebang regression test now allows enough time for `pnpm build` on slower runners.
+
 ## 0.1.31 — Unreleased
 
 ### Changed
