@@ -828,6 +828,29 @@ pnpm test && pnpm build
 - Git/repo note: local verification passed; commit/push and GitHub Actions check happen after this entry. `context.md` remains untracked and was not added.
 - Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, package the existing demo/support pages into a tighter docs navigation/index asset or draft the next long-tail support page without posting publicly.
 
+### Manual continuation 2026-05-23 05:15 EEST
+
+- Slice: diagnosed Darius's report that cron did not appear to run in the current Slack thread.
+- Findings:
+  - Cron job `9f2b31785aad` is enabled and did run; latest recorded run: `2026-05-23T04:57:12+03:00`, status `ok`.
+  - Cron output files exist under `~/.hermes/cron/output/9f2b31785aad/`, including `2026-05-23_04-57-12.md`.
+  - The job delivery target was still bound to an older Slack thread (`1779411483.387629`), while the current thread is `1779475391.652069`; this is why the current thread looked silent.
+  - The next interval was computed from run completion, so `next_run_at` is `05:27` rather than exactly 05:12 from the start time.
+- Fix applied: updated existing cron job `9f2b31785aad` delivery target to `slack:C0B45FU8NCB:1779475391.652069` so future heartbeat reports land in this thread.
+- Verification: `cronjob(action='list')` showed job enabled/status ok; `cronjob(action='update', deliver='slack:C0B45FU8NCB:1779475391.652069')` => PASS.
+- Next: let the next scheduled run at 05:27 deliver to the corrected thread; if it still does not appear, inspect delivery logs immediately.
+
+### Heartbeat 2026-05-23 05:30-05:33 EEST
+
+- Slice: packaged the existing demo/support assets into a tighter docs navigation/index asset while public posting remains gated on Darius approval.
+- Added `docs/articles/README.md` as an index for concrete demo walkthroughs, troubleshooting pages, the CI/CD env validation checklist, and the AI-agent PR review walkthrough.
+- Linked the article index from `README.md`; updated `TODO.md` and `docs/marketing/metrics-log.md` so the completed index slice and next gated experiment are restartable.
+- Duration: ~2m 5s active wall time including local verification, commit/push, and remote CI watch.
+- Verification: `python3` docs article index/link/positioning check => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `git push` => PASS; `gh run watch 26321160999 --exit-status` => PASS.
+- Schedule estimate: last five product slices including this one are ~2m51s, ~2m21s, ~1m40s, ~2m50s, and ~2m5s; rolling avg ~2m21s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 05:48 Europe/Vilnius.
+- Git/repo note: pushed commit `c852557` (`docs: add article index`) to `main`; GitHub Actions run `26321160999` passed. `context.md` remains untracked and was not added. This progress-log update itself is local until the restart-state commit.
+- Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, adapt the AI-agent PR walkthrough into the approved Dev.to post only after Darius chooses that option, or draft another long-tail support page without posting publicly.
+
 ## Next Step
 
-Keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, package the existing demo/support pages into a tighter docs navigation/index asset or draft the next long-tail support page without posting publicly.
+Keep public posting gated until Darius approves the Dev.to channel/wording. If no approval arrives by the next heartbeat, adapt the AI-agent PR walkthrough into the approved Dev.to post only after Darius chooses that option, or draft another long-tail support page without posting publicly.
