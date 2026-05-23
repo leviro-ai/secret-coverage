@@ -42,6 +42,7 @@
 - [ ] After Darius approval, publish the first Dev.to post through CloakBrowser and record the real URL/metrics
 - [x] Adapt first-post recommendation to optionally reference the Vercel and CircleCI demos without making the post too broad
 - [ ] After Darius approval, publish the recommended Dev.to post as either two-demo-only or two-demo plus optional Vercel/CircleCI follow-up links
+- [x] Draft GitHub Actions missing-secrets troubleshooting page without posting publicly
 - [ ] Individual future integration pages for Railway, Render, Supabase, Terraform, Kubernetes, AWS Secrets Manager, Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
 - [ ] More SEO pages for long-tail deployment drift queries
 - [x] Add lightweight README navigation links to the checklist and AI-agent PR walkthrough while public posting remains approval-gated
