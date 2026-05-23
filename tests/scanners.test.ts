@@ -17,6 +17,7 @@ import { scanNextJs } from '../src/scanners/nextjs.js';
 import { scanSupabase } from '../src/scanners/supabase.js';
 import { scanCapRover } from '../src/scanners/caprover.js';
 import { scanTerraform } from '../src/scanners/terraform.js';
+import { scanKubernetes } from '../src/scanners/kubernetes.js';
 import type { Scanner } from '../src/types.js';
 
 function fixture(files: Record<string, string>) {
@@ -194,6 +195,16 @@ describe('platform scanners', () => {
       'DATABASE_URL:infra/main.tf:terraform',
       'DEPLOY_TOKEN:infra/main.tf:terraform',
       'IMAGE_TAG:infra/terraform.tfvars:terraform',
+    ]);
+  });
+
+  it('scans Kubernetes manifest env refs without treating ordinary YAML as Kubernetes config', async () => {
+    await expect(variables(scanKubernetes, {
+      'k8s/deployment.yaml': 'apiVersion: apps/v1\nkind: Deployment\nspec:\n  template:\n    spec:\n      containers:\n        - name: web\n          image: app:latest\n          env:\n            - name: DATABASE_URL\n              valueFrom:\n                secretKeyRef:\n                  name: app-secrets\n                  key: database-url\n            - name: NEXT_PUBLIC_API_URL\n              value: ${NEXT_PUBLIC_API_URL}\n            - name: NODE_ENV\n              value: production\n',
+      'plain.yaml': 'env:\n  name: SHOULD_NOT_SCAN\n  value: ${SHOULD_NOT_SCAN}\n',
+    })).resolves.toEqual([
+      'DATABASE_URL:k8s/deployment.yaml:kubernetes',
+      'NEXT_PUBLIC_API_URL:k8s/deployment.yaml:kubernetes',
     ]);
   });
 });

@@ -15,8 +15,9 @@ import { scanNextJs } from './scanners/nextjs.js';
 import { scanSupabase } from './scanners/supabase.js';
 import { scanCapRover } from './scanners/caprover.js';
 import { scanTerraform } from './scanners/terraform.js';
+import { scanKubernetes } from './scanners/kubernetes.js';
 
-const scanners: Scanner[] = [scanEnvFiles, scanGitHubActions, scanGitLabCI, scanCircleCI, scanJenkins, scanRailway, scanRender, scanFly, scanFirebase, scanCoolify, scanDocker, scanVercel, scanNextJs, scanSupabase, scanCapRover, scanTerraform];
+const scanners: Scanner[] = [scanEnvFiles, scanGitHubActions, scanGitLabCI, scanCircleCI, scanJenkins, scanRailway, scanRender, scanFly, scanFirebase, scanCoolify, scanDocker, scanVercel, scanNextJs, scanSupabase, scanCapRover, scanTerraform, scanKubernetes];
 const DEFAULT_ENV_TEMPLATE_FILES = ['.env.example', '.env.dist'];
 
 const severityRank: Record<Finding['severity'], number> = {
