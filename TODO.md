@@ -23,6 +23,7 @@
 
 ## Roadmap visibility / GEO / LLMEO
 
+- [ ] Recurring heartbeat guard: check local package version vs published npm version; when it changes, inspect release/code/doc changes and update `context.md`, active plans, TODO/progress notes, and stale publish packets before the next marketing/build slice
 - [x] README planned integrations section
 - [x] `docs/roadmap/` directory
 - [x] `docs/integrations/` directory
