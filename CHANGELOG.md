@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.33 — Unreleased
+
+### Changed
+
+- npm package metadata now explicitly allowlists `LICENSE` so the Apache-2.0 license file stays visible in dry-run/release checks.
+
 ## 0.1.32 — Unreleased
 
 ### Fixed

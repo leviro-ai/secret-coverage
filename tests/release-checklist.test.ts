@@ -24,6 +24,7 @@ describe('release checklist', () => {
     expect(pkg.files).toContain('dist');
     expect(pkg.files).toContain('action.yml');
     expect(pkg.files).toContain('CHANGELOG.md');
+    expect(pkg.files).toContain('LICENSE');
 
     for (const command of releaseCommands) {
       expect(release).toContain(command);
