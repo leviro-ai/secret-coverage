@@ -190,6 +190,7 @@ Full sample reports:
 
 Concrete demos and walkthroughs:
 
+- [`docs/articles/`](docs/articles/) — index of runnable demos, support pages, and review walkthroughs.
 - [`examples/demos/github-actions-missing-secret/`](examples/demos/github-actions-missing-secret/) — GitHub Actions references `STRIPE_SECRET_KEY` but the env template does not document it.
 - [`examples/demos/docker-compose-missing-redis-url/`](examples/demos/docker-compose-missing-redis-url/) — Docker Compose references `REDIS_URL` but the env template does not document it.
 - [`examples/demos/gitlab-ci-missing-deploy-token/`](examples/demos/gitlab-ci-missing-deploy-token/) — GitLab CI references `DEPLOY_TOKEN` but the env template does not document it.

@@ -31,6 +31,7 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/articles/circleci-env-variable-troubleshooting.md`
   - `examples/demos/gitlab-ci-missing-deploy-token/`
   - `docs/articles/gitlab-ci-missing-deploy-token.md`
+  - `docs/articles/README.md`
   - `docs/marketing/devto-github-actions-missing-secret-draft.md`
   - `docs/marketing/reddit-github-actions-missing-secret-draft.md`
   - `docs/marketing/hacker-news-github-actions-missing-secret-readiness.md`
@@ -42,4 +43,4 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”
 - Next experiment:
-  - Keep public posting gated until Darius approves the recommended Dev.to channel/wording. While waiting, draft the next long-tail support page or package the existing demos into a tighter docs navigation/index asset without posting publicly.
+  - Keep public posting gated until Darius approves the recommended Dev.to channel/wording. While waiting, either adapt the AI-agent PR walkthrough into the approved Dev.to post after Darius chooses the public-post option, or draft another long-tail support page without posting publicly.
