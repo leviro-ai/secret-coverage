@@ -1121,3 +1121,15 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Git/repo note: pushed commit `f80d2bf` (`docs: add coolify troubleshooting page`) to `main`; GitHub Actions run `26328120415` passed. `CONTEXT.md` remains ignored and was not added. This CI/progress correction itself is local until the restart-state commit.
 - Next: monitor real Dev.to/Medium replies and metrics; if engagement is quiet, continue the next long-tail support page, likely Fly.io, Firebase, or CapRover environment variable troubleshooting, without cross-posting the Medium article verbatim.
 
+
+### Heartbeat 2026-05-23 11:45-11:48 EEST
+
+- Slice: drafted the next long-tail support page: Fly.io environment variable troubleshooting.
+- Package version guard: local `package.json` version `0.1.5`; published npm `@leviro-ai/secret-coverage` version `0.1.5`; versions match, so no release/context refresh was needed before the slice.
+- Added `docs/articles/flyio-env-variable-troubleshooting.md`, focused on Fly app/secrets/release-command/worker env-contract drift as metadata-only deployment readiness, without claiming Fly API/dashboard integration or reading Fly secrets.
+- Linked the Fly.io page from `README.md` and `docs/articles/README.md`; updated `TODO.md` and `docs/marketing/metrics-log.md` so the asset and next state are restartable.
+- Duration: ~2m 32s active wall time including local verification, commit/push, and remote CI watch.
+- Verification: `python3` Fly.io support page restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); package version guard commands => local `0.1.5`, npm `"0.1.5"`; `gh run watch 26328479658 --exit-status` => PASS.
+- Schedule estimate: recent completed product/marketing slices remain roughly ~2-4m, with this slice ~2m; rolling avg remains about ~3m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 12:03 Europe/Vilnius.
+- Git/repo note: pushed commit `5be2b11` (`docs: add flyio troubleshooting page`) to `main`; GitHub Actions run `26328479658` passed. `CONTEXT.md` remains ignored and was not added. This progress entry itself will be committed as restart-state.
+- Next: monitor real Dev.to/Medium replies and metrics; if engagement is quiet, continue the next long-tail support page, likely Firebase or CapRover environment variable troubleshooting, without cross-posting the Medium article verbatim.
