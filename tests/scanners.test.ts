@@ -175,6 +175,15 @@ describe('platform scanners', () => {
     })).resolves.toEqual(['SUPABASE_URL:supabase/config.toml:supabase']);
   });
 
+  it('scans Supabase Edge Function Deno env references without generic source identifiers', async () => {
+    await expect(variables(scanSupabase, {
+      'supabase/functions/webhook/index.ts': "const secret = Deno.env.get('STRIPE_WEBHOOK_SECRET'); const url = Deno.env.get(\"SUPABASE_URL\"); const payload = `${context}:${eventName}`;\n",
+    })).resolves.toEqual([
+      'STRIPE_WEBHOOK_SECRET:supabase/functions/webhook/index.ts:supabase',
+      'SUPABASE_URL:supabase/functions/webhook/index.ts:supabase',
+    ]);
+  });
+
   it('scans CapRover captain definition references', async () => {
     await expect(variables(scanCapRover, {
       'captain-definition': '{ "schemaVersion": 2, "dockerfileLines": ["ENV API_URL=${API_URL}"] }',
