@@ -6,6 +6,7 @@ import { scanGitHubActions } from '../src/scanners/github-actions.js';
 import { scanGitLabCI } from '../src/scanners/gitlab-ci.js';
 import { scanCircleCI } from '../src/scanners/circleci.js';
 import { scanJenkins } from '../src/scanners/jenkins.js';
+import { scanRailway } from '../src/scanners/railway.js';
 import { scanDocker } from '../src/scanners/docker.js';
 import { scanVercel } from '../src/scanners/vercel.js';
 import { scanNextJs } from '../src/scanners/nextjs.js';
@@ -74,6 +75,15 @@ describe('platform scanners', () => {
     await expect(variables(scanJenkins, {
       Jenkinsfile: "pipeline { stages { stage('Info') { steps { sh 'echo $BUILD_NUMBER $JOB_NAME $WORKSPACE $BRANCH_NAME' } } } } }\n",
     })).resolves.toEqual([]);
+  });
+
+  it('scans Railway config command environment references', async () => {
+    await expect(variables(scanRailway, {
+      'railway.toml': '[deploy]\nstartCommand = "node server.js --database ${DATABASE_URL} --token $DEPLOY_TOKEN"\n',
+    })).resolves.toEqual([
+      'DATABASE_URL:railway.toml:railway',
+      'DEPLOY_TOKEN:railway.toml:railway',
+    ]);
   });
 
   it('scans Dockerfile and Compose references', async () => {
