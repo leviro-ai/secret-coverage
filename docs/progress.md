@@ -988,3 +988,15 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Schedule estimate: recent completed product/marketing slices remain roughly ~1-3m each; rolling avg ~2m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 08:42 Europe/Vilnius.
 - Git/repo note: pushed commit `49ad25b` (`docs: add supabase troubleshooting page`) to `main`; GitHub Actions run `26324615038` passed. `context.md` remains untracked and was not added. This CI/progress correction itself is local until the next restart-state commit.
 - Next: continue monitoring real Dev.to/public replies; if Darius approves Medium, publish from `docs/marketing/medium-publish-packet.md` and record the public URL/metrics. If no approval arrives, draft the next long-tail support page, likely Terraform or Kubernetes env variable troubleshooting, without posting publicly.
+
+### Heartbeat 2026-05-23 08:45-08:48 EEST
+
+- Slice: monitored the live Dev.to post and drafted the next long-tail support page while Medium/X publishing remains approval-gated: Terraform environment variable troubleshooting.
+- Observed via browser: the Dev.to article still shows 2 reactions, 0 saves, and 2 comments total; the existing thread has Theo Ephraim's comment plus Darius Hermes's reply, so no new public reply was needed.
+- Added `docs/articles/terraform-env-variable-troubleshooting.md`, focused on Terraform `TF_VAR_*`, provider credential, backend credential, and CI/CD env drift as metadata-only deployment-readiness checks without claiming Terraform Cloud, OpenTofu, or cloud-provider API integration.
+- Linked the Terraform page from `README.md` and `docs/articles/README.md`; updated `TODO.md` and `docs/marketing/metrics-log.md` so the asset and next state are restartable.
+- Duration: ~2m 36s active wall time including local verification, commit/push, and remote CI watch.
+- Verification: browser Dev.to page inspection => PASS (article URL loaded; 2 reactions, 0 saves, 2 comments); `python3` Terraform support page restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `git push` => PASS; `gh run watch 26324983911 --exit-status` => PASS.
+- Schedule estimate: recent completed product/marketing slices remain roughly ~1-3m each; rolling avg ~2m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 09:03 Europe/Vilnius.
+- Git/repo note: pushed commit `0d857aa` (`docs: add terraform troubleshooting page`) to `main`; GitHub Actions run `26324983911` passed. `context.md` remains untracked and was not added. This CI/progress correction itself is local until the next restart-state commit.
+- Next: continue monitoring real Dev.to/public replies; if Darius approves Medium, publish from `docs/marketing/medium-publish-packet.md` and record the public URL/metrics. If no approval arrives, draft the next long-tail support page, likely Kubernetes env variable troubleshooting, without posting publicly.
