@@ -194,6 +194,7 @@ Concrete demos and walkthroughs:
 - [`examples/demos/docker-compose-missing-redis-url/`](examples/demos/docker-compose-missing-redis-url/) — Docker Compose references `REDIS_URL` but the env template does not document it.
 - [`docs/articles/github-actions-missing-secrets-troubleshooting.md`](docs/articles/github-actions-missing-secrets-troubleshooting.md) — troubleshooting checklist for GitHub Actions missing-secret deployment failures.
 - [`docs/articles/docker-compose-env-variable-troubleshooting.md`](docs/articles/docker-compose-env-variable-troubleshooting.md) — troubleshooting checklist for Docker Compose environment variable drift.
+- [`docs/articles/vercel-env-variable-troubleshooting.md`](docs/articles/vercel-env-variable-troubleshooting.md) — troubleshooting checklist for Vercel environment variable drift.
 - [`docs/articles/ci-cd-env-validation-checklist.md`](docs/articles/ci-cd-env-validation-checklist.md) — practical CI/CD environment variable validation checklist.
 - [`docs/articles/ai-agent-pr-env-review-walkthrough.md`](docs/articles/ai-agent-pr-env-review-walkthrough.md) — reviewing AI-generated PRs for deployment-breaking env drift.
 

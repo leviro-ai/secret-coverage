@@ -44,6 +44,7 @@
 - [ ] After Darius approval, publish the recommended Dev.to post as either two-demo-only or two-demo plus optional Vercel/CircleCI follow-up links
 - [x] Draft GitHub Actions missing-secrets troubleshooting page without posting publicly
 - [x] Draft Docker Compose environment variable troubleshooting page without posting publicly
+- [x] Draft Vercel environment variable troubleshooting page without posting publicly
 - [ ] Individual future integration pages for Railway, Render, Supabase, Terraform, Kubernetes, AWS Secrets Manager, Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
 - [ ] More SEO pages for long-tail deployment drift queries
 - [x] Add lightweight README navigation links to the checklist and AI-agent PR walkthrough while public posting remains approval-gated
