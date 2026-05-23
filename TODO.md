@@ -50,8 +50,9 @@
 - [x] Draft Docker Compose environment variable troubleshooting page without posting publicly
 - [x] Draft Vercel environment variable troubleshooting page without posting publicly
 - [x] Draft CircleCI environment variable troubleshooting page without posting publicly
-- [ ] Individual future integration pages for Render, Supabase, Terraform, Kubernetes, AWS Secrets Manager, Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
+- [ ] Individual future integration pages for Supabase, Terraform, Kubernetes, AWS Secrets Manager, Azure Key Vault, Hashicorp Vault, Jenkins, Coolify, Fly.io, Firebase, CapRover
 - [x] Draft Railway environment variable troubleshooting page without claiming Railway API/dashboard integration
+- [x] Draft Render environment variable troubleshooting page without claiming Render API/dashboard integration
 - [ ] More SEO pages for long-tail deployment drift queries
 - [x] Draft the first Medium-native article: AI agents are making deployment drift easier to create
 - [x] Prepare approval-gated Medium publish packet for the AI/deployment-drift article

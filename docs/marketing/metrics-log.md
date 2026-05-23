@@ -30,6 +30,7 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/articles/vercel-env-variable-troubleshooting.md`
   - `docs/articles/circleci-env-variable-troubleshooting.md`
   - `docs/articles/railway-env-variable-troubleshooting.md`
+  - `docs/articles/render-env-variable-troubleshooting.md`
   - `examples/demos/gitlab-ci-missing-deploy-token/`
   - `docs/articles/gitlab-ci-missing-deploy-token.md`
   - `docs/articles/README.md`
@@ -53,6 +54,7 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
 - Medium draft 2026-05-23 07:10 Europe/Vilnius: drafted `docs/marketing/medium-ai-agents-deployment-drift-draft.md`, a Medium-native narrative article titled `AI agents are making deployment drift easier to create`. It is approval-gated and not published; it links to GitHub/npm, distinguishes Secret Coverage from secret managers/runtime loaders, and avoids duplicating the Dev.to post verbatim.
 - Medium approval packet 2026-05-23 07:30 Europe/Vilnius: prepared `docs/marketing/medium-publish-packet.md` with approval options, paste-ready Medium setup, pre-publish verification commands, risk notes, and post-publish metric logging steps. Still not published; Darius approval remains required.
 - Dev.to / support asset follow-up 2026-05-23 07:48 Europe/Vilnius: public article browser inspection showed 2 reactions, 0 saves, and 2 comments total (Theo's comment plus Darius Hermes's reply); no new public reply needed. Added `docs/articles/railway-env-variable-troubleshooting.md` as a long-tail support page for Railway env drift without claiming Railway API/dashboard integration.
+- Support asset follow-up 2026-05-23 08:08 Europe/Vilnius: added `docs/articles/render-env-variable-troubleshooting.md` as a long-tail support page for Render service env drift without claiming Render API/dashboard integration.
 - Strongest user language observed:
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”

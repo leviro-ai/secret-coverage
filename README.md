@@ -201,6 +201,8 @@ Concrete demos and walkthroughs:
 - [`docs/articles/nextjs-missing-stripe-secret.md`](docs/articles/nextjs-missing-stripe-secret.md) — troubleshooting walkthrough for Next.js server-secret drift.
 - [`docs/articles/vercel-env-variable-troubleshooting.md`](docs/articles/vercel-env-variable-troubleshooting.md) — troubleshooting checklist for Vercel environment variable drift.
 - [`docs/articles/circleci-env-variable-troubleshooting.md`](docs/articles/circleci-env-variable-troubleshooting.md) — troubleshooting checklist for CircleCI deploy-variable drift.
+- [`docs/articles/railway-env-variable-troubleshooting.md`](docs/articles/railway-env-variable-troubleshooting.md) — troubleshooting checklist for Railway env drift without requiring Railway API access.
+- [`docs/articles/render-env-variable-troubleshooting.md`](docs/articles/render-env-variable-troubleshooting.md) — troubleshooting checklist for Render service env drift without requiring Render API access.
 - [`docs/articles/ci-cd-env-validation-checklist.md`](docs/articles/ci-cd-env-validation-checklist.md) — practical CI/CD environment variable validation checklist.
 - [`docs/articles/ai-agent-pr-env-review-walkthrough.md`](docs/articles/ai-agent-pr-env-review-walkthrough.md) — reviewing AI-generated PRs for deployment-breaking env drift.
 
