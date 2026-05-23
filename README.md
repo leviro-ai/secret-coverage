@@ -204,6 +204,7 @@ Concrete demos and walkthroughs:
 - [`docs/articles/circleci-env-variable-troubleshooting.md`](docs/articles/circleci-env-variable-troubleshooting.md) — troubleshooting checklist for CircleCI deploy-variable drift.
 - [`docs/articles/railway-env-variable-troubleshooting.md`](docs/articles/railway-env-variable-troubleshooting.md) — troubleshooting checklist for Railway env drift without requiring Railway API access.
 - [`docs/articles/render-env-variable-troubleshooting.md`](docs/articles/render-env-variable-troubleshooting.md) — troubleshooting checklist for Render service env drift without requiring Render API access.
+- [`docs/articles/netlify-env-variable-troubleshooting.md`](docs/articles/netlify-env-variable-troubleshooting.md) — troubleshooting checklist for Netlify deploy and function env drift without requiring Netlify API access.
 - [`docs/articles/supabase-env-variable-troubleshooting.md`](docs/articles/supabase-env-variable-troubleshooting.md) — troubleshooting checklist for Supabase env drift without requiring Supabase API access.
 - [`docs/articles/terraform-env-variable-troubleshooting.md`](docs/articles/terraform-env-variable-troubleshooting.md) — troubleshooting checklist for Terraform env drift without requiring Terraform Cloud or cloud-provider API access.
 - [`docs/articles/kubernetes-env-variable-troubleshooting.md`](docs/articles/kubernetes-env-variable-troubleshooting.md) — troubleshooting checklist for Kubernetes env drift without requiring cluster API access.
