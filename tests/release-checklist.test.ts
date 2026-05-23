@@ -50,6 +50,9 @@ describe('release checklist', () => {
     expect(changelog).toContain('Docker');
     expect(changelog).toContain('Vercel');
     expect(changelog).toContain('metadata-only');
+    const pkg = JSON.parse(readFileSync('package.json', 'utf8')) as { version: string };
+
+    expect(changelog).toContain(`## ${pkg.version}`);
     expect(changelog).toContain('no raw secret values');
   });
 });

@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.31 — Unreleased
+
+### Changed
+
+- Release readiness checks now require the changelog to include the current package version before package publication.
+
+## 0.1.30 — Unreleased
+
+### Changed
+
+- npm package dry-run metadata now explicitly includes `CHANGELOG.md` in the package file allowlist.
+
+### Added
+
+- Static local-first scanners for Jenkinsfile, Railway, Render, Fly.io, Firebase, Coolify, CapRover Docker build args, Terraform, Kubernetes manifests, AWS Secrets Manager metadata, Azure Key Vault metadata, HashiCorp Vault metadata, and Supabase Edge Function `Deno.env.get(...)` references.
+- Kubernetes static scanning can resolve same-file `envFrom` Secret/ConfigMap keys without cluster/API access.
+
 ## 0.1.3 — Unreleased
 
 ### Fixed
