@@ -29,13 +29,76 @@ function hasSecretOrConfigMapValueFrom(value: Record<string, unknown>): boolean 
   return isRecord(valueFrom) && (isRecord(valueFrom.secretKeyRef) || isRecord(valueFrom.configMapKeyRef));
 }
 
-function extractManifestEnvReferences(manifest: unknown): string[] {
+function metadataName(manifest: Record<string, unknown>): string | undefined {
+  const metadata = manifest.metadata;
+  if (!isRecord(metadata) || typeof metadata.name !== 'string') return undefined;
+  return metadata.name;
+}
+
+function objectKeys(value: unknown): string[] {
+  if (!isRecord(value)) return [];
+  return Object.keys(value).filter(key => /^[A-Z][A-Z0-9_]*$/.test(key));
+}
+
+type KubernetesEnvFromResources = {
+  configMaps: Map<string, string[]>;
+  secrets: Map<string, string[]>;
+};
+
+function collectEnvFromResources(documents: unknown[]): KubernetesEnvFromResources {
+  const configMaps = new Map<string, string[]>();
+  const secrets = new Map<string, string[]>();
+
+  for (const document of documents) {
+    if (!isKubernetesManifest(document)) continue;
+    const name = metadataName(document);
+    if (!name) continue;
+
+    if (document.kind === 'ConfigMap') {
+      const keys = objectKeys(document.data).sort();
+      if (keys.length > 0) configMaps.set(name, keys);
+    }
+
+    if (document.kind === 'Secret') {
+      const keys = [...new Set([...objectKeys(document.data), ...objectKeys(document.stringData)])].sort();
+      if (keys.length > 0) secrets.set(name, keys);
+    }
+  }
+
+  return { configMaps, secrets };
+}
+
+function addEnvFromReferences(
+  envFrom: unknown,
+  refs: Set<string>,
+  resources: KubernetesEnvFromResources,
+): void {
+  if (!Array.isArray(envFrom)) return;
+
+  for (const entry of envFrom) {
+    if (!isRecord(entry)) continue;
+
+    const secretRef = entry.secretRef;
+    if (isRecord(secretRef) && typeof secretRef.name === 'string') {
+      for (const variable of resources.secrets.get(secretRef.name) ?? []) refs.add(variable);
+    }
+
+    const configMapRef = entry.configMapRef;
+    if (isRecord(configMapRef) && typeof configMapRef.name === 'string') {
+      for (const variable of resources.configMaps.get(configMapRef.name) ?? []) refs.add(variable);
+    }
+  }
+}
+
+function extractManifestEnvReferences(manifest: unknown, resources: KubernetesEnvFromResources): string[] {
   if (!isKubernetesManifest(manifest)) return [];
 
   const refs = new Set<string>();
 
   walkValues(manifest, value => {
     if (!isRecord(value)) return;
+
+    addEnvFromReferences(value.envFrom, refs, resources);
 
     const env = value.env;
     if (Array.isArray(env)) {
@@ -72,9 +135,11 @@ export const scanKubernetes: Scanner = async ({ root }) => {
 
   for (const { file, content } of files) {
     const variables = new Set<string>();
+    const documents = parseKubernetesDocuments(content);
+    const resources = collectEnvFromResources(documents);
 
-    for (const document of parseKubernetesDocuments(content)) {
-      for (const variable of extractManifestEnvReferences(document)) {
+    for (const document of documents) {
+      for (const variable of extractManifestEnvReferences(document, resources)) {
         variables.add(variable);
       }
     }

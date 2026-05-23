@@ -211,6 +211,17 @@ describe('platform scanners', () => {
     ]);
   });
 
+  it('resolves Kubernetes envFrom Secret and ConfigMap keys declared in the same manifest', async () => {
+    await expect(variables(scanKubernetes, {
+      'k8s/app.yaml': 'apiVersion: v1\nkind: Secret\nmetadata:\n  name: app-secrets\ndata:\n  DATABASE_URL: cG9zdGdyZXM=\nstringData:\n  DEPLOY_TOKEN: redacted\n---\napiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: web-config\ndata:\n  NEXT_PUBLIC_API_URL: https://example.com\n  NODE_ENV: production\n---\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: web\nspec:\n  template:\n    spec:\n      containers:\n        - name: web\n          image: app:latest\n          envFrom:\n            - secretRef:\n                name: app-secrets\n            - configMapRef:\n                name: web-config\n            - secretRef:\n                name: external-secret\n',
+    })).resolves.toEqual([
+      'DATABASE_URL:k8s/app.yaml:kubernetes',
+      'DEPLOY_TOKEN:k8s/app.yaml:kubernetes',
+      'NEXT_PUBLIC_API_URL:k8s/app.yaml:kubernetes',
+      'NODE_ENV:k8s/app.yaml:kubernetes',
+    ]);
+  });
+
   it('scans AWS Secrets Manager metadata references without treating ordinary JSON as AWS config', async () => {
     await expect(variables(scanAwsSecrets, {
       'ecs-task-definition.json': '{ "family": "web", "containerDefinitions": [{ "name": "web", "secrets": [{ "name": "DATABASE_URL", "valueFrom": "arn:aws:secretsmanager:us-east-1:123456789012:secret:prod/db" }], "environment": [{ "name": "NODE_ENV", "value": "production" }] }] }',
