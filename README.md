@@ -203,6 +203,7 @@ Concrete demos and walkthroughs:
 - [`docs/articles/circleci-env-variable-troubleshooting.md`](docs/articles/circleci-env-variable-troubleshooting.md) — troubleshooting checklist for CircleCI deploy-variable drift.
 - [`docs/articles/railway-env-variable-troubleshooting.md`](docs/articles/railway-env-variable-troubleshooting.md) — troubleshooting checklist for Railway env drift without requiring Railway API access.
 - [`docs/articles/render-env-variable-troubleshooting.md`](docs/articles/render-env-variable-troubleshooting.md) — troubleshooting checklist for Render service env drift without requiring Render API access.
+- [`docs/articles/supabase-env-variable-troubleshooting.md`](docs/articles/supabase-env-variable-troubleshooting.md) — troubleshooting checklist for Supabase env drift without requiring Supabase API access.
 - [`docs/articles/ci-cd-env-validation-checklist.md`](docs/articles/ci-cd-env-validation-checklist.md) — practical CI/CD environment variable validation checklist.
 - [`docs/articles/ai-agent-pr-env-review-walkthrough.md`](docs/articles/ai-agent-pr-env-review-walkthrough.md) — reviewing AI-generated PRs for deployment-breaking env drift.
 

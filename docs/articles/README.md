@@ -31,6 +31,7 @@ These are long-tail support assets for developers who already know the symptom a
 - [Next.js missing Stripe secret walkthrough](nextjs-missing-stripe-secret.md)
 - [Railway environment variable troubleshooting](railway-env-variable-troubleshooting.md)
 - [Render environment variable troubleshooting](render-env-variable-troubleshooting.md)
+- [Supabase environment variable troubleshooting](supabase-env-variable-troubleshooting.md)
 
 ## Public-post status
 

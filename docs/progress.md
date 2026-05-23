@@ -977,3 +977,14 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Schedule estimate: recent completed product/marketing slices remain roughly ~1-3m each; rolling avg ~2m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 08:22 Europe/Vilnius.
 - Git/repo note: pushed commit `9523eac` (`docs: add render troubleshooting page`) to `main`; GitHub Actions run `26324231188` passed. `context.md` remains untracked and was not added. This CI/progress correction itself is local until the next restart-state commit.
 - Next: continue monitoring real Dev.to/public replies; if Darius approves Medium, publish from `docs/marketing/medium-publish-packet.md` and record the public URL/metrics. If no approval arrives, draft the next long-tail support page, likely Supabase env variable troubleshooting, without posting publicly.
+
+### Heartbeat 2026-05-23 08:25-08:27 EEST
+
+- Slice: drafted the next long-tail support page while Medium/X publishing remains approval-gated: Supabase environment variable troubleshooting.
+- Added `docs/articles/supabase-env-variable-troubleshooting.md`, focused on Supabase URL/anon key/service-role key/database env drift, metadata-only Secret Coverage checks, and safe repo-template fixes without claiming Supabase API/dashboard integration.
+- Linked the Supabase page from `README.md` and `docs/articles/README.md`; updated `TODO.md` and `docs/marketing/metrics-log.md` so the asset and next state are restartable.
+- Duration: ~1m 35s active wall time before commit/push/CI polling.
+- Verification: `python3` Supabase support page restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests).
+- Schedule estimate: recent completed product/marketing slices remain roughly ~1-3m each; rolling avg ~2m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 08:42 Europe/Vilnius.
+- Git/repo note: tracked docs updated locally; `context.md` remains untracked and was not added. Commit/push/CI check pending in this heartbeat.
+- Next: continue monitoring real Dev.to/public replies; if Darius approves Medium, publish from `docs/marketing/medium-publish-packet.md` and record the public URL/metrics. If no approval arrives, draft the next long-tail support page, likely Terraform or Kubernetes env variable troubleshooting, without posting publicly.
