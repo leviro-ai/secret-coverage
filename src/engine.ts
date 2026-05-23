@@ -3,13 +3,14 @@ import { scanEnvFiles } from './scanners/env-files.js';
 import { scanGitHubActions } from './scanners/github-actions.js';
 import { scanGitLabCI } from './scanners/gitlab-ci.js';
 import { scanCircleCI } from './scanners/circleci.js';
+import { scanJenkins } from './scanners/jenkins.js';
 import { scanDocker } from './scanners/docker.js';
 import { scanVercel } from './scanners/vercel.js';
 import { scanNextJs } from './scanners/nextjs.js';
 import { scanSupabase } from './scanners/supabase.js';
 import { scanCapRover } from './scanners/caprover.js';
 
-const scanners: Scanner[] = [scanEnvFiles, scanGitHubActions, scanGitLabCI, scanCircleCI, scanDocker, scanVercel, scanNextJs, scanSupabase, scanCapRover];
+const scanners: Scanner[] = [scanEnvFiles, scanGitHubActions, scanGitLabCI, scanCircleCI, scanJenkins, scanDocker, scanVercel, scanNextJs, scanSupabase, scanCapRover];
 const DEFAULT_ENV_TEMPLATE_FILES = ['.env.example', '.env.dist'];
 
 const severityRank: Record<Finding['severity'], number> = {

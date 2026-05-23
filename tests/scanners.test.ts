@@ -5,6 +5,7 @@ import { dirname, join } from 'node:path';
 import { scanGitHubActions } from '../src/scanners/github-actions.js';
 import { scanGitLabCI } from '../src/scanners/gitlab-ci.js';
 import { scanCircleCI } from '../src/scanners/circleci.js';
+import { scanJenkins } from '../src/scanners/jenkins.js';
 import { scanDocker } from '../src/scanners/docker.js';
 import { scanVercel } from '../src/scanners/vercel.js';
 import { scanNextJs } from '../src/scanners/nextjs.js';
@@ -58,6 +59,21 @@ describe('platform scanners', () => {
       'SUPABASE_ACCESS_TOKEN:.circleci/config.yaml:circleci',
       'SUPABASE_DB_PASSWORD:.circleci/config.yaml:circleci',
     ]);
+  });
+
+  it('scans Jenkinsfile shell environment references', async () => {
+    await expect(variables(scanJenkins, {
+      Jenkinsfile: "pipeline { stages { stage('Deploy') { steps { sh 'deploy --url ${DATABASE_URL} --token $DEPLOY_TOKEN' } } } } }\n",
+    })).resolves.toEqual([
+      'DATABASE_URL:Jenkinsfile:jenkins',
+      'DEPLOY_TOKEN:Jenkinsfile:jenkins',
+    ]);
+  });
+
+  it('ignores common Jenkins-provided variables', async () => {
+    await expect(variables(scanJenkins, {
+      Jenkinsfile: "pipeline { stages { stage('Info') { steps { sh 'echo $BUILD_NUMBER $JOB_NAME $WORKSPACE $BRANCH_NAME' } } } } }\n",
+    })).resolves.toEqual([]);
   });
 
   it('scans Dockerfile and Compose references', async () => {

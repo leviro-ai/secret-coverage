@@ -30,6 +30,26 @@ describe('scanProject', () => {
     }));
   });
 
+  it('reports variables referenced in Jenkinsfile shell steps but missing from the env template', async () => {
+    const root = fixture({
+      '.env.example': 'DATABASE_URL=\n',
+      Jenkinsfile: "pipeline { stages { stage('Deploy') { steps { sh 'deploy --url ${DATABASE_URL} --token $DEPLOY_TOKEN' } } } } }\n",
+    });
+
+    const result = await scanProject(root);
+
+    expect(result.findings).toContainEqual(expect.objectContaining({
+      severity: 'critical',
+      type: 'missing-from-template',
+      variable: 'DEPLOY_TOKEN',
+      file: 'Jenkinsfile',
+    }));
+    expect(result.findings).not.toContainEqual(expect.objectContaining({
+      type: 'missing-from-template',
+      variable: 'DATABASE_URL',
+    }));
+  });
+
   it('treats .env.dist as a default env template', async () => {
     const root = fixture({
       '.env.dist': 'NEXT_PUBLIC_API_URL=\n',

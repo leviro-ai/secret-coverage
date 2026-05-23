@@ -5,6 +5,7 @@ const mvpSupported = [
   'GitHub Actions',
   'GitLab CI/CD',
   'CircleCI',
+  'Jenkinsfile shell env reference detection',
   'Dockerfile and Docker Compose',
   'Vercel detection heuristics',
 ];
@@ -18,7 +19,6 @@ const plannedOnly = [
   'AWS Secrets Manager',
   'Azure Key Vault',
   'Hashicorp Vault',
-  'Jenkins',
   'Coolify',
   'Fly.io',
   'Firebase',
@@ -38,7 +38,7 @@ describe('roadmap and MVP scope documentation', () => {
       expect(content['README.md']).toContain(platform);
     }
 
-    expect(content['docs/roadmap.md']).toContain('GitHub Actions, GitLab CI/CD, CircleCI, Dockerfile / Docker Compose, and Vercel');
+    expect(content['docs/roadmap.md']).toContain('GitHub Actions, GitLab CI/CD, CircleCI, Jenkinsfile shell env references, Dockerfile / Docker Compose, and Vercel');
     expect(content['docs/roadmap.md']).not.toContain('Initial scanner support for GitHub Actions, CircleCI, Docker, Vercel, Next.js, Supabase, and CapRover.');
   });
 

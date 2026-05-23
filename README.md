@@ -8,7 +8,7 @@
 
 > Detect missing environment variables before your deployment fails.
 
-Secret Coverage is a local-first, metadata-only deployment readiness layer for modern CI/CD. It helps teams catch environment variable mismatch, missing GitHub Actions secrets, GitLab CI environment validation issues, Docker Compose env mismatch, Vercel environment drift, and broken deployment prevention problems before they reach production.
+Secret Coverage is a local-first, metadata-only deployment readiness layer for modern CI/CD. It helps teams catch environment variable mismatch, missing GitHub Actions secrets, GitLab CI environment validation issues, CircleCI environment drift, Jenkins Pipeline env drift, Docker Compose env mismatch, Vercel environment drift, and broken deployment prevention problems before they reach production.
 
 Secret Coverage is built for the AI coding era: AI-generated codebases increasingly change workflows, add configs, and introduce deployment assumptions faster than teams can manually review them. Secret Coverage gives developers deterministic CI/CD environment consistency checks without turning into a secrets manager.
 
@@ -16,7 +16,7 @@ Secret Coverage is built for the AI coding era: AI-generated codebases increasin
 
 Deployments break when environment assumptions drift:
 
-- AI changes GitHub Actions, GitLab CI, or CircleCI workflows without updating `.env.example`.
+- AI changes GitHub Actions, GitLab CI, CircleCI, or Jenkins Pipeline workflows without updating `.env.example`.
 - AI-generated PRs add new config paths but forget deployment variables.
 - Vercel preview deployment environment mismatch goes unnoticed until deploy time.
 - Docker Compose services reference variables that are not documented.
@@ -53,6 +53,7 @@ MVP implementation scope is intentionally narrow:
 - GitHub Actions env validation
 - GitLab CI/CD environment validation
 - CircleCI environment validation
+- Jenkinsfile shell env reference detection
 - Dockerfile and Docker Compose missing env detection
 - Vercel detection heuristics
 
@@ -70,7 +71,6 @@ Narrative scope is broader than MVP implementation scope. These integrations are
 - AWS Secrets Manager
 - Azure Key Vault
 - Hashicorp Vault
-- Jenkins
 - Coolify
 - Fly.io
 - Firebase

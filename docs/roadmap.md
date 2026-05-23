@@ -7,7 +7,7 @@
 - Markdown and JSON output.
 - GitHub Action wrapper.
 - Fixture-based tests and sample reports.
-- Initial scanner support for GitHub Actions, GitLab CI/CD, CircleCI, Dockerfile / Docker Compose, and Vercel.
+- Initial scanner support for GitHub Actions, GitLab CI/CD, CircleCI, Jenkinsfile shell env references, Dockerfile / Docker Compose, and Vercel.
 - Planned integrations are roadmap visibility, not v0.1.0 support.
 
 ## v0.2.0 — Better scanner precision
