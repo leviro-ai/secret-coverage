@@ -740,6 +740,17 @@ pnpm test && pnpm build
 - Git/repo note: pushed commit `7eeca8b` (`docs: add ci env validation checklist`) to `main`; GitHub Actions run `26317269719` passed. `context.md` remains untracked and was not added.
 - Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, draft a real-repo walkthrough outline that maps the existing fixtures to a practical PR review story without posting publicly.
 
+### Heartbeat 2026-05-23 03:00-03:03 EEST
+
+- Slice: drafted a real-repo-style AI-agent PR environment review walkthrough without posting publicly.
+- Added `docs/articles/ai-agent-pr-env-review-walkthrough.md`, mapping the existing GitHub Actions and Docker Compose drift fixtures into a practical PR review story: review env template first, check deployment config, run metadata-only drift checks, request the smallest template fix, and add a pre-merge CI check.
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the walkthrough asset and next navigation/linking slice are restartable while Dev.to publishing remains gated on Darius approval.
+- Duration: 2m 25s active wall time.
+- Verification: `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); forbidden positioning phrase check against new/updated docs => PASS (0 matches); `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` and `pnpm --silent scan -- --path examples/demos/docker-compose-missing-redis-url --ci` => PASS as expected failing demo scans; `git push` => PASS; `gh run watch 26317764366 --exit-status` => PASS.
+- Schedule estimate: last five product slices including this one are ~1m32s, ~2m49s, ~2m17s, ~1m23s, and ~2m25s; rolling avg ~2m5s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 03:18 Europe/Vilnius.
+- Git/repo note: pushed commit `9416e80` (`docs: add ai pr env review walkthrough`) to `main`; GitHub Actions run `26317764366` passed. `context.md` remains untracked and was not added.
+- Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, add lightweight README/docs navigation links to the new walkthrough and the CI/CD checklist so the non-public authority assets are easier to find.
+
 ## Next Step
 
-Keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, draft a real-repo walkthrough outline that maps the existing fixtures to a practical PR review story without posting publicly.
+Keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, add lightweight README/docs navigation links to the new walkthrough and the CI/CD checklist so the non-public authority assets are easier to find.
