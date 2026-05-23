@@ -784,15 +784,15 @@ pnpm test && pnpm build
 - Git/repo note: pushed commit `71aa5a4` (`docs: add docker compose troubleshooting`) to `main`; GitHub Actions run `26319112692` passed. `context.md` remains untracked and was not added. This progress-log update itself is local until the next restart-state commit.
 - Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, prepare README-compatible snippets for the approved Dev.to article or draft another integration-specific support page without posting publicly, such as Vercel or CircleCI troubleshooting.
 
-### Heartbeat 2026-05-23 04:14-04:16 EEST
+### Heartbeat 2026-05-23 04:14-04:17 EEST
 
 - Slice: drafted another integration-specific support page while public posting remains gated on Darius approval: Vercel environment variable troubleshooting.
 - Added `docs/articles/vercel-env-variable-troubleshooting.md` with symptom checklist, minimal Vercel/Supabase fixture, expected `SUPABASE_SERVICE_ROLE_KEY` finding, safe Vercel fix pattern, and PR review questions.
 - Linked the new support page from `README.md` and updated `TODO.md` plus `docs/marketing/metrics-log.md` so the asset and next experiment are restartable.
-- Duration: ~1m 40s active wall time before commit/push and remote CI watch.
-- Verification: `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); docs positioning/link Python check => PASS; `pnpm --silent scan -- --path examples/demos/vercel-missing-supabase-key --ci` => PASS as expected failing demo scan (exit code 1 with `SUPABASE_SERVICE_ROLE_KEY` / `missing-from-template`).
-- Schedule estimate: last five product slices including this one are ~2m25s, ~1m53s, ~2m11s, ~2m27s, and ~1m40s; rolling avg ~2m7s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 04:30 Europe/Vilnius.
-- Git/repo note: `context.md` remains untracked and was not added. This Vercel troubleshooting slice is ready to commit/push after this progress update.
+- Duration: ~2m 51s active wall time including local verification, commit/push, and remote CI watch.
+- Verification: `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); docs positioning/link Python check => PASS; `pnpm --silent scan -- --path examples/demos/vercel-missing-supabase-key --ci` => PASS as expected failing demo scan (exit code 1 with `SUPABASE_SERVICE_ROLE_KEY` / `missing-from-template`); `git push` => PASS; `gh run watch 26319547042 --exit-status` => PASS.
+- Schedule estimate: last five product slices including this one are ~2m25s, ~1m53s, ~2m11s, ~2m27s, and ~2m51s; rolling avg ~2m21s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 04:30 Europe/Vilnius.
+- Git/repo note: pushed commit `7d9dd96` (`docs: add vercel troubleshooting page`) to `main`; GitHub Actions run `26319547042` passed. `context.md` remains untracked and was not added. This progress-log correction itself is local until the next restart-state commit.
 - Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, draft the CircleCI environment variable troubleshooting page without posting publicly, or prepare README-compatible snippets for the approved Dev.to article.
 
 ## Next Step
