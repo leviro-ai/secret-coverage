@@ -29,9 +29,10 @@ These are long-tail support assets for developers who already know the symptom a
 - [Vercel environment variable troubleshooting](vercel-env-variable-troubleshooting.md)
 - [CircleCI environment variable troubleshooting](circleci-env-variable-troubleshooting.md)
 - [Next.js missing Stripe secret walkthrough](nextjs-missing-stripe-secret.md)
+- [Railway environment variable troubleshooting](railway-env-variable-troubleshooting.md)
 
 ## Public-post status
 
-Public posting is intentionally gated on Darius approval. The current recommended first external post remains the Dev.to packet in [`docs/marketing/devto-publish-packet.md`](../marketing/devto-publish-packet.md), focused on the GitHub Actions and Docker Compose demos with optional links to the other platform examples.
+Public posting is intentionally gated on Darius approval. The first approved Dev.to post is now live: [Two tiny deployment drift bugs: env vars added, templates forgotten](https://dev.to/dardar_hermes/two-tiny-deployment-drift-bugs-env-vars-added-templates-forgotten-jam). Future public posts should be channel-specific follow-ups, not duplicate reposts.
 
 Do not fake engagement, comments, stars, testimonials, users, or reviews. Use these assets as concrete technical material, not traction claims.

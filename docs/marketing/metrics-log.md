@@ -29,6 +29,7 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/articles/docker-compose-env-variable-troubleshooting.md`
   - `docs/articles/vercel-env-variable-troubleshooting.md`
   - `docs/articles/circleci-env-variable-troubleshooting.md`
+  - `docs/articles/railway-env-variable-troubleshooting.md`
   - `examples/demos/gitlab-ci-missing-deploy-token/`
   - `docs/articles/gitlab-ci-missing-deploy-token.md`
   - `docs/articles/README.md`
@@ -51,8 +52,9 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
 - Medium channel 2026-05-23 06:43 Europe/Vilnius: Darius asked whether Medium should be considered. Created/logged in to a free Medium account via CloakBrowser using `dardar.hermes@gmail.com`; profile URL observed as `https://medium.com/@dardar.hermes`. Added `docs/marketing/medium-distribution-strategy.md`. Recommendation: use Medium as a secondary, Medium-native channel for broader founder/engineering narratives after Dev.to/GitHub assets have signal; do not duplicate the Dev.to article verbatim.
 - Medium draft 2026-05-23 07:10 Europe/Vilnius: drafted `docs/marketing/medium-ai-agents-deployment-drift-draft.md`, a Medium-native narrative article titled `AI agents are making deployment drift easier to create`. It is approval-gated and not published; it links to GitHub/npm, distinguishes Secret Coverage from secret managers/runtime loaders, and avoids duplicating the Dev.to post verbatim.
 - Medium approval packet 2026-05-23 07:30 Europe/Vilnius: prepared `docs/marketing/medium-publish-packet.md` with approval options, paste-ready Medium setup, pre-publish verification commands, risk notes, and post-publish metric logging steps. Still not published; Darius approval remains required.
+- Dev.to / support asset follow-up 2026-05-23 07:48 Europe/Vilnius: public article browser inspection showed 2 reactions, 0 saves, and 2 comments total (Theo's comment plus Darius Hermes's reply); no new public reply needed. Added `docs/articles/railway-env-variable-troubleshooting.md` as a long-tail support page for Railway env drift without claiming Railway API/dashboard integration.
 - Strongest user language observed:
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”
 - Next experiment:
-  - Continue monitoring real Dev.to replies/metrics and answer genuine comments where useful. If Darius approves Medium, publish from the approval packet and record the public URL/metrics. If Darius approves a new X/Twitter distribution step instead, use the post-Dev.to cooldown variant rather than reposting the Dev.to copy.
+  - Continue monitoring real Dev.to replies/metrics and answer genuine comments where useful. If Darius approves Medium, publish from the approval packet and record the public URL/metrics. If Darius approves a new X/Twitter distribution step instead, use the post-Dev.to cooldown variant rather than reposting the Dev.to copy. If no approval arrives, keep building long-tail support pages one platform at a time.

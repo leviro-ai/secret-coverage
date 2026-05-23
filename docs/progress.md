@@ -954,3 +954,15 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Schedule estimate: recent completed product/marketing slices remain roughly ~1-3m each; rolling avg ~2m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 07:45 Europe/Vilnius.
 - Git/repo note: pushed commit `bdd9586` (`docs: prepare medium publish packet`) to `main`; GitHub Actions run `26323487188` passed. `context.md` remains untracked and was not added. This progress-log CI correction itself is local until the next restart-state commit.
 - Next: wait for Darius approval before publishing Medium; continue monitoring genuine Dev.to/public replies, and if no engagement needs a reply, either publish from the Medium packet after approval or use the approval-gated X/Twitter cooldown variant if Darius approves that channel step.
+
+### Heartbeat 2026-05-23 07:47-07:49 EEST
+
+- Slice: monitored the live Dev.to post and added one long-tail support asset while public posting remains approval-gated.
+- Observed via browser: the Dev.to article now shows 2 reactions, 0 saves, and 2 comments total; the existing thread has Theo Ephraim's `varlock.dev` comment plus Darius Hermes's reply, so no new public reply was needed.
+- Added `docs/articles/railway-env-variable-troubleshooting.md`, a Railway env variable troubleshooting page focused on deployment contract drift, local/CI template checks, and metadata-only Secret Coverage usage without claiming Railway API/dashboard integration.
+- Updated `docs/articles/README.md`, `TODO.md`, and `docs/marketing/metrics-log.md` so the Railway support page, Dev.to metrics snapshot, and next experiment are restartable.
+- Duration: ~2m active wall time before commit/push/CI polling.
+- Verification: browser Dev.to page inspection => PASS (article URL loaded; 2 reactions, 0 saves, 2 comments); `python3` Railway support page restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests).
+- Schedule estimate: recent completed product/marketing slices remain roughly ~1-3m each; rolling avg ~2m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 08:05 Europe/Vilnius.
+- Git/repo note: local changes pending commit/push at log-write time; `context.md` remains untracked and should not be added.
+- Next: continue monitoring real Dev.to/public replies; if Darius approves Medium, publish from `docs/marketing/medium-publish-packet.md` and record the public URL/metrics. If no approval arrives, draft the next long-tail support page, likely Render env variable troubleshooting, without posting publicly.
