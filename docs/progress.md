@@ -872,7 +872,7 @@ pnpm test && pnpm build
 - Duration: ~2m 37s active wall time before commit/push/CI polling.
 - Verification: `python3` Next.js docs/link/positioning check => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `pnpm --silent scan -- --path examples/demos/nextjs-missing-stripe-secret --ci` => PASS as expected failing demo scan (exit code 1 with `STRIPE_SECRET_KEY` / `missing-from-template`).
 - Schedule estimate: last five completed product slices are ~2m21s, ~1m40s, ~2m50s, ~2m5s, and ~2m37s; rolling avg ~2m19s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 06:07 Europe/Vilnius.
-- Git/repo note: local verification passed; commit/push and GitHub Actions check happen after this entry. `context.md` remains untracked and was not added.
+- Git/repo note: pushed commit `66716c5` (`docs: add nextjs drift demo`) to `main`; GitHub Actions run `26321572318` passed. `context.md` remains untracked and was not added.
 - Next: monitor the published Dev.to post for real comments/metrics and, after a cooldown, adapt either the Reddit discussion draft or X/Twitter thread without cross-posting identical wording on the same day.
 
 ## Next Step
