@@ -183,6 +183,25 @@ Options:
 | `--ci` | Exit non-zero when critical findings exist. |
 | `--strict` | Exit non-zero when critical or warning findings exist. |
 
+## Quick PR review for AI-generated changes
+
+When an AI coding agent touches CI, Docker, deployment, or framework config, run Secret Coverage before merging:
+
+```bash
+pnpm dlx @leviro-ai/secret-coverage scan --ci
+```
+
+Use the output as a small review prompt:
+
+```txt
+For every critical finding, verify:
+1. Is the variable documented in .env.example or .env.dist?
+2. Is the value configured in the deployment platform or CI secret store?
+3. Did the PR add a new deploy path, worker, migration, webhook, or preview environment that needs the same variable?
+```
+
+Secret Coverage does not approve the PR for you; it gives reviewers a deterministic list of environment assumptions to check before deploy.
+
 Full sample reports:
 
 - [`examples/sample-report.md`](examples/sample-report.md)
