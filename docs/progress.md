@@ -1067,6 +1067,6 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Duration: ~4m active wall time including local verification, commit/push, and remote CI watch.
 - Verification: `python3` Azure support page restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `gh run list` / GitHub Actions run `26326976221` for `d94254b` => PASS.
 - Schedule estimate: recent completed product/marketing slices remain roughly ~2-4m; rolling avg ~3m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 10:46 Europe/Vilnius.
-- Git/repo note: pushed commit `d94254b` (`docs: add azure key vault troubleshooting page`) to `main`; GitHub Actions run `26326976221` passed. `context.md` remains untracked and was not added. This progress-log entry itself is local until the restart-state commit.
+- Git/repo note: pushed commit `d94254b` (`docs: add azure key vault troubleshooting page`) and restart-state commit `45a448f` (`docs: record azure heartbeat`) to `main`; GitHub Actions runs `26326976221` and `26326999574` passed. `context.md` remains untracked and was not added.
 - Next: monitor real Dev.to/Medium replies and metrics; if engagement is quiet, continue the next long-tail support page, likely Hashicorp Vault env variable troubleshooting, without cross-posting the Medium article verbatim.
 
