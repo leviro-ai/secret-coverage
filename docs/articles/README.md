@@ -33,6 +33,7 @@ These are long-tail support assets for developers who already know the symptom a
 - [Render environment variable troubleshooting](render-env-variable-troubleshooting.md)
 - [Supabase environment variable troubleshooting](supabase-env-variable-troubleshooting.md)
 - [Terraform environment variable troubleshooting](terraform-env-variable-troubleshooting.md)
+- [Kubernetes environment variable troubleshooting](kubernetes-env-variable-troubleshooting.md)
 
 ## Public-post status
 

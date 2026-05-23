@@ -205,6 +205,7 @@ Concrete demos and walkthroughs:
 - [`docs/articles/render-env-variable-troubleshooting.md`](docs/articles/render-env-variable-troubleshooting.md) — troubleshooting checklist for Render service env drift without requiring Render API access.
 - [`docs/articles/supabase-env-variable-troubleshooting.md`](docs/articles/supabase-env-variable-troubleshooting.md) — troubleshooting checklist for Supabase env drift without requiring Supabase API access.
 - [`docs/articles/terraform-env-variable-troubleshooting.md`](docs/articles/terraform-env-variable-troubleshooting.md) — troubleshooting checklist for Terraform env drift without requiring Terraform Cloud or cloud-provider API access.
+- [`docs/articles/kubernetes-env-variable-troubleshooting.md`](docs/articles/kubernetes-env-variable-troubleshooting.md) — troubleshooting checklist for Kubernetes env drift without requiring cluster API access.
 - [`docs/articles/ci-cd-env-validation-checklist.md`](docs/articles/ci-cd-env-validation-checklist.md) — practical CI/CD environment variable validation checklist.
 - [`docs/articles/ai-agent-pr-env-review-walkthrough.md`](docs/articles/ai-agent-pr-env-review-walkthrough.md) — reviewing AI-generated PRs for deployment-breaking env drift.
 

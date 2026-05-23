@@ -33,6 +33,7 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
   - `docs/articles/render-env-variable-troubleshooting.md`
   - `docs/articles/supabase-env-variable-troubleshooting.md`
   - `docs/articles/terraform-env-variable-troubleshooting.md`
+  - `docs/articles/kubernetes-env-variable-troubleshooting.md`
   - `examples/demos/gitlab-ci-missing-deploy-token/`
   - `docs/articles/gitlab-ci-missing-deploy-token.md`
   - `docs/articles/README.md`
@@ -62,5 +63,6 @@ Track weekly. Do not inflate numbers; record only observable public metrics and 
 - Strongest user language observed:
   - “Detect missing environment variables before your deployment fails.”
   - “AI agents generate code fast. Configuration drift breaks production later.”
+- Support asset follow-up 2026-05-23 09:06 Europe/Vilnius: added `docs/articles/kubernetes-env-variable-troubleshooting.md` as a long-tail support page for Kubernetes env drift without claiming cluster API/dashboard integration.
 - Next experiment:
-  - Continue monitoring real Dev.to replies/metrics and answer genuine comments where useful. If Darius approves Medium, publish from the approval packet and record the public URL/metrics. If Darius approves a new X/Twitter distribution step instead, use the post-Dev.to cooldown variant rather than reposting the Dev.to copy. If no approval arrives, keep building long-tail support pages one platform at a time, likely Kubernetes next.
+  - Continue monitoring real Dev.to replies/metrics and answer genuine comments where useful. If Darius approves Medium, publish from the approval packet and record the public URL/metrics. If Darius approves a new X/Twitter distribution step instead, use the post-Dev.to cooldown variant rather than reposting the Dev.to copy. If no approval arrives, keep building long-tail support pages one platform at a time, likely AWS Secrets Manager next.
