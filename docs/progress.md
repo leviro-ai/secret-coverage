@@ -918,7 +918,7 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Added an approval-gated, non-identical X/Twitter thread option to `docs/marketing/x-twitter-github-actions-missing-secret-thread.md`; it leads with the deployment-drift failure mode, uses a single GitHub fixture link, and keeps the Dev.to URL only as an optional reply if useful.
 - Updated `TODO.md` and `docs/marketing/metrics-log.md` so the draft, approval gate, and next experiment are restartable.
 - Duration: ~2m active wall time before commit/push/CI polling.
-- Verification: `python3` X/Twitter cooldown draft restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests).
+- Verification: `python3` X/Twitter cooldown draft restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `git push` => PASS; `gh run watch 26322721897 --exit-status` => PASS.
 - Schedule estimate: last five completed product/marketing slices are ~2m5s, ~2m37s, ~1m45s, ~1m, and ~2m; rolling avg ~1m53s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 07:05 Europe/Vilnius.
-- Git/repo note: local verification passed; commit/push and GitHub Actions check happen after this entry. `context.md` remains untracked and was not added.
+- Git/repo note: pushed commit `1699fef` (`docs: draft x cooldown follow-up`) to `main`; GitHub Actions run `26322721897` passed. `context.md` remains untracked and was not added. This CI/progress correction itself is local until the next restart-state commit.
 - Next: continue monitoring genuine Dev.to/public replies; if no engagement needs a reply and Darius approves a new public X/Twitter distribution step, use the cooldown variant and record the public URL/metrics. Otherwise draft another long-tail support page or integration-specific page without posting.
