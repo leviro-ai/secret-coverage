@@ -282,10 +282,20 @@ describe('platform scanners', () => {
     await expect(variables(scanHashicorpVault, {
       'vault/agent.hcl': 'template {\n  destination = "/run/secrets/app.env"\n  contents = <<EOT\nDATABASE_URL={{ with secret "secret/data/prod/db" }}{{ .Data.data.url }}{{ end }}\nEOT\n}\n',
       'nomad/job.hcl': 'job "api" {\n  group "web" {\n    task "api" {\n      template {\n        data = <<EOH\nDEPLOY_TOKEN={{ with secret "kv/data/prod/deploy" }}{{ .Data.data.token }}{{ end }}\nEOH\n        env = true\n      }\n    }\n  }\n}\n',
-      'plain.json': '{ "template": "SHOULD_NOT_SCAN={{ with secret \\"secret/data/nope\\" }}{{ .Data.data.value }}{{ end }}" }',
+      'plain.json': '{ "template": "SHOULD_NOT_SCAN={{ with secret \\\"secret/data/nope\\\" }}{{ .Data.data.value }}{{ end }}" }',
     })).resolves.toEqual([
       'DATABASE_URL:vault/agent.hcl:hashicorp-vault',
       'DEPLOY_TOKEN:nomad/job.hcl:hashicorp-vault',
+    ]);
+  });
+
+  it('scans Vault Kubernetes injector annotation env names from ordinary manifests', async () => {
+    await expect(variables(scanHashicorpVault, {
+      'k8s/deployment.yaml': 'apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: web\nspec:\n  template:\n    metadata:\n      annotations:\n        vault.hashicorp.com/agent-inject: "true"\n        vault.hashicorp.com/agent-inject-secret-DATABASE_URL: "secret/data/prod/db"\n        vault.hashicorp.com/agent-inject-template-DEPLOY_TOKEN: |\n          {{ with secret "secret/data/prod/deploy" }}{{ .Data.data.token }}{{ end }}\n    spec:\n      containers:\n        - name: web\n          image: app:latest\n',
+      'plain.yaml': 'annotations:\n  example.com/agent-inject-secret-SHOULD_NOT_SCAN: "secret/data/nope"\n',
+    })).resolves.toEqual([
+      'DATABASE_URL:k8s/deployment.yaml:hashicorp-vault',
+      'DEPLOY_TOKEN:k8s/deployment.yaml:hashicorp-vault',
     ]);
   });
 });

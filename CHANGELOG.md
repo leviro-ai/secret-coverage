@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.38 — Unreleased
+
+### Added
+
+- HashiCorp Vault scanning now detects Vault Kubernetes injector annotation variable names such as `vault.hashicorp.com/agent-inject-secret-DATABASE_URL` in ordinary Kubernetes manifests without requiring Vault-specific file paths.
+
 ## 0.1.37 — Unreleased
 
 ### Changed

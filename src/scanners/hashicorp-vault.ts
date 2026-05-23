@@ -8,10 +8,11 @@ const HASHICORP_VAULT_FILES = [
 
 const HASHICORP_VAULT_SOURCE = 'hashicorp-vault';
 const ENV_ASSIGNMENT_WITH_VAULT_TEMPLATE = /^\s*([A-Z][A-Z0-9_]*)\s*=\s*.*\{\{\s*with\s+secret\s+["'][^"']+["']/gm;
+const VAULT_KUBERNETES_INJECTOR_ENV_ANNOTATION = /vault\.hashicorp\.com\/agent-inject-(?:secret|template)-([A-Z][A-Z0-9_]*)\b/g;
 
-function pathLooksVaultSpecific(file: string): boolean {
+function pathLooksVaultSpecific(file: string, content: string): boolean {
   const normalized = file.toLowerCase();
-  return normalized.includes('vault') || normalized.endsWith('.hcl');
+  return normalized.includes('vault') || normalized.endsWith('.hcl') || content.includes('vault.hashicorp.com/');
 }
 
 function contentLooksLikeVaultMetadata(content: string): boolean {
@@ -30,15 +31,26 @@ function extractVaultTemplateAssignments(content: string): string[] {
   return [...refs].sort();
 }
 
+function extractVaultKubernetesInjectorAnnotations(content: string): string[] {
+  const refs = new Set<string>();
+  for (const match of content.matchAll(VAULT_KUBERNETES_INJECTOR_ENV_ANNOTATION)) {
+    refs.add(match[1]);
+  }
+  return [...refs].sort();
+}
+
 export const scanHashicorpVault: Scanner = async ({ root }) => {
   const files = await globText(root, HASHICORP_VAULT_FILES);
   const referenced: VariableSource[] = [];
 
   for (const { file, content } of files) {
-    if (!pathLooksVaultSpecific(file) || !contentLooksLikeVaultMetadata(content)) continue;
+    if (!pathLooksVaultSpecific(file, content) || !contentLooksLikeVaultMetadata(content)) continue;
 
     const variables = new Set<string>();
     for (const variable of extractVaultTemplateAssignments(content)) {
+      variables.add(variable);
+    }
+    for (const variable of extractVaultKubernetesInjectorAnnotations(content)) {
       variables.add(variable);
     }
     for (const variable of extractEnvReferences(content, { ciExpressions: false })) {
