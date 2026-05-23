@@ -1009,6 +1009,6 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Duration: ~2m 54s active wall time before commit/push/CI polling.
 - Verification: `python3` Kubernetes support page restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests).
 - Schedule estimate: recent completed product/marketing slices remain roughly ~1-3m each; rolling avg ~2m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 09:22 Europe/Vilnius.
-- Git/repo note: local docs/support-page updates are ready to commit; `context.md` remains untracked and was not added.
+- Git/repo note: pushed commit `c50ece6` (`docs: add kubernetes troubleshooting page`) to `main`; GitHub Actions run `26325386205` passed. `context.md` remains untracked and was not added. This CI/progress correction itself is local until the restart-state commit.
 - Next: continue monitoring real Dev.to/public replies; if Darius approves Medium, publish from `docs/marketing/medium-publish-packet.md` and record the public URL/metrics. If no approval arrives, draft the next long-tail support page, likely AWS Secrets Manager env variable troubleshooting, without posting publicly.
 
