@@ -751,6 +751,28 @@ pnpm test && pnpm build
 - Git/repo note: pushed commit `9416e80` (`docs: add ai pr env review walkthrough`) to `main`; GitHub Actions run `26317764366` passed. `context.md` remains untracked and was not added.
 - Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, add lightweight README/docs navigation links to the new walkthrough and the CI/CD checklist so the non-public authority assets are easier to find.
 
+### Heartbeat 2026-05-23 03:19-03:21 EEST
+
+- Slice: added lightweight README navigation links to the new non-public authority assets while public posting remains gated on Darius approval.
+- Updated `README.md` with a concrete demos and walkthroughs list linking the GitHub Actions demo, Docker Compose demo, CI/CD env validation checklist, and AI-agent PR env review walkthrough.
+- Updated `TODO.md` and `docs/marketing/metrics-log.md` so the completed navigation slice and next non-public experiment are restartable.
+- Duration: 1m 53s active wall time including local verification, commit/push, and remote CI watch.
+- Verification: `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); README navigation/positioning Python check => PASS; `git push` => PASS; `gh run watch 26318225346 --exit-status` => PASS.
+- Schedule estimate: last five product slices including this one are ~2m49s, ~2m17s, ~1m23s, ~2m25s, and ~1m53s; rolling avg ~2m9s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 03:36 Europe/Vilnius.
+- Git/repo note: pushed commit `8cad203` (`docs: link authority assets from readme`) to `main`; GitHub Actions run `26318225346` passed. `context.md` remains untracked and was not added. This progress-log update itself is local until the next restart-state commit.
+- Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, draft another long-tail SEO/support page that reuses existing demos without public posting, such as a GitHub Actions missing secrets troubleshooting page.
+
+### Heartbeat 2026-05-23 03:37-03:39 EEST
+
+- Slice: drafted another long-tail SEO/support page while public posting remains gated on Darius approval: GitHub Actions missing-secrets troubleshooting.
+- Added `docs/articles/github-actions-missing-secrets-troubleshooting.md` with symptom checklist, minimal GitHub Actions fixture, expected Secret Coverage finding, safe fix pattern, and PR review questions.
+- Linked the new support page from `README.md` and updated `TODO.md` plus `docs/marketing/metrics-log.md` so the asset and next experiment are restartable.
+- Duration: 2m 11s active wall time including local verification, commit/push, and remote CI watch.
+- Verification: `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); docs positioning/link Python check => PASS; `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS as expected failing demo scan (exit code 1 with `STRIPE_SECRET_KEY` / `missing-from-template`); `git push` => PASS; `gh run watch 26318661571 --exit-status` => PASS.
+- Schedule estimate: last five product slices including this one are ~2m17s, ~1m23s, ~2m25s, ~1m53s, and ~2m11s; rolling avg ~2m2s, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 03:54 Europe/Vilnius.
+- Git/repo note: pushed commit `7e1908a` (`docs: add github actions secret troubleshooting`) to `main`; GitHub Actions run `26318661571` passed. `context.md` remains untracked and was not added. This progress-log update will be committed as restart state.
+- Next: keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, prepare README-compatible snippets for the approved Dev.to article or draft another integration-specific support page without posting publicly.
+
 ## Next Step
 
-Keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, add lightweight README/docs navigation links to the new walkthrough and the CI/CD checklist so the non-public authority assets are easier to find.
+Keep public posting gated until Darius approves the Dev.to channel/wording; if no approval arrives by the next heartbeat, prepare README-compatible snippets for the approved Dev.to article or draft another integration-specific support page without posting publicly.
