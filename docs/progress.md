@@ -1022,5 +1022,27 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Verification: browser Dev.to page inspection => PASS (article URL loaded; 2 reactions, 0 saves, 2 comments); `python3` AWS support page restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `gh run watch 26325751831 --exit-status` => PASS.
 - Schedule estimate: recent completed product/marketing slices remain roughly ~1-3m each; rolling avg ~2m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 09:43 Europe/Vilnius.
 - Git/repo note: pushed commit `b5f6179` (`docs: add aws secrets manager troubleshooting page`) and restart-state commit `0729acd` (`docs: record aws heartbeat ci`) to `main`; GitHub Actions runs `26325751831` and `26325775724` passed. `context.md` remains untracked and was not added.
-- Next: continue monitoring real Dev.to/public replies; if Darius approves Medium, publish from `docs/marketing/medium-publish-packet.md` and record the public URL/metrics. If no approval arrives, draft the next long-tail support page, likely Azure Key Vault env variable troubleshooting, without posting publicly.
+- Next: public publishing is no longer approval-gated. Continue monitoring real Dev.to/public replies; publish from `docs/marketing/medium-publish-packet.md` after final Medium preview/formatting verification and record the public URL/metrics. If Medium publish is blocked, tag Darius and also send the blocker/options message to `slack:agent-hermes`; otherwise draft the next long-tail support page, likely Azure Key Vault env variable troubleshooting.
+
+### Manual continuation 2026-05-23 09:34 EEST
+
+- Slice: applied Darius's correction that public publishing does not require approval and Medium previews must always be inspected.
+- Updated the `autonomous-product-build-heartbeat` skill and DevRel reference so public publishing is autonomous by default, genuine approval/blocker cases tag `<@U08SQ1L6B9U>` and also send the blocker/options message to `slack:agent-hermes`, and Medium drafts must be preview-checked before publish.
+- Updated the existing cron job prompt `9f2b31785aad` with the same rules.
+- Updated persistent user preference memory with the Secret Coverage/EnvGuard autonomous publishing rule.
+- Reviewed Medium draft preview `https://medium.com/@dardar.hermes/cb6999298b89` in CloakBrowser and changed the rendered title to the shorter SEO-friendly title `AI Coding Agents and Deployment Drift`.
+- Verification: Medium preview title rendered as `AI Coding Agents and Deployment Drift | by Dardar Hermes | Medium`; old title/subtitle no longer appear merged into the title.
+- Git/repo note: tracked restart-state docs updated locally; `context.md` remains untracked and was not added.
+- Next: before publishing the Medium article, perform one final preview/formatting pass because the title is fixed but Medium body formatting should still be checked for raw Markdown artifacts.
+
+### Heartbeat 2026-05-23 09:45-09:49 EEST
+
+- Slice: final Medium preview/formatting verification before autonomous publication.
+- Checked the Medium draft preview `https://medium.com/@dardar.hermes/cb6999298b89`; the title is correct (`AI Coding Agents and Deployment Drift | by Dardar Hermes | Medium`), but the rendered body still contains raw Markdown artifacts including fenced-code markers, `##` headings, inline backticks, and link URLs with trailing backticks.
+- Attempted a browser editor reformat pass through the Medium edit page, but Medium showed `Something is wrong and we cannot save your story. Learn more about how to fix this`, so the article was not published.
+- Duration: ~3m 37s active wall time.
+- Verification: `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); `pnpm --silent scan -- --path examples/demos/github-actions-missing-secret --ci` => PASS as expected failing demo scan (exit 1, `STRIPE_SECRET_KEY` missing); `pnpm --silent scan -- --path examples/demos/docker-compose-missing-redis-url --ci` => PASS as expected failing demo scan (exit 1, `REDIS_URL` missing); `npm view @leviro-ai/secret-coverage version --json` => `"0.1.5"`; Medium browser preview formatting check => FAIL for publish readiness due raw Markdown artifacts and Medium save error.
+- Schedule estimate: recent completed product/marketing slices remain roughly ~2-4m; rolling avg ~3m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 10:03 Europe/Vilnius.
+- Git/repo note: tracked restart-state docs updated locally; `context.md` remains untracked and was not added. Commit/push pending after this progress entry.
+- Next: fix the Medium draft formatting in the Medium editor using an editor-native/smaller-step approach, then publish only after preview shows no raw Markdown artifacts. If Medium save remains blocked, continue the next long-tail support page, likely Azure Key Vault env variable troubleshooting.
 

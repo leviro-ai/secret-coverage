@@ -59,11 +59,12 @@
 - [x] Draft AWS Secrets Manager environment variable troubleshooting page without claiming AWS API/dashboard integration
 - [ ] More SEO pages for long-tail deployment drift queries
 - [x] Draft the first Medium-native article: AI agents are making deployment drift easier to create
-- [x] Prepare approval-gated Medium publish packet for the AI/deployment-drift article
-- [ ] Publish the Medium-native AI/deployment-drift article only after Darius approves the exact text
-- [x] Add lightweight README navigation links to the checklist and AI-agent PR walkthrough while public posting remains approval-gated
-- [x] Prepare a copy/paste Dev.to publish packet while public posting remains approval-gated
+- [x] Prepare Medium publish packet for the AI/deployment-drift article
+- [x] Rewrite Medium draft title to shorter SEO-friendly version after preview review
+- [ ] Publish the Medium-native AI/deployment-drift article after final preview verification
+- [x] Add lightweight README navigation links to the checklist and AI-agent PR walkthrough
+- [x] Prepare a copy/paste Dev.to publish packet
 - [x] Add one more non-public demo/support asset while approval is pending: GitLab CI missing deploy token
-- [x] Package existing demos and support pages into a docs/articles index while public posting remains approval-gated
+- [x] Package existing demos and support pages into a docs/articles index
 - [x] Add one more demo/support asset after first Dev.to post: Next.js missing Stripe secret
-- [ ] Adapt the walkthrough into the approved Dev.to post after Darius chooses the public-post option
+- [ ] Adapt the AI-agent walkthrough into a platform-native public post when it is the next best distribution slice

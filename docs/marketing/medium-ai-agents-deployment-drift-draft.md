@@ -1,8 +1,9 @@
 # Medium Draft — AI agents are making deployment drift easier to create
 
-Status: draft, not published. Requires Darius approval before posting to Medium.
+Status: draft, not published. Public publishing no longer requires Darius approval; verify the Medium preview before publishing.
 Target channel: Medium (`https://medium.com/@dardar.hermes`)
-Recommended canonical title: `AI agents are making deployment drift easier to create`
+Recommended canonical title: `AI Coding Agents and Deployment Drift`
+Medium preview URL: `https://medium.com/@dardar.hermes/cb6999298b89`
 
 ## Publishing note
 
@@ -10,7 +11,7 @@ This is Medium-native narrative copy. It should not be posted verbatim to Dev.to
 
 ## Draft
 
-# AI agents are making deployment drift easier to create
+# AI Coding Agents and Deployment Drift
 
 AI coding tools are very good at changing the visible parts of an application.
 
