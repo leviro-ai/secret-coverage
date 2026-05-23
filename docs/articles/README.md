@@ -24,6 +24,7 @@ These pages pair with runnable fixtures under `examples/demos/` and screenshot-r
 
 These are long-tail support assets for developers who already know the symptom and need a safe debugging path.
 
+- [Deployment failed because an environment variable was missing](deployment-failed-missing-env-variable.md)
 - [GitHub Actions missing-secrets troubleshooting](github-actions-missing-secrets-troubleshooting.md)
 - [Docker Compose environment variable troubleshooting](docker-compose-env-variable-troubleshooting.md)
 - [Vercel environment variable troubleshooting](vercel-env-variable-troubleshooting.md)
