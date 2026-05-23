@@ -231,6 +231,15 @@ describe('platform scanners', () => {
     ]);
   });
 
+  it('applies Kubernetes envFrom prefixes to same-file Secret and ConfigMap keys', async () => {
+    await expect(variables(scanKubernetes, {
+      'k8s/prefixed-env.yaml': 'apiVersion: v1\nkind: Secret\nmetadata:\n  name: app-secrets\nstringData:\n  DATABASE_URL: redacted\n---\napiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: web-config\ndata:\n  PUBLIC_API_URL: https://example.com\n---\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: web\nspec:\n  template:\n    spec:\n      containers:\n        - name: web\n          image: app:latest\n          envFrom:\n            - prefix: APP_\n              secretRef:\n                name: app-secrets\n            - prefix: NEXT_\n              configMapRef:\n                name: web-config\n',
+    })).resolves.toEqual([
+      'APP_DATABASE_URL:k8s/prefixed-env.yaml:kubernetes',
+      'NEXT_PUBLIC_API_URL:k8s/prefixed-env.yaml:kubernetes',
+    ]);
+  });
+
   it('scans AWS Secrets Manager metadata references without treating ordinary JSON as AWS config', async () => {
     await expect(variables(scanAwsSecrets, {
       'ecs-task-definition.json': '{ "family": "web", "containerDefinitions": [{ "name": "web", "secrets": [{ "name": "DATABASE_URL", "valueFrom": "arn:aws:secretsmanager:us-east-1:123456789012:secret:prod/db" }], "environment": [{ "name": "NODE_ENV", "value": "production" }] }] }',

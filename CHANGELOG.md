@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.34 — Unreleased
+
+### Fixed
+
+- Kubernetes `envFrom` same-file Secret/ConfigMap resolution now applies valid `prefix` values to reported environment variable names.
+
 ## 0.1.33 — Unreleased
 
 ### Changed

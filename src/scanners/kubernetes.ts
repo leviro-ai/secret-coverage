@@ -78,14 +78,18 @@ function addEnvFromReferences(
   for (const entry of envFrom) {
     if (!isRecord(entry)) continue;
 
+    const prefix = typeof entry.prefix === 'string' && /^[A-Z][A-Z0-9_]*_$/.test(entry.prefix)
+      ? entry.prefix
+      : '';
+
     const secretRef = entry.secretRef;
     if (isRecord(secretRef) && typeof secretRef.name === 'string') {
-      for (const variable of resources.secrets.get(secretRef.name) ?? []) refs.add(variable);
+      for (const variable of resources.secrets.get(secretRef.name) ?? []) refs.add(`${prefix}${variable}`);
     }
 
     const configMapRef = entry.configMapRef;
     if (isRecord(configMapRef) && typeof configMapRef.name === 'string') {
-      for (const variable of resources.configMaps.get(configMapRef.name) ?? []) refs.add(variable);
+      for (const variable of resources.configMaps.get(configMapRef.name) ?? []) refs.add(`${prefix}${variable}`);
     }
   }
 }
