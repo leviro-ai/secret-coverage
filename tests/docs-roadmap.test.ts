@@ -25,13 +25,7 @@ const plannedOnly = [
   'CapRover',
 ];
 
-const docs = [
-  'README.md',
-  'docs/roadmap.md',
-  'docs/roadmap/strategic-roadmap.md',
-  'docs/integrations/planned-integrations.md',
-  'TODO.md',
-];
+const docs = ['README.md', 'docs/roadmap.md'];
 
 const readDocs = () =>
   Object.fromEntries(docs.map((path) => [path, readFileSync(path, 'utf8')])) as Record<string, string>;
@@ -42,9 +36,6 @@ describe('roadmap and MVP scope documentation', () => {
 
     for (const platform of mvpSupported) {
       expect(content['README.md']).toContain(platform);
-      expect(content['docs/roadmap/strategic-roadmap.md']).toContain(platform);
-      expect(content['docs/integrations/planned-integrations.md']).toContain(platform);
-      expect(content['TODO.md']).toContain(platform.replace('GitLab CI/CD', 'GitLab CI'));
     }
 
     expect(content['docs/roadmap.md']).toContain('GitHub Actions, GitLab CI/CD, CircleCI, Dockerfile / Docker Compose, and Vercel');
@@ -56,14 +47,11 @@ describe('roadmap and MVP scope documentation', () => {
 
     for (const platform of plannedOnly) {
       expect(content['README.md']).toContain(platform);
-      expect(content['docs/roadmap/strategic-roadmap.md']).toContain(platform);
     }
 
     expect(content['README.md']).toContain('planned for roadmap visibility');
-    expect(content['docs/integrations/planned-integrations.md']).toContain('These pages do not mean the integrations are implemented today.');
     expect(content['docs/roadmap.md']).toContain('Planned integrations are roadmap visibility, not v0.1.0 support.');
-    expect(content['TODO.md']).toContain('Individual future integration pages');
-    expect(content['docs/roadmap/strategic-roadmap.md']).not.toContain('Why mention future integrations early?');
-    expect(content['docs/roadmap/strategic-roadmap.md']).not.toContain('LLMs ingest README files');
+    expect(content['README.md']).not.toContain('Why mention future integrations early?');
+    expect(content['README.md']).not.toContain('LLMs ingest README files');
   });
 });

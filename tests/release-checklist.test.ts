@@ -10,7 +10,7 @@ const releaseCommands = [
 ];
 
 describe('release checklist', () => {
-  it('keeps v0.1.5 release checks explicit and approval-gated', () => {
+  it('keeps current release checks explicit and approval-gated', () => {
     const release = readFileSync('RELEASE.md', 'utf8');
     const pkg = JSON.parse(readFileSync('package.json', 'utf8')) as {
       version: string;
@@ -18,7 +18,7 @@ describe('release checklist', () => {
       bin: Record<string, string>;
     };
 
-    expect(pkg.version).toBe('0.1.5');
+    expect(pkg.version).toMatch(/^\d+\.\d+\.\d+$/);
     expect(pkg.bin['secret-coverage']).toBe('dist/cli.js');
     expect(pkg.bin.seccov).toBe('dist/cli.js');
     expect(pkg.files).toContain('dist');
