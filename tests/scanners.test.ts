@@ -175,4 +175,13 @@ describe('platform scanners', () => {
       'captain-definition': '{ "schemaVersion": 2, "dockerfileLines": ["ENV API_URL=${API_URL}"] }',
     })).resolves.toEqual(['API_URL:captain-definition:caprover']);
   });
+
+  it('scans CapRover Docker build args without flagging static Docker env defaults', async () => {
+    await expect(variables(scanCapRover, {
+      'captain-definition': '{ "schemaVersion": 2, "dockerfileLines": ["ARG SENTRY_AUTH_TOKEN", "ARG NODE_VERSION=22", "ENV NODE_ENV=production", "ENV API_URL=${API_URL}"] }',
+    })).resolves.toEqual([
+      'API_URL:captain-definition:caprover',
+      'SENTRY_AUTH_TOKEN:captain-definition:caprover',
+    ]);
+  });
 });
