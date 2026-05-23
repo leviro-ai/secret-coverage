@@ -8,6 +8,7 @@ import { scanCircleCI } from '../src/scanners/circleci.js';
 import { scanJenkins } from '../src/scanners/jenkins.js';
 import { scanRailway } from '../src/scanners/railway.js';
 import { scanRender } from '../src/scanners/render.js';
+import { scanFly } from '../src/scanners/fly.js';
 import { scanDocker } from '../src/scanners/docker.js';
 import { scanVercel } from '../src/scanners/vercel.js';
 import { scanNextJs } from '../src/scanners/nextjs.js';
@@ -93,6 +94,16 @@ describe('platform scanners', () => {
     })).resolves.toEqual([
       'BUILD_TOKEN:render.yaml:render',
       'DATABASE_URL:render.yaml:render',
+    ]);
+  });
+
+  it('scans Fly.io config env references and secret placeholders', async () => {
+    await expect(variables(scanFly, {
+      'fly.toml': 'app = "secret-coverage-api"\n[build]\n  build-target = "${BUILD_TARGET}"\n[env]\n  NODE_ENV = "production"\n  DATABASE_URL = "${DATABASE_URL}"\n  API_BASE_URL = "https://example.com"\n[deploy]\n  release_command = "pnpm migrate --token $DEPLOY_TOKEN"\n',
+    })).resolves.toEqual([
+      'BUILD_TARGET:fly.toml:fly',
+      'DATABASE_URL:fly.toml:fly',
+      'DEPLOY_TOKEN:fly.toml:fly',
     ]);
   });
 
