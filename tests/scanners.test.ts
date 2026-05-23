@@ -7,6 +7,7 @@ import { scanGitLabCI } from '../src/scanners/gitlab-ci.js';
 import { scanCircleCI } from '../src/scanners/circleci.js';
 import { scanJenkins } from '../src/scanners/jenkins.js';
 import { scanRailway } from '../src/scanners/railway.js';
+import { scanRender } from '../src/scanners/render.js';
 import { scanDocker } from '../src/scanners/docker.js';
 import { scanVercel } from '../src/scanners/vercel.js';
 import { scanNextJs } from '../src/scanners/nextjs.js';
@@ -83,6 +84,15 @@ describe('platform scanners', () => {
     })).resolves.toEqual([
       'DATABASE_URL:railway.toml:railway',
       'DEPLOY_TOKEN:railway.toml:railway',
+    ]);
+  });
+
+  it('scans Render config env references and external env keys', async () => {
+    await expect(variables(scanRender, {
+      'render.yaml': 'services:\n  - type: web\n    name: api\n    buildCommand: pnpm build --token $BUILD_TOKEN\n    envVars:\n      - key: DATABASE_URL\n        sync: false\n      - key: NODE_VERSION\n        value: 22\n',
+    })).resolves.toEqual([
+      'BUILD_TOKEN:render.yaml:render',
+      'DATABASE_URL:render.yaml:render',
     ]);
   });
 
