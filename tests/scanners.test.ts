@@ -81,6 +81,12 @@ describe('platform scanners', () => {
     ]);
   });
 
+  it('ignores common CircleCI-provided variables in shell commands', async () => {
+    await expect(variables(scanCircleCI, {
+      '.circleci/config.yml': 'version: 2.1\njobs:\n  deploy:\n    steps:\n      - run: echo "$CIRCLE_BRANCH $CIRCLE_SHA1 $CIRCLE_WORKFLOW_ID" && ./deploy --token $DEPLOY_TOKEN\n',
+    })).resolves.toEqual(['DEPLOY_TOKEN:.circleci/config.yml:circleci']);
+  });
+
   it('scans Jenkinsfile shell environment references', async () => {
     await expect(variables(scanJenkins, {
       Jenkinsfile: "pipeline { stages { stage('Deploy') { steps { sh 'deploy --url ${DATABASE_URL} --token $DEPLOY_TOKEN' } } } } }\n",

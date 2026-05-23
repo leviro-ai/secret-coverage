@@ -4,7 +4,9 @@ import { globText } from '../utils/files.js';
 import type { Finding, Scanner } from '../types.js';
 
 const IGNORED_CIRCLECI_ENVIRONMENT_KEYS = new Set([
+  'BASH_ENV',
   'CI',
+  'CIRCLECI',
   'HOME',
   'NODE_ENV',
   'PATH',
@@ -13,8 +15,12 @@ const IGNORED_CIRCLECI_ENVIRONMENT_KEYS = new Set([
   'USER',
 ]);
 
+function isCircleCIProvidedVariable(key: string): boolean {
+  return key.startsWith('CIRCLE_') || IGNORED_CIRCLECI_ENVIRONMENT_KEYS.has(key);
+}
+
 function isEnvironmentVariableName(key: string): boolean {
-  return /^[A-Z_][A-Z0-9_]*$/.test(key) && !IGNORED_CIRCLECI_ENVIRONMENT_KEYS.has(key);
+  return /^[A-Z_][A-Z0-9_]*$/.test(key) && !isCircleCIProvidedVariable(key);
 }
 
 function isEmptyEnvironmentValue(value: unknown): boolean {
@@ -108,6 +114,9 @@ export const scanCircleCI: Scanner = async ({ root }) => {
       const parsed = tryParseYaml(content);
       const inlineDefined = collectInlineDefinedEnvironmentKeys(parsed);
       const variables = new Set([...extractEnvReferences(content), ...collectEnvironmentKeys(parsed)]);
+      for (const variable of [...variables]) {
+        if (isCircleCIProvidedVariable(variable)) variables.delete(variable);
+      }
       for (const variable of inlineDefined) variables.delete(variable);
       return [...variables].sort().map(variable => ({ variable, file, source: 'circleci' }));
     }),

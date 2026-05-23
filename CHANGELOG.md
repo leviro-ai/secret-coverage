@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.36 — Unreleased
+
+### Fixed
+
+- CircleCI scanning now ignores common CircleCI-provided shell variables such as `CIRCLE_BRANCH`, `CIRCLE_SHA1`, and `CIRCLE_WORKFLOW_ID` while still reporting user-provided deployment variables.
+
 ## 0.1.35 — Unreleased
 
 ### Fixed
