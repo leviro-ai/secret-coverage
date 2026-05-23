@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.37 — Unreleased
+
+### Changed
+
+- npm package metadata now uses the canonical Secret Coverage tagline and release checks pin canonical package identity, Apache-2.0 license, and Node.js engine metadata.
+
 ## 0.1.36 — Unreleased
 
 ### Fixed

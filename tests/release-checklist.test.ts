@@ -13,12 +13,20 @@ describe('release checklist', () => {
   it('keeps current release checks explicit and approval-gated', () => {
     const release = readFileSync('RELEASE.md', 'utf8');
     const pkg = JSON.parse(readFileSync('package.json', 'utf8')) as {
+      name: string;
       version: string;
+      description: string;
       files: string[];
       bin: Record<string, string>;
+      engines: Record<string, string>;
+      license: string;
     };
 
+    expect(pkg.name).toBe('@leviro-ai/secret-coverage');
     expect(pkg.version).toMatch(/^\d+\.\d+\.\d+$/);
+    expect(pkg.description).toBe('Detect missing environment variables before your deployment fails.');
+    expect(pkg.license).toBe('Apache-2.0');
+    expect(pkg.engines.node).toBe('>=20');
     expect(pkg.bin['secret-coverage']).toBe('dist/cli.js');
     expect(pkg.bin.seccov).toBe('dist/cli.js');
     expect(pkg.files).toContain('dist');
