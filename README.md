@@ -192,6 +192,7 @@ Concrete demos and walkthroughs:
 
 - [`docs/articles/`](docs/articles/) — index of runnable demos, support pages, and review walkthroughs.
 - [`docs/articles/deployment-failed-missing-env-variable.md`](docs/articles/deployment-failed-missing-env-variable.md) — safe triage checklist for deployments that fail because an environment variable is missing.
+- [`docs/articles/env-template-vs-secret-manager.md`](docs/articles/env-template-vs-secret-manager.md) — practical boundary between secret managers, env templates, and metadata-only drift checks.
 - [`examples/demos/github-actions-missing-secret/`](examples/demos/github-actions-missing-secret/) — GitHub Actions references `STRIPE_SECRET_KEY` but the env template does not document it.
 - [`examples/demos/docker-compose-missing-redis-url/`](examples/demos/docker-compose-missing-redis-url/) — Docker Compose references `REDIS_URL` but the env template does not document it.
 - [`examples/demos/gitlab-ci-missing-deploy-token/`](examples/demos/gitlab-ci-missing-deploy-token/) — GitLab CI references `DEPLOY_TOKEN` but the env template does not document it.
