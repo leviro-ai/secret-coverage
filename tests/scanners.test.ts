@@ -18,6 +18,7 @@ import { scanSupabase } from '../src/scanners/supabase.js';
 import { scanCapRover } from '../src/scanners/caprover.js';
 import { scanTerraform } from '../src/scanners/terraform.js';
 import { scanKubernetes } from '../src/scanners/kubernetes.js';
+import { scanAwsSecrets } from '../src/scanners/aws-secrets.js';
 import type { Scanner } from '../src/types.js';
 
 function fixture(files: Record<string, string>) {
@@ -205,6 +206,17 @@ describe('platform scanners', () => {
     })).resolves.toEqual([
       'DATABASE_URL:k8s/deployment.yaml:kubernetes',
       'NEXT_PUBLIC_API_URL:k8s/deployment.yaml:kubernetes',
+    ]);
+  });
+
+  it('scans AWS Secrets Manager metadata references without treating ordinary JSON as AWS config', async () => {
+    await expect(variables(scanAwsSecrets, {
+      'ecs-task-definition.json': '{ "family": "web", "containerDefinitions": [{ "name": "web", "secrets": [{ "name": "DATABASE_URL", "valueFrom": "arn:aws:secretsmanager:us-east-1:123456789012:secret:prod/db" }], "environment": [{ "name": "NODE_ENV", "value": "production" }] }] }',
+      'template.yaml': 'AWSTemplateFormatVersion: "2010-09-09"\nResources:\n  TaskDefinition:\n    Type: AWS::ECS::TaskDefinition\n    Properties:\n      ContainerDefinitions:\n        - Name: api\n          Secrets:\n            - Name: DEPLOY_TOKEN\n              ValueFrom: "{{resolve:secretsmanager:prod/deploy-token:SecretString:token}}"\n',
+      'plain.json': '{ "secrets": [{ "name": "SHOULD_NOT_SCAN", "valueFrom": "missing-context" }] }',
+    })).resolves.toEqual([
+      'DATABASE_URL:ecs-task-definition.json:aws-secrets-manager',
+      'DEPLOY_TOKEN:template.yaml:aws-secrets-manager',
     ]);
   });
 });
