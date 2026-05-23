@@ -208,6 +208,7 @@ Concrete demos and walkthroughs:
 - [`docs/articles/kubernetes-env-variable-troubleshooting.md`](docs/articles/kubernetes-env-variable-troubleshooting.md) — troubleshooting checklist for Kubernetes env drift without requiring cluster API access.
 - [`docs/articles/aws-secrets-manager-env-variable-troubleshooting.md`](docs/articles/aws-secrets-manager-env-variable-troubleshooting.md) — troubleshooting checklist for AWS Secrets Manager env drift without requiring AWS API access.
 - [`docs/articles/azure-key-vault-env-variable-troubleshooting.md`](docs/articles/azure-key-vault-env-variable-troubleshooting.md) — troubleshooting checklist for Azure Key Vault env drift without requiring Azure API access.
+- [`docs/articles/hashicorp-vault-env-variable-troubleshooting.md`](docs/articles/hashicorp-vault-env-variable-troubleshooting.md) — troubleshooting checklist for HashiCorp Vault env drift without requiring Vault API access.
 - [`docs/articles/ci-cd-env-validation-checklist.md`](docs/articles/ci-cd-env-validation-checklist.md) — practical CI/CD environment variable validation checklist.
 - [`docs/articles/ai-agent-pr-env-review-walkthrough.md`](docs/articles/ai-agent-pr-env-review-walkthrough.md) — reviewing AI-generated PRs for deployment-breaking env drift.
 

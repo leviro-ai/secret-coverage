@@ -36,6 +36,7 @@ These are long-tail support assets for developers who already know the symptom a
 - [Kubernetes environment variable troubleshooting](kubernetes-env-variable-troubleshooting.md)
 - [AWS Secrets Manager environment variable troubleshooting](aws-secrets-manager-env-variable-troubleshooting.md)
 - [Azure Key Vault environment variable troubleshooting](azure-key-vault-env-variable-troubleshooting.md)
+- [HashiCorp Vault environment variable troubleshooting](hashicorp-vault-env-variable-troubleshooting.md)
 
 ## Public-post status
 
