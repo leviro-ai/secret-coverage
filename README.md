@@ -213,6 +213,7 @@ Concrete demos and walkthroughs:
 - [`docs/articles/coolify-env-variable-troubleshooting.md`](docs/articles/coolify-env-variable-troubleshooting.md) — troubleshooting checklist for Coolify env drift without requiring Coolify API access.
 - [`docs/articles/flyio-env-variable-troubleshooting.md`](docs/articles/flyio-env-variable-troubleshooting.md) — troubleshooting checklist for Fly.io env drift without requiring Fly API access.
 - [`docs/articles/firebase-env-variable-troubleshooting.md`](docs/articles/firebase-env-variable-troubleshooting.md) — troubleshooting checklist for Firebase env drift without requiring Firebase or Google Cloud API access.
+- [`docs/articles/caprover-env-variable-troubleshooting.md`](docs/articles/caprover-env-variable-troubleshooting.md) — troubleshooting checklist for CapRover env drift without requiring CapRover API access.
 - [`docs/articles/ci-cd-env-validation-checklist.md`](docs/articles/ci-cd-env-validation-checklist.md) — practical CI/CD environment variable validation checklist.
 - [`docs/articles/ai-agent-pr-env-review-walkthrough.md`](docs/articles/ai-agent-pr-env-review-walkthrough.md) — reviewing AI-generated PRs for deployment-breaking env drift.
 

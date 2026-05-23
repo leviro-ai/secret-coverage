@@ -1145,3 +1145,15 @@ Monitor the Dev.to post for real comments/metrics and avoid same-day cross-posti
 - Schedule estimate: recent completed product/marketing slices remain roughly ~2-4m, with this slice ~2m; rolling avg remains about ~3m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 12:21 Europe/Vilnius.
 - Git/repo note: pushed commit `b13d043` (`docs: add firebase troubleshooting page`) to `main`; GitHub Actions run `26328850690` passed. `CONTEXT.md` remains ignored and was not added. This CI/progress correction itself is local until the restart-state commit.
 - Next: monitor real Dev.to/Medium replies and metrics; if engagement is quiet, continue the next long-tail support page, likely CapRover environment variable troubleshooting, without cross-posting the Medium article verbatim.
+
+### Heartbeat 2026-05-23 12:23-12:26 EEST
+
+- Slice: drafted the next long-tail support page: CapRover environment variable troubleshooting.
+- Package version guard: local `package.json` version `0.1.5`; published npm `@leviro-ai/secret-coverage` version `0.1.5`; versions match, so no release/context refresh was needed before the slice.
+- Added `docs/articles/caprover-env-variable-troubleshooting.md`, focused on CapRover `captain-definition`, Dockerfile/build args, CI deploy-token, app-setting, and runtime env-contract drift as metadata-only deployment readiness, without claiming CapRover API/dashboard integration or reading server/app secret values.
+- Linked the CapRover page from `README.md` and `docs/articles/README.md`; marked the Fly.io/Firebase/CapRover support-page TODO group complete; updated `docs/marketing/metrics-log.md` so the asset and next state are restartable.
+- Duration: ~2m 20s active wall time before commit/push/CI polling.
+- Verification: `python3` CapRover support page restart-state checks => PASS; `pnpm test tests/docs-examples.test.ts` => PASS (2 tests); package version guard commands => local `0.1.5`, npm `"0.1.5"`.
+- Schedule estimate: recent completed product/marketing slices remain roughly ~2-4m, with this slice ~2m; rolling avg remains about ~3m, so the 15m minimum remains appropriate. Existing cadence is already 15m, so no cron update was applied. Next cron expected around 12:41 Europe/Vilnius.
+- Git/repo note: CapRover support page changes are ready to commit/push; `CONTEXT.md` remains ignored and was not added.
+- Next: monitor real Dev.to/Medium replies and metrics; if engagement is quiet, adapt the AI-agent walkthrough into a platform-native public post or draft the next long-tail deployment drift support page without cross-posting the Medium article verbatim.

@@ -41,6 +41,7 @@ These are long-tail support assets for developers who already know the symptom a
 - [Coolify environment variable troubleshooting](coolify-env-variable-troubleshooting.md)
 - [Fly.io environment variable troubleshooting](flyio-env-variable-troubleshooting.md)
 - [Firebase environment variable troubleshooting](firebase-env-variable-troubleshooting.md)
+- [CapRover environment variable troubleshooting](caprover-env-variable-troubleshooting.md)
 
 ## Public-post status
 
