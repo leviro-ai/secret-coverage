@@ -211,6 +211,7 @@ Concrete demos and walkthroughs:
 - [`docs/articles/hashicorp-vault-env-variable-troubleshooting.md`](docs/articles/hashicorp-vault-env-variable-troubleshooting.md) — troubleshooting checklist for HashiCorp Vault env drift without requiring Vault API access.
 - [`docs/articles/jenkins-env-variable-troubleshooting.md`](docs/articles/jenkins-env-variable-troubleshooting.md) — troubleshooting checklist for Jenkins Pipeline env drift without requiring Jenkins API access.
 - [`docs/articles/coolify-env-variable-troubleshooting.md`](docs/articles/coolify-env-variable-troubleshooting.md) — troubleshooting checklist for Coolify env drift without requiring Coolify API access.
+- [`docs/articles/flyio-env-variable-troubleshooting.md`](docs/articles/flyio-env-variable-troubleshooting.md) — troubleshooting checklist for Fly.io env drift without requiring Fly API access.
 - [`docs/articles/ci-cd-env-validation-checklist.md`](docs/articles/ci-cd-env-validation-checklist.md) — practical CI/CD environment variable validation checklist.
 - [`docs/articles/ai-agent-pr-env-review-walkthrough.md`](docs/articles/ai-agent-pr-env-review-walkthrough.md) — reviewing AI-generated PRs for deployment-breaking env drift.
 
