@@ -16,6 +16,7 @@ import { scanVercel } from '../src/scanners/vercel.js';
 import { scanNextJs } from '../src/scanners/nextjs.js';
 import { scanSupabase } from '../src/scanners/supabase.js';
 import { scanCapRover } from '../src/scanners/caprover.js';
+import { scanTerraform } from '../src/scanners/terraform.js';
 import type { Scanner } from '../src/types.js';
 
 function fixture(files: Record<string, string>) {
@@ -182,6 +183,17 @@ describe('platform scanners', () => {
     })).resolves.toEqual([
       'API_URL:captain-definition:caprover',
       'SENTRY_AUTH_TOKEN:captain-definition:caprover',
+    ]);
+  });
+
+  it('scans Terraform static env references without treating Terraform variables as env vars', async () => {
+    await expect(variables(scanTerraform, {
+      'infra/main.tf': 'variable "region" { default = "us-east-1" }\nresource "null_resource" "deploy" { provisioner "local-exec" { command = "deploy --token $DEPLOY_TOKEN --url ${DATABASE_URL}" } }\noutput "region" { value = var.region }\n',
+      'infra/terraform.tfvars': 'image_tag = "${IMAGE_TAG}"\n',
+    })).resolves.toEqual([
+      'DATABASE_URL:infra/main.tf:terraform',
+      'DEPLOY_TOKEN:infra/main.tf:terraform',
+      'IMAGE_TAG:infra/terraform.tfvars:terraform',
     ]);
   });
 });
