@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.43 — Unreleased
+
+### Added
+
+- Added a user-facing pull request env var review checklist for catching new environment requirements before merge without exposing raw secret values.
+
 ## 0.1.42 — Unreleased
 
 ### Fixed
