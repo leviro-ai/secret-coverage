@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.44 — Unreleased
+
+### Fixed
+
+- GitHub Actions scanning now ignores workflow variables already defined as safe inline `env:` literals and common GitHub-provided shell variables such as `GITHUB_SHA`, while still reporting empty or secret-backed workflow env requirements.
+
 ## 0.1.43 — Unreleased
 
 ### Added
