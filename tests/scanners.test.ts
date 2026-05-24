@@ -74,6 +74,12 @@ describe('platform scanners', () => {
     ]);
   });
 
+  it('ignores common GitLab-provided variables in shell commands', async () => {
+    await expect(variables(scanGitLabCI, {
+      '.gitlab-ci.yml': 'deploy:\n  image: docker:latest\n  script:\n    - docker build --tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA" .\n    - echo "$CI_ENVIRONMENT_NAME $CI_PIPELINE_URL $CI_MERGE_REQUEST_IID"\n    - ./deploy --token $DEPLOY_TOKEN\n',
+    })).resolves.toEqual(['DEPLOY_TOKEN:.gitlab-ci.yml:gitlab-ci']);
+  });
+
   it('scans CircleCI config references', async () => {
     await expect(variables(scanCircleCI, {
       '.circleci/config.yml': 'jobs:\n  deploy:\n    steps:\n      - run: echo $DATABASE_URL\n',

@@ -23,8 +23,12 @@ const IGNORED_GITLAB_VARIABLE_KEYS = new Set([
   'USER',
 ]);
 
+function isGitLabProvidedVariable(key: string): boolean {
+  return key === 'CI' || key.startsWith('CI_') || IGNORED_GITLAB_VARIABLE_KEYS.has(key);
+}
+
 function isVariableName(key: string): boolean {
-  return /^[A-Z_][A-Z0-9_]*$/.test(key) && !IGNORED_GITLAB_VARIABLE_KEYS.has(key);
+  return /^[A-Z_][A-Z0-9_]*$/.test(key) && !isGitLabProvidedVariable(key);
 }
 
 function isEmptyVariableValue(value: unknown): boolean {
@@ -85,6 +89,9 @@ export const scanGitLabCI: Scanner = async ({ root }) => {
       const parsed = tryParseYaml(content);
       const variables = new Set([...extractEnvReferences(content), ...collectRequiredVariableKeys(parsed)]);
       for (const variable of collectInlineDefinedVariableKeys(parsed)) variables.delete(variable);
+      for (const variable of [...variables]) {
+        if (isGitLabProvidedVariable(variable)) variables.delete(variable);
+      }
       return [...variables].sort().map(variable => ({ variable, file, source: 'gitlab-ci' }));
     }),
     findings: [],

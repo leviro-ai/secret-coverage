@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.49 — Unreleased
+
+### Fixed
+
+- GitLab CI scanning now ignores common GitLab-provided `CI_*` variables such as `CI_REGISTRY_IMAGE`, `CI_COMMIT_SHORT_SHA`, and `CI_ENVIRONMENT_NAME` while still reporting user-provided deployment variables.
+
 ## 0.1.48 — Unreleased
 
 ### Fixed
