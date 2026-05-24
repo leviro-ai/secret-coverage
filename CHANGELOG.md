@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.48 — Unreleased
+
+### Fixed
+
+- GitHub Actions scanning now ignores additional GitHub-provided action/workflow variables such as `GITHUB_ACTION_PATH`, `GITHUB_ACTION_REPOSITORY`, `GITHUB_WORKFLOW_REF`, and `GITHUB_WORKFLOW_SHA` while still reporting user-provided deployment variables.
+
 ## 0.1.47 — Unreleased
 
 ### Fixed
