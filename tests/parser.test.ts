@@ -31,6 +31,14 @@ describe('extractEnvReferences', () => {
     expect(refs).toEqual(['STRIPE_SECRET_KEY']);
   });
 
+  it('ignores lowercase process.env property names that are usually object context, not deployment env vars', () => {
+    const refs = extractEnvReferences(
+      "const value = process.env.context || process.env.eventName || process.env.checkoutSessionPlaceholder || process.env.NEXT_PUBLIC_API_URL;",
+    );
+
+    expect(refs).toEqual(['NEXT_PUBLIC_API_URL']);
+  });
+
   it('extracts GitHub Actions secrets and env expression references', () => {
     const refs = extractEnvReferences('url: ${{ secrets.NEXT_PUBLIC_API_URL }}\ntoken: ${{ env.DEPLOY_TOKEN }}');
 

@@ -33,8 +33,8 @@ export function extractEnvReferences(content: string, options: ExtractEnvReferen
   const includeShell = options.shell ?? true;
   const includeCiExpressions = options.ciExpressions ?? true;
   const patterns = [
-    /process\.env(?:\.|\?\.)([A-Za-z_][A-Za-z0-9_]*)/g,
-    /process\.env(?:\?\.)?\[['"]([A-Za-z_][A-Za-z0-9_]*)['"]\]/g,
+    /process\.env(?:\.|\?\.)([A-Z_][A-Z0-9_]*)/g,
+    /process\.env(?:\?\.)?\[['"]([A-Z_][A-Z0-9_]*)['"]\]/g,
   ];
   if (includeShell) {
     patterns.push(
@@ -44,8 +44,8 @@ export function extractEnvReferences(content: string, options: ExtractEnvReferen
   }
   if (includeCiExpressions) {
     patterns.push(
-      /secrets\.([A-Za-z_][A-Za-z0-9_]*)/g,
-      /env\.([A-Za-z_][A-Za-z0-9_]*)/g,
+      /secrets\.([A-Z_][A-Z0-9_]*)/g,
+      /env\.([A-Z_][A-Z0-9_]*)/g,
     );
   }
   for (const pattern of patterns) {

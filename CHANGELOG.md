@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.51 — Unreleased
+
+### Fixed
+
+- JavaScript env reference extraction now ignores lowercase `process.env.context`-style property names that are usually application objects rather than deployment environment variables, while preserving uppercase env var detection.
+
 ## 0.1.50 — Unreleased
 
 ### Changed
