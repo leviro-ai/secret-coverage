@@ -245,7 +245,7 @@ Concrete demos and walkthroughs:
 
 ## GitHub Action
 
-The composite action runs the built CLI with `--ci`. Markdown output is printed in the job logs and also appended to the GitHub Actions step summary for quick PR review. `strict: 'false'` fails only on critical findings; `strict: 'true'` also fails on warnings.
+The composite action runs the published Secret Coverage CLI with `--ci`. Markdown output is printed in the job logs and also appended to the GitHub Actions step summary for quick PR review. `strict: 'false'` fails only on critical findings; `strict: 'true'` also fails on warnings.
 
 ```yaml
 name: Secret Coverage
@@ -260,7 +260,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: leviro-ai/secret-coverage@main
+      - uses: leviro-ai/secret-coverage@v0.2.0
         with:
           strict: 'false'
           format: markdown
@@ -269,7 +269,7 @@ jobs:
 For stricter pull request checks:
 
 ```yaml
-- uses: leviro-ai/secret-coverage@main
+- uses: leviro-ai/secret-coverage@v0.2.0
   with:
     strict: 'true'
 ```

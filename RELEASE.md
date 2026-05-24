@@ -8,18 +8,16 @@
 - [ ] `node dist/cli.js scan --path examples/fixtures/broken-app --ci` exits non-zero
 - [ ] `node dist/cli.js scan --path examples/fixtures/clean-app --ci` exits zero
 - [ ] README examples match real CLI behavior
-- [ ] `action.yml` points to built `dist/cli.js`
-- [ ] `dist/cli.js` and other `dist/` files are generated from the current TypeScript source
+- [ ] `action.yml` runs the pinned published npm CLI package for this release version
+- [ ] GitHub Action examples use the current stable `vX.Y.Z` tag
 - [ ] Darius approves publishing target and repository name
 
 ## Publishing gate
 
-Secret Coverage is not approved for external publishing yet.
-
-- Do not publish to npm without explicit Darius approval.
-- Do not create a GitHub release without explicit Darius approval.
-- dist/cli.js must be built before tagging because the GitHub Action executes the built CLI.
-- Confirm package/repository names before changing `leviro-ai/secret-coverage@main` examples.
+- Publish to npm only with explicit Darius approval.
+- Create a GitHub release only with explicit Darius approval.
+- Publish to GitHub Marketplace only after a tagged action has been verified from a clean workflow/repo.
+- Confirm package/repository names before changing stable `leviro-ai/secret-coverage@vX.Y.Z` examples.
 
 ## Known limitations to disclose
 

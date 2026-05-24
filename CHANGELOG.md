@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0 — Unreleased
+
+### Changed
+
+- GitHub Action now runs the pinned published Secret Coverage CLI package instead of an untracked local `dist/cli.js` path, making tagged releases safe for GitHub Marketplace usage.
+- GitHub Action documentation now recommends the stable `v0.2.0` tag for installs.
+
 ## 0.1.51 — Unreleased
 
 ### Fixed

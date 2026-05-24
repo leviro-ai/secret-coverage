@@ -39,10 +39,11 @@ describe('release checklist', () => {
       expect(release).toContain(command);
     }
 
-    expect(release).toContain('Do not publish to npm');
-    expect(release).toContain('Do not create a GitHub release');
-    expect(release).toContain('dist/cli.js must be built before tagging');
-    expect(release).toContain('Darius approves publishing target and repository name');
+    expect(release).toContain('Publish to npm only with explicit Darius approval');
+    expect(release).toContain('Create a GitHub release only with explicit Darius approval');
+    expect(release).toContain('Publish to GitHub Marketplace only after a tagged action has been verified');
+    expect(release).toContain('`action.yml` runs the pinned published npm CLI package');
+    expect(release).toContain('GitHub Action examples use the current stable');
   });
 
   it('keeps GitHub Action metadata aligned with the package identity and built CLI', () => {
@@ -57,8 +58,13 @@ describe('release checklist', () => {
     expect(action.name).toBe('Secret Coverage');
     expect(action.description).toBe('Detect missing environment variables before your deployment fails.');
     expect(action.author).toBe('Leviro AI');
+    const pkg = JSON.parse(readFileSync('package.json', 'utf8')) as { name: string; version: string };
+    const runScript = action.runs.steps.map(step => step.run ?? '').join('\n');
+
     expect(action.runs.using).toBe('composite');
-    expect(action.runs.steps.some(step => step.run?.includes('$GITHUB_ACTION_PATH/dist/cli.js'))).toBe(true);
+    expect(runScript).toContain(`--package "${pkg.name}@${pkg.version}"`);
+    expect(runScript).toContain('secret-coverage "${args[@]}"');
+    expect(runScript).not.toContain('$GITHUB_ACTION_PATH/dist/cli.js');
     expect(action.branding).toEqual({ icon: 'shield', color: 'green' });
   });
 

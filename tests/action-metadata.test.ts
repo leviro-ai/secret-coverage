@@ -10,6 +10,7 @@ type WorkflowStep = {
 describe('GitHub Action metadata', () => {
   it('runs the built CLI scan command with action inputs and writes markdown summaries', () => {
     const action = parse(readFileSync('action.yml', 'utf8'));
+    const pkg = JSON.parse(readFileSync('package.json', 'utf8')) as { name: string; version: string };
 
     expect(action.runs.using).toBe('composite');
     expect(action.inputs.path.default).toBe('.');
@@ -29,7 +30,10 @@ describe('GitHub Action metadata', () => {
     });
     expect(step.run).toContain('args=(scan --path "$SECRET_COVERAGE_PATH" --format "$SECRET_COVERAGE_FORMAT" --ci)');
     expect(step.run).toContain('args+=(--strict)');
-    expect(step.run).toContain('node "$GITHUB_ACTION_PATH/dist/cli.js" "${args[@]}"');
+    expect(step.run).toContain(
+      `npx --yes --package "${pkg.name}@${pkg.version}" secret-coverage ` + '"${args[@]}"',
+    );
+    expect(step.run).not.toContain('node "$GITHUB_ACTION_PATH/dist/cli.js"');
     expect(step.run).toContain('## Secret Coverage report');
     expect(step.run).toContain('>> "$GITHUB_STEP_SUMMARY"');
     expect(step.run).toContain('exit "$status"');

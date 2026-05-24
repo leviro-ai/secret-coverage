@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: leviro-ai/secret-coverage@main
+      - uses: leviro-ai/secret-coverage@v0.2.0
         with:
           format: markdown
           strict: 'false'

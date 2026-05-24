@@ -28,13 +28,15 @@ describe('documentation command examples', () => {
 
   it('keeps GitHub Action examples aligned with action.yml inputs', () => {
     const action = parse(readFileSync('action.yml', 'utf8')) as { inputs: Record<string, unknown> };
+    const pkg = JSON.parse(readFileSync('package.json', 'utf8')) as { version: string };
     const docs = `${readFileSync('README.md', 'utf8')}\n${readFileSync('docs/installation.md', 'utf8')}`;
 
     for (const input of documentedActionInputs) {
       expect(Object.keys(action.inputs)).toContain(input);
     }
 
-    expect(docs).toContain('uses: leviro-ai/secret-coverage@main');
+    expect(docs).toContain(`uses: leviro-ai/secret-coverage@v${pkg.version}`);
+    expect(docs).not.toContain('uses: leviro-ai/secret-coverage@main');
     expect(docs).not.toContain('uses: leviro-ai/secret-coverage@v0.1.0');
     expect(docs).toContain('format: markdown');
     expect(docs).toContain("strict: 'false'");
