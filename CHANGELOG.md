@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.45 — Unreleased
+
+### Added
+
+- Added a user-facing SaaS deployment readiness env checklist for small teams that need a metadata-only release review before deploy.
+
 ## 0.1.44 — Unreleased
 
 ### Fixed

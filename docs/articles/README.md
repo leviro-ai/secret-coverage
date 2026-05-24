@@ -10,6 +10,7 @@ This directory collects concrete, non-hype examples for deployment drift detecti
 - [Monorepo env validation with `--path`](monorepo-env-validation-with-path.md) — how to roll out env drift checks one deployable app at a time.
 - [Staging vs production env drift checklist](staging-production-env-drift-checklist.md) — how to compare environment contracts safely without exposing raw secret values.
 - [Pull request env var review checklist](pr-env-var-review-checklist.md) — a metadata-only checklist for catching new env requirements before merge.
+- [SaaS deployment readiness env checklist](saas-deployment-readiness-env-checklist.md) — a release-oriented checklist for small teams that need to catch env drift before deploy.
 - [Env template vs secret manager](env-template-vs-secret-manager.md) — where deployment drift hides when real values are stored correctly but the repo contract is incomplete.
 
 ## Concrete demo walkthroughs
@@ -34,6 +35,7 @@ These are long-tail support assets for developers who already know the symptom a
 - [Monorepo env validation with `--path`](monorepo-env-validation-with-path.md)
 - [Staging vs production env drift checklist](staging-production-env-drift-checklist.md)
 - [Pull request env var review checklist](pr-env-var-review-checklist.md)
+- [SaaS deployment readiness env checklist](saas-deployment-readiness-env-checklist.md)
 - [Env template vs secret manager](env-template-vs-secret-manager.md)
 - [GitHub Actions missing-secrets troubleshooting](github-actions-missing-secrets-troubleshooting.md)
 - [Dockerfile environment variable troubleshooting](dockerfile-env-variable-troubleshooting.md)
