@@ -29,15 +29,36 @@ const JENKINS_PROVIDED_VARIABLES = new Set([
   'TAG_NAME',
 ]);
 
+function extractJenkinsEnvironmentDefinitions(content: string): Set<string> {
+  const defined = new Set<string>();
+  const environmentBlocks = content.matchAll(/environment\s*\{([\s\S]*?)^\s*\}/gm);
+
+  for (const block of environmentBlocks) {
+    for (const line of block[1].split(/\r?\n/)) {
+      const match = line.match(/^\s*([A-Z][A-Z0-9_]*)\s*=\s*(.+?)\s*$/);
+      if (!match) continue;
+
+      const [, variable, rawValue] = match;
+      if (extractEnvReferences(rawValue).length === 0) {
+        defined.add(variable);
+      }
+    }
+  }
+
+  return defined;
+}
+
 export const scanJenkins: Scanner = async ({ root }) => {
   const files = await globText(root, ['Jenkinsfile', '**/Jenkinsfile', 'Jenkinsfile.*', '**/Jenkinsfile.*']);
   return {
     declared: [],
-    referenced: files.flatMap(({ file, content }) =>
-      extractEnvReferences(content)
+    referenced: files.flatMap(({ file, content }) => {
+      const jenkinsDefinedVariables = extractJenkinsEnvironmentDefinitions(content);
+      return extractEnvReferences(content)
         .filter(variable => !JENKINS_PROVIDED_VARIABLES.has(variable))
-        .map(variable => ({ variable, file, source: 'jenkins' })),
-    ),
+        .filter(variable => !jenkinsDefinedVariables.has(variable))
+        .map(variable => ({ variable, file, source: 'jenkins' }));
+    }),
     findings: [],
   };
 };

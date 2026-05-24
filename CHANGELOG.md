@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.42 — Unreleased
+
+### Fixed
+
+- Jenkinsfile scanning now treats variables defined in declarative `environment { ... }` blocks via credentials or static literals as already provided by Jenkins, while still reporting self-referenced/external variables such as `API_URL = "${API_URL}"`.
+
 ## 0.1.41 — Unreleased
 
 ### Added
