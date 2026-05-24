@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.41 — Unreleased
+
+### Added
+
+- Added a user-facing staging vs production env drift checklist for safely reviewing environment contracts across runtimes without exposing raw secret values.
+
 ## 0.1.40 — Unreleased
 
 ### Added
