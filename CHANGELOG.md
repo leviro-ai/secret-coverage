@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.47 — Unreleased
+
+### Fixed
+
+- GitHub Actions scanning now ignores additional GitHub-provided default variables such as `GITHUB_RUN_ATTEMPT`, `GITHUB_SERVER_URL`, and `GITHUB_REPOSITORY_OWNER` while still reporting user-provided deployment variables.
+
 ## 0.1.46 — Unreleased
 
 ### Fixed
