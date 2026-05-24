@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.50 — Unreleased
+
+### Changed
+
+- GitHub Action metadata now uses the canonical Secret Coverage tagline, and release checklist tests pin the action identity plus built CLI path.
+
 ## 0.1.49 — Unreleased
 
 ### Fixed

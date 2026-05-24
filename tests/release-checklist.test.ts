@@ -1,5 +1,6 @@
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
+import { parse as parseYaml } from 'yaml';
 import { describe, expect, it } from 'vitest';
 
 const releaseCommands = [
@@ -42,6 +43,23 @@ describe('release checklist', () => {
     expect(release).toContain('Do not create a GitHub release');
     expect(release).toContain('dist/cli.js must be built before tagging');
     expect(release).toContain('Darius approves publishing target and repository name');
+  });
+
+  it('keeps GitHub Action metadata aligned with the package identity and built CLI', () => {
+    const action = parseYaml(readFileSync('action.yml', 'utf8')) as {
+      name: string;
+      description: string;
+      author: string;
+      runs: { using: string; steps: Array<{ run?: string }> };
+      branding: { icon: string; color: string };
+    };
+
+    expect(action.name).toBe('Secret Coverage');
+    expect(action.description).toBe('Detect missing environment variables before your deployment fails.');
+    expect(action.author).toBe('Leviro AI');
+    expect(action.runs.using).toBe('composite');
+    expect(action.runs.steps.some(step => step.run?.includes('$GITHUB_ACTION_PATH/dist/cli.js'))).toBe(true);
+    expect(action.branding).toEqual({ icon: 'shield', color: 'green' });
   });
 
   it(

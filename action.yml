@@ -1,5 +1,5 @@
 name: Secret Coverage
-description: 'Environment Secret Coverage Checker: detect missing environment variables before deployment fails.'
+description: 'Detect missing environment variables before your deployment fails.'
 author: Leviro AI
 inputs:
   path:
