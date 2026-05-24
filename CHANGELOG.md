@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.46 — Unreleased
+
+### Fixed
+
+- GitHub Actions scanning now also ignores common GitHub-hosted runner variables such as `RUNNER_ARCH`, `RUNNER_TEMP`, and `RUNNER_TOOL_CACHE` while still reporting user-provided deployment variables.
+
 ## 0.1.45 — Unreleased
 
 ### Added

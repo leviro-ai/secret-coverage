@@ -48,7 +48,7 @@ describe('platform scanners', () => {
 
   it('scans GitHub Actions env keys only when they require external configuration', async () => {
     await expect(variables(scanGitHubActions, {
-      '.github/workflows/deploy.yaml': 'name: deploy\non: push\nenv:\n  DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}\n  DATABASE_URL: ""\n  NODE_VERSION: "22"\n  NODE_ENV: production\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo "$GITHUB_SHA" && pnpm deploy --token $DEPLOY_TOKEN --node $NODE_VERSION --env $NODE_ENV --database $DATABASE_URL\n',
+      '.github/workflows/deploy.yaml': 'name: deploy\non: push\nenv:\n  DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}\n  DATABASE_URL: ""\n  NODE_VERSION: "22"\n  NODE_ENV: production\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo "$GITHUB_SHA $RUNNER_ARCH $RUNNER_TEMP $RUNNER_TOOL_CACHE" && pnpm deploy --token $DEPLOY_TOKEN --node $NODE_VERSION --env $NODE_ENV --database $DATABASE_URL\n',
     })).resolves.toEqual([
       'DATABASE_URL:.github/workflows/deploy.yaml:github-actions',
       'DEPLOY_TOKEN:.github/workflows/deploy.yaml:github-actions',
