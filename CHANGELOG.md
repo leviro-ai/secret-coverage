@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.40 — Unreleased
+
+### Added
+
+- Added a user-facing monorepo env validation guide that shows how to roll out `scan --path <deployable>` one app or worker at a time before broad whole-repo checks.
+
 ## 0.1.39 — Unreleased
 
 ### Fixed

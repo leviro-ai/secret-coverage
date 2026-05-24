@@ -7,6 +7,7 @@ This directory collects concrete, non-hype examples for deployment drift detecti
 - [CI/CD environment variable validation checklist](ci-cd-env-validation-checklist.md) — a practical checklist for reviewing env templates, deployment config, and CI checks before merge.
 - [AI-agent PR environment review walkthrough](ai-agent-pr-env-review-walkthrough.md) — how to review AI-generated PRs for deployment-breaking environment drift.
 - [Preview environment variable checklist](preview-environment-variable-checklist.md) — how to review preview deploy, worker, migration, and webhook env drift before merge.
+- [Monorepo env validation with `--path`](monorepo-env-validation-with-path.md) — how to roll out env drift checks one deployable app at a time.
 - [Env template vs secret manager](env-template-vs-secret-manager.md) — where deployment drift hides when real values are stored correctly but the repo contract is incomplete.
 
 ## Concrete demo walkthroughs
@@ -28,6 +29,7 @@ These are long-tail support assets for developers who already know the symptom a
 
 - [Deployment failed because an environment variable was missing](deployment-failed-missing-env-variable.md)
 - [Preview environment variable checklist](preview-environment-variable-checklist.md)
+- [Monorepo env validation with `--path`](monorepo-env-validation-with-path.md)
 - [Env template vs secret manager](env-template-vs-secret-manager.md)
 - [GitHub Actions missing-secrets troubleshooting](github-actions-missing-secrets-troubleshooting.md)
 - [Dockerfile environment variable troubleshooting](dockerfile-env-variable-troubleshooting.md)
