@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.39 — Unreleased
+
+### Fixed
+
+- JavaScript/Next.js env reference extraction now detects optional-chained bracket access such as `process.env?.['STRIPE_SECRET_KEY']` while preserving low-noise source scanning.
+
 ## 0.1.38 — Unreleased
 
 ### Added

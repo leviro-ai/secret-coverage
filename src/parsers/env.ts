@@ -34,7 +34,7 @@ export function extractEnvReferences(content: string, options: ExtractEnvReferen
   const includeCiExpressions = options.ciExpressions ?? true;
   const patterns = [
     /process\.env(?:\.|\?\.)([A-Za-z_][A-Za-z0-9_]*)/g,
-    /process\.env\[['"]([A-Za-z_][A-Za-z0-9_]*)['"]\]/g,
+    /process\.env(?:\?\.)?\[['"]([A-Za-z_][A-Za-z0-9_]*)['"]\]/g,
   ];
   if (includeShell) {
     patterns.push(

@@ -172,10 +172,11 @@ describe('platform scanners', () => {
   it('scans Next.js config and source references', async () => {
     await expect(variables(scanNextJs, {
       'next.config.js': 'module.exports = { env: { NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL } }',
-      'src/page.tsx': 'export const token = process.env?.DEPLOY_TOKEN;',
+      'src/page.tsx': "export const token = process.env?.DEPLOY_TOKEN; export const stripe = process.env?.['STRIPE_SECRET_KEY'];",
     })).resolves.toEqual([
       'DEPLOY_TOKEN:src/page.tsx:nextjs',
       'NEXT_PUBLIC_API_URL:next.config.js:nextjs',
+      'STRIPE_SECRET_KEY:src/page.tsx:nextjs',
     ]);
   });
 

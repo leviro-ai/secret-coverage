@@ -12,9 +12,11 @@ describe('parseEnv', () => {
 
 describe('extractEnvReferences', () => {
   it('extracts JavaScript process.env dot, optional-chain, and bracket references', () => {
-    const refs = extractEnvReferences("const a = process.env.DATABASE_URL; const b = process.env['NEXT_PUBLIC_API_URL']; const c = process.env?.REDIS_URL;");
+    const refs = extractEnvReferences(
+      "const a = process.env.DATABASE_URL; const b = process.env['NEXT_PUBLIC_API_URL']; const c = process.env?.REDIS_URL; const d = process.env?.['STRIPE_SECRET_KEY'];",
+    );
 
-    expect(refs).toEqual(['DATABASE_URL', 'NEXT_PUBLIC_API_URL', 'REDIS_URL']);
+    expect(refs).toEqual(['DATABASE_URL', 'NEXT_PUBLIC_API_URL', 'REDIS_URL', 'STRIPE_SECRET_KEY']);
   });
 
   it('extracts shell braced and bare dollar references', () => {
