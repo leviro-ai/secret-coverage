@@ -140,6 +140,26 @@ describe('platform scanners', () => {
     ]);
   });
 
+  it('ignores Jenkins withEnv variables defined by safe inline literals', async () => {
+    await expect(variables(scanJenkins, {
+      Jenkinsfile: `pipeline {
+  stages {
+    stage('Deploy') {
+      steps {
+        withEnv(['RAILWAY_ENVIRONMENT=production', "NODE_VERSION=22", 'API_URL=\${API_URL}']) {
+          sh 'deploy --railway-env $RAILWAY_ENVIRONMENT --node $NODE_VERSION --api-url $API_URL --token $DEPLOY_TOKEN'
+        }
+      }
+    }
+  }
+}
+`,
+    })).resolves.toEqual([
+      'API_URL:Jenkinsfile:jenkins',
+      'DEPLOY_TOKEN:Jenkinsfile:jenkins',
+    ]);
+  });
+
   it('scans Railway config command environment references', async () => {
     await expect(variables(scanRailway, {
       'railway.toml': '[deploy]\nstartCommand = "node server.js --database ${DATABASE_URL} --token $DEPLOY_TOKEN"\n',

@@ -32,7 +32,7 @@ runs:
         fi
 
         set +e
-        output="$(npx --yes --package "@leviro-ai/secret-coverage@0.2.0" secret-coverage "${args[@]}" 2>&1)"
+        output="$(npx --yes --package "@leviro-ai/secret-coverage@0.2.1" secret-coverage "${args[@]}" 2>&1)"
         status=$?
         set -e
 

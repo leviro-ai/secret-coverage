@@ -45,6 +45,17 @@ function extractJenkinsEnvironmentDefinitions(content: string): Set<string> {
     }
   }
 
+  const withEnvBlocks = content.matchAll(/withEnv\s*\(\s*\[([\s\S]*?)\]\s*\)/gm);
+  for (const block of withEnvBlocks) {
+    const entries = block[1].matchAll(/["']([A-Z][A-Z0-9_]*=.*?)["']/g);
+    for (const entry of entries) {
+      const [variable, rawValue = ''] = entry[1].split(/=(.*)/s);
+      if (variable && extractEnvReferences(rawValue).length === 0) {
+        defined.add(variable);
+      }
+    }
+  }
+
   return defined;
 }
 

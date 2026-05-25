@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1 — Unreleased
+
+### Fixed
+
+- Jenkinsfile scanning now treats safe inline `withEnv(['NAME=value'])` entries as already defined while still reporting self-referenced or external values such as `API_URL=${API_URL}`.
+
 ## 0.2.0 — Unreleased
 
 ### Changed
