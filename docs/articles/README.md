@@ -41,6 +41,7 @@ These are long-tail support assets for developers who already know the symptom a
 - [Dockerfile environment variable troubleshooting](dockerfile-env-variable-troubleshooting.md)
 - [Docker Compose environment variable troubleshooting](docker-compose-env-variable-troubleshooting.md)
 - [Vercel environment variable troubleshooting](vercel-env-variable-troubleshooting.md)
+- [Vercel serverless API key env var not set](vercel-serverless-api-key-env-var-not-set.md)
 - [CircleCI environment variable troubleshooting](circleci-env-variable-troubleshooting.md)
 - [Next.js missing Stripe secret walkthrough](nextjs-missing-stripe-secret.md)
 - [Railway environment variable troubleshooting](railway-env-variable-troubleshooting.md)

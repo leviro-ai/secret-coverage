@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2 — Unreleased
+
+### Added
+
+- Added a user-facing Vercel serverless/API-route troubleshooting page for `*_API_KEY environment variable not set` failures, keeping the guidance metadata-only and clear that Secret Coverage does not read Vercel dashboard state or validate secret values.
+
 ## 0.2.1 — Unreleased
 
 ### Fixed
