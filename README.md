@@ -299,6 +299,9 @@ pnpm build
 pnpm tsx src/cli.ts scan --path examples/fixtures/broken-app --ci
 ```
 
+## Personal Motivation
+Greatly motivated by [SelfSpark - adaptive habit tracker ](https://selfspark.app)
+
 ## License
 
 Apache-2.0 © 2026 Leviro AI
