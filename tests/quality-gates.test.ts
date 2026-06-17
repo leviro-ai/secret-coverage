@@ -60,4 +60,11 @@ describe('quality and security gates', () => {
     expect(readme).toContain('![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)');
     expect(readme).toContain('![Local first](https://img.shields.io/badge/local--first-no_cloud_required-brightgreen)');
   });
+
+  it('pins a patched vite version in the lockfile for audit stability', () => {
+    const lockfile = readFileSync('pnpm-lock.yaml', 'utf8');
+
+    expect(lockfile).toContain('version: 8.0.16(');
+    expect(lockfile).not.toContain('vite@8.0.14');
+  });
 });

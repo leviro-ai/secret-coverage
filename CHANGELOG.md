@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.3 — Unreleased
+
+### Fixed
+
+- Upgraded the locked Vite dependency from `8.0.14` to `8.0.16` so `pnpm security:audit` no longer fails on the known moderate/high Windows advisory pair, and added a lockfile regression check to keep the patched Vite version pinned for audit stability.
+
 ## 0.2.2 — Unreleased
 
 ### Added
