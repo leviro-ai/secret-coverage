@@ -61,10 +61,11 @@ describe('quality and security gates', () => {
     expect(readme).toContain('![Local first](https://img.shields.io/badge/local--first-no_cloud_required-brightgreen)');
   });
 
-  it('pins a patched vite version in the lockfile for audit stability', () => {
+  it('keeps the lockfile off known vulnerable vite/esbuild audit versions', () => {
     const lockfile = readFileSync('pnpm-lock.yaml', 'utf8');
 
-    expect(lockfile).toContain('version: 8.0.16(');
+    expect(lockfile).toContain('esbuild@0.28.1');
+    expect(lockfile).not.toContain('esbuild@0.28.0');
     expect(lockfile).not.toContain('vite@8.0.14');
   });
 });

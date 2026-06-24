@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.4 — Unreleased
+
+### Fixed
+
+- Cleared the remaining low-severity `pnpm audit` finding by refreshing the locked dev-tool chain to `esbuild@0.28.1` via the current Vite/Vitest/tsx dependency set, and updated the audit-stability regression check so lockfile security coverage tracks vulnerable `esbuild`/`vite` versions instead of one exact Vite patch string.
+
 ## 0.2.3 — Unreleased
 
 ### Fixed
